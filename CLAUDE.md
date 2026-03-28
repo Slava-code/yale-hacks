@@ -11,6 +11,8 @@
 | `docs/knowledge-graph.md` | Graph schema, node/edge types, PHI tagging, mock data generation | When working on the knowledge graph, data generation scripts, or graph traversal |
 | `docs/demo.md` | System architecture overview, demo reliability strategy, full file structure | When planning the demo flow, debugging latency, or onboarding a new team member |
 | `docs/interfaces.md` | Data contracts — REST endpoints, SSE events, graph query API, `graph.json` schema, token formats | Before building anything that crosses a workstream boundary (frontend↔backend, backend↔graph module) |
+| `backend/stub_server.py` | Stub FastAPI server with hardcoded SSE scenario + stub graph | When developing the frontend without the real backend running |
+| `data/stub/graph.json` | Small stub knowledge graph (5 patients, 34 nodes) | When developing the frontend or testing graph visualization |
 | `tests/` | Code functionality tests (pytest) | When adding or changing backend/frontend logic |
 | `eval/` | Gatekeeper model evaluation — test cases in `cases/`, scoring results in `results/` | When benchmarking or comparing local models for PHI detection accuracy, speed, and format compliance |
 
@@ -49,7 +51,22 @@ After major changes (new feature, refactor, dependency change, scope change):
 - Review `PRD.md` and the relevant `docs/*.md` files
 - If any are stale, tell the user: "The following docs may need updating: [list]. Want me to update them?"
 
-### 6. How to apply updates
+### 6. Propagation checklist
+
+After changing any document, check the related documents listed below for inconsistencies. This is not optional — skipping propagation is how docs go stale.
+
+| If you changed... | Also check... |
+|---|---|
+| `PRD.md` | Everything — scope changes ripple everywhere |
+| `TECHNICAL.md` | `CLAUDE.md` (key docs table), `docs/demo.md` (file structure) |
+| `docs/interfaces.md` | `CLAUDE.md` (key docs table), `docs/demo.md` (file structure), `docs/backend.md` (endpoints), `docs/frontend.md` (SSE events) |
+| `docs/backend.md` | `docs/interfaces.md` (API contracts), `docs/frontend.md` (SSE events), `docs/demo.md` (architecture) |
+| `docs/frontend.md` | `docs/interfaces.md` (SSE events), `docs/backend.md` (endpoints) |
+| `docs/knowledge-graph.md` | `docs/interfaces.md` (graph schema), `docs/backend.md` (graph queries) |
+| `docs/demo.md` | `CLAUDE.md` (key docs table) |
+| `CLAUDE.md` | No propagation needed — this is the root |
+
+### 7. How to apply updates
 
 - Make surgical edits — only change the affected parts, don't rewrite unrelated sections
 - Keep the existing structure and style of the document

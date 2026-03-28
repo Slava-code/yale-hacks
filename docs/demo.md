@@ -71,6 +71,7 @@ medgate/
 │   ├── backend.md                  # Backend spec (gatekeeper, tokens, cloud adapters, API)
 │   ├── knowledge-graph.md          # Knowledge graph schema + data generation
 │   ├── frontend.md                 # Frontend spec (chat, 3D graph, PDF viewer, citations)
+│   ├── interfaces.md               # Data contracts (REST, SSE events, graph API, conventions)
 │   └── demo.md                     # This document (architecture, demo strategy, file structure)
 ├── frontend/
 │   ├── src/
@@ -83,6 +84,7 @@ medgate/
 │   │   └── CitationLink.jsx        # Clickable citation component
 │   └── package.json
 ├── backend/
+│   ├── stub_server.py              # Stub server for frontend dev (hardcoded SSE scenario)
 │   ├── server.py                   # FastAPI main server
 │   ├── gatekeeper.py               # Gatekeeper logic (PHI detection, graph query, redaction)
 │   ├── token_manager.py            # Ephemeral token mapping lifecycle
@@ -97,7 +99,9 @@ medgate/
 ├── data/
 │   ├── graph.json                  # Pre-built knowledge graph
 │   ├── pdfs/                       # Source PDF documents (~300 files)
-│   └── patients/                   # Patient profile definitions (used for generation)
+│   ├── patients/                   # Patient profile definitions (used for generation)
+│   └── stub/
+│       └── graph.json              # Small stub graph (5 patients) for frontend dev
 ├── scripts/
 │   ├── generate_patients.py        # Generate patient profiles
 │   ├── generate_documents.py       # Generate synthetic clinical docs
