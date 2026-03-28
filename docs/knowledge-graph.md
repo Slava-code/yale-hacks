@@ -1,10 +1,10 @@
 # MedGate — Knowledge Graph & Data Generation Spec
 
-**Extracted from:** `TECHNICAL.md` sections 2, 10
+**Parent:** [TECHNICAL.md](../TECHNICAL.md) §3
 **Owner:** Data/pipeline developer
 **Last updated:** 2026-03-28
 
-This document covers the knowledge graph schema, storage format, PHI tagging, and the synthetic data generation pipeline. For the full technical context, see `TECHNICAL.md`. For product requirements, see `PRD.md`.
+This document covers the knowledge graph schema, storage format, PHI tagging, and the synthetic data generation pipeline. For product requirements, see [PRD.md](../PRD.md).
 
 ---
 

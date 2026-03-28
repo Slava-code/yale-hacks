@@ -1,10 +1,10 @@
 # MedGate — Frontend Technical Spec
 
-**Extracted from:** `TECHNICAL.md` sections 6, 7, 8
+**Parent:** [TECHNICAL.md](../TECHNICAL.md) §4
 **Owner:** Frontend developer(s)
 **Last updated:** 2026-03-28
 
-This document covers the chat interface, 3D knowledge graph visualization, citation system rendering, and PDF viewer. For the full technical context, see `TECHNICAL.md`. For product requirements, see `PRD.md`.
+This document covers the chat interface, 3D knowledge graph visualization, citation system rendering, and PDF viewer. For product requirements, see [PRD.md](../PRD.md).
 
 ---
 

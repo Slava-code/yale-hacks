@@ -1,10 +1,10 @@
 # MedGate — Backend Technical Spec
 
-**Extracted from:** `TECHNICAL.md` sections 3, 4, 5, 9
+**Parent:** [TECHNICAL.md](../TECHNICAL.md) §2
 **Owner:** Backend developer(s)
 **Last updated:** 2026-03-28
 
-This document covers the GX10 backend server, the gatekeeper model, the token mapping system, and cloud model integration. For the full technical context, see `TECHNICAL.md`. For product requirements, see `PRD.md`.
+This document covers the GX10 backend server, the gatekeeper model, the token mapping system, and cloud model integration. For product requirements, see [PRD.md](../PRD.md).
 
 ---
 

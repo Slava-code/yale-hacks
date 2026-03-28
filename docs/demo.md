@@ -1,10 +1,10 @@
 # MedGate — Demo & Project Reference
 
-**Extracted from:** `TECHNICAL.md` sections 1, 11, 12
+**Parent:** [TECHNICAL.md](../TECHNICAL.md) §1
 **Owner:** Whole team
 **Last updated:** 2026-03-28
 
-This document covers the system architecture overview, demo reliability strategy, latency considerations, and the full project file structure. For the full technical context, see `TECHNICAL.md`. For product requirements, see `PRD.md`.
+This document covers the system architecture overview, demo reliability strategy, latency considerations, and the full project file structure. For product requirements, see [PRD.md](../PRD.md).
 
 ---
 
@@ -64,9 +64,9 @@ The gatekeeper's local inference (on-device) should be fast — under 3 seconds 
 
 ```
 medgate/
-├── README.md
+├── CLAUDE.md                       # Claude Code guidelines (read first)
 ├── PRD.md                          # PRD (source of truth for product)
-├── TECHNICAL.md                    # Full technical document
+├── TECHNICAL.md                    # Technical architecture index (points to docs/)
 ├── docs/
 │   ├── backend.md                  # Backend spec (gatekeeper, tokens, cloud adapters, API)
 │   ├── knowledge-graph.md          # Knowledge graph schema + data generation
