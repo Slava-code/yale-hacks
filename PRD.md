@@ -141,7 +141,7 @@ MedGate takes a third approach: **keep PHI on-premises, send only de-identified 
 
 MedGate runs on the **ASUS Ascent GX10**, a compact on-premises AI supercomputer powered by the **NVIDIA GB10 Grace Blackwell Superchip**:
 
-- **NVIDIA Blackwell GPU:** 6,144 CUDA cores, 5th-gen Tensor Cores, up to **1 petaFLOP (1,000 TOPS)** at FP4 precision. This is a full data-center-class GPU, not a low-power NPU — it runs 13B–27B parameter gatekeeper models at conversational speed (~30-50 tokens/sec).
+- **NVIDIA Blackwell GPU:** 6,144 CUDA cores, 5th-gen Tensor Cores, up to **1 petaFLOP (1,000 TOPS)** at FP4 precision. This is a full data-center-class GPU, not a low-power NPU — it runs 13B–27B parameter gatekeeper models at ~11-17 tokens/sec (solo-loaded, Q4 quantization).
 - **128 GB Unified LPDDR5x Memory:** Shared between the Grace CPU and Blackwell GPU in a single address space (like Apple Silicon). Runs the gatekeeper model (~18-20GB), maintains the knowledge graph in memory, and holds ephemeral token mappings during active sessions. All simultaneously, with >100GB headroom.
 - **1 TB Local Storage:** Stores source PDF documents, the pre-processed knowledge graph, model weights, and (in production) audit logs. Supports hundreds of thousands of clinical documents for a typical institution.
 - **20-core ARM Grace CPU:** 10x Cortex-X925 + 10x Cortex-A725 cores. Handles the FastAPI backend server, token management, and graph traversal — freeing the GPU entirely for model inference.

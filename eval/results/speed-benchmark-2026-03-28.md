@@ -32,7 +32,7 @@ Measured earlier in the session with a simple "hello" prompt, each model loaded 
 - **LLaMA 3.1 70B is consistently ~4.7 tok/s** — too slow for demo use. A 200-token gatekeeper response would take ~42 seconds. Kept as a quality reference only.
 - **Qwen 2.5 32B is most consistent** across runs even under contention (8.8–10.2 tok/s, tight spread).
 - **All models correctly identified HIPAA Safe Harbor** and listed valid identifiers. Quality evaluation (PHI detection recall, format compliance) is a separate eval — this benchmark only measures speed.
-- All speeds are below the 30-50 tok/s estimate in `docs/backend.md`. That estimate may have assumed FP8/MXFP4 quantization or different Ollama settings. Worth investigating if speed becomes a blocker.
+- Docs have been updated to reflect these measured speeds (previously estimated at 30-50 tok/s).
 
 ## Raw data
 
