@@ -6,6 +6,26 @@ import './App.css'
 function App() {
   const [selectedModel, setSelectedModel] = useState('claude')
 
+  // SSE event state - shared between panels
+  const [traversalData, setTraversalData] = useState(null)
+  const [sseEvents, setSseEvents] = useState([])
+
+  // Called by ChatPanel when SSE events arrive
+  const handleSseEvent = (event) => {
+    setSseEvents((prev) => [...prev, event])
+
+    // Handle specific event types
+    if (event.type === 'graph_traversal') {
+      setTraversalData(event)
+    }
+  }
+
+  // Clear SSE state when starting a new query
+  const handleQueryStart = () => {
+    setTraversalData(null)
+    setSseEvents([])
+  }
+
   return (
     <div className="app-container">
       {/* Header */}
@@ -25,11 +45,16 @@ function App() {
           <ChatPanel
             selectedModel={selectedModel}
             onModelChange={setSelectedModel}
+            onSseEvent={handleSseEvent}
+            onQueryStart={handleQueryStart}
           />
         </div>
         <div className="panel-divider" />
         <div className="panel-right">
-          <GraphPanel />
+          <GraphPanel
+            traversalData={traversalData}
+            sseEvents={sseEvents}
+          />
         </div>
       </main>
     </div>

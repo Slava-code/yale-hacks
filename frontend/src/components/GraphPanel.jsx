@@ -1,6 +1,7 @@
 import './GraphPanel.css'
 
-function GraphPanel() {
+function GraphPanel({ traversalData, sseEvents }) {
+  // traversalData and sseEvents will be used in Phase 3/4
   return (
     <div className="graph-panel">
       {/* Graph Header */}
