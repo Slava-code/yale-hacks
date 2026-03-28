@@ -55,6 +55,69 @@ After major changes (new feature, refactor, dependency change, scope change):
 
 ---
 
+## GX10 Device Access
+
+The GX10 is the on-premises hardware that runs the gatekeeper model and holds the knowledge graph. Connection credentials are in `.env` (gitignored).
+
+### Connecting
+
+```bash
+sshpass -p "$GX10_PASSWORD" ssh -o StrictHostKeyChecking=no "$GX10_USER@$GX10_HOST"
+```
+
+`sshpass` is required because the device uses password auth and agents can't type into interactive prompts. Install with `brew install sshpass` if missing.
+
+### Device details
+
+| | |
+|---|---|
+| **Hostname** | `gx10-4428` |
+| **OS** | Ubuntu (aarch64/ARM), kernel 6.17 with NVIDIA overlay |
+| **GPU** | NVIDIA GB10 (Blackwell), CUDA 13.0 |
+| **Memory** | ~119GB unified (shared CPU/GPU) |
+| **Disk** | ~916GB NVMe, ~793GB free |
+| **Python** | 3.12.3 |
+| **Project dir** | `/home/asus/yale-hacks` (has its own git repo + venv) |
+| **Ollama** | Running as systemd service, port `11434` |
+
+### Common operations
+
+```bash
+# Run a command on the GX10 (one-liner pattern)
+sshpass -p "$GX10_PASSWORD" ssh "$GX10_USER@$GX10_HOST" "command here"
+
+# Check Ollama models
+sshpass -p "$GX10_PASSWORD" ssh "$GX10_USER@$GX10_HOST" "ollama list"
+
+# Check running models
+sshpass -p "$GX10_PASSWORD" ssh "$GX10_USER@$GX10_HOST" "ollama ps"
+
+# Pull a new model
+sshpass -p "$GX10_PASSWORD" ssh "$GX10_USER@$GX10_HOST" "ollama pull qwen2.5:32b"
+
+# Test Ollama inference
+sshpass -p "$GX10_PASSWORD" ssh "$GX10_USER@$GX10_HOST" "curl -s localhost:11434/api/generate -d '{\"model\":\"llama3.1:70b\",\"prompt\":\"hello\",\"stream\":false}'"
+
+# Check memory (nvidia-smi shows "Not Supported" for memory on unified arch — use free instead)
+sshpass -p "$GX10_PASSWORD" ssh "$GX10_USER@$GX10_HOST" "free -h"
+
+# Copy files to the device
+sshpass -p "$GX10_PASSWORD" scp local_file "$GX10_USER@$GX10_HOST:/home/asus/yale-hacks/"
+
+# Copy files from the device
+sshpass -p "$GX10_PASSWORD" scp "$GX10_USER@$GX10_HOST:/home/asus/yale-hacks/file" ./
+```
+
+### Guardrails
+
+- **Never reboot** the device without asking the user
+- **Never remove Ollama models** already loaded — they take a long time to re-pull over the network
+- **Never modify files outside** `/home/asus/yale-hacks/` on the device
+- **Ask before long-running operations** that could tie up the GPU (e.g., running a large model pull or benchmark)
+- **Never hardcode or echo credentials** — always read from `.env` at runtime
+
+---
+
 ## Git Conventions
 
 This is a hackathon sprint — keep it simple:
