@@ -74,11 +74,19 @@ sshpass -p "$GX10_PASSWORD" ssh -o StrictHostKeyChecking=no "$GX10_USER@$GX10_HO
 | **Hostname** | `gx10-4428` |
 | **OS** | Ubuntu (aarch64/ARM), kernel 6.17 with NVIDIA overlay |
 | **GPU** | NVIDIA GB10 (Blackwell), CUDA 13.0 |
-| **Memory** | ~119GB unified (shared CPU/GPU) |
+| **Memory** | ~119GB unified LPDDR5x (shared CPU/GPU — see note below) |
 | **Disk** | ~916GB NVMe, ~793GB free |
 | **Python** | 3.12.3 |
 | **Project dir** | `/home/asus/yale-hacks` (has its own git repo + venv) |
 | **Ollama** | Running as systemd service, port `11434` |
+
+### Unified memory
+
+The GB10 uses a unified memory architecture (like Apple Silicon) — the CPU and GPU share a single 119GB LPDDR5x pool. There is no separate VRAM. Implications:
+
+- **`nvidia-smi` cannot report GPU memory usage** — it shows "Not Supported". Use `free -h` to check total system memory instead.
+- **Everything shares the same pool:** the Ollama model, the knowledge graph, the Python server, and the OS all compete for the same 119GB. A 27B Q4 model uses ~18-20GB, leaving ~95GB+ for everything else — not a concern for this project.
+- **No CPU→GPU memory copies** — model inference doesn't pay a transfer penalty, which is why the GB10 punches above its weight on tokens/sec.
 
 ### Common operations
 
