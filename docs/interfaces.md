@@ -502,4 +502,79 @@ For completeness — used by backend internally, visible in the redacted view:
 
 ---
 
+## 6. Dev Environment & Conventions
+
+### 6.1 Who works where
+
+| Person | Works on | Where | Notes |
+|--------|----------|-------|-------|
+| Person 1 (frontend) | `frontend/` | Local laptop | `npm run dev` on `:3000`, proxies `/api/*` to GX10 |
+| Person 2 (backend) | `backend/` | GX10 via SSH | FastAPI on `:8000` bound to `0.0.0.0` |
+| Person 3 (data) | `scripts/`, `data/` | Local laptop | Calls Claude/GPT-4 APIs to generate docs, SCPs `data/` to GX10 when ready |
+
+### 6.2 Repo structure
+
+```
+backend/          ← Person 2
+frontend/         ← Person 1
+data/             ← Person 3
+  graph.json        (production graph)
+  pdfs/             (generated PDFs)
+  stub/             (stub data for frontend dev — see §7)
+scripts/          ← Person 3
+  generate_patients.py
+  generate_documents.py
+  build_graph.py
+docs/             ← shared
+```
+
+### 6.3 Port numbers
+
+| Service | Port | Host | Notes |
+|---------|------|------|-------|
+| Frontend dev server | `:3000` | Each dev's laptop | Vite/CRA dev server |
+| Backend (FastAPI) | `:8000` | GX10 | Serves API + static frontend in production |
+| Ollama | `:11434` | GX10 | Already running as systemd service |
+
+Frontend proxies `/api/*` → `http://GX10_HOST:8000/api/*` in dev mode. On demo day, the backend serves the built frontend static files directly — no separate frontend server.
+
+### 6.4 PDF naming convention
+
+Pattern: `{type}_{lastname}_{yyyy}_{mon}.pdf`
+
+| Document type | Prefix |
+|---------------|--------|
+| Lab report | `lab_report` |
+| Discharge summary | `discharge_summary` |
+| Progress note | `progress_note` |
+| Imaging report | `imaging_report` |
+| Referral letter | `referral_letter` |
+| Intake form | `intake_form` |
+
+Examples:
+```
+lab_report_smith_2025_oct.pdf
+discharge_summary_smith_2025_nov.pdf
+progress_note_garcia_2026_jan.pdf
+```
+
+Multiple docs of the same type in the same month: append `_2`, `_3`, etc.:
+```
+progress_note_smith_2025_oct.pdf
+progress_note_smith_2025_oct_2.pdf
+```
+
+---
+
+## 7. Stub Data
+
+Stub data lives in `data/stub/` and `backend/stub_server.py`. These exist so Person 1 (frontend) can build the full UI without waiting for the real backend or graph data.
+
+- **`data/stub/graph.json`** — 5 patients, ~30 nodes, realistic edges. Use with `GET /api/graph`.
+- **`backend/stub_server.py`** — A standalone FastAPI server that serves the stub graph and emits hardcoded SSE events for a fake query. Responds to all endpoints defined in §1.
+
+Delete or ignore these once the real backend and data are ready.
+
+---
+
 *This document is the interface contract for the MedGate hackathon. All three workstreams build to these definitions. If a change is needed, discuss with the team and update this doc before implementing. Last updated: 2026-03-28.*

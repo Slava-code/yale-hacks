@@ -1,0 +1,449 @@
+{
+  "meta": {
+    "generated_at": "2026-03-28T16:00:00Z",
+    "num_patients": 5,
+    "num_nodes": 34,
+    "num_edges": 41,
+    "stub": true
+  },
+  "nodes": {
+    "patient_001": {
+      "id": "patient_001",
+      "type": "patient",
+      "label": "John Smith",
+      "fields": {
+        "name": { "value": "John Smith", "phi": true },
+        "age": { "value": 31, "phi": false },
+        "sex": { "value": "male", "phi": false },
+        "mrn": { "value": "MRN-78234", "phi": true },
+        "summary": { "value": "31yo male with recurring headaches and joint pain over 8 months, ultimately diagnosed with SLE", "phi": false }
+      },
+      "source_pdf": "intake_form_smith.pdf",
+      "source_page": 1
+    },
+    "patient_002": {
+      "id": "patient_002",
+      "type": "patient",
+      "label": "Maria Garcia",
+      "fields": {
+        "name": { "value": "Maria Garcia", "phi": true },
+        "age": { "value": 58, "phi": false },
+        "sex": { "value": "female", "phi": false },
+        "mrn": { "value": "MRN-41092", "phi": true },
+        "summary": { "value": "58yo female with type 2 diabetes and hypertension, well-controlled on current regimen", "phi": false }
+      },
+      "source_pdf": "intake_form_garcia.pdf",
+      "source_page": 1
+    },
+    "patient_003": {
+      "id": "patient_003",
+      "type": "patient",
+      "label": "David Chen",
+      "fields": {
+        "name": { "value": "David Chen", "phi": true },
+        "age": { "value": 45, "phi": false },
+        "sex": { "value": "male", "phi": false },
+        "mrn": { "value": "MRN-55671", "phi": true },
+        "summary": { "value": "45yo male presenting with chest pain, evaluated for cardiac etiology", "phi": false }
+      },
+      "source_pdf": "intake_form_chen.pdf",
+      "source_page": 1
+    },
+    "patient_004": {
+      "id": "patient_004",
+      "type": "patient",
+      "label": "Sarah Johnson",
+      "fields": {
+        "name": { "value": "Sarah Johnson", "phi": true },
+        "age": { "value": 27, "phi": false },
+        "sex": { "value": "female", "phi": false },
+        "mrn": { "value": "MRN-33890", "phi": true },
+        "summary": { "value": "27yo female with iron deficiency anemia, on oral supplementation", "phi": false }
+      },
+      "source_pdf": "intake_form_johnson.pdf",
+      "source_page": 1
+    },
+    "patient_005": {
+      "id": "patient_005",
+      "type": "patient",
+      "label": "Robert Williams",
+      "fields": {
+        "name": { "value": "Robert Williams", "phi": true },
+        "age": { "value": 72, "phi": false },
+        "sex": { "value": "male", "phi": false },
+        "mrn": { "value": "MRN-62417", "phi": true },
+        "summary": { "value": "72yo male with COPD and recurrent pneumonia, on home oxygen", "phi": false }
+      },
+      "source_pdf": "intake_form_williams.pdf",
+      "source_page": 1
+    },
+
+    "visit_001": {
+      "id": "visit_001",
+      "type": "visit",
+      "label": "Initial Visit — Jun 2025",
+      "fields": {
+        "date": { "value": "2025-06-10", "phi": true },
+        "visit_type": { "value": "initial", "phi": false },
+        "chief_complaint": { "value": "recurring headaches for 3 weeks", "phi": false },
+        "attending_provider": { "value": "Dr. Sarah Chen", "phi": true },
+        "notes": { "value": "Patient reports bilateral frontal headaches occurring 3-4 times per week. No visual changes. Started OTC ibuprofen with partial relief.", "phi": false }
+      },
+      "source_pdf": "progress_note_smith_2025_jun.pdf",
+      "source_page": 1
+    },
+    "visit_002": {
+      "id": "visit_002",
+      "type": "visit",
+      "label": "Follow-up — Aug 2025",
+      "fields": {
+        "date": { "value": "2025-08-22", "phi": true },
+        "visit_type": { "value": "follow-up", "phi": false },
+        "chief_complaint": { "value": "persistent headaches, new joint stiffness", "phi": false },
+        "attending_provider": { "value": "Dr. Sarah Chen", "phi": true },
+        "notes": { "value": "Headaches continue despite ibuprofen. New complaint of morning joint stiffness in hands lasting ~45 minutes. No swelling observed.", "phi": false }
+      },
+      "source_pdf": "progress_note_smith_2025_aug.pdf",
+      "source_page": 1
+    },
+    "visit_003": {
+      "id": "visit_003",
+      "type": "visit",
+      "label": "Follow-up — Oct 2025",
+      "fields": {
+        "date": { "value": "2025-10-15", "phi": true },
+        "visit_type": { "value": "follow-up", "phi": false },
+        "chief_complaint": { "value": "worsening joint pain, new facial rash", "phi": false },
+        "attending_provider": { "value": "Dr. Sarah Chen", "phi": true },
+        "notes": { "value": "Bilateral joint pain now involving wrists and knees. New malar rash noted across bridge of nose. Ordered ANA panel and inflammatory markers.", "phi": false }
+      },
+      "source_pdf": "progress_note_smith_2025_oct.pdf",
+      "source_page": 1
+    },
+    "visit_004": {
+      "id": "visit_004",
+      "type": "visit",
+      "label": "Routine — Mar 2025",
+      "fields": {
+        "date": { "value": "2025-03-14", "phi": true },
+        "visit_type": { "value": "routine", "phi": false },
+        "chief_complaint": { "value": "diabetes follow-up, medication review", "phi": false },
+        "attending_provider": { "value": "Dr. James Wilson", "phi": true },
+        "notes": { "value": "HbA1c improved to 6.8%. Blood pressure 138/86, slightly above target. Continue current regimen, recheck in 3 months.", "phi": false }
+      },
+      "source_pdf": "progress_note_garcia_2025_mar.pdf",
+      "source_page": 1
+    },
+    "visit_005": {
+      "id": "visit_005",
+      "type": "visit",
+      "label": "Emergency — Sep 2025",
+      "fields": {
+        "date": { "value": "2025-09-03", "phi": true },
+        "visit_type": { "value": "emergency", "phi": false },
+        "chief_complaint": { "value": "acute chest pain, diaphoresis", "phi": false },
+        "attending_provider": { "value": "Dr. Lisa Park", "phi": true },
+        "notes": { "value": "Patient presented with substernal chest pain radiating to left arm, onset 2 hours prior. ECG showed ST elevations in leads II, III, aVF. Troponin elevated.", "phi": false }
+      },
+      "source_pdf": "discharge_summary_chen_2025_sep.pdf",
+      "source_page": 1
+    },
+
+    "condition_001": {
+      "id": "condition_001",
+      "type": "condition",
+      "label": "Systemic Lupus Erythematosus",
+      "fields": {
+        "name": { "value": "Systemic Lupus Erythematosus", "phi": false },
+        "icd_code": { "value": "M32.9", "phi": false },
+        "status": { "value": "active", "phi": false },
+        "diagnosed_date": { "value": "approximately 5 months ago", "phi": false }
+      }
+    },
+    "condition_002": {
+      "id": "condition_002",
+      "type": "condition",
+      "label": "Type 2 Diabetes",
+      "fields": {
+        "name": { "value": "Type 2 Diabetes Mellitus", "phi": false },
+        "icd_code": { "value": "E11.9", "phi": false },
+        "status": { "value": "chronic", "phi": false },
+        "diagnosed_date": { "value": "approximately 6 years ago", "phi": false }
+      }
+    },
+    "condition_003": {
+      "id": "condition_003",
+      "type": "condition",
+      "label": "Hypertension",
+      "fields": {
+        "name": { "value": "Essential Hypertension", "phi": false },
+        "icd_code": { "value": "I10", "phi": false },
+        "status": { "value": "chronic", "phi": false },
+        "diagnosed_date": { "value": "approximately 6 years ago", "phi": false }
+      }
+    },
+    "condition_004": {
+      "id": "condition_004",
+      "type": "condition",
+      "label": "Acute MI (STEMI)",
+      "fields": {
+        "name": { "value": "ST-Elevation Myocardial Infarction", "phi": false },
+        "icd_code": { "value": "I21.0", "phi": false },
+        "status": { "value": "resolved", "phi": false },
+        "diagnosed_date": { "value": "approximately 6 months ago", "phi": false }
+      }
+    },
+    "condition_005": {
+      "id": "condition_005",
+      "type": "condition",
+      "label": "COPD",
+      "fields": {
+        "name": { "value": "Chronic Obstructive Pulmonary Disease", "phi": false },
+        "icd_code": { "value": "J44.1", "phi": false },
+        "status": { "value": "chronic", "phi": false },
+        "diagnosed_date": { "value": "approximately 8 years ago", "phi": false }
+      }
+    },
+
+    "medication_001": {
+      "id": "medication_001",
+      "type": "medication",
+      "label": "Hydroxychloroquine 200mg",
+      "fields": {
+        "name": { "value": "Hydroxychloroquine", "phi": false },
+        "dosage": { "value": "200mg", "phi": false },
+        "frequency": { "value": "twice daily", "phi": false },
+        "prescribing_provider": { "value": "Dr. Sarah Chen", "phi": true },
+        "start_date": { "value": "2025-11-01", "phi": true },
+        "status": { "value": "active", "phi": false }
+      }
+    },
+    "medication_002": {
+      "id": "medication_002",
+      "type": "medication",
+      "label": "Metformin 1000mg",
+      "fields": {
+        "name": { "value": "Metformin", "phi": false },
+        "dosage": { "value": "1000mg", "phi": false },
+        "frequency": { "value": "twice daily", "phi": false },
+        "prescribing_provider": { "value": "Dr. James Wilson", "phi": true },
+        "start_date": { "value": "2020-05-10", "phi": true },
+        "status": { "value": "active", "phi": false }
+      }
+    },
+    "medication_003": {
+      "id": "medication_003",
+      "type": "medication",
+      "label": "Lisinopril 20mg",
+      "fields": {
+        "name": { "value": "Lisinopril", "phi": false },
+        "dosage": { "value": "20mg", "phi": false },
+        "frequency": { "value": "once daily", "phi": false },
+        "prescribing_provider": { "value": "Dr. James Wilson", "phi": true },
+        "start_date": { "value": "2020-05-10", "phi": true },
+        "status": { "value": "active", "phi": false }
+      }
+    },
+    "medication_004": {
+      "id": "medication_004",
+      "type": "medication",
+      "label": "Aspirin 81mg",
+      "fields": {
+        "name": { "value": "Aspirin", "phi": false },
+        "dosage": { "value": "81mg", "phi": false },
+        "frequency": { "value": "once daily", "phi": false },
+        "prescribing_provider": { "value": "Dr. Lisa Park", "phi": true },
+        "start_date": { "value": "2025-09-03", "phi": true },
+        "status": { "value": "active", "phi": false }
+      }
+    },
+
+    "lab_001": {
+      "id": "lab_001",
+      "type": "lab_result",
+      "label": "ANA Panel",
+      "fields": {
+        "test_name": { "value": "ANA", "phi": false },
+        "value": { "value": "1:320", "phi": false },
+        "unit": { "value": "titer", "phi": false },
+        "reference_range": { "value": "<1:40", "phi": false },
+        "flag": { "value": "high", "phi": false },
+        "date": { "value": "2025-10-15", "phi": true }
+      },
+      "source_pdf": "lab_report_smith_2025_oct.pdf",
+      "source_page": 2
+    },
+    "lab_002": {
+      "id": "lab_002",
+      "type": "lab_result",
+      "label": "ESR",
+      "fields": {
+        "test_name": { "value": "ESR", "phi": false },
+        "value": { "value": "45", "phi": false },
+        "unit": { "value": "mm/hr", "phi": false },
+        "reference_range": { "value": "0-20", "phi": false },
+        "flag": { "value": "high", "phi": false },
+        "date": { "value": "2025-10-15", "phi": true }
+      },
+      "source_pdf": "lab_report_smith_2025_oct.pdf",
+      "source_page": 3
+    },
+    "lab_003": {
+      "id": "lab_003",
+      "type": "lab_result",
+      "label": "CBC",
+      "fields": {
+        "test_name": { "value": "CBC", "phi": false },
+        "value": { "value": "WBC 3.2, Hgb 11.8, Plt 135", "phi": false },
+        "unit": { "value": "K/uL, g/dL, K/uL", "phi": false },
+        "reference_range": { "value": "WBC 4.5-11, Hgb 12-16, Plt 150-400", "phi": false },
+        "flag": { "value": "low", "phi": false },
+        "date": { "value": "2025-10-15", "phi": true }
+      },
+      "source_pdf": "lab_report_smith_2025_oct.pdf",
+      "source_page": 1
+    },
+    "lab_004": {
+      "id": "lab_004",
+      "type": "lab_result",
+      "label": "HbA1c",
+      "fields": {
+        "test_name": { "value": "HbA1c", "phi": false },
+        "value": { "value": "6.8", "phi": false },
+        "unit": { "value": "%", "phi": false },
+        "reference_range": { "value": "<7.0", "phi": false },
+        "flag": { "value": "normal", "phi": false },
+        "date": { "value": "2025-03-14", "phi": true }
+      },
+      "source_pdf": "lab_report_garcia_2025_mar.pdf",
+      "source_page": 1
+    },
+    "lab_005": {
+      "id": "lab_005",
+      "type": "lab_result",
+      "label": "Troponin I",
+      "fields": {
+        "test_name": { "value": "Troponin I", "phi": false },
+        "value": { "value": "4.8", "phi": false },
+        "unit": { "value": "ng/mL", "phi": false },
+        "reference_range": { "value": "<0.04", "phi": false },
+        "flag": { "value": "critical", "phi": false },
+        "date": { "value": "2025-09-03", "phi": true }
+      },
+      "source_pdf": "lab_report_chen_2025_sep.pdf",
+      "source_page": 1
+    },
+    "lab_006": {
+      "id": "lab_006",
+      "type": "lab_result",
+      "label": "Anti-dsDNA",
+      "fields": {
+        "test_name": { "value": "Anti-dsDNA Antibody", "phi": false },
+        "value": { "value": "85", "phi": false },
+        "unit": { "value": "IU/mL", "phi": false },
+        "reference_range": { "value": "<30", "phi": false },
+        "flag": { "value": "high", "phi": false },
+        "date": { "value": "2025-10-20", "phi": true }
+      },
+      "source_pdf": "lab_report_smith_2025_oct.pdf",
+      "source_page": 4
+    },
+
+    "procedure_001": {
+      "id": "procedure_001",
+      "type": "procedure",
+      "label": "Percutaneous Coronary Intervention",
+      "fields": {
+        "name": { "value": "PCI with drug-eluting stent to RCA", "phi": false },
+        "date": { "value": "2025-09-03", "phi": true },
+        "provider": { "value": "Dr. Lisa Park", "phi": true },
+        "outcome": { "value": "Successful. TIMI 3 flow restored. No complications.", "phi": false }
+      },
+      "source_pdf": "discharge_summary_chen_2025_sep.pdf",
+      "source_page": 3
+    },
+
+    "provider_001": {
+      "id": "provider_001",
+      "type": "provider",
+      "label": "Dr. Sarah Chen",
+      "fields": {
+        "name": { "value": "Dr. Sarah Chen", "phi": true },
+        "role": { "value": "attending", "phi": false },
+        "department": { "value": "Internal Medicine", "phi": false }
+      }
+    },
+    "provider_002": {
+      "id": "provider_002",
+      "type": "provider",
+      "label": "Dr. James Wilson",
+      "fields": {
+        "name": { "value": "Dr. James Wilson", "phi": true },
+        "role": { "value": "attending", "phi": false },
+        "department": { "value": "Endocrinology", "phi": false }
+      }
+    },
+    "provider_003": {
+      "id": "provider_003",
+      "type": "provider",
+      "label": "Dr. Lisa Park",
+      "fields": {
+        "name": { "value": "Dr. Lisa Park", "phi": true },
+        "role": { "value": "attending", "phi": false },
+        "department": { "value": "Cardiology", "phi": false }
+      }
+    },
+    "provider_004": {
+      "id": "provider_004",
+      "type": "provider",
+      "label": "Dr. Rachel Torres",
+      "fields": {
+        "name": { "value": "Dr. Rachel Torres", "phi": true },
+        "role": { "value": "specialist", "phi": false },
+        "department": { "value": "Rheumatology", "phi": false }
+      }
+    }
+  },
+  "edges": [
+    { "source": "patient_001", "target": "visit_001", "type": "HAD_VISIT" },
+    { "source": "patient_001", "target": "visit_002", "type": "HAD_VISIT" },
+    { "source": "patient_001", "target": "visit_003", "type": "HAD_VISIT" },
+    { "source": "patient_001", "target": "condition_001", "type": "HAS_CONDITION" },
+    { "source": "patient_001", "target": "medication_001", "type": "PRESCRIBED" },
+
+    { "source": "patient_002", "target": "visit_004", "type": "HAD_VISIT" },
+    { "source": "patient_002", "target": "condition_002", "type": "HAS_CONDITION" },
+    { "source": "patient_002", "target": "condition_003", "type": "HAS_CONDITION" },
+    { "source": "patient_002", "target": "medication_002", "type": "PRESCRIBED" },
+    { "source": "patient_002", "target": "medication_003", "type": "PRESCRIBED" },
+
+    { "source": "patient_003", "target": "visit_005", "type": "HAD_VISIT" },
+    { "source": "patient_003", "target": "condition_004", "type": "HAS_CONDITION" },
+    { "source": "patient_003", "target": "medication_004", "type": "PRESCRIBED" },
+
+    { "source": "patient_005", "target": "condition_005", "type": "HAS_CONDITION" },
+
+    { "source": "visit_001", "target": "provider_001", "type": "ATTENDED_BY" },
+    { "source": "visit_002", "target": "provider_001", "type": "ATTENDED_BY" },
+    { "source": "visit_003", "target": "provider_001", "type": "ATTENDED_BY" },
+    { "source": "visit_004", "target": "provider_002", "type": "ATTENDED_BY" },
+    { "source": "visit_005", "target": "provider_003", "type": "ATTENDED_BY" },
+
+    { "source": "visit_003", "target": "lab_001", "type": "RESULTED_IN" },
+    { "source": "visit_003", "target": "lab_002", "type": "RESULTED_IN" },
+    { "source": "visit_003", "target": "lab_003", "type": "RESULTED_IN" },
+    { "source": "visit_003", "target": "lab_006", "type": "RESULTED_IN" },
+    { "source": "visit_004", "target": "lab_004", "type": "RESULTED_IN" },
+    { "source": "visit_005", "target": "lab_005", "type": "RESULTED_IN" },
+
+    { "source": "visit_005", "target": "procedure_001", "type": "PERFORMED" },
+
+    { "source": "condition_001", "target": "medication_001", "type": "TREATED_WITH" },
+    { "source": "condition_002", "target": "medication_002", "type": "TREATED_WITH" },
+    { "source": "condition_003", "target": "medication_003", "type": "TREATED_WITH" },
+
+    { "source": "medication_002", "target": "lab_004", "type": "MONITORED_BY" },
+
+    { "source": "provider_001", "target": "provider_004", "type": "REFERRED_TO" }
+  ]
+}
