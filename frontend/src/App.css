@@ -1,0 +1,105 @@
+/* MedGate App Layout */
+
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+/* ===== HEADER ===== */
+.app-header {
+  height: 60px;
+  padding: 0 var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.logo-icon {
+  font-size: 1.5rem;
+  color: var(--node-patient);
+  filter: drop-shadow(0 0 8px rgba(74, 144, 217, 0.5));
+}
+
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.header-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  padding-left: var(--space-md);
+  border-left: 1px solid var(--border-subtle);
+}
+
+/* ===== MAIN CONTENT ===== */
+.main-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.panel-left,
+.panel-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.panel-left {
+  background: var(--bg-secondary);
+}
+
+.panel-right {
+  background: var(--bg-primary);
+  position: relative;
+}
+
+.panel-divider {
+  width: 1px;
+  background: var(--border-subtle);
+  flex-shrink: 0;
+}
+
+/* ===== PLACEHOLDER STYLES (for Phase 0) ===== */
+.panel-placeholder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  color: var(--text-muted);
+}
+
+.panel-placeholder-icon {
+  font-size: 3rem;
+  opacity: 0.5;
+}
+
+.panel-placeholder-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.panel-placeholder-subtitle {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}

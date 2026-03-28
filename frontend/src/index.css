@@ -1,0 +1,202 @@
+/* MedGate Design System - "Clinical Noir" */
+
+/* ===== FONTS ===== */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ===== CSS VARIABLES ===== */
+:root {
+  /* Base colors - Dark theme */
+  --bg-primary: #0a0b0f;
+  --bg-secondary: #12141a;
+  --bg-tertiary: #1a1d26;
+  --bg-elevated: #22262f;
+
+  /* Text colors */
+  --text-primary: #f0f2f5;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+
+  /* Accent colors */
+  --accent-gold: #ffd700;
+  --accent-gold-glow: rgba(255, 215, 0, 0.4);
+
+  /* Node colors (from spec) */
+  --node-patient: #4A90D9;
+  --node-visit: #F5C542;
+  --node-condition: #E74C3C;
+  --node-medication: #2ECC71;
+  --node-lab: #9B59B6;
+  --node-procedure: #E67E22;
+  --node-provider: #1ABC9C;
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.15);
+
+  /* Glass-morphism */
+  --glass-bg: rgba(18, 20, 26, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+
+  /* Typography */
+  --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* Border radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 400ms ease;
+}
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+
+p {
+  color: var(--text-secondary);
+}
+
+code, pre, .mono {
+  font-family: var(--font-mono);
+}
+
+/* ===== GLASS PANEL ===== */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+}
+
+/* ===== GLOW EFFECTS ===== */
+.glow-gold {
+  box-shadow: 0 0 20px var(--accent-gold-glow),
+              0 0 40px var(--accent-gold-glow);
+}
+
+.glow-subtle {
+  box-shadow: 0 0 30px rgba(74, 144, 217, 0.15);
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-elevated);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}
+
+/* ===== UTILITY CLASSES ===== */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-1 { flex: 1; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: var(--space-sm); }
+.gap-md { gap: var(--space-md); }
+.gap-lg { gap: var(--space-lg); }
+
+/* ===== ANIMATIONS ===== */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px var(--accent-gold-glow);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 30px var(--accent-gold-glow), 0 0 60px var(--accent-gold-glow);
+    opacity: 0.8;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in var(--transition-normal) ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up var(--transition-normal) ease-out;
+}

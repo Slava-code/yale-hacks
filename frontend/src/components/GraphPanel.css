@@ -1,0 +1,66 @@
+/* GraphPanel Styles */
+
+.graph-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-primary);
+}
+
+/* ===== HEADER ===== */
+.graph-header {
+  padding: var(--space-md);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.graph-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.graph-stats {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+/* ===== CANVAS ===== */
+.graph-canvas {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+
+  /* Subtle space-like background */
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(74, 144, 217, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(155, 89, 182, 0.06) 0%, transparent 50%),
+    var(--bg-primary);
+}
+
+/* ===== LEGEND ===== */
+.graph-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+  justify-content: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px currentColor;
+}
