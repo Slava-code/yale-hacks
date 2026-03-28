@@ -54,6 +54,14 @@ Covers: Tech stack, layout, SSE data flow, citation rendering, PDF viewer, 3D gr
 
 ---
 
+## 5. Interface Contracts → [docs/interfaces.md](./docs/interfaces.md)
+
+Defines every data structure that crosses a workstream boundary: REST endpoints (request/response shapes), SSE event types and payloads, Python graph query function signatures, the `graph.json` schema (with PHI tagging), and the token format reference. **All three workstreams build to these contracts.**
+
+**Cross-references:** All other specs — this document ties them together.
+
+---
+
 ## Environment & Configuration
 
 | Key | Purpose | File |

@@ -10,6 +10,7 @@
 | `docs/frontend.md` | Chat UI, 3D graph visualization, PDF viewer, citation rendering | When working on the React frontend or any browser-side code |
 | `docs/knowledge-graph.md` | Graph schema, node/edge types, PHI tagging, mock data generation | When working on the knowledge graph, data generation scripts, or graph traversal |
 | `docs/demo.md` | System architecture overview, demo reliability strategy, full file structure | When planning the demo flow, debugging latency, or onboarding a new team member |
+| `docs/interfaces.md` | Data contracts — REST endpoints, SSE events, graph query API, `graph.json` schema, token formats | Before building anything that crosses a workstream boundary (frontend↔backend, backend↔graph module) |
 | `tests/` | Code functionality tests (pytest) | When adding or changing backend/frontend logic |
 | `eval/` | Gatekeeper model evaluation — test cases in `cases/`, scoring results in `results/` | When benchmarking or comparing local models for PHI detection accuracy, speed, and format compliance |
 
