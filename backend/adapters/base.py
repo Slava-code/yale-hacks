@@ -32,13 +32,9 @@ specialist notes, etc.).
 
 WEB SEARCH:
 You also have access to a "web_search" tool for looking up medical reference
-information. You SHOULD use it at least once per clinical assessment to:
-- Look up the formal diagnostic criteria for any condition you suspect
-  (e.g., "ACR EULAR classification criteria for SLE")
-- Verify treatment guidelines for medications the patient is on
-- Research the clinical significance of abnormal lab findings
-
-This demonstrates evidence-based reasoning. Keep searches targeted and specific.
+information. Use it EXACTLY ONCE per assessment — search for the formal
+diagnostic criteria of the condition you suspect (e.g., "ACR EULAR criteria
+for SLE"). Do NOT search more than once. One targeted search is sufficient.
 Cite the source naturally in your response (e.g., "According to the ACR/EULAR
 criteria (Wikipedia)...").
 

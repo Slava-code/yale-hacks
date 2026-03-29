@@ -199,6 +199,9 @@ async def _run_pipeline(
         }
         return
 
+    web_search_count = 0
+    max_web_searches = 1  # Hard limit — one web search per query for demo speed
+
     while turn < max_turns:
         # Parse the response — collect ALL tool calls (GPT-4 sends parallel calls)
         tool_calls = []
@@ -253,6 +256,13 @@ async def _run_pipeline(
                     tool_results.append((tool_call["tool_id"], kg_result["content"], "query_gatekeeper"))
 
                 elif tool_name == "web_search":
+                    if web_search_count >= max_web_searches:
+                        # Hit limit — return a short message instead of searching
+                        tool_results.append((tool_call["tool_id"], "Web search limit reached. Proceed with available information.", "web_search"))
+                        continue
+
+                    web_search_count += 1
+
                     yield "web_search_query", {
                         "type": "web_search_query",
                         "content": query,
