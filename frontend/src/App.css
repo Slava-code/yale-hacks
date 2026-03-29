@@ -47,6 +47,49 @@
   border-left: 1px solid var(--border-subtle);
 }
 
+.redacted-toggle {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs) var(--space-md);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.redacted-toggle:hover {
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  border-color: var(--border-strong);
+}
+
+.redacted-toggle.active {
+  background: rgba(155, 89, 182, 0.15);
+  border-color: var(--node-lab);
+  color: var(--node-lab);
+}
+
+.redacted-toggle-icon {
+  font-size: 0.9rem;
+}
+
+.redacted-toggle-text {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .redacted-toggle-text {
+    display: inline;
+  }
+}
+
 /* ===== MAIN CONTENT ===== */
 .main-content {
   flex: 1;
@@ -75,6 +118,30 @@
   width: 1px;
   background: var(--border-subtle);
   flex-shrink: 0;
+}
+
+/* Redacted Panel */
+.panel-redacted {
+  width: 320px;
+  flex-shrink: 0;
+  border-left: 1px solid var(--border-subtle);
+  animation: slide-in-right 0.25s ease-out;
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Adjust right panel when redacted is visible */
+.panel-right.with-redacted {
+  flex: 1;
 }
 
 /* ===== PLACEHOLDER STYLES (for Phase 0) ===== */

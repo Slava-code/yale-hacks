@@ -1,0 +1,281 @@
+/* RedactedView Styles - Clinical Noir */
+
+.redacted-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-primary);
+  border-left: 1px solid var(--border-subtle);
+}
+
+/* ===== HEADER ===== */
+.redacted-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+}
+
+.redacted-title-section {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.redacted-icon {
+  font-size: 1rem;
+  color: var(--node-lab);
+}
+
+.redacted-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.redacted-subtitle {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  padding-left: var(--space-sm);
+  border-left: 1px solid var(--border-subtle);
+}
+
+.redacted-close-btn {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.25rem;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.redacted-close-btn:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+/* ===== EVENTS LIST ===== */
+.redacted-events {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* ===== EMPTY STATE ===== */
+.redacted-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-xl);
+  gap: var(--space-md);
+}
+
+.redacted-empty-icon {
+  font-size: 2rem;
+  color: var(--node-lab);
+  opacity: 0.5;
+}
+
+.redacted-empty-text {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  max-width: 200px;
+  line-height: 1.5;
+}
+
+/* ===== EVENT CARDS ===== */
+.redacted-event {
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  animation: event-enter 0.2s ease-out;
+}
+
+@keyframes event-enter {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.redacted-event-deidentified_query {
+  border-left: 2px solid var(--node-patient);
+}
+
+.redacted-event-cloud_thinking {
+  border-left: 2px solid var(--node-medication);
+}
+
+.redacted-event-gatekeeper_query {
+  border-left: 2px solid var(--node-visit);
+}
+
+.redacted-event-gatekeeper_response {
+  border-left: 2px solid var(--node-lab);
+}
+
+.redacted-event-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xs);
+}
+
+.redacted-event-icon {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.redacted-event-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.redacted-event-turn {
+  font-size: 0.6rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  background: var(--bg-tertiary);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  margin-left: auto;
+}
+
+.redacted-event-content {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* ===== PHI TOKENS ===== */
+.redacted-token {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 1px 4px;
+  border-radius: 3px;
+  margin: 0 1px;
+}
+
+.token-default {
+  background: rgba(107, 114, 128, 0.2);
+  color: var(--text-muted);
+}
+
+.token-patient {
+  background: rgba(74, 144, 217, 0.15);
+  color: var(--node-patient);
+}
+
+.token-provider {
+  background: rgba(26, 188, 156, 0.15);
+  color: var(--node-provider);
+}
+
+.token-date {
+  background: rgba(245, 197, 66, 0.15);
+  color: var(--node-visit);
+}
+
+.token-ref {
+  background: rgba(155, 89, 182, 0.15);
+  color: var(--node-lab);
+}
+
+.token-mrn {
+  background: rgba(231, 76, 60, 0.15);
+  color: var(--node-condition);
+}
+
+.token-location {
+  background: rgba(230, 126, 34, 0.15);
+  color: var(--node-procedure);
+}
+
+/* ===== TOKEN SUMMARY ===== */
+.redacted-token-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.redacted-token-badge {
+  font-size: 0.6rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  background: var(--bg-tertiary);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+}
+
+/* ===== REFS ADDED ===== */
+.redacted-refs-added {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.redacted-refs-label {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+}
+
+.redacted-ref-badge {
+  font-size: 0.6rem;
+  font-family: var(--font-mono);
+  color: var(--node-lab);
+  background: rgba(155, 89, 182, 0.1);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+}
+
+/* ===== LEGEND ===== */
+.redacted-legend {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+  overflow-x: auto;
+}
+
+.redacted-legend-title {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.redacted-legend .redacted-token {
+  font-size: 0.6rem;
+  white-space: nowrap;
+}

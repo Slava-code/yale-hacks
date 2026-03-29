@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react'
 import ChatPanel from './components/ChatPanel'
 import GraphPanel from './components/GraphPanel'
 import PdfViewer from './components/PdfViewer'
+import RedactedView from './components/RedactedView'
 import './App.css'
 
 function App() {
@@ -13,6 +14,9 @@ function App() {
 
   // PDF viewer state
   const [pdfView, setPdfView] = useState(null)  // { pdf, page, citation }
+
+  // Redacted view visibility
+  const [showRedacted, setShowRedacted] = useState(false)
 
   // Called by ChatPanel when SSE events arrive
   const handleSseEvent = (event) => {
@@ -51,6 +55,14 @@ function App() {
         <div className="header-subtitle">
           HIPAA-Compliant Clinical AI
         </div>
+        <button
+          className={`redacted-toggle ${showRedacted ? 'active' : ''}`}
+          onClick={() => setShowRedacted(!showRedacted)}
+          title="Toggle Redacted View"
+        >
+          <span className="redacted-toggle-icon">◈</span>
+          <span className="redacted-toggle-text">Redacted View</span>
+        </button>
       </header>
 
       {/* Main content - 50/50 split */}
@@ -65,7 +77,7 @@ function App() {
           />
         </div>
         <div className="panel-divider" />
-        <div className="panel-right">
+        <div className={`panel-right ${showRedacted ? 'with-redacted' : ''}`}>
           {pdfView ? (
             <PdfViewer
               pdfPath={pdfView.pdf}
@@ -81,6 +93,15 @@ function App() {
             />
           )}
         </div>
+        {showRedacted && (
+          <div className="panel-redacted">
+            <RedactedView
+              sseEvents={sseEvents}
+              isVisible={showRedacted}
+              onClose={() => setShowRedacted(false)}
+            />
+          </div>
+        )}
       </main>
     </div>
   )
