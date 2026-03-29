@@ -47,8 +47,8 @@
 }
 
 .logo-icon {
-  width: 36px;
-  height: 36px;
+  width: 72px;
+  height: 72px;
   position: relative;
   perspective: 400px;
   flex-shrink: 0;
