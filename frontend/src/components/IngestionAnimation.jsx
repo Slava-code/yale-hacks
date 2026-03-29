@@ -2,27 +2,35 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import logoFilter from '../assets/logo-filter.svg'
 import './IngestionAnimation.css'
 
-// Sample PDF names for the animation
+// Sample PDF names for the animation (cycled through rapidly)
 const SAMPLE_PDFS = [
-  'intake_form_smith_2025_jan.pdf',
-  'lab_report_smith_2025_feb.pdf',
+  'intake_form_smith_2025_jun.pdf',
+  'lab_report_smith_2025_jun.pdf',
+  'progress_note_smith_2025_aug.pdf',
+  'consult_note_smith_2025_oct.pdf',
+  'imaging_report_smith_2025_oct.pdf',
+  'referral_letter_smith_2025_oct.pdf',
   'progress_note_garcia_2025_mar.pdf',
+  'lab_report_garcia_2025_apr.pdf',
   'discharge_summary_chen_2025_apr.pdf',
   'imaging_report_wilson_2025_may.pdf',
-  'referral_letter_patel_2025_jun.pdf',
+  'intake_form_reed_2025_sep.pdf',
+  'progress_note_reed_2025_oct.pdf',
+  'consult_note_reed_2026_jan.pdf',
+  'lab_report_reed_2026_feb.pdf',
+  'intake_form_torres_2026_mar.pdf',
+  'progress_note_torres_2026_mar.pdf',
+  'consult_note_torres_2026_mar.pdf',
   'lab_report_johnson_2025_jul.pdf',
-  'progress_note_smith_2025_aug.pdf',
-  'intake_form_davis_2025_sep.pdf',
+  'progress_note_davis_2025_sep.pdf',
   'lab_report_chen_2025_oct.pdf',
-  'discharge_summary_garcia_2025_nov.pdf',
-  'progress_note_wilson_2025_dec.pdf',
-  'lab_report_davis_2025_nov.pdf',
-  'imaging_report_chen_2025_dec.pdf',
 ]
+const TOTAL_DOCS = 445  // actual number of PDFs in data/pdfs/
 
 function IngestionAnimation({ onComplete, graphStats }) {
   const [phase, setPhase] = useState('intro') // intro, processing, building, complete
   const [processedDocs, setProcessedDocs] = useState([])
+  const [docCount, setDocCount] = useState(0)
   const [particles, setParticles] = useState([])
   const [nodeCount, setNodeCount] = useState(0)
   const [edgeCount, setEdgeCount] = useState(0)
@@ -46,19 +54,27 @@ function IngestionAnimation({ onComplete, graphStats }) {
     // Phase 1: Intro (show title)
     timers.push(setTimeout(() => setPhase('processing'), 1500))
 
-    // Phase 2: Process documents one by one
-    SAMPLE_PDFS.forEach((pdf, index) => {
+    // Phase 2: Process documents — rapid batch simulation
+    const processingDuration = 4000  // 4 seconds for all docs
+    const docSteps = 40  // number of visual updates
+    for (let i = 1; i <= docSteps; i++) {
       timers.push(
         setTimeout(() => {
-          setProcessedDocs((prev) => [...prev, pdf])
-          // Create particles flying to graph
-          createParticles(pdf, index)
-        }, 1500 + index * 400)
+          const docIndex = Math.round((i / docSteps) * TOTAL_DOCS)
+          const samplePdf = SAMPLE_PDFS[i % SAMPLE_PDFS.length]
+          setProcessedDocs((prev) => {
+            const next = [...prev, samplePdf]
+            // Keep only last 6 visible in the list
+            return next.slice(-6)
+          })
+          setDocCount(docIndex)
+          createParticles(samplePdf, i)
+        }, 1500 + (processingDuration / docSteps) * i)
       )
-    })
+    }
 
     // Phase 3: Building graph
-    const buildStart = 1500 + SAMPLE_PDFS.length * 400 + 500
+    const buildStart = 1500 + processingDuration + 500
     timers.push(setTimeout(() => setPhase('building'), buildStart))
 
     // Animate node/edge counts
@@ -136,7 +152,7 @@ function IngestionAnimation({ onComplete, graphStats }) {
               <div className="docs-header">
                 <span className="docs-icon">◫</span>
                 <span className="docs-label">Processing Documents</span>
-                <span className="docs-count">{processedDocs.length} / {SAMPLE_PDFS.length}</span>
+                <span className="docs-count">{docCount} / {TOTAL_DOCS}</span>
               </div>
               <div className="docs-list">
                 {processedDocs.slice(-6).map((pdf, index) => (
@@ -214,7 +230,7 @@ function IngestionAnimation({ onComplete, graphStats }) {
             <div className="complete-icon">✓</div>
             <div className="complete-text">Ready</div>
             <div className="complete-stats">
-              {targetNodes} nodes · {targetEdges} edges · {SAMPLE_PDFS.length} docs
+              {targetNodes} nodes · {targetEdges} edges · {TOTAL_DOCS} docs
             </div>
           </div>
         )}
@@ -228,7 +244,7 @@ function IngestionAnimation({ onComplete, graphStats }) {
                 phase === 'intro'
                   ? '5%'
                   : phase === 'processing'
-                  ? `${10 + (processedDocs.length / SAMPLE_PDFS.length) * 60}%`
+                  ? `${10 + (docCount / TOTAL_DOCS) * 60}%`
                   : phase === 'building'
                   ? `${70 + (nodeCount / targetNodes) * 25}%`
                   : '100%',
