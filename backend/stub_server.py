@@ -38,6 +38,7 @@ NODE_CONFIG = {
     "lab_result": {"color": "#9B59B6", "size": 6},
     "procedure":  {"color": "#E67E22", "size": 8},
     "provider":   {"color": "#1ABC9C", "size": 8},
+    "family_history": {"color": "#D946EF", "size": 7},
 }
 
 

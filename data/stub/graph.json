@@ -2,8 +2,8 @@
   "meta": {
     "generated_at": "2026-03-28T16:00:00Z",
     "num_patients": 5,
-    "num_nodes": 34,
-    "num_edges": 41,
+    "num_nodes": 36,
+    "num_edges": 43,
     "stub": true
   },
   "nodes": {
@@ -402,6 +402,30 @@
         "role": { "value": "specialist", "phi": false },
         "department": { "value": "Rheumatology", "phi": false }
       }
+    },
+    "family_hx_001": {
+      "id": "family_hx_001",
+      "type": "family_history",
+      "label": "Mother — SLE",
+      "fields": {
+        "relation": { "value": "mother", "phi": false },
+        "condition": { "value": "Systemic Lupus Erythematosus", "phi": false },
+        "diagnosed_age": { "value": 35, "phi": false }
+      },
+      "source_pdf": "intake_form_smith_2025_jun.pdf",
+      "source_page": 2
+    },
+    "family_hx_002": {
+      "id": "family_hx_002",
+      "type": "family_history",
+      "label": "Maternal Aunt — RA",
+      "fields": {
+        "relation": { "value": "maternal aunt", "phi": false },
+        "condition": { "value": "Rheumatoid Arthritis", "phi": false },
+        "diagnosed_age": { "value": 42, "phi": false }
+      },
+      "source_pdf": "intake_form_smith_2025_jun.pdf",
+      "source_page": 2
     }
   },
   "edges": [
@@ -444,6 +468,9 @@
 
     { "source": "medication_002", "target": "lab_004", "type": "MONITORED_BY" },
 
-    { "source": "provider_001", "target": "provider_004", "type": "REFERRED_TO" }
+    { "source": "provider_001", "target": "provider_004", "type": "REFERRED_TO" },
+
+    { "source": "patient_001", "target": "family_hx_001", "type": "HAS_FAMILY_HISTORY" },
+    { "source": "patient_001", "target": "family_hx_002", "type": "HAS_FAMILY_HISTORY" }
   ]
 }

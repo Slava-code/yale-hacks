@@ -1,0 +1,461 @@
+{
+  "id": "patient_006",
+  "name": "Marcus Reed",
+  "age": 28,
+  "sex": "male",
+  "mrn": "MRN-91447",
+  "tier": "demo",
+  "summary": "A 28-year-old park ranger presenting with escalating neuropsychiatric symptoms over 9 months, initially misdiagnosed as stress-related depression, eventually identified as a novel Solanum-type encephalopathy by the CDC.",
+  "storyline": "A 28-year-old park ranger presenting with escalating neuropsychiatric symptoms over 9 months, initially misdiagnosed as stress-related depression, progressing through aggression, confusion, hypersalivation, and violent outbursts. All standard infectious and prion workups are negative. A novel pathogen is eventually isolated by the CDC, referenced internally as Solanum-type encephalopathy.",
+  "conditions": [
+    {
+      "name": "Adjustment Disorder with Mixed Anxiety and Depressed Mood",
+      "icd_code": "F43.23",
+      "status": "resolved",
+      "diagnosed_visit": "visit_02",
+      "notes": "Initial misdiagnosis based on occupational stress presentation"
+    },
+    {
+      "name": "Unspecified Behavioral Disturbance",
+      "icd_code": "R46.89",
+      "status": "resolved",
+      "diagnosed_visit": "visit_04",
+      "notes": "Intermediate working diagnosis for escalating aggression"
+    },
+    {
+      "name": "Encephalitis, Unspecified",
+      "icd_code": "G04.90",
+      "status": "resolved",
+      "diagnosed_visit": "visit_06",
+      "notes": "Later reclassified after CDC identification of novel pathogen"
+    },
+    {
+      "name": "Dermal Necrosis, Unspecified",
+      "icd_code": "L98.499",
+      "status": "active",
+      "diagnosed_visit": "visit_10",
+      "notes": "Necrotic skin lesion at original animal bite wound site"
+    },
+    {
+      "name": "Novel Pathogen — Solanum-Type Encephalopathy",
+      "icd_code": "U07.9",
+      "status": "active",
+      "diagnosed_visit": "visit_14",
+      "notes": "CDC-designated novel neurotropic RNA agent; placeholder ICD code U07.9 for novel infectious agent"
+    }
+  ],
+  "medications": [
+    {
+      "name": "Sertraline",
+      "dosage": "50mg",
+      "frequency": "daily",
+      "start_visit": "visit_02",
+      "end_visit": "visit_07",
+      "status": "discontinued",
+      "treats": "Adjustment Disorder with Mixed Anxiety and Depressed Mood"
+    },
+    {
+      "name": "Lorazepam",
+      "dosage": "1mg",
+      "frequency": "PRN",
+      "start_visit": "visit_04",
+      "end_visit": "visit_09",
+      "status": "discontinued",
+      "treats": "Unspecified Behavioral Disturbance"
+    },
+    {
+      "name": "Acyclovir",
+      "dosage": "10mg/kg",
+      "frequency": "IV every 8 hours",
+      "start_visit": "visit_09",
+      "end_visit": "visit_10",
+      "status": "discontinued",
+      "treats": "Encephalitis, Unspecified",
+      "notes": "Empiric HSV coverage, discontinued after negative HSV PCR"
+    },
+    {
+      "name": "Dexamethasone",
+      "dosage": "4mg",
+      "frequency": "IV every 6 hours",
+      "start_visit": "visit_09",
+      "status": "active",
+      "treats": "Encephalitis, Unspecified",
+      "monitored_by_labs": ["CRP"]
+    },
+    {
+      "name": "Levetiracetam",
+      "dosage": "500mg",
+      "frequency": "twice daily",
+      "start_visit": "visit_10",
+      "status": "active",
+      "treats": "Encephalitis, Unspecified",
+      "monitored_by_labs": ["EEG"]
+    },
+    {
+      "name": "Haloperidol",
+      "dosage": "5mg",
+      "frequency": "IM PRN",
+      "start_visit": "visit_09",
+      "status": "active",
+      "treats": "Unspecified Behavioral Disturbance"
+    },
+    {
+      "name": "Experimental Antiviral XR-7",
+      "dosage": "IV per CDC protocol",
+      "frequency": "twice daily",
+      "start_visit": "visit_16",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Novel Pathogen — Solanum-Type Encephalopathy",
+      "monitored_by_labs": ["CBC", "CRP"],
+      "notes": "CDC compassionate use protocol — experimental neurotropic antiviral"
+    }
+  ],
+  "family_history": [
+    {
+      "relation": "father",
+      "condition": "Hypertension",
+      "diagnosed_age": 55
+    }
+  ],
+  "providers": [
+    {
+      "name": "Dr. Kevin Patel",
+      "role": "attending",
+      "department": "Family Medicine"
+    },
+    {
+      "name": "Dr. Aisha Okafor",
+      "role": "specialist",
+      "department": "Psychiatry"
+    },
+    {
+      "name": "Dr. James Liu",
+      "role": "specialist",
+      "department": "Neurology"
+    },
+    {
+      "name": "Dr. Emily Warren",
+      "role": "specialist",
+      "department": "Infectious Disease"
+    },
+    {
+      "name": "Dr. Thomas Grant",
+      "role": "attending",
+      "department": "Emergency Medicine"
+    },
+    {
+      "name": "Dr. Samantha Diaz",
+      "role": "specialist",
+      "department": "CDC Epidemiology"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2025-04-10",
+      "type": "initial",
+      "provider": "Dr. Kevin Patel",
+      "chief_complaint": "Fatigue, irritability, insomnia",
+      "narrative": "Marcus Reed, a 28-year-old park ranger, presents with a 3-week history of persistent fatigue, irritability, and insomnia. He attributes his symptoms to increased work stress during spring wildlife season. He denies substance use, recent illness, or trauma.\n\nVitals are within normal limits. Physical exam is unremarkable. Patient appears tired but cooperative. Sleep hygiene counseling provided. Basic labs ordered to rule out metabolic causes.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_reed_2025_apr.pdf"
+      },
+      "labs": [
+        {"test": "CBC", "value": "WBC 6.8, Hgb 15.2, Plt 245", "unit": "x10^3/uL, g/dL, x10^3/uL", "range": "WBC 4.5-11, Hgb 13-17, Plt 150-400", "flag": "normal"},
+        {"test": "CMP", "value": "BUN 14, Cr 0.9, glucose 88, electrolytes normal", "unit": "mg/dL", "range": "standard ranges", "flag": "normal"},
+        {"test": "TSH", "value": "2.1", "unit": "mIU/L", "range": "0.4-4.0", "flag": "normal"}
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_reed_2025_apr.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. Aisha Okafor",
+          "reason": "Worsening mood, irritability, insomnia — evaluate for mood disorder"
+        }
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2025-05-08",
+      "type": "consult",
+      "provider": "Dr. Aisha Okafor",
+      "chief_complaint": "Psychiatry referral for worsening mood",
+      "narrative": "Patient referred by Dr. Patel for evaluation of worsening mood and irritability. PHQ-9 score is 14 (moderate depression). Patient reports feeling constantly 'on edge,' difficulty concentrating at work, and increasing irritability with coworkers.\n\nHe denies suicidal ideation, psychotic symptoms, or substance use. Sleep remains disrupted with early morning awakening. Assessment: Adjustment disorder with mixed anxiety and depressed mood in the context of occupational stress. Initiating sertraline 50mg daily.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_reed_2025_may.pdf"
+      },
+      "medications_started": ["Sertraline"]
+    },
+    {
+      "ref": "visit_03",
+      "date": "2025-06-12",
+      "type": "follow-up",
+      "provider": "Dr. Kevin Patel",
+      "chief_complaint": "Persistent fatigue, mild fever, animal scratch on forearm",
+      "narrative": "Patient returns reporting persistent fatigue despite sertraline. New complaint: a healing scratch on the right forearm from an 'unknown animal encounter' approximately 3 weeks ago during a night patrol. He did not see the animal clearly. The wound is inflamed but partially healed.\n\nTemp 99.4°F, otherwise vitals normal. Wound shows surrounding erythema with serous discharge. Basic wound care provided. CBC shows mild leukocytosis (WBC 11.2). CRP mildly elevated at 1.8 mg/dL. Advised to return if wound worsens or fever increases.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_reed_2025_jun.pdf"
+      },
+      "labs": [
+        {"test": "CBC", "value": "WBC 11.2, Hgb 14.5, Plt 220", "unit": "x10^3/uL, g/dL, x10^3/uL", "range": "WBC 4.5-11, Hgb 13-17, Plt 150-400", "flag": "high"},
+        {"test": "CRP", "value": "1.8", "unit": "mg/dL", "range": "<1.0", "flag": "high"}
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_reed_2025_jun.pdf"
+      }
+    },
+    {
+      "ref": "visit_04",
+      "date": "2025-07-03",
+      "type": "follow-up",
+      "provider": "Dr. Aisha Okafor",
+      "chief_complaint": "Increased aggression, poor sleep",
+      "narrative": "Patient reports escalating outbursts of anger, difficulty concentrating, and persistent poor sleep despite sertraline. He describes episodes where he 'loses control' and shouts at coworkers unprovoked. Sertraline does not appear to be helping.\n\nPatient appears unusually agitated during the visit, pacing the exam room and clenching fists. No psychotic features elicited. Adding lorazepam 1mg PRN for acute agitation. Will monitor closely.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_reed_2025_jul.pdf"
+      },
+      "medications_started": ["Lorazepam"]
+    },
+    {
+      "ref": "visit_05",
+      "date": "2025-07-22",
+      "type": "follow-up",
+      "provider": "Dr. Kevin Patel",
+      "chief_complaint": "Confusion, hypersalivation, worsening wound",
+      "narrative": "New and concerning symptoms: episodes of confusion with disorientation to place, excessive salivation, and mild dysphagia when drinking water. Patient reports the forearm wound has worsened with spreading erythema despite prior treatment.\n\nTemp 100.2°F. Wound on right forearm shows expanding erythema and early eschar formation. Neurological exam notable for mild facial asymmetry and hyperactive gag reflex. Metabolic panel and liver function ordered. CRP significantly elevated at 3.2 mg/dL. Referring to neurology urgently given behavioral changes, confusion, and new neurological findings.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_reed_2025_jul_2.pdf"
+      },
+      "labs": [
+        {"test": "CMP", "value": "BUN 18, Cr 1.0, glucose 95, electrolytes normal", "unit": "mg/dL", "range": "standard ranges", "flag": "normal"},
+        {"test": "LFTs", "value": "AST 45, ALT 52", "unit": "U/L", "range": "AST 10-40, ALT 7-56", "flag": "high"},
+        {"test": "CRP", "value": "3.2", "unit": "mg/dL", "range": "<1.0", "flag": "high"}
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_reed_2025_jul.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. James Liu",
+          "reason": "New-onset confusion, behavioral changes, and hypersalivation — evaluate for neurological etiology"
+        }
+      ]
+    },
+    {
+      "ref": "visit_06",
+      "date": "2025-08-05",
+      "type": "consult",
+      "provider": "Dr. James Liu",
+      "chief_complaint": "Neurology consult for behavioral changes and confusion",
+      "narrative": "Referred by Dr. Patel for evaluation of progressive behavioral changes, confusion, hypersalivation, and new neurological signs. Exam reveals hyperreflexia in all extremities, mild nuchal rigidity, and an exaggerated startle response. Patient is intermittently oriented.\n\nMRI brain shows subtle T2 hyperintensities in bilateral temporal lobes. Lumbar puncture performed: CSF shows mild pleocytosis (WBC 45), elevated protein (68 mg/dL), and normal glucose. No organisms on gram stain. Rabies IFA testing ordered given animal bite history and clinical presentation. Impression: encephalitis of unclear etiology.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_reed_2025_aug.pdf"
+      },
+      "labs": [
+        {"test": "CSF analysis", "value": "WBC 45, protein 68, glucose 55", "unit": "cells/uL, mg/dL, mg/dL", "range": "WBC <5, protein 15-45, glucose 40-70", "flag": "high"},
+        {"test": "Rabies IFA", "value": "pending", "unit": "qualitative", "range": "negative", "flag": "normal"}
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_reed_2025_aug.pdf"
+      },
+      "procedures": [
+        {
+          "name": "Lumbar puncture",
+          "outcome": "CSF: mild pleocytosis (WBC 45), elevated protein (68 mg/dL), normal glucose. No organisms on gram stain."
+        }
+      ]
+    },
+    {
+      "ref": "visit_07",
+      "date": "2025-08-06",
+      "type": "follow-up",
+      "provider": "Dr. James Liu",
+      "chief_complaint": "MRI brain review and medication adjustment",
+      "narrative": "Formal MRI interpretation: subtle T2/FLAIR hyperintensities in bilateral mesial temporal lobes and insular cortex. No mass effect, no gadolinium enhancement. The pattern is not consistent with HSV encephalitis (no hemorrhagic component) or typical autoimmune encephalitis.\n\nGiven the atypical imaging and clinical picture, sertraline is being discontinued per neurology recommendation to reduce pharmacological confounders. Awaiting rabies IFA, prion markers, and HSV PCR results.",
+      "document": {
+        "type": "imaging_report",
+        "filename": "imaging_report_reed_2025_aug.pdf"
+      },
+      "medications_discontinued": ["Sertraline"]
+    },
+    {
+      "ref": "visit_08",
+      "date": "2025-08-20",
+      "type": "follow-up",
+      "provider": "Dr. James Liu",
+      "chief_complaint": "Lab follow-up, worsening neuropsychiatric symptoms",
+      "narrative": "Critical lab results reviewed: Rabies IFA negative, 14-3-3 protein negative, RT-QuIC negative, HSV PCR not detected. All standard infectious and prion etiologies have been excluded.\n\nEEG shows unusual generalized slowing with periodic discharges that do not match any known epileptiform pattern or recognized encephalopathy signature. Patient continues to deteriorate with worsening confusion, intermittent aggression, and increasing difficulty with oral intake. The clinical picture remains unexplained by all standard workups.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_reed_2025_aug.pdf"
+      },
+      "labs": [
+        {"test": "Rabies IFA", "value": "negative", "unit": "qualitative", "range": "negative", "flag": "normal"},
+        {"test": "14-3-3 protein", "value": "negative", "unit": "qualitative", "range": "negative", "flag": "normal"},
+        {"test": "RT-QuIC", "value": "negative", "unit": "qualitative", "range": "negative", "flag": "normal"},
+        {"test": "HSV PCR", "value": "not detected", "unit": "qualitative", "range": "not detected", "flag": "normal"}
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_reed_2025_aug_2.pdf"
+      }
+    },
+    {
+      "ref": "visit_09",
+      "date": "2025-09-02",
+      "type": "emergency",
+      "provider": "Dr. Thomas Grant",
+      "chief_complaint": "Violent outburst, bit a nurse",
+      "narrative": "Patient brought to ED after attacking nursing staff during a scheduled follow-up visit. He bit a nurse on the forearm, breaking the skin. Severe photophobia and hydrophobia noted. Temp 101.4°F. Patient is combative, vocalizing incoherently, with excessive salivation.\n\nRestraints applied per protocol. Physical exam notable for dilated pupils, tachycardia (HR 118), and the expanding necrotic wound on the right forearm. Started empiric acyclovir 10mg/kg IV and dexamethasone 4mg IV for presumed viral encephalitis. Haloperidol 5mg IM administered for acute agitation. Lorazepam discontinued in favor of haloperidol given the severity of episodes. Infectious disease consult requested urgently.",
+      "document": {
+        "type": "discharge_summary",
+        "filename": "discharge_summary_reed_2025_sep.pdf"
+      },
+      "medications_started": ["Acyclovir", "Dexamethasone", "Haloperidol"],
+      "medications_discontinued": ["Lorazepam"],
+      "referrals": [
+        {
+          "to": "Dr. Emily Warren",
+          "reason": "Unknown encephalitis — all standard workups negative, escalating violent behavior, possible novel infectious etiology"
+        }
+      ]
+    },
+    {
+      "ref": "visit_10",
+      "date": "2025-09-05",
+      "type": "consult",
+      "provider": "Dr. Emily Warren",
+      "chief_complaint": "Infectious disease consult for undiagnosed encephalitis",
+      "narrative": "Comprehensive infectious workup initiated. West Nile IgM negative, EEE negative, HIV non-reactive, RPR non-reactive, QuantiFERON negative. Repeat lumbar puncture performed: CSF shows worsening pleocytosis (WBC 120), protein elevated to 95 mg/dL, and novel protein bands on electrophoresis that do not match any reference database.\n\nNotably, a necrotic skin lesion has developed at the original animal bite wound site on the right forearm. Wound biopsy performed: necrotic tissue with unusual intracellular inclusions, no identifiable organism on standard staining. Acyclovir discontinued given no viral etiology identified. Levetiracetam 500mg BID initiated for seizure prophylaxis. Specimens sent to state laboratory for advanced characterization.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_reed_2025_sep.pdf"
+      },
+      "labs": [
+        {"test": "West Nile IgM", "value": "negative", "unit": "qualitative", "range": "negative", "flag": "normal"},
+        {"test": "HIV", "value": "non-reactive", "unit": "qualitative", "range": "non-reactive", "flag": "normal"},
+        {"test": "RPR", "value": "non-reactive", "unit": "qualitative", "range": "non-reactive", "flag": "normal"},
+        {"test": "CSF repeat", "value": "WBC 120, protein 95, novel protein bands", "unit": "cells/uL, mg/dL", "range": "WBC <5, protein 15-45", "flag": "high"}
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_reed_2025_sep.pdf"
+      },
+      "medications_discontinued": ["Acyclovir"],
+      "medications_started": ["Levetiracetam"],
+      "procedures": [
+        {
+          "name": "Wound biopsy — forearm lesion",
+          "outcome": "Necrotic tissue with unusual intracellular inclusions, no identifiable organism on standard staining"
+        }
+      ]
+    },
+    {
+      "ref": "visit_11",
+      "date": "2025-09-15",
+      "type": "follow-up",
+      "provider": "Dr. James Liu",
+      "chief_complaint": "Neurology follow-up, continuous EEG monitoring",
+      "narrative": "Continuous EEG monitoring reveals a novel periodic pattern with 2-3Hz generalized discharges that do not match any catalogued encephalopathy signature in the EEG atlas. The pattern is distinct from CJD, NMDA receptor encephalitis, and all recognized periodic patterns.\n\nPatient is increasingly non-verbal with intermittent violent episodes requiring physical restraint. GCS fluctuating between 9 and 12. Pupillary responses sluggish bilaterally. The clinical trajectory continues to worsen despite supportive care.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_reed_2025_sep.pdf"
+      },
+      "labs": [
+        {"test": "EEG", "value": "2-3Hz periodic generalized discharges, novel pattern", "unit": "Hz", "range": "normal background rhythm", "flag": "high"}
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_reed_2025_sep_2.pdf"
+      }
+    },
+    {
+      "ref": "visit_12",
+      "date": "2025-09-22",
+      "type": "follow-up",
+      "provider": "Dr. Emily Warren",
+      "chief_complaint": "ID follow-up, state lab results",
+      "narrative": "State laboratory results received: unable to classify the pathogen using standard microbiological, virological, and molecular methods. Novel viral-like particles identified on electron microscopy of the CSF specimen — approximately 80-100nm, icosahedral morphology, not matching any known viral family.\n\nWound biopsy review confirms necrotic tissue with intracellular inclusions not matching known pathogens. Samples have been forwarded to the CDC for advanced characterization. Enhanced isolation precautions maintained.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_reed_2025_sep_2.pdf"
+      },
+      "labs": [
+        {"test": "Electron microscopy", "value": "novel viral-like particles, 80-100nm, icosahedral morphology", "unit": "nm", "range": "no viral particles", "flag": "high"}
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_reed_2025_sep_3.pdf"
+      }
+    },
+    {
+      "ref": "visit_13",
+      "date": "2025-10-05",
+      "type": "follow-up",
+      "provider": "Dr. Emily Warren",
+      "chief_complaint": "CDC preliminary results",
+      "narrative": "CDC confirms the presence of a novel pathogen not found in any existing viral, bacterial, or prion database. Preliminary characterization indicates a neurotropic RNA agent with a unique transmission profile and tropism for mesial temporal structures.\n\nInternal designation is pending formal classification. Enhanced BSL-3 isolation protocols have been recommended by the CDC for all specimens and patient contact. The bitten nurse from the September incident is under active surveillance with no symptoms to date.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_reed_2025_oct.pdf"
+      }
+    },
+    {
+      "ref": "visit_14",
+      "date": "2025-10-15",
+      "type": "follow-up",
+      "provider": "Dr. Emily Warren",
+      "chief_complaint": "CDC advisory received, formal classification",
+      "narrative": "CDC internal advisory received with formal classification: Solanum-type encephalopathy. Three similar cases have been identified across North America, all with a history of animal bite exposure in rural or wilderness areas.\n\nTransmission is suspected via bite vector, with high pathogen titers found in saliva. There is no known effective treatment at this time. Experimental antiviral protocols are under development at the CDC. Patient's condition continues to deteriorate with GCS now 8-9.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_reed_2025_oct_2.pdf"
+      }
+    },
+    {
+      "ref": "visit_15",
+      "date": "2025-10-15",
+      "type": "follow-up",
+      "provider": "Dr. Samantha Diaz",
+      "chief_complaint": "CDC advisory document and epidemiological summary",
+      "narrative": "Formal CDC advisory document prepared by Dr. Diaz. Classification: Solanum-type encephalopathy. Epidemiology: 3 confirmed cases in North America, all linked to unidentified animal bite exposure in wilderness settings.\n\nClinical progression follows a 3-phase pattern: prodromal (fatigue, irritability, mood changes), neuropsychiatric (aggression, confusion, hypersalivation, photophobia), and terminal (persistent altered consciousness, necrotic lesions, autonomic instability). Laboratory hallmarks include novel CSF protein bands, 2-3Hz periodic EEG pattern, and viral-like particles on electron microscopy. BSL-3 containment protocols required for all specimen handling.",
+      "document": {
+        "type": "cdc_advisory",
+        "filename": "cdc_advisory_reed_2025_oct.pdf"
+      }
+    },
+    {
+      "ref": "visit_16",
+      "date": "2025-11-01",
+      "type": "follow-up",
+      "provider": "Dr. James Liu",
+      "chief_complaint": "Neurology status update, experimental treatment initiation",
+      "narrative": "Patient remains in a persistent altered state with GCS 8. Continued periodic EEG discharges unchanged. Necrotic lesions on the right forearm are stable and not expanding. Autonomic instability with intermittent tachycardia and blood pressure lability.\n\nCBC shows worsening leukocytosis (WBC 14.8) and new thrombocytopenia (Plt 98). Hemoglobin has dropped to 11.2. CRP markedly elevated at 8.5 mg/dL. An experimental antiviral under the CDC compassionate use protocol has been initiated. Prognosis remains guarded.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_reed_2025_nov.pdf"
+      },
+      "labs": [
+        {"test": "CBC", "value": "WBC 14.8, Hgb 11.2, Plt 98", "unit": "x10^3/uL, g/dL, x10^3/uL", "range": "WBC 4.5-11, Hgb 13-17, Plt 150-400", "flag": "high"},
+        {"test": "CRP", "value": "8.5", "unit": "mg/dL", "range": "<1.0", "flag": "high"}
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_reed_2025_nov.pdf"
+      },
+      "medications_started": ["Experimental Antiviral XR-7"]
+    }
+  ]
+}
