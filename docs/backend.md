@@ -398,7 +398,36 @@ async def handle_query(user_message: str, model: str):
 
 ---
 
-## 6. File Structure (Backend)
+## 6. Server-Side Logging
+
+> **TODO (Person 2):** Add structured logging before demo day. Currently there are ZERO logging statements in the backend — no `logging`, no `print`. If something breaks during the demo, there's no way to diagnose it from the terminal.
+
+### What to add
+
+Add Python `logging` at INFO level to `server.py` and `gatekeeper.py` for each pipeline stage. Each log line should include a **timestamp** and the **phase name** so timing is visible in the terminal:
+
+```
+[2026-03-29 14:32:01] DEIDENTIFY  — 1.2s — 3 PHI spans found, query sanitized
+[2026-03-29 14:32:01] CLOUD_SEND  — sending to claude (turn 1)
+[2026-03-29 14:32:06] CLOUD_RECV  — 4.8s — tool_call: query_gatekeeper
+[2026-03-29 14:32:06] GRAPH_QUERY — get_patient_labs → 12 nodes
+[2026-03-29 14:32:07] GATEKEEPER  — 0.9s — response composed, 3 refs added
+[2026-03-29 14:32:07] CLOUD_SEND  — sending tool result (turn 2)
+[2026-03-29 14:32:12] CLOUD_RECV  — 5.1s — end_turn (final response)
+[2026-03-29 14:32:12] REHYDRATE   — tokens restored, 7 citations resolved
+[2026-03-29 14:32:12] COMPLETE    — total 11.0s, 2 gatekeeper turns
+```
+
+Minimum logging points:
+1. **Server startup:** graph loaded (node/edge counts), Ollama reachable, API keys present
+2. **Per query:** each SSE event emission + wall-clock time since query start
+3. **Errors:** full tracebacks, not swallowed exceptions
+
+This is ~20 lines of code across `server.py` and `gatekeeper.py`. Use `logging.getLogger("medgate")` so it's filterable.
+
+---
+
+## 7. File Structure (Backend)
 
 ```
 backend/

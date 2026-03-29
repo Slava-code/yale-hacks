@@ -10,6 +10,7 @@
 | `docs/frontend.md` | Chat UI, 3D graph visualization, PDF viewer, citation rendering | When working on the React frontend or any browser-side code |
 | `docs/knowledge-graph.md` | Graph schema, node/edge types, PHI tagging, mock data generation | When working on the knowledge graph, data generation scripts, or graph traversal |
 | `docs/demo.md` | System architecture overview, demo reliability strategy, full file structure | When planning the demo flow, debugging latency, or onboarding a new team member |
+| `docs/deployment.md` | GX10 deployment steps, venv setup, smoke tests, pre-demo checklist | When deploying to GX10, troubleshooting the demo, or onboarding a new team member |
 | `docs/interfaces.md` | Data contracts — REST endpoints, SSE events, graph query API, `graph.json` schema, token formats | Before building anything that crosses a workstream boundary (frontend↔backend, backend↔graph module) |
 | `backend/stub_server.py` | Stub FastAPI server with hardcoded SSE scenario + stub graph | When developing the frontend without the real backend running |
 | `data/stub/graph.json` | Small stub knowledge graph (5 patients, 34 nodes) | When developing the frontend or testing graph visualization |

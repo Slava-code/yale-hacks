@@ -62,6 +62,14 @@ Defines every data structure that crosses a workstream boundary: REST endpoints 
 
 ---
 
+## 6. Deployment → [docs/deployment.md](./docs/deployment.md)
+
+Step-by-step instructions to deploy MedGate to the GX10 for the demo. Covers: building the frontend on your MacBook, setting up a Python venv on the GX10 (no Docker), configuring environment variables, verifying Ollama, starting the server, smoke tests, troubleshooting, and a pre-demo checklist.
+
+**Cross-references:** [backend.md](./docs/backend.md) (server setup, logging TODO), [demo.md](./docs/demo.md) (demo reliability strategy)
+
+---
+
 ## Environment & Configuration
 
 | Key | Purpose | File |
