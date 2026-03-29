@@ -90,7 +90,7 @@ def _get_adapter(model: str) -> CloudAdapter:
     key_env_map = {
         "claude": "ANTHROPIC_API_KEY",
         "gpt4": "OPENAI_API_KEY",
-        "gemini": "GOOGLE_API_KEY",
+        "gemini": "GEMINI_API_KEY",
     }
     env_var = key_env_map.get(model)
     if not env_var:
@@ -319,7 +319,7 @@ async def get_models():
         "models": [
             {"id": "claude", "name": "Claude", "available": bool(os.getenv("ANTHROPIC_API_KEY"))},
             {"id": "gpt4", "name": "GPT-4", "available": bool(os.getenv("OPENAI_API_KEY"))},
-            {"id": "gemini", "name": "Gemini", "available": bool(os.getenv("GOOGLE_API_KEY"))},
+            {"id": "gemini", "name": "Gemini", "available": bool(os.getenv("GEMINI_API_KEY"))},
         ]
     }
 
