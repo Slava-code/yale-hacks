@@ -32328,10 +32328,10 @@
     "condition_092": {
       "id": "condition_092",
       "type": "condition",
-      "label": "Acute Amorosis Syndrome (In other words, this patient is in Love!)",
+      "label": "Acute Amorosis Syndrome \u2014 She is sick with love!",
       "fields": {
         "name": {
-          "value": "Acute Amorosis Syndrome (In other words, this patient is in Love!)",
+          "value": "Acute Amorosis Syndrome \u2014 She is sick with love!",
           "phi": false
         },
         "icd_code": {
@@ -34212,10 +34212,10 @@
     "disease_ref_017": {
       "id": "disease_ref_017",
       "type": "disease_reference",
-      "label": "Acute Amorosis Syndrome (In other words, this patient is in Love!)",
+      "label": "Acute Amorosis Syndrome \u2014 She is sick with love!",
       "fields": {
         "name": {
-          "value": "Acute Amorosis Syndrome (In other words, this patient is in Love!)",
+          "value": "Acute Amorosis Syndrome \u2014 She is sick with love!",
           "phi": false
         },
         "category": {
