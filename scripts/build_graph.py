@@ -325,7 +325,7 @@ def _process_patient(
         med_id = medication_name_to_id.get(med["name"])
         if not med_id:
             continue
-        for lab_name in med.get("monitored_by_labs", []):
+        for lab_name in (med.get("monitored_by_labs") or []):
             for lab_id in lab_test_name_to_ids.get(lab_name, []):
                 edges.append({
                     "source": med_id,
