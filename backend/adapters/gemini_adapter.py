@@ -29,6 +29,14 @@ class GeminiAdapter(CloudAdapter):
         }
 
     def parse_tool_call(self, part: dict) -> dict | None:
+        # Handle normalized format from _response_to_dict
+        if part.get("type") == "tool_use":
+            return {
+                "tool_name": part["name"],
+                "tool_id": part.get("id", "gemini_call"),
+                "arguments": part.get("input", {}),
+            }
+        # Handle raw Gemini format
         fc = part.get("function_call")
         if not fc:
             return None
