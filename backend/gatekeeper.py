@@ -124,11 +124,12 @@ class Gatekeeper:
         token_mapping: TokenMapping,
         kg: Graph,
         citation_manager: CitationManager,
+        patient_id: str | None = None,
     ) -> dict:
         """Handle a knowledge query from the cloud model.
 
         1. LLM parses what info is needed
-        2. Code traverses the graph
+        2. Code traverses the graph (using patient_id we already resolved)
         3. Code composes, redacts, and cites the response
 
         Returns:
@@ -140,9 +141,10 @@ class Gatekeeper:
         """
         parsed = self._parse_knowledge_query(question)
         action = parsed.get("action", "search")
-        patient_id = parsed.get("patient_id")
 
-        # If no patient_id from LLM, try to find from token mapping
+        # Use the patient_id passed in (from de-identification), fall back to LLM/token resolution
+        if not patient_id:
+            patient_id = parsed.get("patient_id")
         if not patient_id:
             patient_id = self._resolve_patient_from_tokens(token_mapping, kg)
 

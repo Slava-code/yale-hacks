@@ -148,6 +148,7 @@ async def _run_pipeline(
     # Step 1: De-identify
     deidentify_result = gatekeeper.deidentify_query(message, graph)
     tm = deidentify_result["token_mapping"]
+    patient_id = deidentify_result["patient_id"]
     cm = CitationManager()
 
     yield "deidentified_query", {
@@ -201,8 +202,8 @@ async def _run_pipeline(
                 "turn": turn,
             }
 
-            # Query the knowledge graph
-            kg_result = gatekeeper.query_knowledge_graph(query, tm, graph, cm)
+            # Query the knowledge graph (pass patient_id we already resolved)
+            kg_result = gatekeeper.query_knowledge_graph(query, tm, graph, cm, patient_id=patient_id)
 
             # Emit graph traversal
             from backend.graph import get_traversal_path
