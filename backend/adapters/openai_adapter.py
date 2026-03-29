@@ -49,7 +49,7 @@ class OpenAIAdapter(CloudAdapter):
         return None
 
     async def send_query(self, messages: list[dict]) -> dict:
-        client = openai.AsyncOpenAI(api_key=self.api_key)
+        client = openai.AsyncOpenAI(api_key=self.api_key, timeout=120.0)
         # Prepend system message
         full_messages = [{"role": "system", "content": CLOUD_SYSTEM_PROMPT}] + messages
         response = await client.chat.completions.create(

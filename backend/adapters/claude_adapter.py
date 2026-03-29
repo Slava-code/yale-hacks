@@ -37,7 +37,7 @@ class ClaudeAdapter(CloudAdapter):
         }
 
     async def send_query(self, messages: list[dict]) -> dict:
-        client = anthropic.AsyncAnthropic(api_key=self.api_key)
+        client = anthropic.AsyncAnthropic(api_key=self.api_key, timeout=120.0)
         response = await client.messages.create(
             model=self.model,
             max_tokens=2048,
