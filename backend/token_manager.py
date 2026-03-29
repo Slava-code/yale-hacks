@@ -53,6 +53,9 @@ class TokenMapping:
         if phi_type not in VALID_TYPES:
             raise ValueError(f"Invalid PHI type: {phi_type}. Must be one of {VALID_TYPES}")
 
+        if not real_value or not real_value.strip():
+            return ""
+
         if real_value in self._value_to_token:
             return self._value_to_token[real_value]
 
