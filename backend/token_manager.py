@@ -140,6 +140,10 @@ class TokenMapping:
             summary[key] = SUMMARY_LABELS.get(phi_type, phi_type.lower())
         return summary
 
+    def items(self) -> list[tuple[str, str]]:
+        """Return all (token, real_value) pairs. Used by gatekeeper for patient resolution."""
+        return list(self._token_to_value.items())
+
     def destroy(self):
         """Clear all mappings. Called after rehydration."""
         self._counters.clear()

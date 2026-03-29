@@ -29,13 +29,21 @@ class OpenAIAdapter(CloudAdapter):
         }
 
     def parse_tool_call(self, tool_call: dict) -> dict | None:
-        if tool_call.get("type") != "function":
-            return None
-        return {
-            "tool_name": tool_call["function"]["name"],
-            "tool_id": tool_call["id"],
-            "arguments": json.loads(tool_call["function"]["arguments"]),
-        }
+        # Native OpenAI format: {"type": "function", "function": {...}, "id": ...}
+        if tool_call.get("type") == "function":
+            return {
+                "tool_name": tool_call["function"]["name"],
+                "tool_id": tool_call["id"],
+                "arguments": json.loads(tool_call["function"]["arguments"]),
+            }
+        # Normalized format from _response_to_dict: {"type": "tool_use", "id": ..., "name": ..., "input": {...}}
+        if tool_call.get("type") == "tool_use":
+            return {
+                "tool_name": tool_call["name"],
+                "tool_id": tool_call["id"],
+                "arguments": tool_call["input"],
+            }
+        return None
 
     async def send_query(self, messages: list[dict]) -> dict:
         client = openai.AsyncOpenAI(api_key=self.api_key)
@@ -50,6 +58,33 @@ class OpenAIAdapter(CloudAdapter):
         return self._response_to_dict(response)
 
     async def send_tool_result(self, messages: list[dict], tool_id: str, result: str) -> dict:
+        # Fix C2: If the last message is an assistant message with normalized block
+        # content (list of dicts with "type": "tool_use"), convert it to OpenAI
+        # native format with a "tool_calls" field.
+        if messages and messages[-1].get("role") == "assistant":
+            last = messages[-1]
+            content = last.get("content")
+            if isinstance(content, list):
+                text_parts = []
+                tool_calls = []
+                for block in content:
+                    if isinstance(block, dict) and block.get("type") == "tool_use":
+                        tool_calls.append({
+                            "id": block["id"],
+                            "type": "function",
+                            "function": {
+                                "name": block["name"],
+                                "arguments": json.dumps(block["input"]),
+                            },
+                        })
+                    elif isinstance(block, dict) and block.get("type") == "text":
+                        text_parts.append(block.get("text", ""))
+                # Replace the last message with OpenAI-native format
+                native_msg: dict = {"role": "assistant", "content": "".join(text_parts) or None}
+                if tool_calls:
+                    native_msg["tool_calls"] = tool_calls
+                messages[-1] = native_msg
+
         messages.append({
             "role": "tool",
             "tool_call_id": tool_id,

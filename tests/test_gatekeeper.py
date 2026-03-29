@@ -4,6 +4,7 @@ Tests marked @pytest.mark.gx10 require the GX10 with Ollama running.
 All other tests run locally with mocked Ollama responses.
 """
 
+import asyncio
 import json
 import pytest
 from unittest.mock import AsyncMock, patch
@@ -39,11 +40,11 @@ class TestDeidentifyQuery:
             {"text": "Dr. Sarah Chen", "type": "PROVIDER"},
         ]
 
-        with patch.object(gk, '_identify_phi', return_value=mock_phi_spans):
-            result = gk.deidentify_query(
+        with patch.object(gk, '_identify_phi', new_callable=AsyncMock, return_value=mock_phi_spans):
+            result = asyncio.run(gk.deidentify_query(
                 "Tell me about John Smith, Dr. Sarah Chen is his doctor",
                 graph,
-            )
+            ))
 
         assert "[PATIENT_1]" in result["sanitized_query"]
         assert "[PROVIDER_1]" in result["sanitized_query"]
@@ -57,11 +58,11 @@ class TestDeidentifyQuery:
 
         mock_phi_spans = [{"text": "John Smith", "type": "PATIENT"}]
 
-        with patch.object(gk, '_identify_phi', return_value=mock_phi_spans):
-            result = gk.deidentify_query(
+        with patch.object(gk, '_identify_phi', new_callable=AsyncMock, return_value=mock_phi_spans):
+            result = asyncio.run(gk.deidentify_query(
                 "John Smith has WBC 3.2 and recurring headaches for 8 months",
                 graph,
-            )
+            ))
 
         assert "WBC 3.2" in result["sanitized_query"]
         assert "headaches" in result["sanitized_query"]
@@ -80,11 +81,11 @@ class TestQueryKnowledgeGraph:
         # Mock: LLM says "get labs for patient_001"
         mock_parsed = {"action": "get_patient_labs", "patient_id": "patient_001"}
 
-        with patch.object(gk, '_parse_knowledge_query', return_value=mock_parsed):
-            result = gk.query_knowledge_graph(
+        with patch.object(gk, '_parse_knowledge_query', new_callable=AsyncMock, return_value=mock_parsed):
+            result = asyncio.run(gk.query_knowledge_graph(
                 "What are [PATIENT_1]'s lab results?",
                 tm, graph, cm,
-            )
+            ))
 
         # Should have redacted content with REF tokens
         assert "[REF_" in result["content"]
@@ -103,11 +104,11 @@ class TestQueryKnowledgeGraph:
 
         mock_parsed = {"action": "get_patient_labs", "patient_id": None}
 
-        with patch.object(gk, '_parse_knowledge_query', return_value=mock_parsed):
-            result = gk.query_knowledge_graph(
+        with patch.object(gk, '_parse_knowledge_query', new_callable=AsyncMock, return_value=mock_parsed):
+            result = asyncio.run(gk.query_knowledge_graph(
                 "What are [PATIENT_1]'s lab results?",
                 tm, graph, cm,
-            )
+            ))
 
         assert "not found" in result["content"].lower() or "not available" in result["content"].lower()
 

@@ -15,7 +15,7 @@ from pathlib import Path
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse
+from fastapi.responses import FileResponse, StreamingResponse
 
 app = FastAPI(title="MedGate Stub Server")
 
@@ -26,7 +26,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-STUB_GRAPH_PATH = Path(__file__).parent.parent / "data" / "graph.json"
+DATA_DIR = Path(__file__).parent.parent / "data"
+STUB_GRAPH_PATH = DATA_DIR / "graph.json"
 
 # --- Node visual config (matches docs/interfaces.md §4) ---
 
@@ -240,8 +241,11 @@ async def query(body: dict):
 
 @app.get("/api/pdf/{filename}")
 async def get_pdf(filename: str):
-    """Stub: returns a 404-like message since we don't have real PDFs yet."""
-    return {"error": f"Stub server — no real PDFs. Requested: {filename}"}
+    """Serve a PDF from data/pdfs/."""
+    pdf_path = DATA_DIR / "pdfs" / filename
+    if not pdf_path.exists():
+        return {"error": f"PDF not found: {filename}"}
+    return FileResponse(pdf_path, media_type="application/pdf")
 
 
 if __name__ == "__main__":

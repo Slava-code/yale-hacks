@@ -97,7 +97,24 @@ class GeminiAdapter(CloudAdapter):
             role = "user" if msg["role"] == "user" else "model"
             content = msg.get("content", "")
             if isinstance(content, str):
-                history.append({"role": role, "parts": [content]})
+                if content:  # skip empty strings
+                    history.append({"role": role, "parts": [content]})
+            elif isinstance(content, list):
+                # Handle normalized blocks (tool_use, tool_result, text)
+                parts = []
+                for block in content:
+                    if isinstance(block, dict):
+                        if block.get("type") == "text":
+                            parts.append(block.get("text", ""))
+                        elif block.get("type") == "tool_use":
+                            # Represent as text summary for Gemini history
+                            parts.append(f"[Called tool: {block.get('name', 'unknown')} with query: {block.get('input', {}).get('query', '')}]")
+                        elif block.get("type") == "tool_result":
+                            parts.append(block.get("content", ""))
+                    else:
+                        parts.append(str(block))
+                if parts:
+                    history.append({"role": role, "parts": parts})
         return history
 
     def _response_to_dict(self, response) -> dict:

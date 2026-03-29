@@ -23,12 +23,13 @@ from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, StreamingResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from backend.gatekeeper import Gatekeeper
 from backend.token_manager import TokenMapping
 from backend.citation import CitationManager
-from backend.graph import load_graph, Graph
+from backend.graph import load_graph, Graph, get_traversal_path
 from backend.adapters.base import CloudAdapter
 from backend.adapters.claude_adapter import ClaudeAdapter
 from backend.adapters.openai_adapter import OpenAIAdapter
@@ -54,13 +55,15 @@ GATEKEEPER_MODEL = os.getenv("GATEKEEPER_MODEL", "mistral-small:24b")
 
 # Node visual config (matches docs/interfaces.md §4)
 NODE_CONFIG = {
-    "patient":    {"color": "#4A90D9", "size": 12},
-    "visit":      {"color": "#F5C542", "size": 8},
-    "condition":  {"color": "#E74C3C", "size": 8},
-    "medication": {"color": "#2ECC71", "size": 8},
-    "lab_result": {"color": "#9B59B6", "size": 6},
-    "procedure":  {"color": "#E67E22", "size": 8},
-    "provider":   {"color": "#1ABC9C", "size": 8},
+    "patient":           {"color": "#4A90D9", "size": 12},
+    "visit":             {"color": "#F5C542", "size": 8},
+    "condition":         {"color": "#E74C3C", "size": 8},
+    "medication":        {"color": "#2ECC71", "size": 8},
+    "lab_result":        {"color": "#9B59B6", "size": 6},
+    "procedure":         {"color": "#E67E22", "size": 8},
+    "provider":          {"color": "#1ABC9C", "size": 8},
+    "family_history":    {"color": "#D946EF", "size": 7},
+    "disease_reference": {"color": "#3B82F6", "size": 7},
 }
 
 # --- Globals (loaded once at startup) ---
@@ -84,15 +87,23 @@ def _get_gatekeeper() -> Gatekeeper:
 
 
 def _get_adapter(model: str) -> CloudAdapter:
-    adapters = {
-        "claude": lambda: ClaudeAdapter(api_key=os.getenv("ANTHROPIC_API_KEY", "")),
-        "gpt4": lambda: OpenAIAdapter(api_key=os.getenv("OPENAI_API_KEY", "")),
-        "gemini": lambda: GeminiAdapter(api_key=os.getenv("GOOGLE_API_KEY", "")),
+    key_env_map = {
+        "claude": "ANTHROPIC_API_KEY",
+        "gpt4": "OPENAI_API_KEY",
+        "gemini": "GOOGLE_API_KEY",
     }
-    factory = adapters.get(model)
-    if not factory:
+    env_var = key_env_map.get(model)
+    if not env_var:
         raise ValueError(f"Unknown model: {model}")
-    return factory()
+    api_key = os.getenv(env_var, "")
+    if not api_key:
+        raise ValueError(f"API key not configured: set {env_var} environment variable")
+    adapters = {
+        "claude": lambda: ClaudeAdapter(api_key=api_key),
+        "gpt4": lambda: OpenAIAdapter(api_key=api_key),
+        "gemini": lambda: GeminiAdapter(api_key=api_key),
+    }
+    return adapters[model]()
 
 
 # --- SSE helpers ---
@@ -146,7 +157,7 @@ async def _run_pipeline(
     adapter = _get_adapter(model)
 
     # Step 1: De-identify
-    deidentify_result = gatekeeper.deidentify_query(message, graph)
+    deidentify_result = await gatekeeper.deidentify_query(message, graph)
     tm = deidentify_result["token_mapping"]
     patient_id = deidentify_result["patient_id"]
     cm = CitationManager()
@@ -203,10 +214,9 @@ async def _run_pipeline(
             }
 
             # Query the knowledge graph (pass patient_id we already resolved)
-            kg_result = gatekeeper.query_knowledge_graph(query, tm, graph, cm, patient_id=patient_id)
+            kg_result = await gatekeeper.query_knowledge_graph(query, tm, graph, cm, patient_id=patient_id)
 
             # Emit graph traversal
-            from backend.graph import get_traversal_path
             traversal = get_traversal_path(graph, kg_result["accessed_nodes"])
             yield "graph_traversal", {
                 "type": "graph_traversal",
@@ -330,6 +340,13 @@ async def switch_model(req: SwitchModelRequest):
 @app.get("/api/health")
 async def health():
     return {"status": "ok"}
+
+
+# --- Static frontend (must be last — catches all non-API routes) ---
+
+FRONTEND_DIR = Path(__file__).parent.parent / "frontend" / "dist"
+if FRONTEND_DIR.is_dir():
+    app.mount("/", StaticFiles(directory=str(FRONTEND_DIR), html=True), name="frontend")
 
 
 if __name__ == "__main__":

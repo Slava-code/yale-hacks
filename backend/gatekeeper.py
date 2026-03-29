@@ -78,7 +78,7 @@ class Gatekeeper:
     # Public API
     # ------------------------------------------------------------------
 
-    def deidentify_query(self, raw_query: str, kg: Graph) -> dict:
+    async def deidentify_query(self, raw_query: str, kg: Graph) -> dict:
         """De-identify a raw clinician query.
 
         1. LLM identifies PHI spans
@@ -93,7 +93,7 @@ class Gatekeeper:
                 "patient_id": str | None,
             }
         """
-        phi_spans = self._identify_phi(raw_query)
+        phi_spans = await self._identify_phi(raw_query)
         tm = TokenMapping()
 
         # Register all PHI spans
@@ -118,7 +118,7 @@ class Gatekeeper:
             "patient_id": patient_id,
         }
 
-    def query_knowledge_graph(
+    async def query_knowledge_graph(
         self,
         question: str,
         token_mapping: TokenMapping,
@@ -139,7 +139,7 @@ class Gatekeeper:
                 "refs_added": list[str],
             }
         """
-        parsed = self._parse_knowledge_query(question)
+        parsed = await self._parse_knowledge_query(question)
         action = parsed.get("action", "search")
 
         # Use the patient_id passed in (from de-identification), fall back to LLM/token resolution
@@ -156,16 +156,38 @@ class Gatekeeper:
             }
 
         # Dispatch to the right graph query
-        nodes = self._fetch_from_graph(action, patient_id, kg, parsed)
-        accessed_ids = [patient_id] + [n.id for n in nodes]
+        raw_result = self._fetch_from_graph(action, patient_id, kg, parsed)
+        accessed_ids = [patient_id]
+
+        # Family history returns dicts, not Nodes — handle separately
+        if raw_result and isinstance(raw_result[0], dict):
+            parts = []
+            for entry in raw_result:
+                text = f"Family history: {entry.get('relation', 'relative')} — {entry.get('condition', 'unknown condition')}"
+                if entry.get('diagnosed_age'):
+                    text += f", diagnosed at age {entry['diagnosed_age']}"
+                redacted = token_mapping.apply(text)
+                if entry.get('source_pdf') and entry.get('source_page') is not None:
+                    ref = citation_manager.add_ref(entry['source_pdf'], entry['source_page'], text[:50])
+                    redacted += f" {ref}"
+                parts.append(redacted)
+            content = ". ".join(parts) + "." if parts else "No family history found."
+            return {
+                "content": content,
+                "accessed_nodes": accessed_ids,
+                "refs_added": citation_manager.get_refs_added(),
+            }
+
+        nodes = raw_result
+        accessed_ids += [n.id for n in nodes]
 
         # Also include connected nodes for traversal path
         visits = graph_mod.get_patient_visits(kg, patient_id)
         for visit in visits:
             for node in nodes:
                 # Check if this node is connected through this visit
-                for edge in kg._edges_from.get(visit.id, []):
-                    if edge["target"] == node.id:
+                for edge in kg.edges:
+                    if edge["source"] == visit.id and edge["target"] == node.id:
                         if visit.id not in accessed_ids:
                             accessed_ids.append(visit.id)
 
@@ -221,38 +243,45 @@ class Gatekeeper:
     # LLM interaction (these get mocked in tests)
     # ------------------------------------------------------------------
 
-    def _identify_phi(self, raw_query: str) -> list[dict]:
+    async def _identify_phi(self, raw_query: str) -> list[dict]:
         """Call local LLM to identify PHI spans in a query."""
-        response = self._chat(GATEKEEPER_SYSTEM_PROMPT, raw_query)
         try:
+            response = await self._chat(GATEKEEPER_SYSTEM_PROMPT, raw_query)
             return json.loads(self._extract_json(response))
         except (json.JSONDecodeError, TypeError):
             # Fallback: return empty — no PHI detected
             return []
+        except Exception:
+            # Ollama connection/timeout/HTTP errors — fallback to no PHI detected
+            return []
 
-    def _parse_knowledge_query(self, question: str) -> dict:
+    async def _parse_knowledge_query(self, question: str) -> dict:
         """Call local LLM to parse what info a knowledge query is asking for."""
-        response = self._chat(KNOWLEDGE_QUERY_PROMPT, question)
         try:
+            response = await self._chat(KNOWLEDGE_QUERY_PROMPT, question)
             return json.loads(self._extract_json(response))
         except (json.JSONDecodeError, TypeError):
             return {"action": "search", "search_query": question}
+        except Exception:
+            # Ollama connection/timeout/HTTP errors — fallback to search
+            return {"action": "search", "search_query": question}
 
-    def _chat(self, system_prompt: str, user_message: str) -> str:
+    async def _chat(self, system_prompt: str, user_message: str) -> str:
         """Send a chat request to Ollama and return the response text."""
-        response = httpx.post(
-            f"{self.ollama_url}/api/chat",
-            json={
-                "model": self.model,
-                "messages": [
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_message},
-                ],
-                "stream": False,
-                "options": {"temperature": 0.1},
-            },
-            timeout=120.0,
-        )
+        async with httpx.AsyncClient() as client:
+            response = await client.post(
+                f"{self.ollama_url}/api/chat",
+                json={
+                    "model": self.model,
+                    "messages": [
+                        {"role": "system", "content": system_prompt},
+                        {"role": "user", "content": user_message},
+                    ],
+                    "stream": False,
+                    "options": {"temperature": 0.1},
+                },
+                timeout=120.0,
+            )
         response.raise_for_status()
         return response.json()["message"]["content"]
 
@@ -262,7 +291,7 @@ class Gatekeeper:
 
     def _resolve_patient_from_tokens(self, tm: TokenMapping, kg: Graph) -> str | None:
         """Try to find a patient_id by looking up token values in the graph."""
-        for token, value in tm._token_to_value.items():
+        for token, value in tm.items():
             if "PATIENT" in token:
                 patient = graph_mod.get_patient(kg, name=value)
                 if patient:
@@ -284,11 +313,7 @@ class Gatekeeper:
             "search": lambda: graph_mod.search_nodes(kg, parsed.get("search_query", "")),
         }
         fn = dispatch.get(action, dispatch["search"])
-        result = fn()
-        # get_family_history returns dicts, not Nodes — handle both
-        if result and isinstance(result[0], dict):
-            return []
-        return result
+        return fn()
 
     def _compose_response(
         self,
