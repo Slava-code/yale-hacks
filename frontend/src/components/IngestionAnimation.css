@@ -41,18 +41,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--node-patient) 100%);
-  border-radius: var(--radius-xl);
-  font-size: 1.75rem;
-  color: white;
+  background: none;
+  border-radius: 0;
   transition: all var(--duration-slow) var(--ease-out);
 }
 
 .title-small .ingestion-logo {
   width: 32px;
   height: 32px;
-  font-size: 1rem;
-  border-radius: var(--radius-md);
 }
 
 .ingestion-name {

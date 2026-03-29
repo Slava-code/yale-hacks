@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
+import logoFilter from '../assets/logo-filter.svg'
 import './IngestionAnimation.css'
 
 // Sample PDF names for the animation
@@ -112,7 +113,7 @@ function IngestionAnimation({ onComplete, graphStats }) {
       <div className="ingestion-container">
         {/* Title */}
         <div className={`ingestion-title ${phase !== 'intro' ? 'title-small' : ''}`}>
-          <span className="ingestion-logo">+</span>
+          <span className="ingestion-logo"><img src={logoFilter} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain' }} /></span>
           <span className="ingestion-name">MedGate</span>
           {phase === 'intro' && (
             <span className="ingestion-subtitle">Initializing knowledge graph</span>
