@@ -811,10 +811,12 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf, isVisible = true }) {
   }, [traversalData, scheduleRefresh])
 
   // Clear traversal state when a new query starts
+  const lastClearedForRef = useRef(null)
   useEffect(() => {
-    // Look for query start signal in sseEvents
-    const hasNewQuery = sseEvents.some(e => e.type === 'deidentified_query')
-    if (sseEvents.length === 1 && hasNewQuery) {
+    // Find the most recent deidentified_query event
+    const deidentEvent = [...sseEvents].reverse().find(e => e.type === 'deidentified_query')
+    if (deidentEvent && deidentEvent !== lastClearedForRef.current) {
+      lastClearedForRef.current = deidentEvent
       setTraversedNodes(new Set())
       setTraversedEdges(new Set())
       setPulsingNodes(new Set())
