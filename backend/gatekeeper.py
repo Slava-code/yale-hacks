@@ -33,11 +33,11 @@ Return a JSON array of PHI spans found. Each span has:
 - "text": the exact PHI text as it appears in the query
 - "type": one of PATIENT, PROVIDER, FAMILY, MRN, DATE, LOCATION, CONTACT
 
-Example input: "Tell me about John Smith, he was seen by Dr. Chen at Springfield General on January 15"
+Example input: "Tell me about Maria Garcia, she was seen by Dr. Williams at Springfield General on January 15"
 Example output:
 [
-  {"text": "John Smith", "type": "PATIENT"},
-  {"text": "Dr. Chen", "type": "PROVIDER"},
+  {"text": "Maria Garcia", "type": "PATIENT"},
+  {"text": "Dr. Williams", "type": "PROVIDER"},
   {"text": "Springfield General", "type": "LOCATION"},
   {"text": "January 15", "type": "DATE"}
 ]
