@@ -419,6 +419,54 @@ function ChatPanel({ selectedModel, onSseEvent, onQueryStart, onOpenPdf, connect
     setTypedMessages(prev => new Set([...prev, messageId]))
   }, [])
 
+  // Simple markdown-like formatting: **bold**, ## headers, - lists
+  const formatText = (text) => {
+    const lines = text.split('\n')
+    const elements = []
+    let listItems = []
+
+    const flushList = () => {
+      if (listItems.length > 0) {
+        elements.push(<ul key={`ul-${elements.length}`} className="fmt-list">{listItems}</ul>)
+        listItems = []
+      }
+    }
+
+    const inlineFmt = (str, keyPrefix) => {
+      // Bold: **text**
+      const parts = str.split(/(\*\*[^*]+\*\*)/g)
+      return parts.map((p, i) => {
+        const bold = p.match(/^\*\*(.+)\*\*$/)
+        if (bold) return <strong key={`${keyPrefix}-${i}`}>{bold[1]}</strong>
+        return p
+      })
+    }
+
+    lines.forEach((line, i) => {
+      const trimmed = line.trim()
+      if (!trimmed) { flushList(); elements.push(<br key={`br-${i}`} />); return }
+
+      // Headers
+      const h2 = trimmed.match(/^##\s+(.+)/)
+      if (h2) { flushList(); elements.push(<h4 key={`h-${i}`} className="fmt-heading">{inlineFmt(h2[1], `h${i}`)}</h4>); return }
+      const h3 = trimmed.match(/^###\s+(.+)/)
+      if (h3) { flushList(); elements.push(<h5 key={`h-${i}`} className="fmt-subheading">{inlineFmt(h3[1], `h${i}`)}</h5>); return }
+
+      // List items
+      const li = trimmed.match(/^[-*]\s+(.+)/)
+      if (li) { listItems.push(<li key={`li-${i}`}>{inlineFmt(li[1], `li${i}`)}</li>); return }
+
+      // Numbered list
+      const nl = trimmed.match(/^\d+\.\s+(.+)/)
+      if (nl) { listItems.push(<li key={`li-${i}`}>{inlineFmt(nl[1], `li${i}`)}</li>); return }
+
+      flushList()
+      elements.push(<p key={`p-${i}`} className="fmt-para">{inlineFmt(trimmed, `p${i}`)}</p>)
+    })
+    flushList()
+    return elements
+  }
+
   // Render message content with citation links
   const renderContent = (message) => {
     if (!message.content) return null
@@ -441,39 +489,78 @@ function ChatPanel({ selectedModel, onSseEvent, onQueryStart, onOpenPdf, connect
           </div>
         )
       }
-      return <div className="message-text">{message.content}</div>
+      return <div className="message-text formatted-content">{formatText(message.content)}</div>
     }
 
-    // For messages with citations, render with clickable links
-    // Skip animation for these as they have complex structure
-    const parts = message.content.split(/(\[\d+\])/g)
-
-    return (
-      <div className="message-text">
-        {parts.map((part, index) => {
-          const match = part.match(/\[(\d+)\]/)
-          if (match) {
-            const citationIndex = parseInt(match[1], 10)
-            const citation = message.citations.find((c) => c.index === citationIndex)
-            if (citation) {
-              return (
-                <button
-                  key={index}
-                  className="citation-link"
-                  title={citation.display}
-                  onClick={() => {
-                    onOpenPdf?.(citation.pdf, citation.page, citation)
-                  }}
-                >
-                  [{citationIndex}]
-                </button>
-              )
-            }
+    // For messages with citations, first inject citation buttons then format
+    // Replace [number] with placeholders, format, then swap back
+    const injectCitations = (text) => {
+      const parts = text.split(/(\[\d+\])/g)
+      return parts.map((part, index) => {
+        const match = part.match(/\[(\d+)\]/)
+        if (match) {
+          const citationIndex = parseInt(match[1], 10)
+          const citation = message.citations.find((c) => c.index === citationIndex)
+          if (citation) {
+            return (
+              <button
+                key={`cit-${index}`}
+                className="citation-link"
+                title={citation.display}
+                onClick={() => onOpenPdf?.(citation.pdf, citation.page, citation)}
+              >
+                [{citationIndex}]
+              </button>
+            )
           }
-          return <span key={index}>{part}</span>
-        })}
-      </div>
-    )
+        }
+        return part
+      })
+    }
+
+    // Format line by line, injecting citations into each line's text
+    const lines = message.content.split('\n')
+    const elements = []
+    let listItems = []
+
+    const flushList = () => {
+      if (listItems.length > 0) {
+        elements.push(<ul key={`ul-${elements.length}`} className="fmt-list">{listItems}</ul>)
+        listItems = []
+      }
+    }
+
+    lines.forEach((line, i) => {
+      const trimmed = line.trim()
+      if (!trimmed) { flushList(); elements.push(<br key={`br-${i}`} />); return }
+
+      // Strip markdown bold for display, keep structure
+      const renderLine = (str) => {
+        // First handle bold
+        const boldParts = str.split(/(\*\*[^*]+\*\*)/g)
+        const withBold = boldParts.map((p, j) => {
+          const bold = p.match(/^\*\*(.+)\*\*$/)
+          if (bold) return <strong key={`b-${i}-${j}`}>{injectCitations(bold[1])}</strong>
+          return injectCitations(p)
+        })
+        return withBold
+      }
+
+      const h2 = trimmed.match(/^##\s+(.+)/)
+      if (h2) { flushList(); elements.push(<h4 key={`h-${i}`} className="fmt-heading">{renderLine(h2[1])}</h4>); return }
+      const h3 = trimmed.match(/^###\s+(.+)/)
+      if (h3) { flushList(); elements.push(<h5 key={`h-${i}`} className="fmt-subheading">{renderLine(h3[1])}</h5>); return }
+      const li = trimmed.match(/^[-*]\s+(.+)/)
+      if (li) { listItems.push(<li key={`li-${i}`}>{renderLine(li[1])}</li>); return }
+      const nl = trimmed.match(/^\d+\.\s+(.+)/)
+      if (nl) { listItems.push(<li key={`li-${i}`}>{renderLine(nl[1])}</li>); return }
+
+      flushList()
+      elements.push(<p key={`p-${i}`} className="fmt-para">{renderLine(trimmed)}</p>)
+    })
+    flushList()
+
+    return <div className="message-text formatted-content">{elements}</div>
   }
 
   return (

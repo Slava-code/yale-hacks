@@ -491,3 +491,35 @@
     opacity: 0.5;
   }
 }
+
+/* ===== FORMATTED CONTENT ===== */
+.formatted-content {
+  white-space: normal;
+}
+
+.fmt-heading {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0.75em 0 0.35em;
+}
+
+.fmt-subheading {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0.6em 0 0.25em;
+}
+
+.fmt-para {
+  margin: 0.3em 0;
+}
+
+.fmt-list {
+  margin: 0.3em 0 0.3em 1.2em;
+  padding: 0;
+}
+
+.fmt-list li {
+  margin: 0.15em 0;
+}
