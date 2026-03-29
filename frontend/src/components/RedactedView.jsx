@@ -7,7 +7,7 @@ function RedactedView({ sseEvents, isVisible }) {
   useEffect(() => {
     if (scrollRef.current) {
       const el = scrollRef.current
-      const isNearBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 60
+      const isNearBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 2
       if (isNearBottom) {
         el.scrollTop = el.scrollHeight
       }
