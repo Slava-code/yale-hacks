@@ -45,6 +45,7 @@ function App() {
   // SSE event state - shared between panels
   const [traversalData, setTraversalData] = useState(null)
   const [sseEvents, setSseEvents] = useState([])
+  const [queryGeneration, setQueryGeneration] = useState(0)
 
   // PDF viewer state
   const [pdfView, setPdfView] = useState(null)  // { pdf, page, citation }
@@ -120,6 +121,7 @@ function App() {
     setTraversalData(null)
     setSseEvents([])
     setConnectionStatus('streaming')
+    setQueryGeneration(g => g + 1)
   }
 
   // Open PDF viewer
@@ -249,6 +251,7 @@ function App() {
             sseEvents={sseEvents}
             onOpenPdf={handleOpenPdf}
             isVisible={!pdfView}
+            queryGeneration={queryGeneration}
           />
           {pdfView && (
             <PdfViewer

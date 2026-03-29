@@ -53,7 +53,7 @@ const MATERIALS = {
   }),
 }
 
-function GraphPanel({ traversalData, sseEvents, onOpenPdf, isVisible = true }) {
+function GraphPanel({ traversalData, sseEvents, onOpenPdf, isVisible = true, queryGeneration = 0 }) {
   const containerRef = useRef(null)
   const graphRef = useRef(null)
   const [graphData, setGraphData] = useState({ nodes: [], links: [] })
@@ -810,13 +810,9 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf, isVisible = true }) {
     return () => timers.forEach(t => clearTimeout(t))
   }, [traversalData, scheduleRefresh])
 
-  // Clear traversal state when a new query starts
-  const lastClearedForRef = useRef(null)
+  // Clear traversal state immediately when user sends a new query
   useEffect(() => {
-    // Find the most recent deidentified_query event
-    const deidentEvent = [...sseEvents].reverse().find(e => e.type === 'deidentified_query')
-    if (deidentEvent && deidentEvent !== lastClearedForRef.current) {
-      lastClearedForRef.current = deidentEvent
+    if (queryGeneration > 0) {
       setTraversedNodes(new Set())
       setTraversedEdges(new Set())
       setPulsingNodes(new Set())
@@ -824,7 +820,7 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf, isVisible = true }) {
       traversedEdgesRef.current = new Set()
       pulsingNodesRef.current = new Set()
     }
-  }, [sseEvents])
+  }, [queryGeneration])
 
   // Close info card
   const closeInfoCard = useCallback(() => {
