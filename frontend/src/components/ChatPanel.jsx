@@ -64,6 +64,12 @@ function TypeWriter({ content, speed = 20, onComplete, skipAnimation = false }) 
   const [displayedContent, setDisplayedContent] = useState(skipAnimation ? content : '')
   const [isTyping, setIsTyping] = useState(!skipAnimation)
   const indexRef = useRef(0)
+  const onCompleteRef = useRef(onComplete)
+
+  // Keep ref up to date without triggering the animation effect
+  useEffect(() => {
+    onCompleteRef.current = onComplete
+  })
 
   useEffect(() => {
     if (skipAnimation) {
@@ -85,12 +91,12 @@ function TypeWriter({ content, speed = 20, onComplete, skipAnimation = false }) 
       } else {
         clearInterval(timer)
         setIsTyping(false)
-        onComplete?.()
+        onCompleteRef.current?.()
       }
     }, speed)
 
     return () => clearInterval(timer)
-  }, [content, speed, skipAnimation, onComplete])
+  }, [content, speed, skipAnimation])
 
   return (
     <span className="typewriter-text">

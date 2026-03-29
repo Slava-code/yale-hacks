@@ -133,9 +133,19 @@ def get_patient(graph: Graph, *, name: str | None = None, id: str | None = None)
         return node if node.type == "patient" else None
     if name:
         name_lower = name.lower()
+        # Try exact match first
         for node in graph.nodes.values():
             if node.type == "patient" and node.field_value("name") and node.field_value("name").lower() == name_lower:
                 return node
+        # Fall back to substring match (e.g., "Valentine" matches "Valentine Torres")
+        candidates = []
+        for node in graph.nodes.values():
+            if node.type == "patient" and node.field_value("name"):
+                patient_name = node.field_value("name").lower()
+                if name_lower in patient_name or patient_name in name_lower:
+                    candidates.append(node)
+        if len(candidates) == 1:
+            return candidates[0]
     return None
 
 
