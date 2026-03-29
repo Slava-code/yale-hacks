@@ -14,7 +14,7 @@ class GeminiAdapter(CloudAdapter):
 
     @property
     def model(self) -> str:
-        return "gemini-2.0-flash"
+        return "gemini-2.5-flash"
 
     def format_tool(self) -> dict:
         """Gemini uses function_declarations format."""
