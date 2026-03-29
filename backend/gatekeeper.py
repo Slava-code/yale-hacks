@@ -14,7 +14,10 @@ citation assignment, rehydration) are deterministic code — NOT LLM output.
 from __future__ import annotations
 
 import json
+import logging
 import httpx
+
+logger = logging.getLogger(__name__)
 
 from backend.token_manager import TokenMapping
 from backend.citation import CitationManager
@@ -251,8 +254,8 @@ class Gatekeeper:
         except (json.JSONDecodeError, TypeError):
             # Fallback: return empty — no PHI detected
             return []
-        except Exception:
-            # Ollama connection/timeout/HTTP errors — fallback to no PHI detected
+        except Exception as e:
+            logger.error("_identify_phi failed: %s: %s", type(e).__name__, e)
             return []
 
     async def _parse_knowledge_query(self, question: str) -> dict:
@@ -262,8 +265,8 @@ class Gatekeeper:
             return json.loads(self._extract_json(response))
         except (json.JSONDecodeError, TypeError):
             return {"action": "search", "search_query": question}
-        except Exception:
-            # Ollama connection/timeout/HTTP errors — fallback to search
+        except Exception as e:
+            logger.error("_parse_knowledge_query failed: %s: %s", type(e).__name__, e)
             return {"action": "search", "search_query": question}
 
     async def _chat(self, system_prompt: str, user_message: str) -> str:
