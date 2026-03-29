@@ -171,7 +171,7 @@ function ChatMessage({ message, index, renderContent, onOpenPdf }) {
   )
 }
 
-function ChatPanel({ selectedModel, onSseEvent, onQueryStart, onOpenPdf, connectionStatus }) {
+function ChatPanel({ selectedModel, onSseEvent, onQueryStart, onOpenPdf, connectionStatus, onLoveMode }) {
   const [messages, setMessages] = useState([])
   const [inputValue, setInputValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -273,6 +273,20 @@ function ChatPanel({ selectedModel, onSseEvent, onQueryStart, onOpenPdf, connect
           )
         )
         setIsLoading(false)
+
+        // Love mode trigger - Yhack theme easter egg
+        // Detect if the response diagnoses "love"
+        const lowerContent = (data.content || '').toLowerCase()
+        if (
+          lowerContent.includes('diagnosed with love') ||
+          lowerContent.includes('diagnosis: love') ||
+          lowerContent.includes('diagnosis of love') ||
+          lowerContent.includes('in love') ||
+          lowerContent.includes('lovesick') ||
+          lowerContent.includes('love syndrome')
+        ) {
+          onLoveMode?.()
+        }
         break
 
       case 'error':
@@ -513,6 +527,14 @@ function ChatPanel({ selectedModel, onSseEvent, onQueryStart, onOpenPdf, connect
                 >
                   <span className="example-icon">■</span>
                   <span className="example-text">Michael Chen's visit history</span>
+                  <span className="example-arrow">→</span>
+                </button>
+                <button
+                  className="example-btn"
+                  onClick={() => setInputValue("Valentine has racing heart and daydreaming - diagnosis?")}
+                >
+                  <span className="example-icon">♥</span>
+                  <span className="example-text">Valentine's symptoms</span>
                   <span className="example-arrow">→</span>
                 </button>
               </div>

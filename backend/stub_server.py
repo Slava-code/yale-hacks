@@ -207,6 +207,107 @@ SSE_SCENARIO = [
 ]
 
 
+# --- Love Mode SSE scenario (Valentine case - Yhack theme) ---
+
+LOVE_SCENARIO = [
+    {
+        "type": "deidentified_query",
+        "data": {
+            "type": "deidentified_query",
+            "content": "[PATIENT_6], 28, female, presenting with racing heart, inability to focus, and constant daydreaming. What could be going on?",
+            "token_summary": {"PATIENT_6": "patient_name"},
+        },
+        "delay": 0.5,
+    },
+    {
+        "type": "cloud_thinking",
+        "data": {
+            "type": "cloud_thinking",
+            "content": "Analyzing symptoms: racing heart, difficulty concentrating, daydreaming...",
+        },
+        "delay": 1.0,
+    },
+    {
+        "type": "gatekeeper_query",
+        "data": {
+            "type": "gatekeeper_query",
+            "content": "What are the recent vital signs and cardiac workup for [PATIENT_6]?",
+            "turn": 1,
+        },
+        "delay": 1.2,
+    },
+    {
+        "type": "graph_traversal",
+        "data": {
+            "type": "graph_traversal",
+            "nodes": ["patient_006", "visit_006", "lab_010"],
+            "edges": [
+                {"source": "patient_006", "target": "visit_006"},
+                {"source": "visit_006", "target": "lab_010"},
+            ],
+            "turn": 1,
+        },
+        "delay": 0.8,
+    },
+    {
+        "type": "gatekeeper_response",
+        "data": {
+            "type": "gatekeeper_response",
+            "content": "Cardiac workup unremarkable [REF_1]. ECG: normal sinus rhythm with occasional PVCs. Thyroid panel: TSH 2.1 mIU/L (normal). Blood pressure: 118/76 mmHg. Heart rate elevated at 95 bpm but within normal limits.",
+            "turn": 1,
+            "refs_added": ["REF_1"],
+        },
+        "delay": 1.5,
+    },
+    {
+        "type": "gatekeeper_query",
+        "data": {
+            "type": "gatekeeper_query",
+            "content": "What is the social history and recent life events for [PATIENT_6]?",
+            "turn": 2,
+        },
+        "delay": 1.0,
+    },
+    {
+        "type": "graph_traversal",
+        "data": {
+            "type": "graph_traversal",
+            "nodes": ["patient_006", "visit_006", "condition_006"],
+            "edges": [
+                {"source": "patient_006", "target": "visit_006"},
+                {"source": "visit_006", "target": "condition_006"},
+            ],
+            "turn": 2,
+        },
+        "delay": 0.8,
+    },
+    {
+        "type": "gatekeeper_response",
+        "data": {
+            "type": "gatekeeper_response",
+            "content": "Social history [REF_2]: Patient recently started a new relationship approximately 3 weeks ago. Reports feeling 'butterflies' constantly, checking phone frequently, and difficulty sleeping due to excitement. No history of anxiety or cardiac conditions.",
+            "turn": 2,
+            "refs_added": ["REF_2"],
+        },
+        "delay": 2.0,
+    },
+    {
+        "type": "final_response",
+        "data": {
+            "type": "final_response",
+            "content": "After thorough analysis of the clinical findings, I can confirm that this patient has a classic case of **being in love**.\n\n**Diagnosis: Love** \n\n**Supporting Evidence:**\n\n1. **Cardiovascular symptoms** — Racing heart and elevated heart rate (95 bpm) [1] are consistent with increased catecholamine release (dopamine, norepinephrine) associated with new romantic attachment.\n\n2. **Cognitive effects** — Inability to focus and constant daydreaming [2] reflect the brain's reward circuitry being dominated by thoughts of the romantic interest. This is mediated by elevated dopamine levels in the nucleus accumbens.\n\n3. **Behavioral patterns** — Frequent phone checking and sleep disturbance due to excitement [2] are hallmark features of early-stage romantic love, driven by anticipation and reward-seeking behavior.\n\n4. **Timeline correlation** — Symptom onset approximately 3 weeks ago [2] coincides perfectly with the beginning of a new relationship, establishing clear causation.\n\n5. **Exclusion of pathology** — Normal ECG, thyroid function, and blood pressure rule out organic cardiac or endocrine causes.\n\n**Prognosis:** Excellent. This condition typically evolves into a more stable attachment phase over 12-18 months, with gradual normalization of catecholamine levels.\n\n**Recommendations:**\n- No pharmacological intervention required\n- Encourage patient to enjoy this beautiful phase of life\n- Follow-up only if symptoms cause significant functional impairment\n- Consider celebrating with flowers or chocolate",
+            "citations": [
+                {"ref_id": "REF_1", "index": 1, "display": "Cardiac Workup — Mar 2026, p.1", "pdf": "cardiac_valentine_2026.pdf", "page": 1},
+                {"ref_id": "REF_2", "index": 2, "display": "Social History — Mar 2026, p.1", "pdf": "progress_note_valentine_2026.pdf", "page": 1}
+            ],
+            "model_used": "claude",
+            "gatekeeper_turns": 2,
+        },
+        "delay": 0,
+    },
+]
+
+
 # --- Endpoints ---
 
 @app.get("/api/graph")
@@ -227,11 +328,21 @@ async def get_models():
 
 @app.post("/api/query")
 async def query(body: dict):
-    """Streams hardcoded SSE events for the John Smith lupus scenario.
-    Ignores the actual message/model — always returns the same scenario.
+    """Streams hardcoded SSE events. Selects scenario based on query content.
+
+    - Queries mentioning "Valentine" or "love" trigger the love scenario (Yhack theme)
+    - All other queries return the John Smith lupus scenario
     """
+    message = body.get("message", "").lower()
+
+    # Select scenario based on query content
+    if "valentine" in message or "racing heart" in message or "daydream" in message:
+        scenario = LOVE_SCENARIO
+    else:
+        scenario = SSE_SCENARIO
+
     async def event_stream():
-        for event in SSE_SCENARIO:
+        for event in scenario:
             await asyncio.sleep(event["delay"])
             yield f"event: {event['type']}\ndata: {json.dumps(event['data'])}\n\n"
 
