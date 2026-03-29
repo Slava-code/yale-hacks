@@ -173,6 +173,16 @@ At least one patient should be specifically designed for the demo scenario — a
 
 Test this patient's documents against Claude, GPT-4, and Gemini 20+ times to confirm all three models produce interesting, multi-turn reasoning before committing to it as the demo case.
 
+#### Current Demo Showcase Patients
+
+| Patient | ID | Diagnosis | Timeline | Visits | Theme |
+|---------|-----|-----------|----------|--------|-------|
+| John Smith | patient_001 | Systemic Lupus Erythematosus | 8 months | 15 | Autoimmune diagnostic reasoning |
+| Marcus Reed | patient_006 | Solanum-Type Encephalopathy (Zombie Virus) | 9 months | 16 | Novel pathogen identification |
+| Valentine Torres | patient_041 | Acute Amorosis Syndrome (In Love!) | 8 days | 15 | YHack "love" theme prize |
+
+**Valentine Torres (patient_041)** is a lighthearted demo case tied to the YHack hackathon "love" theme. A 22-year-old college student presents with racing heart, insomnia, butterflies in stomach, rosy flushed cheeks, appetite loss, and inability to concentrate. She visits 5 specialists over 8 days — cardiology, sleep medicine, GI, and psychiatry all find nothing wrong. The breakthrough comes from a detailed social history revealing a new romantic relationship that started 3 weeks before symptom onset. The discoverable condition is "Acute Amorosis Syndrome (In other words, this patient is in Love!)". When the cloud model identifies love in its response, the frontend triggers a hearts animation overlay and pink theme.
+
 ---
 
 ## 5. File Structure (Data & Scripts)

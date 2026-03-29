@@ -50,6 +50,8 @@ The cloud model's behavior cannot be scripted. Mitigation:
 
 - **Graceful narration:** If the model does something unexpected during live demo (asks a different question, gives answer too quickly), the presenter narrates around it: "As you can see, the model decided it had enough context — in other runs, it asked more questions, but the privacy architecture works the same regardless."
 
+- **Love scenario (YHack theme):** Valentine Torres (patient_041) is a lighthearted demo case where the diagnosis is "being in love." The frontend detects keywords like "in love", "diagnosis: love", "lovesick", or "love syndrome" in the final response (case-insensitive substring match in ChatPanel.jsx) and triggers a hearts overlay animation with a pink theme transition. The stub server selects this scenario when the query mentions "valentine", "racing heart", or "daydream." For the live demo, this is the crowd-pleasing finale — run it after the serious medical case to show the system's personality and tie into the hackathon theme.
+
 ### 2.2 Latency Considerations
 
 The demo involves multiple round trips: user → GX10 → cloud → GX10 → cloud (repeat) → GX10 → user. Each cloud API call adds 2–10 seconds depending on the model and response length.
