@@ -50,7 +50,11 @@ class GeminiAdapter(CloudAdapter):
         last_msg = messages[-1]["content"] if messages else ""
 
         chat = model.start_chat(history=gemini_history)
-        response = await chat.send_message_async(last_msg)
+        # Force tool use on first message so Gemini queries the gatekeeper
+        tool_config = None
+        if len(messages) == 1:
+            tool_config = {"function_calling_config": {"mode": "ANY"}}
+        response = await chat.send_message_async(last_msg, tool_config=tool_config)
         return self._response_to_dict(response)
 
     async def send_tool_result(self, messages: list[dict], tool_id: str, result: str) -> dict:
