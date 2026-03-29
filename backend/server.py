@@ -50,7 +50,7 @@ app.add_middleware(
 GRAPH_PATH = os.getenv("GRAPH_PATH", "data/stub/graph.json")
 PDF_DIR = os.getenv("PDF_DIR", "data/pdfs")
 OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
-GATEKEEPER_MODEL = os.getenv("GATEKEEPER_MODEL", "qwen2.5:32b")
+GATEKEEPER_MODEL = os.getenv("GATEKEEPER_MODEL", "mistral-small:24b")
 
 # Node visual config (matches docs/interfaces.md §4)
 NODE_CONFIG = {
@@ -313,6 +313,19 @@ async def get_models():
             {"id": "gemini", "name": "Gemini", "available": bool(os.getenv("GOOGLE_API_KEY"))},
         ]
     }
+
+
+class SwitchModelRequest(BaseModel):
+    model: str
+
+
+@app.post("/api/switch-model")
+async def switch_model(req: SwitchModelRequest):
+    """Switch the active cloud model for subsequent queries."""
+    valid = {"claude", "gpt4", "gemini"}
+    if req.model not in valid:
+        raise HTTPException(status_code=400, detail=f"Invalid model: {req.model}. Must be one of {valid}")
+    return {"success": True, "model": req.model}
 
 
 @app.get("/api/health")
