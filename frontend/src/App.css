@@ -400,7 +400,7 @@
 }
 
 /* Subtle vignette on graph panel */
-.panel-right::after {
+.panel-right-top::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -415,12 +415,27 @@
   flex-shrink: 0;
 }
 
-/* ===== REDACTED PANEL ===== */
-.panel-redacted {
-  width: 320px;
+/* ===== RIGHT PANEL SPLIT (graph + terminal) ===== */
+.panel-right-top {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.panel-right-bottom {
+  overflow: hidden;
+}
+
+.term-resize-handle {
+  height: 5px;
+  cursor: row-resize;
+  background: var(--border-subtle);
+  transition: background var(--duration-fast);
   flex-shrink: 0;
-  border-left: 1px solid var(--border-subtle);
-  animation: slide-in-right var(--duration-slow) var(--ease-out);
+}
+
+.term-resize-handle:hover {
+  background: var(--accent);
 }
 
 .panel-right.with-redacted {
