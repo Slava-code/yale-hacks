@@ -4,6 +4,7 @@ import GraphPanel from './components/GraphPanel'
 import PdfViewer from './components/PdfViewer'
 import RedactedView from './components/RedactedView'
 import IngestionAnimation from './components/IngestionAnimation'
+import HeartsOverlay from './components/HeartsOverlay'
 import './App.css'
 
 // Model provider configurations
@@ -51,6 +52,9 @@ function App() {
   // Ingestion animation state
   const [showAnimation, setShowAnimation] = useState(true)
   const [graphStats, setGraphStats] = useState(null)
+
+  // Love mode - Yhack theme easter egg
+  const [loveModeActive, setLoveModeActive] = useState(false)
 
   // Fetch available models on mount
   useEffect(() => {
@@ -125,8 +129,26 @@ function App() {
 
   const currentModelConfig = MODEL_PROVIDERS[selectedModel] || MODEL_PROVIDERS.claude
 
+  // Pink theme CSS variable overrides for love mode
+  const loveModeStyles = loveModeActive ? {
+    '--accent': '#ff6b9d',
+    '--accent-muted': 'rgba(255, 107, 157, 0.20)',
+    '--accent-subtle': 'rgba(255, 107, 157, 0.12)',
+    '--border-accent': 'rgba(255, 107, 157, 0.4)',
+    '--node-condition': '#ff6b9d',
+    '--node-patient': '#ff9ec4',
+    '--node-visit': '#ffb6d3',
+    '--node-medication': '#ff85b3',
+    '--node-lab': '#e080b0',
+    '--bg-tertiary': '#301828',
+    '--bg-elevated': '#3a1e32',
+    '--bg-hover': '#45253c',
+    '--border-default': 'rgba(255, 107, 157, 0.15)',
+    '--border-strong': 'rgba(255, 107, 157, 0.25)',
+  } : {}
+
   return (
-    <div className="app-container">
+    <div className={`app-container ${loveModeActive ? 'love-mode' : ''}`} style={loveModeStyles}>
       {showAnimation && (
         <IngestionAnimation
           onComplete={() => setShowAnimation(false)}
@@ -194,6 +216,7 @@ function App() {
             onQueryStart={handleQueryStart}
             onOpenPdf={handleOpenPdf}
             connectionStatus={connectionStatus}
+            onLoveMode={() => setLoveModeActive(true)}
           />
         </div>
         <div className="panel-divider" />
@@ -223,6 +246,9 @@ function App() {
           </div>
         )}
       </main>
+
+      {/* Love mode hearts overlay - Yhack theme */}
+      <HeartsOverlay isActive={loveModeActive} />
     </div>
   )
 }

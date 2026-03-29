@@ -1,0 +1,53 @@
+/* Hearts Overlay - Floating hearts animation for Love Mode */
+
+.hearts-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -50px;
+  color: #ff9ec4;
+  opacity: 0;
+  animation: float-up var(--duration, 4s) var(--delay, 0s) ease-out forwards;
+  text-shadow: 0 0 15px rgba(255, 107, 157, 0.7);
+  filter: drop-shadow(0 0 12px rgba(255, 107, 157, 0.6));
+}
+
+@keyframes float-up {
+  0% {
+    opacity: 0;
+    transform: translateY(0) translateX(0) rotate(0deg) scale(0.5);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(-10vh) translateX(calc(var(--drift, 0px) * 0.1)) rotate(10deg) scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(-50vh) translateX(calc(var(--drift, 0px) * 0.5)) rotate(-5deg) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-110vh) translateX(var(--drift, 0px)) rotate(15deg) scale(0.8);
+  }
+}
+
+/* Subtle pulsing glow effect on some hearts */
+.floating-heart:nth-child(3n) {
+  animation: float-up var(--duration, 4s) var(--delay, 0s) ease-out forwards,
+             heart-pulse 0.8s ease-in-out infinite;
+}
+
+@keyframes heart-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 12px rgba(255, 107, 157, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 24px rgba(255, 107, 157, 0.9));
+  }
+}
