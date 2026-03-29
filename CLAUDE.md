@@ -76,6 +76,18 @@ After changing any document, check the related documents listed below for incons
 
 ---
 
+## Frontend Build & Deploy
+
+The backend on the GX10 serves the frontend from `frontend/dist/`. The dist is committed to the repo. **Do not build on the GX10** — always build locally and commit:
+
+```bash
+cd frontend && npm run build
+```
+
+After building, commit the updated `frontend/dist/`, push, and pull on the GX10.
+
+---
+
 ## GX10 Device Access
 
 The GX10 is the on-premises hardware that runs the gatekeeper model and holds the knowledge graph. Connection credentials are in `.env` (gitignored).
