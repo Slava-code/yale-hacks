@@ -158,5 +158,15 @@
     "lab_markers": "Generally no specific lab tests needed. CBC may show mild leukocytosis. Procalcitonin can help distinguish bacterial from viral infection. Chest X-ray to exclude pneumonia when clinically indicated.",
     "epidemiology": "One of the most common outpatient diagnoses. Annual incidence approximately 5% of adults. More common in fall and winter months. Over 90% of cases are viral in etiology. Accounts for significant antibiotic overprescribing.",
     "icd_code": "J20.9"
+  },
+  {
+    "name": "Acute Amorosis Syndrome (In other words, this patient is in Love!)",
+    "category": "psychosomatic/behavioral",
+    "description": "A benign, self-limiting psychophysiological state characterized by elevated catecholamine release, disrupted executive function, and intrusive reward-seeking cognition, triggered by the formation of a new romantic attachment. Often misdiagnosed as anxiety, cardiac arrhythmia, or thyroid dysfunction due to overlapping sympathetic symptoms. Biochemically mediated by surges in dopamine, norepinephrine, and oxytocin. Onset is acute, typically within days of initial romantic contact.",
+    "symptoms": "Cardiovascular: resting tachycardia (85-110 bpm), palpitations, diaphoresis (sweaty palms), rosy flushed cheeks (cutaneous vasodilation). Gastrointestinal: decreased appetite, epigastric fluttering sensation (butterflies in stomach), mild nausea. Neuropsychiatric: insomnia with racing thoughts, inability to concentrate, intrusive daydreaming, euphoria alternating with anxious anticipation, compulsive idealization of another individual, frequent phone-checking behavior. Ophthalmologic: mydriasis (dilated pupils), increased eye contact-seeking. General: increased energy despite poor sleep, unintentional weight loss.",
+    "diagnostic_criteria": "All of the following must be met: (1) Persistent sympathetic hyperarousal symptoms (tachycardia, insomnia, appetite loss, rosy cheeks, butterflies) lasting more than 2 weeks, (2) Normal cardiac workup (ECG, troponin, echocardiography), (3) Normal thyroid function, (4) Normal anxiety/depression screening excluding primary psychiatric etiology (PHQ-9 below 10, GAD-7 below 10), (5) Social history revealing a new romantic attachment temporally correlated with symptom onset, (6) Symptoms improve in the presence of the attachment figure.",
+    "lab_markers": "All standard labs normal: CBC, CMP, TSH, free T4, troponin, BNP, cortisol, urinalysis. Elevated catecholamines (dopamine, norepinephrine) on 24-hour urine collection if tested, but not routinely ordered. ECG: normal sinus rhythm, may show sinus tachycardia or occasional PVCs. Echocardiogram: structurally normal heart.",
+    "epidemiology": "Extremely common; estimated lifetime prevalence approaching 95-98% of the global population. No sex predilection. Peak incidence in ages 15-30 but can occur at any age. Typically self-limiting, transitioning to stable attachment phase within 12-18 months as catecholamine levels normalize. Recurrence is common and expected.",
+    "icd_code": "F63.9"
   }
 ]

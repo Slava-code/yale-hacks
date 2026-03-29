@@ -1,0 +1,368 @@
+{
+  "id": "patient_041",
+  "name": "Valentine Torres",
+  "age": 22,
+  "sex": "female",
+  "mrn": "MRN-14214",
+  "dob": "2004-02-14",
+  "tier": "demo",
+  "summary": "A 22-year-old college student presenting with racing heart, insomnia, appetite loss, rosy flushed cheeks, butterflies in stomach, and inability to concentrate over 8 days — all workups normal — ultimately attributable to new-onset romantic attachment (Acute Amorosis Syndrome).",
+  "storyline": "A panicky 22-year-old college student visits Student Health Services repeatedly over 8 days, convinced something is seriously wrong. Racing heart leads to same-day ECG and cardiology referral (normal). Insomnia with racing thoughts prompts sleep medicine consult (normal). Progressive appetite loss and butterflies in her stomach trigger GI workup (normal). Inability to focus on coursework and persistent rosy flushed cheeks raise anxiety concerns, leading to psychiatry consult — but screening scores are too low for primary anxiety or depression. The breakthrough comes during a detailed social history: a new romantic relationship started 3 weeks before symptom onset, perfectly correlating with every complaint. All medications are discontinued. Formal diagnosis: Acute Amorosis Syndrome. In other words, this patient is in Love!",
+
+  "conditions": [
+    {
+      "name": "Sinus Tachycardia, Unspecified",
+      "icd_code": "R00.0",
+      "status": "resolved",
+      "diagnosed_visit": "visit_02",
+      "notes": "Resting HR 95-102 bpm on repeated measurements. No structural cardiac abnormality found."
+    },
+    {
+      "name": "Insomnia, Unspecified",
+      "icd_code": "G47.00",
+      "status": "resolved",
+      "diagnosed_visit": "visit_04",
+      "notes": "Difficulty initiating sleep due to racing thoughts. Sleep study showed prolonged latency but normal architecture."
+    },
+    {
+      "name": "Anorexia (Appetite Loss)",
+      "icd_code": "R63.0",
+      "status": "resolved",
+      "diagnosed_visit": "visit_06",
+      "notes": "Decreased appetite with 3 lb weight loss over 1 week. Epigastric fluttering (butterflies). No organic GI pathology."
+    },
+    {
+      "name": "Generalized Anxiety Disorder (Rule-Out)",
+      "icd_code": "F41.1",
+      "status": "resolved",
+      "diagnosed_visit": "visit_08",
+      "notes": "Suspected based on symptom overlap. Psychiatry screening scores too low to support primary anxiety diagnosis."
+    },
+    {
+      "name": "Acute Amorosis Syndrome (In other words, this patient is in Love!)",
+      "icd_code": "F63.9",
+      "status": "active",
+      "diagnosed_visit": "visit_13",
+      "notes": "Benign psychophysiological state driven by new romantic attachment. All symptoms attributable to elevated catecholamine release.",
+      "discoverable": true
+    }
+  ],
+
+  "medications": [
+    {
+      "name": "Propranolol",
+      "dosage": "10mg",
+      "frequency": "as needed for palpitations",
+      "start_visit": "visit_02",
+      "end_visit": "visit_12",
+      "status": "discontinued",
+      "treats": "Sinus Tachycardia, Unspecified",
+      "monitored_by_labs": ["Heart Rate"],
+      "notes": "Low-dose beta-blocker for symptomatic tachycardia relief"
+    },
+    {
+      "name": "Melatonin",
+      "dosage": "3mg",
+      "frequency": "nightly at bedtime",
+      "start_visit": "visit_04",
+      "end_visit": "visit_12",
+      "status": "discontinued",
+      "treats": "Insomnia, Unspecified",
+      "notes": "OTC sleep supplement for difficulty initiating sleep"
+    },
+    {
+      "name": "Ondansetron",
+      "dosage": "4mg",
+      "frequency": "as needed for nausea",
+      "start_visit": "visit_06",
+      "end_visit": "visit_12",
+      "status": "discontinued",
+      "treats": "Anorexia (Appetite Loss)",
+      "notes": "Antiemetic for epigastric discomfort and butterflies sensation"
+    },
+    {
+      "name": "Dark Chocolate (Prescribed)",
+      "dosage": "30g",
+      "frequency": "daily",
+      "start_visit": "visit_13",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Acute Amorosis Syndrome (In other words, this patient is in Love!)",
+      "notes": "Theobromine and phenylethylamine content supports endorphin release. Prescriber notes: enjoy responsibly."
+    }
+  ],
+
+  "family_history": [
+    {
+      "relation": "mother",
+      "condition": "Panic Disorder",
+      "diagnosed_age": 30
+    }
+  ],
+
+  "providers": [
+    {
+      "name": "Dr. Mia Castillo",
+      "role": "attending",
+      "department": "Student Health Services"
+    },
+    {
+      "name": "Dr. Ryan Everett",
+      "role": "specialist",
+      "department": "Cardiology"
+    },
+    {
+      "name": "Dr. Hannah Park",
+      "role": "specialist",
+      "department": "Sleep Medicine"
+    },
+    {
+      "name": "Dr. Nora Kim",
+      "role": "specialist",
+      "department": "Gastroenterology"
+    },
+    {
+      "name": "Dr. Leo Vasquez",
+      "role": "specialist",
+      "department": "Psychiatry"
+    }
+  ],
+
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2026-03-16",
+      "type": "initial",
+      "provider": "Dr. Mia Castillo",
+      "chief_complaint": "Racing heart for 2 weeks, feels like heart is going to explode",
+      "narrative": "22-year-old female presents to Student Health with a 2-week history of racing heart. States she first noticed palpitations about 3 weeks ago but they have intensified. Denies chest pain, syncope, or shortness of breath at rest. Reports the sensation is worst when she thinks about 'certain things' but declines to elaborate. Also notes sweaty palms and flushed cheeks throughout the day. No prior cardiac history. No caffeine increase. Vitals notable for HR 98 bpm, BP 118/72 mmHg. Cardiac exam: regular rate, no murmurs. Basic labs ordered.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_torres_2026_mar.pdf"
+      },
+      "labs": [
+        {"test": "CBC", "value": "WBC 6.8, Hgb 13.2, Plt 245", "unit": "K/uL, g/dL, K/uL", "range": "4.5-11.0, 12.0-16.0, 150-400", "flag": "normal"},
+        {"test": "TSH", "value": "2.1", "unit": "mIU/L", "range": "0.4-4.0", "flag": "normal"},
+        {"test": "Comprehensive Metabolic Panel", "value": "All within normal limits", "unit": "various", "range": "standard", "flag": "normal"}
+      ],
+      "referrals": [
+        {"to": "Dr. Ryan Everett", "reason": "Persistent tachycardia, rule out cardiac etiology"}
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2026-03-16",
+      "type": "follow-up",
+      "provider": "Dr. Mia Castillo",
+      "chief_complaint": "Same-day follow-up — lab results review, racing heart persists",
+      "narrative": "Patient returns same afternoon for lab review. CBC, TSH, CMP all normal. ECG performed in office: normal sinus rhythm at 98 bpm, no ST changes, no arrhythmia. HR remains elevated at 98 bpm despite being at rest for 15 minutes. Patient appears flushed with noticeably rosy cheeks. Working diagnosis: sinus tachycardia, unspecified. Started on low-dose propranolol 10mg PRN for symptom relief. Cardiology referral placed for next day.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_torres_2026_mar.pdf"
+      },
+      "labs": [
+        {"test": "ECG", "value": "Normal sinus rhythm, rate 98, no ST-T changes", "unit": "bpm", "range": "60-100", "flag": "normal"},
+        {"test": "Heart Rate", "value": "98", "unit": "bpm", "range": "60-100", "flag": "normal"}
+      ],
+      "medications_started": ["Propranolol"]
+    },
+    {
+      "ref": "visit_03",
+      "date": "2026-03-17",
+      "type": "consult",
+      "provider": "Dr. Ryan Everett",
+      "chief_complaint": "Cardiology consult — palpitations and persistent tachycardia",
+      "narrative": "Cardiology consultation for a 22-year-old female with 3-week history of palpitations and resting tachycardia (95-102 bpm). No chest pain, dyspnea, or syncope. No family history of sudden cardiac death or cardiomyopathy. Physical exam: well-appearing young woman with flushed cheeks, regular cardiac rhythm, no murmurs or gallops. Troponin negative. BNP normal. Transthoracic echocardiogram performed: normal LV function (EF 62%), no valvular abnormalities, no structural defects, no pericardial effusion. Holter monitor not indicated given benign presentation. Impression: benign sinus tachycardia, likely related to autonomic hyperactivation. No cardiac pathology identified. Continue propranolol PRN, return to PCP.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_torres_2026_mar.pdf"
+      },
+      "labs": [
+        {"test": "Troponin I", "value": "<0.01", "unit": "ng/mL", "range": "<0.04", "flag": "normal"},
+        {"test": "BNP", "value": "22", "unit": "pg/mL", "range": "<100", "flag": "normal"}
+      ],
+      "procedures": [
+        {"name": "Transthoracic Echocardiogram", "outcome": "Normal LV function (EF 62%), no valvular abnormalities, no structural defects, no pericardial effusion"}
+      ]
+    },
+    {
+      "ref": "visit_04",
+      "date": "2026-03-18",
+      "type": "follow-up",
+      "provider": "Dr. Mia Castillo",
+      "chief_complaint": "Cannot sleep — up all night with racing thoughts, mind won't turn off",
+      "narrative": "Patient returns reporting severe difficulty initiating sleep for the past 2 weeks. States she lies awake for hours with her mind racing, thinking about someone she recently met. When asked what she thinks about, she blushes and says 'just stuff.' Reports checking her phone constantly at night waiting for messages. Denies nightmares, sleep apnea symptoms, or restless legs. No history of insomnia. Cardiology workup was clean. Working diagnosis: insomnia, unspecified. Started melatonin 3mg nightly. Referred to sleep medicine for evaluation.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_torres_2026_mar_2.pdf"
+      },
+      "medications_started": ["Melatonin"],
+      "referrals": [
+        {"to": "Dr. Hannah Park", "reason": "New-onset insomnia with racing thoughts, rule out sleep disorder"}
+      ]
+    },
+    {
+      "ref": "visit_05",
+      "date": "2026-03-19",
+      "type": "consult",
+      "provider": "Dr. Hannah Park",
+      "chief_complaint": "Sleep medicine consult — insomnia, racing thoughts at night",
+      "narrative": "Sleep medicine consultation for a 22-year-old college student with 2-3 week history of difficulty initiating sleep. Reports lying awake 2-3 hours nightly with intrusive thoughts that she describes as 'not anxious, more like excited.' Overnight sleep study performed: total sleep time 5.2 hours, sleep onset latency 68 minutes (prolonged), normal sleep architecture once asleep, normal REM latency, AHI 0.3 (normal), no periodic limb movements. No narcolepsy features. Impression: prolonged sleep onset latency without primary sleep disorder. Pattern most consistent with hyperarousal state, etiology unclear. Continue melatonin, sleep hygiene counseling provided.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_torres_2026_mar_2.pdf"
+      },
+      "labs": [
+        {"test": "Sleep Study (PSG)", "value": "TST 5.2h, SOL 68min, AHI 0.3, normal architecture", "unit": "hours/min/events per hr", "range": "TST >6h, SOL <30min, AHI <5", "flag": "high"}
+      ]
+    },
+    {
+      "ref": "visit_06",
+      "date": "2026-03-19",
+      "type": "follow-up",
+      "provider": "Dr. Mia Castillo",
+      "chief_complaint": "Lost appetite, hasn't eaten properly in days, butterflies in stomach",
+      "narrative": "Patient presents same day as sleep consult with new complaint of decreased appetite for approximately 2 weeks. Reports persistent sensation of butterflies in her stomach, especially when she receives text messages. Has lost approximately 3 lbs. Denies abdominal pain, vomiting, diarrhea, or dysphagia. Notes that she feels mildly nauseous but attributes it to 'nervous excitement.' Weight: 127 lbs (down from 130 lbs at visit_01). Working diagnosis: anorexia (appetite loss). Started ondansetron 4mg PRN for nausea. GI referral placed.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_torres_2026_mar_3.pdf"
+      },
+      "medications_started": ["Ondansetron"],
+      "referrals": [
+        {"to": "Dr. Nora Kim", "reason": "Unexplained appetite loss with weight loss and epigastric discomfort"}
+      ]
+    },
+    {
+      "ref": "visit_07",
+      "date": "2026-03-20",
+      "type": "consult",
+      "provider": "Dr. Nora Kim",
+      "chief_complaint": "GI consult — appetite loss, butterflies sensation, mild nausea, weight loss",
+      "narrative": "Gastroenterology consultation for a 22-year-old female with 2-week history of decreased appetite, epigastric fluttering sensation she describes as 'butterflies,' mild nausea, and 3 lb weight loss. No hematemesis, melena, or hematochezia. No NSAID use. No travel history. Physical exam: abdomen soft, non-tender, non-distended, normal bowel sounds, no organomegaly. Lipase normal. H. pylori breath test negative. CMP unremarkable. Impression: no organic GI pathology identified. Symptoms may reflect functional dyspepsia or psychosomatic manifestation. Return to PCP for further workup of systemic etiology.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_torres_2026_mar_3.pdf"
+      },
+      "labs": [
+        {"test": "Lipase", "value": "32", "unit": "U/L", "range": "10-73", "flag": "normal"},
+        {"test": "H. pylori Breath Test", "value": "Negative", "unit": "qualitative", "range": "Negative", "flag": "normal"},
+        {"test": "Comprehensive Metabolic Panel", "value": "All within normal limits", "unit": "various", "range": "standard", "flag": "normal"}
+      ]
+    },
+    {
+      "ref": "visit_08",
+      "date": "2026-03-20",
+      "type": "follow-up",
+      "provider": "Dr. Mia Castillo",
+      "chief_complaint": "Cannot concentrate on coursework, constant daydreaming, flushed cheeks",
+      "narrative": "Patient returns same day after GI consult (negative). Now reports a third major complaint: complete inability to concentrate on her studies for the past 2-3 weeks. Describes sitting in lecture and daydreaming for the entire hour. Grades slipping. Also notes persistently flushed rosy cheeks that friends have commented on. Denies fever or rash elsewhere. No substance use. Morning cortisol and urinalysis ordered to rule out endocrine causes. Given the constellation of symptoms — tachycardia, insomnia, appetite loss, and now cognitive disruption — anxiety is suspected. Psychiatry referral placed.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_torres_2026_mar_4.pdf"
+      },
+      "labs": [
+        {"test": "Morning Cortisol", "value": "14.2", "unit": "mcg/dL", "range": "6.0-18.0", "flag": "normal"},
+        {"test": "Urinalysis", "value": "Clear, no protein, no glucose, no WBC", "unit": "qualitative", "range": "Normal", "flag": "normal"}
+      ]
+    },
+    {
+      "ref": "visit_09",
+      "date": "2026-03-21",
+      "type": "consult",
+      "provider": "Dr. Leo Vasquez",
+      "chief_complaint": "Psychiatry consult — rule out generalized anxiety disorder or panic disorder",
+      "narrative": "Psychiatric evaluation of a 22-year-old college student referred for possible GAD or panic disorder. Symptom constellation includes tachycardia, insomnia, appetite loss, difficulty concentrating, and autonomic hyperarousal — all of which overlap with anxiety spectrum. PHQ-9 administered: score 5 (mild). GAD-7 administered: score 4 (minimal). Neither score meets threshold for clinical depression or anxiety disorder. Patient denies worry about academics, finances, or family. When asked what she thinks about at night, she smiles and says 'a person.' No suicidal ideation, no psychotic symptoms, no history of trauma. Impression: screening scores do not support primary anxiety or depressive disorder. Symptom pattern is unusual — autonomic hyperarousal with positive affect rather than distress. Recommend further social history exploration with PCP.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_torres_2026_mar_4.pdf"
+      },
+      "labs": [
+        {"test": "PHQ-9", "value": "5", "unit": "score", "range": "0-4 minimal, 5-9 mild, 10+ moderate", "flag": "normal"},
+        {"test": "GAD-7", "value": "4", "unit": "score", "range": "0-4 minimal, 5-9 mild, 10+ moderate", "flag": "normal"}
+      ]
+    },
+    {
+      "ref": "visit_10",
+      "date": "2026-03-21",
+      "type": "follow-up",
+      "provider": "Dr. Mia Castillo",
+      "chief_complaint": "Follow-up — all specialist workups negative, symptoms persist, what is wrong with me?",
+      "narrative": "Patient returns frustrated and anxious after cardiology, sleep medicine, GI, and psychiatry all found nothing wrong. States: 'I've seen four specialists in five days and nobody can tell me what's happening to me.' Repeat vitals: HR 95 bpm, BP 116/74. Still flushed cheeks. Detailed social history taken for the first time: Patient reveals she met someone at a campus event approximately 3 weeks ago — precisely when symptoms began. They have been texting constantly, seeing each other daily, and she describes feeling 'like electricity' when they are together. Symptoms notably worse when apart, better when together. Phone-checking behavior is obsessive. Friends say she 'glows' (likely the flushed cheeks). Clinician notes the temporal correlation is striking.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_torres_2026_mar_5.pdf"
+      },
+      "labs": [
+        {"test": "Heart Rate", "value": "95", "unit": "bpm", "range": "60-100", "flag": "normal"}
+      ]
+    },
+    {
+      "ref": "visit_11",
+      "date": "2026-03-22",
+      "type": "follow-up",
+      "provider": "Dr. Mia Castillo",
+      "chief_complaint": "Detailed social history and symptom timeline mapping",
+      "narrative": "Extended visit to map symptom timeline against social history. Working backward: palpitations started ~March 1 (2 days after meeting new partner on Feb 27). Insomnia started ~March 3 (after first date). Appetite loss and butterflies started ~March 5 (after first kiss, per patient). Concentration problems started ~March 8 (began spending every free moment together). Rosy cheeks first noticed by roommate ~March 4. Every symptom onset correlates precisely with relationship milestones. Patient had not previously connected the dots. When presented with the timeline, patient pauses and says: 'Oh my god. Am I... is this because I'm in love?' Clinician documents the temporal correlation and begins literature review.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_torres_2026_mar_6.pdf"
+      }
+    },
+    {
+      "ref": "visit_12",
+      "date": "2026-03-22",
+      "type": "follow-up",
+      "provider": "Dr. Mia Castillo",
+      "chief_complaint": "Medication review and discontinuation — symptoms attributable to new relationship",
+      "narrative": "Following the social history mapping, all current medications are being discontinued as the underlying etiology appears to be new-onset romantic attachment rather than cardiac, sleep, or GI pathology. Propranolol discontinued — tachycardia is catecholamine-driven and benign. Melatonin discontinued — insomnia is excitement-based, not pathological. Ondansetron discontinued — butterflies are psychosomatic, not GI. Patient tolerating discontinuation well. HR today: 92 bpm. Patient reports she saw her partner this morning and 'felt amazing.' Formal diagnostic assessment planned for next visit.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_torres_2026_mar_7.pdf"
+      },
+      "labs": [
+        {"test": "Heart Rate", "value": "92", "unit": "bpm", "range": "60-100", "flag": "normal"}
+      ],
+      "medications_discontinued": ["Propranolol", "Melatonin", "Ondansetron"]
+    },
+    {
+      "ref": "visit_13",
+      "date": "2026-03-23",
+      "type": "follow-up",
+      "provider": "Dr. Mia Castillo",
+      "chief_complaint": "Formal diagnostic assessment — Acute Amorosis Syndrome",
+      "narrative": "Formal diagnostic synthesis. Patient meets all criteria for Acute Amorosis Syndrome: (1) Persistent sympathetic hyperarousal lasting >2 weeks — confirmed. (2) Normal cardiac workup — confirmed (ECG, troponin, BNP, echo all normal). (3) Normal thyroid function — confirmed (TSH 2.1). (4) Anxiety/depression screening below clinical threshold — confirmed (PHQ-9: 5, GAD-7: 4). (5) New romantic attachment temporally correlated with symptom onset — confirmed (met partner Feb 27, symptoms began March 1). (6) Symptoms improve in presence of attachment figure — confirmed per patient report. Diagnosis: Acute Amorosis Syndrome. In other words, this patient is in Love! Prescribed dark chocolate 30g daily (theobromine and phenylethylamine support endorphin release). Prognosis: excellent. Condition is expected to transition to stable attachment phase within 12-18 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_torres_2026_mar_8.pdf"
+      },
+      "medications_started": ["Dark Chocolate (Prescribed)"]
+    },
+    {
+      "ref": "visit_14",
+      "date": "2026-03-23",
+      "type": "consult",
+      "provider": "Dr. Leo Vasquez",
+      "chief_complaint": "Psychiatry clearance — confirming benign etiology of symptoms",
+      "narrative": "Follow-up psychiatric consultation at PCP request to confirm that the patient's symptom constellation does not represent an emerging psychiatric disorder. Review of updated social history and symptom timeline confirms that all symptoms are temporally linked to new romantic attachment. No evidence of obsessive-compulsive disorder (intrusive thoughts are ego-syntonic and pleasurable, not distressing). No evidence of erotomania or delusional disorder (relationship is real and reciprocal). No evidence of mania (sleep is reduced but patient is not irritable, no grandiosity, no reckless spending). Impression: concur with PCP assessment. This is a normal human experience presenting with prominent somatic features. No psychiatric intervention indicated.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_torres_2026_mar_5.pdf"
+      }
+    },
+    {
+      "ref": "visit_15",
+      "date": "2026-03-24",
+      "type": "routine",
+      "provider": "Dr. Mia Castillo",
+      "chief_complaint": "Final check-in — patient reports feeling wonderful",
+      "narrative": "One-week follow-up since initial presentation. Patient appears notably improved and reports feeling 'better than I've ever felt in my life.' Palpitations have decreased — she no longer notices them unless she thinks about it. Sleep improving — falling asleep within 30 minutes (down from 2-3 hours). Appetite returning — ate a full breakfast for the first time in weeks. Concentration still impaired but 'manageable.' Rosy cheeks persist but patient says her partner 'loves them.' HR 72 bpm — normal for the first time since presentation. All symptoms trending toward resolution. Patient asked if being in love is really a medical condition. Clinician explained that while not a disease, the neurochemistry of early romantic love produces real physiological effects that are indistinguishable from medical symptoms. Patient laughed and said: 'Best diagnosis I've ever gotten.' Plan: no further follow-up needed. Return PRN.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_torres_2026_mar_9.pdf"
+      },
+      "labs": [
+        {"test": "Heart Rate", "value": "72", "unit": "bpm", "range": "60-100", "flag": "normal"}
+      ]
+    }
+  ]
+}
