@@ -42,32 +42,12 @@ function TypeWriter({ content, speed = 20, onComplete, skipAnimation = false }) 
   )
 }
 
-function ChatPanel({ selectedModel, onModelChange, onSseEvent, onQueryStart, onOpenPdf }) {
+function ChatPanel({ selectedModel, onSseEvent, onQueryStart, onOpenPdf, connectionStatus }) {
   const [messages, setMessages] = useState([])
   const [inputValue, setInputValue] = useState('')
-  const [models, setModels] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef(null)
   const abortControllerRef = useRef(null)
-
-  // Fetch available models on mount
-  useEffect(() => {
-    async function fetchModels() {
-      try {
-        const response = await fetch('/api/models')
-        const data = await response.json()
-        setModels(data.models || [])
-      } catch (error) {
-        console.error('Failed to fetch models:', error)
-        setModels([
-          { id: 'claude', name: 'Claude', available: true },
-          { id: 'gpt4', name: 'GPT-4', available: true },
-          { id: 'gemini', name: 'Gemini', available: true },
-        ])
-      }
-    }
-    fetchModels()
-  }, [])
 
   // Auto-scroll to bottom when messages change
   useEffect(() => {
@@ -362,22 +342,11 @@ function ChatPanel({ selectedModel, onModelChange, onSseEvent, onQueryStart, onO
 
   return (
     <div className="chat-panel">
-      {/* Model Selector */}
+      {/* Chat Header - simplified since model selector moved to app header */}
       <div className="chat-header">
-        <select
-          className="model-selector"
-          value={selectedModel}
-          onChange={(e) => onModelChange(e.target.value)}
-          disabled={isLoading}
-        >
-          {models.map((model) => (
-            <option key={model.id} value={model.id} disabled={!model.available}>
-              {model.name}
-            </option>
-          ))}
-        </select>
-        <span className={`model-status ${isLoading ? 'status-loading' : ''}`}>
-          {isLoading ? 'Processing...' : 'Ready'}
+        <span className="chat-header-title">Clinical Chat</span>
+        <span className={`chat-status ${isLoading ? 'status-loading' : ''}`}>
+          {isLoading ? 'Processing query...' : 'Ready'}
         </span>
       </div>
 
