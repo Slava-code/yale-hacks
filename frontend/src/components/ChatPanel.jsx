@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback, memo } from 'react'
-import ReactMarkdown from 'react-markdown'
+import { useState, useEffect, useRef, useCallback, memo } from 'react'
 import logoFilter from '../assets/logo-filter.svg'
 import './ChatPanel.css'
 
@@ -102,7 +101,7 @@ function TypeWriter({ content, speed = 20, onComplete, skipAnimation = false }) 
 
   return (
     <span className="typewriter-text">
-      <ReactMarkdown className="markdown-content">{displayedContent}</ReactMarkdown>
+      {displayedContent}
       {isTyping && <span className="typewriter-cursor">|</span>}
     </span>
   )
@@ -162,43 +161,12 @@ function ChatMessage({ message, index, renderContent, onOpenPdf }) {
   )
 }
 
-// Helper to replace [number] patterns in React children with clickable citation buttons
-function processCitations(children, citationMap, onOpenPdf) {
-  if (!children) return children
-  return React.Children.map(children, (child) => {
-    if (typeof child !== 'string') return child
-    const parts = child.split(/(\[\d+\])/g)
-    if (parts.length === 1) return child
-    return parts.map((part, i) => {
-      const match = part.match(/\[(\d+)\]/)
-      if (match) {
-        const idx = parseInt(match[1], 10)
-        const citation = citationMap[idx]
-        if (citation) {
-          return (
-            <button
-              key={i}
-              className="citation-link"
-              title={citation.display}
-              onClick={() => onOpenPdf?.(citation.pdf, citation.page, citation)}
-            >
-              [{idx}]
-            </button>
-          )
-        }
-      }
-      return part
-    })
-  })
-}
-
 function ChatPanel({ selectedModel, onSseEvent, onQueryStart, onOpenPdf, connectionStatus, onLoveMode }) {
   const [messages, setMessages] = useState([])
   const [inputValue, setInputValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef(null)
   const abortControllerRef = useRef(null)
-  const sessionIdRef = useRef(crypto.randomUUID())
 
   // Auto-scroll to bottom when messages change
   useEffect(() => {
@@ -384,7 +352,6 @@ function ChatPanel({ selectedModel, onSseEvent, onQueryStart, onOpenPdf, connect
         body: JSON.stringify({
           message: query,
           model: selectedModel,
-          session_id: sessionIdRef.current,
         }),
         signal: abortControllerRef.current.signal,
       })
@@ -475,28 +442,37 @@ function ChatPanel({ selectedModel, onSseEvent, onQueryStart, onOpenPdf, connect
           </div>
         )
       }
-      return <div className="message-text"><ReactMarkdown className="markdown-content">{message.content}</ReactMarkdown></div>
+      return <div className="message-text">{message.content}</div>
     }
 
-    // For messages with citations, render full markdown then make citation numbers clickable
-    // We replace [number] with a placeholder, render markdown, then swap placeholders for buttons
-    const citationMap = {}
-    message.citations.forEach((c) => { citationMap[c.index] = c })
+    // For messages with citations, render with clickable links
+    // Skip animation for these as they have complex structure
+    const parts = message.content.split(/(\[\d+\])/g)
 
     return (
       <div className="message-text">
-        <ReactMarkdown
-          className="markdown-content"
-          components={{
-            // Override text rendering to inject citation buttons
-            p: ({ children, ...props }) => <p {...props}>{processCitations(children, citationMap, onOpenPdf)}</p>,
-            li: ({ children, ...props }) => <li {...props}>{processCitations(children, citationMap, onOpenPdf)}</li>,
-            strong: ({ children, ...props }) => <strong {...props}>{processCitations(children, citationMap, onOpenPdf)}</strong>,
-            em: ({ children, ...props }) => <em {...props}>{processCitations(children, citationMap, onOpenPdf)}</em>,
-          }}
-        >
-          {message.content}
-        </ReactMarkdown>
+        {parts.map((part, index) => {
+          const match = part.match(/\[(\d+)\]/)
+          if (match) {
+            const citationIndex = parseInt(match[1], 10)
+            const citation = message.citations.find((c) => c.index === citationIndex)
+            if (citation) {
+              return (
+                <button
+                  key={index}
+                  className="citation-link"
+                  title={citation.display}
+                  onClick={() => {
+                    onOpenPdf?.(citation.pdf, citation.page, citation)
+                  }}
+                >
+                  [{citationIndex}]
+                </button>
+              )
+            }
+          }
+          return <span key={index}>{part}</span>
+        })}
       </div>
     )
   }
