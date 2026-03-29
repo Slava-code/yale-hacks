@@ -32,7 +32,7 @@ Covers: GX10 hardware context, model selection & inference setup, gatekeeper sys
 
 ## 3. Knowledge Graph & Mock Data → [docs/knowledge-graph.md](./docs/knowledge-graph.md)
 
-The knowledge graph is stored as **in-memory JSON** — loaded once at startup, queried by the gatekeeper with zero disk I/O. The schema defines 8 node types (Patient, Visit, Condition, Medication, Lab Result, Procedure, Provider, Family History) and 10 edge types. Every node field is tagged `phi` or `safe` at construction time so the gatekeeper doesn't need real-time NER.
+The knowledge graph is stored as **in-memory JSON** — loaded once at startup, queried by the gatekeeper with zero disk I/O. The schema defines 9 node types (Patient, Visit, Condition, Medication, Lab Result, Procedure, Provider, Family History, Disease Reference) and 10 edge types. Every node field is tagged `phi` or `safe` at construction time so the gatekeeper doesn't need real-time NER.
 
 Mock data (~300 synthetic clinical PDFs across 30–40 patients) is generated via Claude/GPT-4, converted to PDF, then extracted into the graph with source provenance (file path + page number per node). At least one complex "demo showcase patient" is designed for the live demo scenario.
 

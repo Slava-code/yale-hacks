@@ -91,6 +91,17 @@ FAMILY_HISTORY
   - diagnosed_age: number (optional — age at diagnosis)
   - source_pdf: string
   - source_page: number
+
+DISEASE_REFERENCE
+  - id: string (e.g., "disease_ref_001")
+  - name: string (e.g., "Systemic Lupus Erythematosus")
+  - category: string (e.g., "autoimmune", "infectious", "neurological")
+  - description: string (clinical description)
+  - symptoms: string (typical symptom profile)
+  - diagnostic_criteria: string (how it's diagnosed)
+  - lab_markers: string (key lab findings)
+  - epidemiology: string (who gets it, how common)
+  - icd_code: string
 ```
 
 ### Edge types
@@ -107,6 +118,8 @@ MEDICATION → MONITORED_BY → LAB_RESULT
 PROVIDER → REFERRED_TO → PROVIDER
 PATIENT → HAS_FAMILY_HISTORY → FAMILY_HISTORY
 ```
+
+Note: DISEASE_REFERENCE nodes are standalone institutional knowledge and have no edges connecting them to patients. They are searchable by the gatekeeper when the cloud model requests differential diagnosis context.
 
 ### Source provenance
 

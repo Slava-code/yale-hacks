@@ -88,7 +88,7 @@ Returns the full knowledge graph for the 3D visualization.
 | Field | Type | Required | Notes |
 |-------|------|----------|-------|
 | `id` | string | yes | Unique across all nodes |
-| `type` | string | yes | `"patient"` \| `"visit"` \| `"condition"` \| `"medication"` \| `"lab_result"` \| `"procedure"` \| `"provider"` \| `"family_history"` |
+| `type` | string | yes | `"patient"` \| `"visit"` \| `"condition"` \| `"medication"` \| `"lab_result"` \| `"procedure"` \| `"provider"` \| `"family_history"` \| `"disease_reference"` |
 | `label` | string | yes | Display name for info card |
 | `color` | string | yes | Hex color for rendering |
 | `size` | number | yes | Relative node size for the graph |
@@ -469,6 +469,7 @@ Hardcoded in the frontend, but agreed here for consistency:
 | `procedure` | `#E67E22` (orange) | 8 | |
 | `provider` | `#1ABC9C` (teal) | 8 | |
 | `family_history` | `#D946EF` (magenta) | 7 | Family medical history entries |
+| `disease_reference` | `#3B82F6` (indigo) | 7 | Institutional knowledge base — not connected to patients |
 
 ### Edge types (exhaustive list)
 

@@ -18,6 +18,7 @@ Patient profiles are the **single source of truth** for both `scripts/generate_d
 | `age` | number | yes | |
 | `sex` | string | yes | `"male"` or `"female"` |
 | `mrn` | string | yes | Format: `MRN-NNNNN` |
+| `dob` | string | yes | ISO date `YYYY-MM-DD`, date of birth |
 | `summary` | string | yes | 1-2 sentence clinical overview |
 | `tier` | string | yes | `"demo"` \| `"complex"` \| `"moderate"` \| `"simple"` |
 | `storyline` | string | required for demo/complex | Narrative arc of the clinical case |
@@ -38,6 +39,7 @@ Each entry:
 | `status` | string | yes | `"active"` \| `"resolved"` \| `"chronic"` |
 | `diagnosed_visit` | string | no | Ref to a visit (e.g., `"visit_07"`) |
 | `notes` | string | no | Additional clinical context |
+| `discoverable` | boolean | no | Default `false`. When `true`, `build_graph.py` skips the `HAS_CONDITION` edge — the condition node is still created but not connected to the patient. Used for demo patients where the cloud model should discover the diagnosis via reasoning. |
 
 ## Medications Array
 
@@ -143,7 +145,7 @@ How `build_graph.py` converts profile sections to graph nodes and edges:
 |----------------|-----------|-----------|
 | Top-level patient fields | `patient` | — |
 | `visits[]` | `visit` | `HAD_VISIT` (patient → visit) |
-| `conditions[]` | `condition` | `HAS_CONDITION` (patient → condition) |
+| `conditions[]` | `condition` | `HAS_CONDITION` (patient → condition) — edge created only when `discoverable` is `false` (default) |
 | `medications[]` | `medication` | `PRESCRIBED` (patient → medication) |
 | `visits[].labs[]` | `lab_result` | `RESULTED_IN` (visit → lab_result) |
 | `visits[].procedures[]` | `procedure` | `PERFORMED` (visit → procedure) |

@@ -264,7 +264,7 @@ def call_gemini(prompt: str) -> str:
     """Call Gemini 2.5 Flash via REST API. Returns generated text."""
     api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
     if not api_key:
-        raise RuntimeError("GEMINI_API_KEY (or GOOGLE_API_KEY) not set in environment")
+        raise RuntimeError("GEMINI_API_KEY or GOOGLE_API_KEY not set in environment")
 
     payload = {
         "contents": [{"parts": [{"text": prompt}]}],
