@@ -198,7 +198,7 @@ Token mappings are ephemeral — created per interaction and destroyed immediate
 
 ## Team
 
-Built at YHacks 2026 by Kevin Rusagara, Slava, and team.
+Built at YHacks 2026 by Kevin Rusagara, Slava, and Sid.
 
 ## License
 
