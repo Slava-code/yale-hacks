@@ -1,0 +1,613 @@
+{
+  "id": "patient_013",
+  "name": "Anika Patel",
+  "age": 33,
+  "sex": "female",
+  "mrn": "MRN-34582",
+  "dob": "1990-11-10",
+  "tier": "complex",
+  "summary": "33-year-old female initially presenting with anxiety, weight loss, and palpitations. Diagnosed with Graves' disease, developed agranulocytosis on methimazole, underwent radioactive iodine ablation, leading to subsequent hypothyroidism and worsening thyroid eye disease.",
+  "storyline": "Anika Patel initially presented to her PCP with chronic anxiety, which was exacerbated by new symptoms of weight loss, tachycardia, and tremor. Initial workup confirmed hyperthyroidism due to Graves' disease. She was started on methimazole but quickly developed agranulocytosis, necessitating its discontinuation. Radioactive iodine (RAI) ablation was pursued, which successfully treated the hyperthyroidism but led to iatrogenic hypothyroidism, requiring lifelong levothyroxine. During this period, her pre-existing mild thyroid eye disease significantly worsened, manifesting as proptosis and diplopia, requiring ophthalmology co-management and a course of high-dose steroids. Her anxiety, a long-standing issue, was managed concurrently but required adjustment as her thyroid status fluctuated.",
+  "conditions": [
+    {
+      "name": "Anxiety Disorder, Unspecified",
+      "icd_code": "F41.1",
+      "status": "chronic",
+      "diagnosed_visit": "visit_01",
+      "notes": "Long-standing, exacerbated by hyperthyroid symptoms."
+    },
+    {
+      "name": "Graves' Disease",
+      "icd_code": "E05.00",
+      "status": "resolved",
+      "diagnosed_visit": "visit_02",
+      "notes": "Resolved after radioactive iodine ablation."
+    },
+    {
+      "name": "Agranulocytosis",
+      "icd_code": "D70.0",
+      "status": "resolved",
+      "diagnosed_visit": "visit_05",
+      "notes": "Adverse drug reaction to Methimazole."
+    },
+    {
+      "name": "Hypothyroidism, Unspecified",
+      "icd_code": "E03.9",
+      "status": "active",
+      "diagnosed_visit": "visit_09",
+      "notes": "Post-radioactive iodine ablation."
+    },
+    {
+      "name": "Thyroid Eye Disease (TED)",
+      "icd_code": "H06.21",
+      "status": "active",
+      "diagnosed_visit": "visit_10",
+      "notes": "Initially mild, worsened post-RAI."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Lorazepam",
+      "dosage": "0.5mg",
+      "frequency": "as needed",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Anxiety Disorder, Unspecified",
+      "notes": "For acute anxiety episodes."
+    },
+    {
+      "name": "Methimazole",
+      "dosage": "10mg",
+      "frequency": "twice daily",
+      "start_visit": "visit_02",
+      "end_visit": "visit_05",
+      "status": "discontinued",
+      "treats": "Graves' Disease",
+      "monitored_by_labs": [
+        "CBC",
+        "TSH",
+        "Free T4"
+      ],
+      "notes": "Discontinued due to agranulocytosis."
+    },
+    {
+      "name": "Radioactive Iodine (I-131)",
+      "dosage": "15 mCi",
+      "frequency": "single dose",
+      "start_visit": "visit_07",
+      "end_visit": "visit_07",
+      "status": "discontinued",
+      "treats": "Graves' Disease",
+      "notes": "Ablative therapy for hyperthyroidism."
+    },
+    {
+      "name": "Levothyroxine",
+      "dosage": "75mcg",
+      "frequency": "daily",
+      "start_visit": "visit_09",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Hypothyroidism, Unspecified",
+      "monitored_by_labs": [
+        "TSH",
+        "Free T4"
+      ],
+      "notes": "Lifelong replacement therapy."
+    },
+    {
+      "name": "Artificial Tears",
+      "dosage": "1-2 drops",
+      "frequency": "as needed",
+      "start_visit": "visit_10",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Thyroid Eye Disease (TED)",
+      "notes": "For ocular dryness and irritation."
+    },
+    {
+      "name": "Prednisone",
+      "dosage": "40mg",
+      "frequency": "daily, tapering",
+      "start_visit": "visit_11",
+      "end_visit": "visit_13",
+      "status": "discontinued",
+      "treats": "Thyroid Eye Disease (TED)",
+      "notes": "To manage acute inflammation and worsening proptosis."
+    }
+  ],
+  "family_history": [
+    {
+      "relation": "maternal aunt",
+      "condition": "Hypothyroidism",
+      "diagnosed_age": 45
+    },
+    {
+      "relation": "father",
+      "condition": "Anxiety Disorder",
+      "diagnosed_age": 40
+    }
+  ],
+  "providers": [
+    {
+      "name": "Dr. Priya Sharma",
+      "role": "attending",
+      "department": "Internal Medicine"
+    },
+    {
+      "name": "Dr. Rohan Mehta",
+      "role": "specialist",
+      "department": "Endocrinology"
+    },
+    {
+      "name": "Dr. Elena Rodriguez",
+      "role": "specialist",
+      "department": "Ophthalmology"
+    },
+    {
+      "name": "Dr. Liam O'Connell",
+      "role": "specialist",
+      "department": "Psychiatry"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-03-10",
+      "type": "initial",
+      "provider": "Dr. Priya Sharma",
+      "chief_complaint": "Increased anxiety, palpitations, weight loss",
+      "narrative": "Patient Anika Patel, 33F, presents with a 2-month history of worsening anxiety, frequent palpitations, unintended 10lb weight loss, increased appetite, and fine hand tremor. She reports feeling constantly 'on edge' and has difficulty sleeping. History of generalized anxiety disorder managed previously with lifestyle changes. Denies chest pain or shortness of breath. \n\nOn exam, she is tachycardic (HR 105 bpm), has a fine hand tremor, and mildly anxious affect. Thyroid gland diffusely enlarged, non-tender. Ordered comprehensive metabolic panel, CBC, TSH, Free T4, and TSI (Thyroid Stimulating Immunoglobulins) to evaluate for hyperthyroidism. Prescribed Lorazepam 0.5mg PRN for anxiety. Follow up in one week for lab review.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_patel_2024_mar.pdf"
+      },
+      "medications_started": [
+        "Lorazepam"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-03-18",
+      "type": "follow-up",
+      "provider": "Dr. Priya Sharma",
+      "chief_complaint": "Lab review \u2014 suspected hyperthyroidism",
+      "narrative": "Patient returns for lab review. Labs confirm hyperthyroidism: TSH <0.01 uIU/mL (low), Free T4 3.5 ng/dL (high). TSI positive at 4.2 IU/L (elevated). CBC and CMP are normal. \n\nDiagnosis of Graves' disease confirmed. Started Methimazole 10mg twice daily. Counseled on medication adherence, potential side effects, and importance of monitoring for agranulocytosis (fever, sore throat). Referred to Dr. Rohan Mehta, Endocrinology, for specialized management and discussion of long-term treatment options. Referral letter sent.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_patel_2024_mar.pdf"
+      },
+      "labs": [
+        {
+          "test": "TSH",
+          "value": "<0.01",
+          "unit": "uIU/mL",
+          "range": "0.4-4.0",
+          "flag": "low"
+        },
+        {
+          "test": "Free T4",
+          "value": "3.5",
+          "unit": "ng/dL",
+          "range": "0.8-1.8",
+          "flag": "high"
+        },
+        {
+          "test": "TSI",
+          "value": "4.2",
+          "unit": "IU/L",
+          "range": "<1.3",
+          "flag": "high"
+        },
+        {
+          "test": "CBC",
+          "value": "WBC 7.8, Hgb 13.0, Plt 280",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_patel_2024_mar.pdf"
+      },
+      "medications_started": [
+        "Methimazole"
+      ],
+      "referrals": [
+        {
+          "to": "Dr. Rohan Mehta",
+          "reason": "Graves' disease for specialized management and definitive treatment planning."
+        }
+      ]
+    },
+    {
+      "ref": "visit_03",
+      "date": "2024-04-01",
+      "type": "consult",
+      "provider": "Dr. Rohan Mehta",
+      "chief_complaint": "Endocrinology consult - Graves' disease",
+      "narrative": "New patient consult for Graves' disease. Reviewed PCP's workup and confirmed diagnosis. Patient reports mild improvement in palpitations and anxiety on Methimazole. Discussed treatment options including continued anti-thyroid drugs, radioactive iodine ablation, and thyroidectomy. Patient expresses interest in long-term solution. Counseled on risks/benefits of each. \n\nPlan to continue Methimazole 10mg BID. Will recheck thyroid function tests and CBC in 4 weeks. Instructed patient to report any fever, sore throat, or mouth sores immediately due to agranulocytosis risk. Follow-up to discuss definitive treatment after achieving euthyroid state.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_patel_2024_apr.pdf"
+      }
+    },
+    {
+      "ref": "visit_04",
+      "date": "2024-04-29",
+      "type": "follow-up",
+      "provider": "Dr. Rohan Mehta",
+      "chief_complaint": "Endocrinology follow-up - Methimazole efficacy",
+      "narrative": "Patient returns for follow-up. Reports significant improvement in hyperthyroid symptoms: weight stable, palpitations reduced, anxiety less severe. No fever or sore throat. \n\nLabs show improved thyroid function: TSH 0.05 uIU/mL (still suppressed but rising), Free T4 1.9 ng/dL (normalizing). CBC remains normal (WBC 6.5). Methimazole dose will be maintained. Discussed the possibility of radioactive iodine (RAI) ablation as a definitive treatment given the severity of her initial presentation and family history. Provided patient education material on RAI. Schedule for 4 weeks.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_patel_2024_apr.pdf"
+      },
+      "labs": [
+        {
+          "test": "TSH",
+          "value": "0.05",
+          "unit": "uIU/mL",
+          "range": "0.4-4.0",
+          "flag": "low"
+        },
+        {
+          "test": "Free T4",
+          "value": "1.9",
+          "unit": "ng/dL",
+          "range": "0.8-1.8",
+          "flag": "high"
+        },
+        {
+          "test": "CBC",
+          "value": "WBC 6.5, Hgb 12.9, Plt 275",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_patel_2024_apr.pdf"
+      }
+    },
+    {
+      "ref": "visit_05",
+      "date": "2024-05-07",
+      "type": "emergency",
+      "provider": "Dr. Priya Sharma",
+      "chief_complaint": "Fever and sore throat on Methimazole",
+      "narrative": "Patient presented urgently to PCP with sudden onset of high fever (102.5F) and severe sore throat for 24 hours. She is visibly unwell. Denies rash or other symptoms. Concerned for Methimazole-induced agranulocytosis. \n\nStat CBC ordered. Results showed severe leukopenia with WBC 1.5 K/uL and absolute neutrophil count (ANC) 0.3 K/uL (critical). Methimazole immediately discontinued. Patient admitted to hospital for IV antibiotics, neutropenic precautions, and G-CSF. Endocrinology consulted. Fortunately, patient recovered well without infection. Decision made to proceed with radioactive iodine ablation once stable.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_patel_2024_may.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 1.5, Hgb 12.5, Plt 260",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "critical"
+        },
+        {
+          "test": "ANC",
+          "value": "0.3",
+          "unit": "K/uL",
+          "range": "1.5-8.0",
+          "flag": "critical"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_patel_2024_may.pdf"
+      },
+      "medications_discontinued": [
+        "Methimazole"
+      ]
+    },
+    {
+      "ref": "visit_06",
+      "date": "2024-06-03",
+      "type": "follow-up",
+      "provider": "Dr. Rohan Mehta",
+      "chief_complaint": "Pre-RAI consultation",
+      "narrative": "Patient returns for pre-radioactive iodine consultation following resolution of agranulocytosis. ANC has fully recovered to 2.8 K/uL. Thyroid function is now slightly elevated again (Free T4 2.1) without Methimazole. \n\nDetailed counseling on radioactive iodine ablation procedure, including radiation precautions, potential for post-treatment hypothyroidism, and the risk of worsening thyroid eye disease. Patient is keen to proceed due to intolerance to Methimazole. Informed consent obtained. Scheduled for RAI treatment on June 20th. Instruction for low-iodine diet for 2 weeks prior.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_patel_2024_jun.pdf"
+      },
+      "labs": [
+        {
+          "test": "ANC",
+          "value": "2.8",
+          "unit": "K/uL",
+          "range": "1.5-8.0",
+          "flag": "normal"
+        },
+        {
+          "test": "Free T4",
+          "value": "2.1",
+          "unit": "ng/dL",
+          "range": "0.8-1.8",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_patel_2024_jun.pdf"
+      }
+    },
+    {
+      "ref": "visit_07",
+      "date": "2024-06-20",
+      "type": "routine",
+      "provider": "Dr. Rohan Mehta",
+      "chief_complaint": "Radioactive Iodine (RAI) treatment",
+      "narrative": "Patient underwent radioactive iodine-131 ablation therapy for Graves' disease. Administered a single oral dose of 15 mCi I-131. Reiterated radiation safety precautions, including isolation from others, specific hygiene, and disposal procedures for 5-7 days. \n\nAdvised on monitoring for symptoms of hypothyroidism in the coming weeks to months. Scheduled follow-up with endocrinology in 6 weeks to assess thyroid function post-RAI. Given information on how to recognize symptoms of evolving thyroid eye disease.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_patel_2024_jun.pdf"
+      },
+      "medications_started": [
+        "Radioactive Iodine (I-131)"
+      ],
+      "medications_discontinued": [
+        "Radioactive Iodine (I-131)"
+      ]
+    },
+    {
+      "ref": "visit_08",
+      "date": "2024-08-01",
+      "type": "follow-up",
+      "provider": "Dr. Rohan Mehta",
+      "chief_complaint": "Post-RAI thyroid function assessment",
+      "narrative": "Patient returns 6 weeks post-RAI. Reports feeling slightly more tired than usual and mild dry eyes, but no major hyperthyroid symptoms. No fever or sore throat. \n\nLabs indicate persistent mild hyperthyroidism: TSH 0.08 uIU/mL (still suppressed), Free T4 1.9 ng/dL. This is expected as the RAI takes time to take full effect. Reassessed for thyroid eye disease, noted very subtle bilateral proptosis. Counseled on supportive eye care (artificial tears PRN). Recheck labs in 4 weeks. Continue to monitor for symptoms of hypothyroidism and worsening eye symptoms.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_patel_2024_aug.pdf"
+      },
+      "labs": [
+        {
+          "test": "TSH",
+          "value": "0.08",
+          "unit": "uIU/mL",
+          "range": "0.4-4.0",
+          "flag": "low"
+        },
+        {
+          "test": "Free T4",
+          "value": "1.9",
+          "unit": "ng/dL",
+          "range": "0.8-1.8",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_patel_2024_aug.pdf"
+      }
+    },
+    {
+      "ref": "visit_09",
+      "date": "2024-08-29",
+      "type": "follow-up",
+      "provider": "Dr. Rohan Mehta",
+      "chief_complaint": "New onset hypothyroidism symptoms, worsening eye symptoms",
+      "narrative": "Patient reports significant fatigue, cold intolerance, and constipation over the past 2 weeks. Voice has become hoarser. Also notes increased eye dryness, irritation, and new mild diplopia (double vision). \n\nLabs confirm overt hypothyroidism: TSH 12.5 uIU/mL (high), Free T4 0.6 ng/dL (low). Started Levothyroxine 75mcg daily. Due to worsening eye symptoms, specifically diplopia and proptosis, referred to Dr. Elena Rodriguez, Ophthalmology, for evaluation of thyroid eye disease. Counseled on signs of severe TED requiring urgent attention.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_patel_2024_aug_2.pdf"
+      },
+      "labs": [
+        {
+          "test": "TSH",
+          "value": "12.5",
+          "unit": "uIU/mL",
+          "range": "0.4-4.0",
+          "flag": "high"
+        },
+        {
+          "test": "Free T4",
+          "value": "0.6",
+          "unit": "ng/dL",
+          "range": "0.8-1.8",
+          "flag": "low"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_patel_2024_aug_2.pdf"
+      },
+      "medications_started": [
+        "Levothyroxine"
+      ],
+      "referrals": [
+        {
+          "to": "Dr. Elena Rodriguez",
+          "reason": "Evaluation and management of worsening thyroid eye disease (TED) with proptosis and diplopia."
+        }
+      ]
+    },
+    {
+      "ref": "visit_10",
+      "date": "2024-09-12",
+      "type": "consult",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Ophthalmology consult - thyroid eye disease",
+      "narrative": "New patient ophthalmology consult for thyroid eye disease. Patient reports bilateral proptosis, eye irritation, dryness, and intermittent diplopia. Visual acuity is 20/25 OU. Exophthalmometry measurements are 22mm OD, 21mm OS (normal <20mm). Lid lag present. Ocular motility exam reveals restrictive myopathy, primarily with upward gaze. \n\nDiagnosis: Active moderate-severe Thyroid Eye Disease. Initiated Artificial Tears PRN for dryness. Discussed potential for systemic corticosteroids to manage inflammation. Patient to start oral prednisone with a rheumatologist. Follow-up in 3 weeks to assess response to treatment and consider further intervention if needed.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_patel_2024_sep.pdf"
+      },
+      "medications_started": [
+        "Artificial Tears"
+      ]
+    },
+    {
+      "ref": "visit_11",
+      "date": "2024-09-20",
+      "type": "follow-up",
+      "provider": "Dr. Rohan Mehta",
+      "chief_complaint": "Levothyroxine adjustment and TED management",
+      "narrative": "Patient returns for Levothyroxine adjustment and to coordinate care for TED. Reports improvement in hypothyroid symptoms on Levothyroxine. Still experiencing significant eye irritation and diplopia as described to ophthalmology. \n\nLabs: TSH 3.2 uIU/mL (normalizing), Free T4 1.1 ng/dL (normal). Levothyroxine dose maintained. Started Prednisone 40mg daily, with a planned taper over 6-8 weeks, to address the active inflammatory phase of TED as recommended by ophthalmology. Counseled on steroid side effects. Continue close monitoring of thyroid function and eye symptoms.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_patel_2024_sep.pdf"
+      },
+      "labs": [
+        {
+          "test": "TSH",
+          "value": "3.2",
+          "unit": "uIU/mL",
+          "range": "0.4-4.0",
+          "flag": "normal"
+        },
+        {
+          "test": "Free T4",
+          "value": "1.1",
+          "unit": "ng/dL",
+          "range": "0.8-1.8",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_patel_2024_sep.pdf"
+      },
+      "medications_started": [
+        "Prednisone"
+      ]
+    },
+    {
+      "ref": "visit_12",
+      "date": "2024-10-10",
+      "type": "follow-up",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Ophthalmology follow-up - Prednisone for TED",
+      "narrative": "Follow-up visit for TED, 3 weeks into prednisone course. Patient reports moderate improvement in eye irritation and pain. Diplopia is less frequent but still present, especially in extremes of gaze. Proptosis appears stable. Visual acuity remains 20/25 OU. \n\nEncouraged patient to continue prednisone taper as planned. Advised on wearing sunglasses outdoors and using cool compresses. Will continue to monitor for optic neuropathy. Next follow-up in 4 weeks.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_patel_2024_oct.pdf"
+      }
+    },
+    {
+      "ref": "visit_13",
+      "date": "2024-11-20",
+      "type": "follow-up",
+      "provider": "Dr. Rohan Mehta",
+      "chief_complaint": "Prednisone taper completion, overall thyroid status",
+      "narrative": "Patient returns, having completed the prednisone taper for TED. Reports significant improvement in eye symptoms; dryness and irritation are minimal, and diplopia has largely resolved. Her hypothyroid symptoms are well-controlled on Levothyroxine. \n\nLabs: TSH 2.8 uIU/mL (stable), Free T4 1.3 ng/dL (stable). Prednisone officially discontinued. Discussed the importance of continued long-term follow-up for both hypothyroidism and TED. Referred to Dr. Liam O'Connell, Psychiatry, for ongoing anxiety management, as her thyroid-related stressors have largely resolved.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_patel_2024_nov.pdf"
+      },
+      "labs": [
+        {
+          "test": "TSH",
+          "value": "2.8",
+          "unit": "uIU/mL",
+          "range": "0.4-4.0",
+          "flag": "normal"
+        },
+        {
+          "test": "Free T4",
+          "value": "1.3",
+          "unit": "ng/dL",
+          "range": "0.8-1.8",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_patel_2024_nov.pdf"
+      },
+      "medications_discontinued": [
+        "Prednisone"
+      ],
+      "referrals": [
+        {
+          "to": "Dr. Liam O'Connell",
+          "reason": "Ongoing management of generalized anxiety disorder following resolution of acute medical stressors."
+        }
+      ]
+    },
+    {
+      "ref": "visit_14",
+      "date": "2024-12-15",
+      "type": "consult",
+      "provider": "Dr. Liam O'Connell",
+      "chief_complaint": "Psychiatry consult - anxiety management",
+      "narrative": "New patient consult for anxiety disorder. Patient reports feeling generally better after thyroid issues stabilized, but still experiences baseline anxiety, particularly with stress. Currently using Lorazepam 0.5mg PRN. Discussed therapeutic options including psychotherapy and potential for a daily SSRI. \n\nPatient is interested in exploring cognitive behavioral therapy (CBT) first. Will continue Lorazepam PRN for now. Scheduled follow-up in 6 weeks to assess progress and reconsider medication if necessary. Provided resources for local CBT therapists.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_patel_2024_dec.pdf"
+      }
+    },
+    {
+      "ref": "visit_15",
+      "date": "2025-01-20",
+      "type": "routine",
+      "provider": "Dr. Priya Sharma",
+      "chief_complaint": "Annual physical and care coordination",
+      "narrative": "Annual physical examination. Patient reports overall good health and satisfaction with current management of hypothyroidism and TED. Anxiety is manageable with PRN Lorazepam and she has started CBT. No new complaints. \n\nReviewed medication list: Levothyroxine and Lorazepam are active. Reinforced adherence and importance of regular follow-ups with endocrinology and ophthalmology. Basic metabolic panel and CBC ordered as routine. Follow up as needed.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_patel_2025_jan.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 7.0, Hgb 13.2, Plt 290",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "normal"
+        },
+        {
+          "test": "CMP",
+          "value": "within normal limits",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_patel_2025_jan.pdf"
+      }
+    },
+    {
+      "ref": "visit_16",
+      "date": "2025-02-10",
+      "type": "follow-up",
+      "provider": "Dr. Rohan Mehta",
+      "chief_complaint": "Endocrinology routine follow-up",
+      "narrative": "Routine endocrinology follow-up. Patient is euthyroid on current Levothyroxine dose. No lingering symptoms of hyper or hypothyroidism. Eye symptoms related to TED remain stable and well-controlled with artificial tears. No active inflammation. \n\nLabs: TSH 2.5 uIU/mL, Free T4 1.2 ng/dL (all stable and within target range). Plan: continue Levothyroxine 75mcg daily. Recheck thyroid function in 6 months or sooner if symptoms change. Emphasized importance of annual ophthalmology review for TED and regular PCP check-ups. Overall prognosis is excellent with continued management.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_patel_2025_feb.pdf"
+      },
+      "labs": [
+        {
+          "test": "TSH",
+          "value": "2.5",
+          "unit": "uIU/mL",
+          "range": "0.4-4.0",
+          "flag": "normal"
+        },
+        {
+          "test": "Free T4",
+          "value": "1.2",
+          "unit": "ng/dL",
+          "range": "0.8-1.8",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_patel_2025_feb.pdf"
+      }
+    }
+  ]
+}

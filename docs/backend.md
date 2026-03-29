@@ -28,13 +28,13 @@ Nearly all 128GB is available for model loading. The memory bandwidth (273 GB/s)
 
 The gatekeeper runs locally on the GX10's Blackwell GPU. For the hackathon, the recommended model is in the **13B–27B parameter range**, using quantization formats that leverage the Blackwell Tensor Cores (FP8, MXFP4, or GGUF Q4_K_M/Q5_K_M).
 
-**Observed inference speeds on the GX10:**
+**Observed inference speeds on the GX10** (from [speed benchmark](../eval/results/speed-benchmark-2026-03-28.md)):
 
-| Model Size | Tokens/sec (decode) | Time-to-first-token | Verdict |
+| Model Size | Tokens/sec (solo-loaded) | Tokens/sec (multi-model) | Verdict |
 |---|---|---|---|
-| 7-8B Q4 | ~46 tok/s | <5s | Too fast to matter — model quality is the bottleneck |
-| 20-27B MXFP4/Q4 | ~30-50 tok/s | ~10-15s | **Sweet spot** — fast enough for demo, much better PHI detection |
-| 70B Q4/FP8 | ~3-5 tok/s | 130-180s | Too slow — TTFT kills demo flow |
+| 7-8B Q4 | ~46 tok/s | — | Too fast to matter — model quality is the bottleneck |
+| 20-27B Q4 | ~11-17 tok/s | ~5-10 tok/s | **Sweet spot** — fast enough for demo, much better PHI detection |
+| 70B Q4 | ~4.7 tok/s | ~4.7 tok/s | Too slow — a 200-token response takes ~42 seconds |
 
 **Primary candidates (test all three, pick the best for PHI identification accuracy):**
 

@@ -1,0 +1,241 @@
+{
+  "id": "patient_015",
+  "name": "Linda Morrison",
+  "age": 55,
+  "sex": "female",
+  "mrn": "MRN-43210",
+  "dob": "1968-11-10",
+  "tier": "moderate",
+  "summary": "55-year-old female presenting with symptoms of generalized anxiety and major depressive disorder, managed with SSRI therapy and psychotherapy referrals.",
+  "storyline": "Linda Morrison, a 55-year-old executive assistant, initially sought care for increasing feelings of overwhelm, persistent worry, and low mood following a company-wide layoff. After an initial workup ruling out organic causes, she was diagnosed with Generalized Anxiety Disorder and Major Depressive Disorder. Treatment began with Sertraline, which was gradually titrated, alongside a referral for cognitive behavioral therapy. She experienced an initial period of side effects and dose adjustments but eventually found a stable regimen, leading to significant improvement in her mood and anxiety symptoms over the course of a year, though ongoing management is anticipated.",
+  "conditions": [
+    {
+      "name": "Major Depressive Disorder",
+      "icd_code": "F33.1",
+      "status": "chronic",
+      "diagnosed_visit": "visit_02",
+      "notes": "Moderate severity, recurrent episode"
+    },
+    {
+      "name": "Generalized Anxiety Disorder",
+      "icd_code": "F41.1",
+      "status": "chronic",
+      "diagnosed_visit": "visit_02",
+      "notes": "Significant impact on daily functioning"
+    }
+  ],
+  "medications": [
+    {
+      "name": "Sertraline",
+      "dosage": "100mg",
+      "frequency": "daily",
+      "start_visit": "visit_03",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Major Depressive Disorder",
+      "monitored_by_labs": [
+        "Glucose",
+        "Cholesterol, Total"
+      ],
+      "notes": "Initially started at 50mg daily on visit_03, dosage increased to 100mg daily on visit_06 for better symptom control."
+    },
+    {
+      "name": "Lorazepam",
+      "dosage": "0.5mg",
+      "frequency": "as needed",
+      "start_visit": "visit_02",
+      "end_visit": "visit_05",
+      "status": "discontinued",
+      "treats": "Generalized Anxiety Disorder",
+      "notes": "Prescribed for acute anxiety, discontinued after SSRI became effective and CBT initiated."
+    }
+  ],
+  "family_history": [
+    {
+      "relation": "mother",
+      "condition": "Depression",
+      "diagnosed_age": 40
+    },
+    {
+      "relation": "father",
+      "condition": "Hypertension",
+      "diagnosed_age": 50
+    }
+  ],
+  "providers": [
+    {
+      "name": "Dr. Evelyn Reed",
+      "role": "attending",
+      "department": "Family Medicine"
+    },
+    {
+      "name": "Dr. David Kim",
+      "role": "specialist",
+      "department": "Psychiatry"
+    },
+    {
+      "name": "Dr. Olivia Wilson",
+      "role": "therapist",
+      "department": "Clinical Psychology"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-03-10",
+      "type": "initial",
+      "provider": "Dr. Evelyn Reed",
+      "chief_complaint": "Persistent fatigue, difficulty sleeping, constant worry",
+      "narrative": "Patient is a 55-year-old female presenting with a 3-month history of persistent fatigue, insomnia with difficulty falling and staying asleep, and a pervasive sense of worry. She reports feeling overwhelmed and tearful, with decreased interest in hobbies she once enjoyed. Symptoms started after a major company restructuring and recent job insecurity. Denies suicidal ideation, hallucinations. Physical exam unremarkable. Vitals stable. Initial workup to rule out organic causes planned.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_morrison_2024_mar.pdf"
+      }
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-03-17",
+      "type": "follow-up",
+      "provider": "Dr. Evelyn Reed",
+      "chief_complaint": "Lab review, ongoing anxiety and low mood",
+      "narrative": "Patient returns for lab review. CBC, CMP, TSH, Vitamin D all within normal limits, ruling out common physical causes for fatigue and mood disturbance. Symptoms persist; GAD-7 score 18 (severe anxiety), PHQ-9 score 20 (severe depression). Discussed preliminary diagnosis of Generalized Anxiety Disorder and Major Depressive Disorder. Prescribed Lorazepam 0.5mg PRN for acute anxiety attacks. Discussed starting an SSRI at next visit after patient considers options. Recommended beginning a mood diary.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_morrison_2024_mar.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 7.1, Hgb 13.5, Plt 280",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "normal"
+        },
+        {
+          "test": "CMP",
+          "value": "within normal limits",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        },
+        {
+          "test": "TSH",
+          "value": "2.8",
+          "unit": "mIU/L",
+          "range": "0.4-4.0",
+          "flag": "normal"
+        },
+        {
+          "test": "Vitamin D",
+          "value": "45",
+          "unit": "ng/mL",
+          "range": "30-100",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_morrison_2024_mar.pdf"
+      },
+      "medications_started": [
+        "Lorazepam"
+      ]
+    },
+    {
+      "ref": "visit_03",
+      "date": "2024-04-01",
+      "type": "follow-up",
+      "provider": "Dr. Evelyn Reed",
+      "chief_complaint": "Decision to start antidepressant, review options",
+      "narrative": "Patient has decided to proceed with antidepressant medication. Discussed Sertraline, its mechanism, potential side effects, and titration schedule. Started Sertraline 50mg daily. Counseled on delayed onset of therapeutic effects and potential initial worsening of anxiety. Reviewed strategies for managing initial side effects. Emphasized importance of adherence and follow-up. Also provided referral for psychiatric evaluation and CBT. Encouraged continued use of PRN Lorazepam if anxiety becomes unmanageable.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_morrison_2024_apr.pdf"
+      },
+      "medications_started": [
+        "Sertraline"
+      ],
+      "referrals": [
+        {
+          "to": "Dr. David Kim",
+          "reason": "Comprehensive psychiatric evaluation and medication management for GAD/MDD"
+        },
+        {
+          "to": "Dr. Olivia Wilson",
+          "reason": "Cognitive Behavioral Therapy for anxiety and depression"
+        }
+      ]
+    },
+    {
+      "ref": "visit_04",
+      "date": "2024-04-20",
+      "type": "consult",
+      "provider": "Dr. David Kim",
+      "chief_complaint": "Psychiatric consultation, Sertraline follow-up",
+      "narrative": "Initial psychiatric consultation for Linda Morrison. Patient has been on Sertraline 50mg for 3 weeks. Reports some initial GI upset and increased anxiety for the first few days, which has now subsided. Mood is slightly improved, but anxiety remains significant, particularly with job search. GAD-7 score 16, PHQ-9 score 17. No suicidal ideation. Diagnostic impression confirmed: MDD, recurrent, moderate; GAD. Reviewed current medication plan. Will continue Sertraline 50mg for now and consider dose increase if no further improvement in 2 weeks. Encouraged engaging with CBT. Follow-up in 3 weeks.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_morrison_2024_apr.pdf"
+      }
+    },
+    {
+      "ref": "visit_05",
+      "date": "2024-05-15",
+      "type": "follow-up",
+      "provider": "Dr. Evelyn Reed",
+      "chief_complaint": "PCP check-in, medication adherence, general well-being",
+      "narrative": "PCP follow-up to assess overall progress. Patient reports feeling 'a little better' on Sertraline, but still struggles with persistent low-level anxiety and occasional depressive thoughts. She has started CBT sessions with Dr. Olivia Wilson and finds them somewhat helpful. Has used Lorazepam sparingly, mostly for specific stressful events. Given the ongoing but mild improvement, advised to continue current Sertraline dose and CBT, with upcoming psychiatry follow-up to potentially adjust medication. Discontinued Lorazepam, encouraging reliance on coping skills from CBT.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_morrison_2024_may.pdf"
+      },
+      "medications_discontinued": [
+        "Lorazepam"
+      ]
+    },
+    {
+      "ref": "visit_06",
+      "date": "2024-06-05",
+      "type": "follow-up",
+      "provider": "Dr. David Kim",
+      "chief_complaint": "Psychiatry follow-up, Sertraline dosage adjustment",
+      "narrative": "Follow-up psychiatric visit. Patient reports some improvement in mood and anxiety, but still experiencing significant intrusive thoughts and anticipatory worry, especially related to financial stability. GAD-7 score 14, PHQ-9 score 15. She is tolerating Sertraline 50mg well with no significant side effects. Agreed to increase Sertraline to 100mg daily to achieve better symptom control. Counseled on possibility of transient side effects with dose increase. Will continue CBT. Recheck in 4-6 weeks.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_morrison_2024_jun.pdf"
+      }
+    },
+    {
+      "ref": "visit_07",
+      "date": "2024-07-20",
+      "type": "routine",
+      "provider": "Dr. David Kim",
+      "chief_complaint": "Routine psychiatry follow-up, Sertraline 100mg efficacy",
+      "narrative": "Routine follow-up 6 weeks after Sertraline dosage increase to 100mg. Patient reports significant improvement in both mood and anxiety. She feels less overwhelmed, is sleeping better, and has resumed interest in several hobbies. GAD-7 score 8 (mild anxiety), PHQ-9 score 9 (mild depression). No side effects reported. Encouraged continued CBT. Discussed long-term management and importance of adherence. Labs ordered for routine metabolic panel given long-term SSRI use. Recheck in 3 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_morrison_2024_jul.pdf"
+      },
+      "labs": [
+        {
+          "test": "Glucose",
+          "value": "92",
+          "unit": "mg/dL",
+          "range": "70-99",
+          "flag": "normal"
+        },
+        {
+          "test": "Cholesterol, Total",
+          "value": "185",
+          "unit": "mg/dL",
+          "range": "<200",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_morrison_2024_jul.pdf"
+      }
+    }
+  ]
+}

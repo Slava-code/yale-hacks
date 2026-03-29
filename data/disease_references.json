@@ -1,0 +1,162 @@
+[
+  {
+    "name": "Systemic Lupus Erythematosus",
+    "category": "autoimmune",
+    "description": "Chronic autoimmune disease affecting multiple organ systems including skin, joints, kidneys, brain, and blood cells. Characterized by periods of flares and remission with autoantibody-mediated tissue damage.",
+    "symptoms": "Malar rash, joint pain, fatigue, photosensitivity, oral ulcers, serositis, hair loss, Raynaud phenomenon, fever, weight loss",
+    "diagnostic_criteria": "ACR/EULAR 2019 classification criteria requiring ANA positivity plus weighted score of clinical and immunological domains. Key domains include constitutional symptoms, hematologic abnormalities, neuropsychiatric involvement, mucocutaneous findings, serosal inflammation, musculoskeletal disease, and renal involvement.",
+    "lab_markers": "ANA, anti-dsDNA, anti-Smith antibody, low complement C3/C4, cytopenias (leukopenia, thrombocytopenia, hemolytic anemia), elevated ESR, positive lupus band test on skin biopsy",
+    "epidemiology": "Prevalence 20-150 per 100,000 population. Female-to-male ratio approximately 9:1. Higher prevalence in African American, Hispanic, and Asian populations. Typical onset between ages 15-45.",
+    "icd_code": "M32.9"
+  },
+  {
+    "name": "Rheumatoid Arthritis",
+    "category": "autoimmune",
+    "description": "Chronic inflammatory autoimmune disorder primarily targeting synovial joints, causing symmetric polyarthritis with potential for joint destruction and systemic manifestations.",
+    "symptoms": "Morning stiffness lasting over 30 minutes, symmetric joint swelling, joint pain, fatigue, rheumatoid nodules, low-grade fever, weight loss",
+    "diagnostic_criteria": "2010 ACR/EULAR classification criteria: joint involvement pattern, serology (RF, anti-CCP), acute-phase reactants (ESR, CRP), and symptom duration. Score of 6 or more out of 10 classifies as definite RA.",
+    "lab_markers": "Rheumatoid factor, anti-CCP antibodies, elevated ESR, elevated CRP, normocytic anemia, thrombocytosis",
+    "epidemiology": "Prevalence approximately 0.5-1% worldwide. Female-to-male ratio 2-3:1. Peak onset between ages 40-60. Genetic association with HLA-DR4.",
+    "icd_code": "M06.9"
+  },
+  {
+    "name": "Fibromyalgia",
+    "category": "musculoskeletal",
+    "description": "Chronic widespread pain disorder characterized by heightened pain sensitivity, fatigue, sleep disturbance, and cognitive dysfunction without identifiable structural or inflammatory pathology.",
+    "symptoms": "Widespread musculoskeletal pain, fatigue, cognitive difficulties (fibro fog), sleep disturbance, headaches, irritable bowel symptoms, paresthesias, morning stiffness",
+    "diagnostic_criteria": "2016 revised ACR criteria: widespread pain index (WPI) score of 7 or more and symptom severity scale (SSS) score of 5 or more, OR WPI 4-6 with SSS 9 or more. Symptoms present at similar level for at least 3 months. No other disorder that would explain the pain.",
+    "lab_markers": "No specific laboratory markers. All inflammatory markers (ESR, CRP), autoantibodies (ANA, RF), and imaging are typically normal. Diagnosis is clinical.",
+    "epidemiology": "Prevalence 2-4% of general population. Female-to-male ratio approximately 2:1. Can occur at any age but most commonly diagnosed in middle age.",
+    "icd_code": "M79.7"
+  },
+  {
+    "name": "Drug-Induced Lupus",
+    "category": "autoimmune",
+    "description": "Lupus-like syndrome triggered by specific medications, typically resolving after drug discontinuation. Shares features with SLE but rarely involves renal or CNS disease.",
+    "symptoms": "Joint pain, myalgia, fatigue, fever, serositis (pleuritis/pericarditis), skin rash (less commonly malar), weight loss",
+    "diagnostic_criteria": "Temporal association with offending drug (typically months to years of exposure), positive ANA and anti-histone antibodies, lupus-like symptoms, and resolution of symptoms upon drug discontinuation. Common offending agents include hydralazine, procainamide, isoniazid, and minocycline.",
+    "lab_markers": "Positive ANA, anti-histone antibodies (present in >95% of cases), normal complement levels (unlike SLE), anti-dsDNA usually negative",
+    "epidemiology": "Incidence approximately 15,000-30,000 cases per year in the US. More common in older adults due to higher medication use. Male-to-female ratio more equal than SLE.",
+    "icd_code": "M32.0"
+  },
+  {
+    "name": "Sjogren's Syndrome",
+    "category": "autoimmune",
+    "description": "Chronic autoimmune disorder targeting exocrine glands, primarily salivary and lacrimal glands, causing dryness of the eyes and mouth with potential systemic manifestations.",
+    "symptoms": "Dry eyes (keratoconjunctivitis sicca), dry mouth (xerostomia), fatigue, joint pain, parotid gland enlargement, dental caries, vaginal dryness, skin dryness",
+    "diagnostic_criteria": "2016 ACR/EULAR classification criteria requiring a score of 4 or more from weighted items: labial salivary gland biopsy with focal lymphocytic sialadenitis, anti-SSA/Ro positivity, ocular staining score, Schirmer test, and unstimulated salivary flow rate.",
+    "lab_markers": "Anti-SSA/Ro antibodies, anti-SSB/La antibodies, positive ANA, elevated ESR, rheumatoid factor, hypergammaglobulinemia, low complement",
+    "epidemiology": "Prevalence 0.5-1% of general population. Female-to-male ratio approximately 9:1. Peak onset between ages 40-60. Can occur as primary disease or secondary to other autoimmune conditions.",
+    "icd_code": "M35.0"
+  },
+  {
+    "name": "Mixed Connective Tissue Disease",
+    "category": "autoimmune",
+    "description": "Overlap syndrome combining features of SLE, systemic sclerosis, polymyositis, and rheumatoid arthritis, defined by the presence of high-titer anti-U1 RNP antibodies.",
+    "symptoms": "Raynaud phenomenon, swollen hands (puffy fingers), joint pain, myositis, fatigue, sclerodactyly, esophageal dysmotility, pulmonary hypertension",
+    "diagnostic_criteria": "Alarcon-Segovia criteria: positive anti-U1 RNP at high titer (>1:1600) plus at least 3 of 5 clinical criteria: hand edema, synovitis, myositis, Raynaud phenomenon, and acrosclerosis. Features evolve over time.",
+    "lab_markers": "High-titer anti-U1 RNP antibodies, positive ANA (speckled pattern), elevated CK (if myositis), elevated ESR, mild cytopenias possible",
+    "epidemiology": "Rare, with estimated prevalence of 3.8 per 100,000. Female-to-male ratio approximately 16:1. Typical onset between ages 20-40.",
+    "icd_code": "M35.1"
+  },
+  {
+    "name": "Rabies",
+    "category": "infectious",
+    "description": "Fatal viral encephalitis caused by Lyssavirus, transmitted through the bite of an infected animal. Nearly 100% fatal once clinical symptoms appear without post-exposure prophylaxis.",
+    "symptoms": "Prodromal phase: fever, malaise, paresthesia at bite site. Encephalitic phase: aggression, hydrophobia, aerophobia, hypersalivation, confusion, hallucinations, autonomic instability. Paralytic phase: ascending paralysis, coma",
+    "diagnostic_criteria": "Clinical suspicion based on animal bite history and progressive encephalitis. Confirmed by direct fluorescent antibody test on nuchal skin biopsy, rabies virus RNA by RT-PCR in saliva or CSF, or rabies-specific antibodies in serum or CSF of unvaccinated patient.",
+    "lab_markers": "Rabies virus RNA (RT-PCR in saliva/CSF), direct fluorescent antibody test (DFA) on skin biopsy, rabies virus-specific antibodies, CSF pleocytosis with elevated protein",
+    "epidemiology": "Approximately 59,000 deaths worldwide per year, primarily in Asia and Africa. Extremely rare in developed countries due to animal vaccination programs. Incubation period typically 1-3 months.",
+    "icd_code": "A82.9"
+  },
+  {
+    "name": "Creutzfeldt-Jakob Disease",
+    "category": "neurological",
+    "description": "Rapidly progressive and fatal prion disease causing spongiform encephalopathy. Characterized by rapidly progressive dementia, myoclonus, and distinctive EEG and MRI findings.",
+    "symptoms": "Rapidly progressive dementia, myoclonus, visual disturbances, cerebellar ataxia, behavioral changes, pyramidal and extrapyramidal signs, akinetic mutism in terminal stages",
+    "diagnostic_criteria": "WHO criteria: progressive dementia plus at least two of myoclonus, visual/cerebellar symptoms, pyramidal/extrapyramidal features, or akinetic mutism. Supported by periodic sharp-wave complexes on EEG, 14-3-3 protein in CSF, or characteristic MRI (cortical ribboning, caudate/putamen signal).",
+    "lab_markers": "14-3-3 protein in CSF, RT-QuIC assay (high sensitivity and specificity), total tau in CSF, periodic sharp-wave complexes on EEG, cortical ribboning on MRI DWI",
+    "epidemiology": "Incidence approximately 1-2 per million population per year worldwide. Sporadic form accounts for 85% of cases. Median age of onset 60-65 years. Median survival 5 months.",
+    "icd_code": "A81.0"
+  },
+  {
+    "name": "Anti-NMDA Receptor Encephalitis",
+    "category": "neurological",
+    "description": "Autoimmune encephalitis caused by antibodies against the GluN1 subunit of the NMDA receptor, leading to progressive neuropsychiatric symptoms, seizures, movement disorders, and autonomic instability.",
+    "symptoms": "Psychiatric symptoms (psychosis, paranoia, agitation), seizures, movement disorders (orofacial dyskinesias, choreoathetosis), decreased consciousness, autonomic instability, hypoventilation",
+    "diagnostic_criteria": "Definitive diagnosis requires presence of anti-NMDA receptor antibodies (IgG) in CSF. Clinical criteria include rapid onset of at least 4 of 6 symptom groups: abnormal behavior/cognition, speech dysfunction, seizures, movement disorder, decreased consciousness, and autonomic dysfunction or central hypoventilation.",
+    "lab_markers": "Anti-NMDA receptor antibodies (IgG) in CSF, CSF lymphocytic pleocytosis, EEG showing extreme delta brush pattern, MRI may be normal or show T2/FLAIR signal changes",
+    "epidemiology": "Most common form of autoimmune encephalitis. Predominantly affects young women (median age 21). Associated with ovarian teratoma in approximately 40% of female cases. Incidence estimated at 1.5 per million per year.",
+    "icd_code": "G04.81"
+  },
+  {
+    "name": "HSV Encephalitis",
+    "category": "infectious",
+    "description": "Acute necrotizing encephalitis caused by herpes simplex virus (primarily HSV-1 in adults), with predilection for temporal lobes. Most common cause of sporadic fatal encephalitis.",
+    "symptoms": "Acute fever, headache, altered consciousness, behavioral changes, seizures, aphasia, focal neurological deficits, olfactory hallucinations, temporal lobe seizures",
+    "diagnostic_criteria": "Clinical suspicion in acute encephalitis with temporal lobe involvement. Confirmed by HSV PCR in CSF (sensitivity >95%). MRI showing T2/FLAIR hyperintensity with hemorrhagic changes in temporal lobes is highly suggestive.",
+    "lab_markers": "HSV PCR in CSF, CSF pleocytosis with lymphocytic predominance, elevated CSF protein, red blood cells in CSF (hemorrhagic necrosis), MRI with temporal lobe T2 changes and hemorrhage",
+    "epidemiology": "Incidence approximately 2-4 per million per year. Bimodal age distribution with peaks in young adults and elderly. Without treatment, mortality exceeds 70%. With acyclovir, mortality reduced to 15-20%.",
+    "icd_code": "B00.4"
+  },
+  {
+    "name": "Solanum-Type Encephalopathy (Zombie Virus)",
+    "category": "infectious/neurological",
+    "description": "Novel neurotropic RNA agent-driven encephalopathy, transmitted via bite vector from infected animals. Characterized by a 3-phase clinical progression from prodromal mood changes through neuropsychiatric deterioration to persistent altered consciousness with necrotic lesions.",
+    "symptoms": "Prodromal: fatigue, irritability, insomnia, bloodshot eyes. Neuropsychiatric: escalating aggression, confusion, hypersalivation, severe photophobia, hydrophobia, violent outbursts, compulsive biting and cannibalistic behavior directed at other humans. Motor: severe ataxia progressing to shuffling uncoordinated gait (shambling ambulation), progressive loss of speech replaced by involuntary groaning vocalizations. Sensory: profound analgesia with complete absence of pain response. Dermatologic: progressive skin necrosis with grayish pallor, sunken periorbital features, tissue decomposition at bite site. Behavioral: paradoxical approach behavior toward uninfected individuals despite diminished cognitive function. Animal bite history with unidentified species.",
+    "diagnostic_criteria": "CDC classification criteria: animal bite exposure history, progressive neuropsychiatric syndrome not explained by standard infectious or prion workups, novel CSF protein bands on electrophoresis, novel 2-3Hz periodic EEG pattern, and identification of novel viral-like particles on electron microscopy of CSF or tissue specimens.",
+    "lab_markers": "Novel CSF protein bands on electrophoresis, 2-3Hz periodic generalized EEG discharges (distinct from CJD pattern), novel viral-like particles on electron microscopy (80-100nm icosahedral), negative standard infectious panel (rabies, HSV, West Nile, HIV), negative prion markers (14-3-3, RT-QuIC)",
+    "epidemiology": "Extremely rare. As of 2025, only 3 confirmed cases in North America, all linked to unidentified animal bite exposure in wilderness or rural settings. Suspected bite vector transmission with high pathogen titers in saliva. No known effective treatment.",
+    "icd_code": "U07.9"
+  },
+  {
+    "name": "Type 2 Diabetes Mellitus",
+    "category": "endocrine",
+    "description": "Chronic metabolic disorder characterized by insulin resistance and progressive beta-cell dysfunction, leading to hyperglycemia and increased risk of cardiovascular, renal, neurological, and ophthalmologic complications.",
+    "symptoms": "Polyuria, polydipsia, polyphagia, fatigue, blurred vision, slow wound healing, recurrent infections, acanthosis nigricans, peripheral neuropathy",
+    "diagnostic_criteria": "ADA criteria: fasting plasma glucose 126 mg/dL or more, 2-hour plasma glucose 200 mg/dL or more during OGTT, HbA1c 6.5% or more, or random plasma glucose 200 mg/dL or more with classic symptoms. Requires confirmation with a second test on a different day unless unequivocal hyperglycemia is present.",
+    "lab_markers": "HbA1c, fasting glucose, 2-hour OGTT, fructosamine, C-peptide, fasting insulin, lipid panel, serum creatinine, urine albumin-to-creatinine ratio",
+    "epidemiology": "Global prevalence approximately 6.1% (537 million adults). Rapidly increasing, especially in low- and middle-income countries. Strong association with obesity, sedentary lifestyle, and family history. Risk increases with age.",
+    "icd_code": "E11.9"
+  },
+  {
+    "name": "Chronic Obstructive Pulmonary Disease",
+    "category": "respiratory",
+    "description": "Progressive inflammatory lung disease causing obstructed airflow from the lungs, encompassing chronic bronchitis and emphysema. Primarily caused by long-term exposure to irritating gases or particulate matter.",
+    "symptoms": "Chronic cough, sputum production, dyspnea on exertion, wheezing, chest tightness, frequent respiratory infections, fatigue, weight loss in advanced disease, barrel chest",
+    "diagnostic_criteria": "GOLD criteria: post-bronchodilator FEV1/FVC ratio less than 0.70 on spirometry in a patient with appropriate symptoms and risk factor exposure. Severity graded by FEV1 percentage predicted (GOLD 1-4).",
+    "lab_markers": "Spirometry (FEV1, FVC, FEV1/FVC ratio), arterial blood gas, CBC (polycythemia in chronic hypoxia), alpha-1 antitrypsin level, chest X-ray, CT chest",
+    "epidemiology": "Global prevalence approximately 10% in adults over 40. Third leading cause of death worldwide. Primary risk factor is tobacco smoking (80-90% of cases). Occupational exposures and air pollution contribute.",
+    "icd_code": "J44.1"
+  },
+  {
+    "name": "Essential Hypertension",
+    "category": "cardiovascular",
+    "description": "Persistently elevated arterial blood pressure without identifiable secondary cause. Major risk factor for cardiovascular disease, stroke, chronic kidney disease, and heart failure.",
+    "symptoms": "Usually asymptomatic (silent killer). Severe hypertension may cause headache, visual changes, chest pain, dyspnea, epistaxis, dizziness",
+    "diagnostic_criteria": "ACC/AHA 2017 criteria: sustained blood pressure of 130/80 mmHg or higher on two or more readings on two or more occasions. Stage 1: 130-139/80-89. Stage 2: 140/90 or higher. Ambulatory blood pressure monitoring may be used for confirmation.",
+    "lab_markers": "Basic metabolic panel (creatinine, potassium, sodium), urinalysis, lipid panel, fasting glucose, ECG, echocardiogram (for target organ assessment), urine albumin-to-creatinine ratio",
+    "epidemiology": "Affects approximately 1.28 billion adults worldwide. Prevalence increases with age, reaching over 60% in adults over 60. More prevalent in African American populations. Leading modifiable risk factor for cardiovascular disease.",
+    "icd_code": "I10"
+  },
+  {
+    "name": "Iron Deficiency Anemia",
+    "category": "hematologic",
+    "description": "Most common form of anemia worldwide, caused by insufficient iron to support normal red blood cell production. Results from inadequate dietary intake, impaired absorption, or chronic blood loss.",
+    "symptoms": "Fatigue, pallor, dyspnea on exertion, palpitations, dizziness, pica (craving non-food items), koilonychia (spoon nails), angular cheilitis, glossitis, restless legs",
+    "diagnostic_criteria": "Low hemoglobin (below 12 g/dL in women, 13 g/dL in men) with microcytic hypochromic red cell indices (low MCV, low MCH), low serum ferritin (below 30 ng/mL), low serum iron, elevated TIBC, and low transferrin saturation (below 20%). Reticulocyte count is low.",
+    "lab_markers": "CBC with indices (low MCV, low MCH), serum ferritin, serum iron, TIBC, transferrin saturation, reticulocyte count, peripheral blood smear, soluble transferrin receptor",
+    "epidemiology": "Affects approximately 1.2 billion people globally. Most common in premenopausal women, pregnant women, young children, and populations in developing countries. Leading cause of disability-adjusted life years lost.",
+    "icd_code": "D50.9"
+  },
+  {
+    "name": "Acute Bronchitis",
+    "category": "respiratory",
+    "description": "Self-limiting inflammation of the bronchial airways, usually caused by viral infection. Characterized by cough lasting up to 3 weeks, often following an upper respiratory infection.",
+    "symptoms": "Cough (productive or dry), low-grade fever, chest discomfort, fatigue, mild dyspnea, sore throat, rhinorrhea, myalgia",
+    "diagnostic_criteria": "Clinical diagnosis based on acute cough lasting up to 3 weeks without evidence of pneumonia (no focal consolidation on exam or chest X-ray). Absence of chronic lung disease. Chest X-ray should be performed if pneumonia is suspected (high fever, tachycardia, hypoxia, focal lung findings).",
+    "lab_markers": "Generally no specific lab tests needed. CBC may show mild leukocytosis. Procalcitonin can help distinguish bacterial from viral infection. Chest X-ray to exclude pneumonia when clinically indicated.",
+    "epidemiology": "One of the most common outpatient diagnoses. Annual incidence approximately 5% of adults. More common in fall and winter months. Over 90% of cases are viral in etiology. Accounts for significant antibiotic overprescribing.",
+    "icd_code": "J20.9"
+  }
+]

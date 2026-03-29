@@ -1,0 +1,71 @@
+{
+  "id": "patient_036",
+  "name": "Antoine Rousseau",
+  "age": 50,
+  "sex": "male",
+  "mrn": "MRN-29575",
+  "dob": "1974-03-12",
+  "tier": "simple",
+  "summary": "50-year-old male presenting with acute onset of right eye redness, discharge, and irritation, diagnosed with bacterial conjunctivitis and successfully treated with topical antibiotic eye drops.",
+  "conditions": [
+    {
+      "name": "Acute Conjunctivitis",
+      "icd_code": "H10.9",
+      "status": "resolved",
+      "diagnosed_visit": "visit_01",
+      "notes": "Bacterial etiology, resolved with antibiotic eye drops."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Tobramycin Ophthalmic Solution",
+      "dosage": "1 drop",
+      "frequency": "three times daily for 7 days",
+      "start_visit": "visit_01",
+      "end_visit": "visit_02",
+      "status": "discontinued",
+      "treats": "Acute Conjunctivitis",
+      "notes": "Prescribed for bacterial conjunctivitis, completed full course."
+    }
+  ],
+  "family_history": [],
+  "providers": [
+    {
+      "name": "Dr. Emily White",
+      "role": "attending",
+      "department": "Family Medicine"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-07-10",
+      "type": "initial",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Right eye redness and discharge",
+      "narrative": "Patient presents with acute onset of right eye redness, mild irritation, and purulent discharge for the past 24 hours. Denies pain, vision changes, or foreign body sensation. Left eye is clear. No fever or recent upper respiratory infection. On exam, right conjunctiva is injected, purulent discharge noted, eyelids mildly swollen. Preauricular lymph nodes non-tender. Visual acuity 20/20 in both eyes. Impression: Acute Bacterial Conjunctivitis, right eye. Prescribed Tobramycin Ophthalmic Solution. Advised strict hand hygiene and to avoid touching the eye. Follow up in 3-5 days or sooner if worsening.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_rousseau_2024_jul.pdf"
+      },
+      "medications_started": [
+        "Tobramycin Ophthalmic Solution"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-07-17",
+      "type": "follow-up",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Follow-up for conjunctivitis",
+      "narrative": "Patient returns for follow-up regarding right eye conjunctivitis. Reports significant improvement of symptoms. Redness and discharge have resolved almost completely. No irritation. Exam shows minimal conjunctival injection, no discharge. Eyelids normal. Visual acuity unchanged. Patient completed 7 days of Tobramycin as prescribed. Condition resolved. Advised to discontinue eye drops. Patient instructed to return if symptoms recur or worsen.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_rousseau_2024_jul.pdf"
+      },
+      "medications_discontinued": [
+        "Tobramycin Ophthalmic Solution"
+      ]
+    }
+  ]
+}

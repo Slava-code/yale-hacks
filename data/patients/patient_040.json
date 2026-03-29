@@ -1,0 +1,109 @@
+{
+  "id": "patient_040",
+  "name": "Howard Chen",
+  "age": 73,
+  "sex": "male",
+  "mrn": "MRN-22236",
+  "dob": "1951-06-17",
+  "tier": "simple",
+  "summary": "73-year-old male presenting with a painful vesicular rash in a dermatomal distribution, diagnosed with Herpes Zoster and treated with oral valacyclovir.",
+  "conditions": [
+    {
+      "name": "Herpes Zoster \u2014 Shingles",
+      "icd_code": "B02.9",
+      "status": "resolved",
+      "diagnosed_visit": "visit_01",
+      "notes": "Acute viral infection of sensory nerve, treated with oral antivirals."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Valacyclovir",
+      "dosage": "1000mg",
+      "frequency": "three times daily",
+      "start_visit": "visit_01",
+      "end_visit": "visit_02",
+      "status": "discontinued",
+      "treats": "Herpes Zoster \u2014 Shingles",
+      "monitored_by_labs": null,
+      "notes": "7-day antiviral course for acute shingles."
+    },
+    {
+      "name": "Acetaminophen",
+      "dosage": "500mg",
+      "frequency": "as needed for pain",
+      "start_visit": "visit_01",
+      "end_visit": "visit_03",
+      "status": "discontinued",
+      "treats": null,
+      "monitored_by_labs": null,
+      "notes": "Used for pain relief during acute shingles episode and recovery."
+    }
+  ],
+  "family_history": [],
+  "providers": [
+    {
+      "name": "Dr. Emily Green",
+      "role": "attending",
+      "department": "Family Medicine"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-10-15",
+      "type": "initial",
+      "provider": "Dr. Emily Green",
+      "chief_complaint": "Painful rash on right side of chest",
+      "narrative": "Mr. Chen, a 73-year-old male, presents with a painful rash on his right anterior chest wall for 2 days. He describes it as burning and tingling, followed by the eruption of small blisters. The rash follows a clear dermatomal pattern (T4-T5). Denies recent trauma or known exposure to allergens. Immunization history: unsure about shingles vaccine.\n\nPhysical exam reveals multiple erythematous papules and vesicles within a C-shaped band on the right chest, consistent with a T4-T5 dermatome. Lesions are tender to palpation. No signs of secondary infection. Based on clinical presentation, a diagnosis of Herpes Zoster (Shingles) is made. Initiated Valacyclovir 1000mg three times daily for 7 days. Also prescribed Acetaminophen 500mg PRN for pain. Patient counseled on pain management, keeping the rash clean and dry, and the importance of antiviral adherence. Follow-up in 1 week to assess progress.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_chen_2024_oct.pdf"
+      },
+      "medications_started": [
+        "Valacyclovir",
+        "Acetaminophen"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-10-22",
+      "type": "follow-up",
+      "provider": "Dr. Emily Green",
+      "chief_complaint": "Follow-up on shingles rash",
+      "narrative": "Patient returns for follow-up on his shingles. Reports significant improvement in pain, now rating it 2/10, compared to 7/10 at initial presentation. Rash is crusting over and vesicles have resolved. No new lesions. Completed the 7-day course of Valacyclovir yesterday. Still using Acetaminophen occasionally for residual discomfort, but less frequently.\n\nPhysical exam shows healing, crusted lesions along the T4-T5 dermatome on the right chest. No active vesiculation. No signs of infection. Patient tolerated antiviral medication well. Discussed potential for post-herpetic neuralgia and advised to continue symptomatic pain management as needed. Scheduled a routine follow-up in 3 weeks to ensure complete resolution and assess for any long-term pain.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_chen_2024_oct.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 7.5, Hgb 14.8, Plt 280",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_chen_2024_oct.pdf"
+      },
+      "medications_discontinued": [
+        "Valacyclovir"
+      ]
+    },
+    {
+      "ref": "visit_03",
+      "date": "2024-11-15",
+      "type": "routine",
+      "provider": "Dr. Emily Green",
+      "chief_complaint": "Routine check after shingles",
+      "narrative": "Patient presents for routine follow-up regarding his recent Herpes Zoster episode. Reports complete resolution of the rash. No residual pain or paresthesias, indicating no significant post-herpetic neuralgia. Has not needed Acetaminophen for the past week. Feeling well and back to usual activities.\n\nPhysical exam reveals faint post-inflammatory hyperpigmentation along the T4-T5 dermatome where the rash was, but skin integrity is intact. No tenderness or sensory deficits. Reassured patient about the excellent recovery. Discussed shingles vaccination for future prevention. Encourage yearly flu shot and general health maintenance. Patient advised to return for any new concerns.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_chen_2024_nov.pdf"
+      }
+    }
+  ]
+}

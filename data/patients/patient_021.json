@@ -1,0 +1,179 @@
+{
+  "id": "patient_021",
+  "name": "Sophia Petrov",
+  "age": 29,
+  "sex": "female",
+  "mrn": "MRN-54321",
+  "dob": "1994-11-10",
+  "tier": "moderate",
+  "summary": "29-year-old female with a history of chronic migraines with aura, managed with topiramate, and concurrent anxiety disorder receiving therapy.",
+  "conditions": [
+    {
+      "name": "Migraine with Aura",
+      "icd_code": "G43.1",
+      "status": "chronic",
+      "diagnosed_visit": "visit_01",
+      "notes": "Classic migraines with visual aura, severe pain and associated symptoms."
+    },
+    {
+      "name": "Anxiety Disorder",
+      "icd_code": "F41.1",
+      "status": "chronic",
+      "diagnosed_visit": "visit_05",
+      "notes": "Generalized anxiety symptoms impacting daily function and quality of life."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Topiramate",
+      "dosage": "50mg",
+      "frequency": "twice daily",
+      "start_visit": "visit_02",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Migraine with Aura",
+      "notes": "Started at 25mg daily, titrated up to 50mg twice daily for migraine prevention. Monitored for cognitive side effects."
+    }
+  ],
+  "family_history": [
+    {
+      "relation": "mother",
+      "condition": "Migraine",
+      "diagnosed_age": 25
+    }
+  ],
+  "providers": [
+    {
+      "name": "Dr. Eleanor Vance",
+      "role": "attending",
+      "department": "Family Medicine"
+    },
+    {
+      "name": "Dr. Benjamin Carter",
+      "role": "specialist",
+      "department": "Neurology"
+    },
+    {
+      "name": "Ms. Olivia Green",
+      "role": "therapist",
+      "department": "Behavioral Health"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-03-10",
+      "type": "initial",
+      "provider": "Dr. Eleanor Vance",
+      "chief_complaint": "Frequent severe headaches with visual aura for 6 months",
+      "narrative": "Patient is a 29-year-old female presenting with a 6-month history of increasingly frequent and severe headaches. Describes throbbing pain, typically unilateral, preceded by shimmering lights or zig-zag patterns (aura) lasting 20-30 minutes. Headaches last 4-72 hours, rated 8/10, associated with nausea, photophobia, and phonophobia. Occur 3-4 times per month. No focal neurological deficits on exam. Provisional diagnosis of Migraine with Aura. Advised symptomatic relief with ibuprofen and referred to Neurology for further evaluation and preventive strategies.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_petrov_2024_mar.pdf"
+      }
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-04-05",
+      "type": "consult",
+      "provider": "Dr. Benjamin Carter",
+      "chief_complaint": "Neurology consult for chronic migraines with aura",
+      "narrative": "New patient consultation for chronic migraines with aura. Reviewed detailed headache diary provided by patient, consistent with diagnostic criteria for Migraine with Aura. Discussed lifestyle modifications, abortive therapies, and preventive medications. Given frequency and severity, initiated Topiramate, starting at 25mg daily for one week, then increasing to 25mg twice daily for another week, with target titration to 50mg twice daily. Counselled on potential side effects including paresthesias, cognitive slowing, and appetite changes. Scheduled follow-up in 6 weeks to assess efficacy and tolerability.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_petrov_2024_apr.pdf"
+      },
+      "medications_started": [
+        "Topiramate"
+      ]
+    },
+    {
+      "ref": "visit_03",
+      "date": "2024-05-15",
+      "type": "follow-up",
+      "provider": "Dr. Eleanor Vance",
+      "chief_complaint": "Follow-up on migraine treatment, increasing anxiety",
+      "narrative": "Patient returns for follow-up after starting Topiramate for migraines. Reports experiencing mild paresthesias in hands and feet and some difficulty with word-finding, but these are tolerable. Migraine frequency has slightly reduced to 2-3 per month. However, she expresses increasing anxiety about daily tasks and future health, reporting feeling constantly on edge and having difficulty relaxing. Denies panic attacks or suicidal ideation. Ordered basic labs (CBC, CMP, TSH, Vitamin D) to rule out any underlying contributors to anxiety and fatigue. Advised to continue Topiramate and track anxiety symptoms. Will review labs and discuss anxiety management further.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_petrov_2024_may.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 7.0, Hgb 13.5, Plt 250",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "normal"
+        },
+        {
+          "test": "CMP",
+          "value": "within normal limits",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        },
+        {
+          "test": "TSH",
+          "value": "1.8",
+          "unit": "mIU/L",
+          "range": "0.4-4.0",
+          "flag": "normal"
+        },
+        {
+          "test": "Vitamin D",
+          "value": "45",
+          "unit": "ng/mL",
+          "range": "30-100",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_petrov_2024_may.pdf"
+      }
+    },
+    {
+      "ref": "visit_04",
+      "date": "2024-06-20",
+      "type": "follow-up",
+      "provider": "Dr. Benjamin Carter",
+      "chief_complaint": "Neurology follow-up for migraine management, Topiramate efficacy",
+      "narrative": "Follow-up neurology visit. Patient is tolerating Topiramate 50mg twice daily with stable side effects (mild paresthesias, occasional word-finding difficulty). Migraine frequency has decreased further to 1-2 per month, with reduced intensity. Reports some improvement in overall quality of life regarding headaches. Discussed continued adherence to medication. Patient also mentioned ongoing anxiety, which she plans to discuss further with her PCP. No changes to migraine regimen at this time. Scheduled follow-up in 3 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_petrov_2024_jun.pdf"
+      }
+    },
+    {
+      "ref": "visit_05",
+      "date": "2024-07-30",
+      "type": "follow-up",
+      "provider": "Dr. Eleanor Vance",
+      "chief_complaint": "Persistent anxiety, review of recent labs",
+      "narrative": "Patient returns to discuss persistent anxiety. Reviewed labs from previous visit, all within normal limits, ruling out obvious medical causes for anxiety symptoms. Patient describes significant impact of anxiety on work and social life, including difficulty sleeping and constant worry. Patient meets criteria for Generalized Anxiety Disorder. Discussed treatment options, including cognitive-behavioral therapy (CBT) and medication. Patient preferred to start with therapy. Provided referral to Ms. Olivia Green for psychotherapy. Also reviewed recent neurology visit and noted good migraine control. Emphasized importance of adherence to Topiramate.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_petrov_2024_jul.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Ms. Olivia Green",
+          "reason": "Evaluation and management of Generalized Anxiety Disorder"
+        }
+      ]
+    },
+    {
+      "ref": "visit_06",
+      "date": "2024-09-10",
+      "type": "routine",
+      "provider": "Dr. Eleanor Vance",
+      "chief_complaint": "Routine check-up, update on anxiety and migraines",
+      "narrative": "Routine follow-up. Patient reports significant improvement in anxiety symptoms since starting therapy with Ms. Green. Expresses feeling more in control and better equipped to manage stress. Migraines remain well-controlled on Topiramate, occurring less than once a month and are milder. Continues to track symptoms. Advised to continue therapy and Topiramate. Encouraged regular exercise and mindfulness practices. Scheduled annual physical for next year, and referral to neurology will be maintained as needed.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_petrov_2024_sep.pdf"
+      }
+    }
+  ]
+}

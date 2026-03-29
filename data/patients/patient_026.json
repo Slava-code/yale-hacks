@@ -1,0 +1,83 @@
+{
+  "id": "patient_026",
+  "name": "Ryan Mitchell",
+  "age": 22,
+  "sex": "male",
+  "mrn": "MRN-17382",
+  "dob": "2001-11-10",
+  "tier": "simple",
+  "summary": "22-year-old male presenting with acute cough and congestion, diagnosed with acute bronchitis, and managed symptomatically with full resolution.",
+  "conditions": [
+    {
+      "name": "Acute Bronchitis",
+      "icd_code": "J20.9",
+      "status": "resolved",
+      "diagnosed_visit": "visit_01",
+      "notes": "Viral etiology suspected, managed symptomatically."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Ibuprofen",
+      "dosage": "400mg",
+      "frequency": "every 6 hours as needed",
+      "start_visit": "visit_01",
+      "end_visit": "visit_02",
+      "status": "discontinued",
+      "treats": null,
+      "notes": "For fever and body aches."
+    },
+    {
+      "name": "Dextromethorphan/Guaifenesin",
+      "dosage": "10ml",
+      "frequency": "every 4-6 hours as needed",
+      "start_visit": "visit_01",
+      "end_visit": "visit_02",
+      "status": "discontinued",
+      "treats": null,
+      "notes": "For cough and chest congestion."
+    }
+  ],
+  "family_history": [],
+  "providers": [
+    {
+      "name": "Dr. Emily Roberts",
+      "role": "attending",
+      "department": "Family Medicine"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-03-10",
+      "type": "initial",
+      "provider": "Dr. Emily Roberts",
+      "chief_complaint": "Persistent cough and sore throat",
+      "narrative": "Patient is a 22-year-old male presenting with a 5-day history of productive cough, sore throat, and nasal congestion. Reports occasional low-grade fever (max 100.5\u00b0F) and mild body aches. Denies shortness of breath, chest pain, or significant wheezing. No known sick contacts. Vaccinated for influenza. \n\nOn exam, afebrile, lungs clear to auscultation bilaterally, no wheezes or crackles. Throat mildly erythematous with no exudates. Nasal mucosa congested. Diagnosed with acute bronchitis, likely viral. Advised symptomatic management with OTC medications. Prescribed Ibuprofen for fever/pain and Dextromethorphan/Guaifenesin for cough. Advised to return if symptoms worsen or new symptoms develop.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_mitchell_2024_mar.pdf"
+      },
+      "medications_started": [
+        "Ibuprofen",
+        "Dextromethorphan/Guaifenesin"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-03-17",
+      "type": "follow-up",
+      "provider": "Dr. Emily Roberts",
+      "chief_complaint": "Follow-up for bronchitis, improved symptoms",
+      "narrative": "Patient returns for follow-up regarding acute bronchitis. Reports significant improvement in cough, now only occasional and non-productive. Sore throat and congestion have resolved. No fever or body aches for the past 3 days. Feels much better and is returning to normal activities. \n\nOn exam, lungs remain clear. No fever. Patient confirms adherence to symptomatic treatment. Given resolution of symptoms, advised to discontinue OTC medications as needed. Patient educated on prevention strategies for future respiratory infections. Condition resolved.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_mitchell_2024_mar.pdf"
+      },
+      "medications_discontinued": [
+        "Ibuprofen",
+        "Dextromethorphan/Guaifenesin"
+      ]
+    }
+  ]
+}

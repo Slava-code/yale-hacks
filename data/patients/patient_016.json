@@ -1,0 +1,301 @@
+{
+  "id": "patient_016",
+  "name": "Ahmed Hassan",
+  "age": 62,
+  "sex": "male",
+  "mrn": "MRN-88765",
+  "dob": "1961-11-10",
+  "tier": "moderate",
+  "summary": "62-year-old male with a history of recurrent gout flares and newly diagnosed chronic kidney disease stage 2, managed with allopurinol, lisinopril, and dietary modifications.",
+  "conditions": [
+    {
+      "name": "Gout",
+      "icd_code": "M10.9",
+      "status": "chronic",
+      "diagnosed_visit": "visit_01",
+      "notes": "Recurrent acute flares, particularly affecting the great toe and ankle."
+    },
+    {
+      "name": "Chronic Kidney Disease Stage 2",
+      "icd_code": "N18.2",
+      "status": "chronic",
+      "diagnosed_visit": "visit_03",
+      "notes": "Stable, attributed partly to age and history; managed with ACE inhibitor."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Colchicine (Flare 1)",
+      "dosage": "0.6mg",
+      "frequency": "daily for 5 days",
+      "start_visit": "visit_01",
+      "end_visit": "visit_02",
+      "status": "discontinued",
+      "treats": "Gout",
+      "notes": "Acute flare management for first presentation."
+    },
+    {
+      "name": "Allopurinol",
+      "dosage": "100mg",
+      "frequency": "daily",
+      "start_visit": "visit_02",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Gout",
+      "monitored_by_labs": [
+        "Uric Acid",
+        "Kidney Function Panel"
+      ],
+      "notes": "Urate-lowering therapy."
+    },
+    {
+      "name": "Lisinopril",
+      "dosage": "5mg",
+      "frequency": "daily",
+      "start_visit": "visit_03",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Chronic Kidney Disease Stage 2",
+      "monitored_by_labs": [
+        "Kidney Function Panel",
+        "Potassium"
+      ],
+      "notes": "For renal protection and blood pressure control."
+    },
+    {
+      "name": "Colchicine (Flare 2)",
+      "dosage": "0.6mg",
+      "frequency": "twice daily for 3 days",
+      "start_visit": "visit_04",
+      "end_visit": "visit_04",
+      "status": "discontinued",
+      "treats": "Gout",
+      "notes": "Acute flare management for second episode."
+    }
+  ],
+  "family_history": [],
+  "providers": [
+    {
+      "name": "Dr. Elena Rodriguez",
+      "role": "attending",
+      "department": "Internal Medicine"
+    },
+    {
+      "name": "Dr. David Lee",
+      "role": "specialist",
+      "department": "Nephrology"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-03-10",
+      "type": "initial",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Acute severe pain and swelling in left great toe",
+      "narrative": "Patient, a 62-year-old male, presents with sudden onset excruciating pain, swelling, and redness in the left great toe since yesterday morning. Denies trauma. Describes similar self-resolving episodes in the past. Physical exam reveals a hot, swollen, tender left first metatarsophalangeal (MTP) joint, exquisitely painful to touch. No signs of infection. Labs show elevated uric acid (8.5 mg/dL). Diagnosis of acute gout flare. Prescribed colchicine for acute management. Advised NSAIDs are contraindicated due to age and potential renal concerns. Recommended follow-up in two weeks.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_hassan_2024_mar.pdf"
+      },
+      "labs": [
+        {
+          "test": "Uric Acid",
+          "value": "8.5",
+          "unit": "mg/dL",
+          "range": "3.5-7.2",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_hassan_2024_mar.pdf"
+      },
+      "medications_started": [
+        "Colchicine (Flare 1)"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-03-25",
+      "type": "follow-up",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Follow-up on gout flare, general check-up",
+      "narrative": "Patient returns for follow-up regarding the acute gout flare. Reports significant improvement in left great toe pain and swelling with colchicine; no residual pain or tenderness. Discussed long-term management of gout. Initiated allopurinol 100mg daily to lower uric acid levels and prevent future flares. Ordered a comprehensive metabolic panel and repeat uric acid to monitor treatment efficacy and kidney function. Advised on dietary changes, including limiting purine-rich foods and alcohol. Referral to nephrology placed due to new finding of elevated creatinine.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_hassan_2024_mar.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "within normal limits",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        },
+        {
+          "test": "Creatinine",
+          "value": "1.5",
+          "unit": "mg/dL",
+          "range": "0.7-1.3",
+          "flag": "high"
+        },
+        {
+          "test": "eGFR",
+          "value": "55",
+          "unit": "mL/min/1.73m2",
+          "range": ">60",
+          "flag": "low"
+        },
+        {
+          "test": "Uric Acid",
+          "value": "7.2",
+          "unit": "mg/dL",
+          "range": "3.5-7.2",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_hassan_2024_mar_2.pdf"
+      },
+      "medications_started": [
+        "Allopurinol"
+      ],
+      "medications_discontinued": [
+        "Colchicine (Flare 1)"
+      ],
+      "referrals": [
+        {
+          "to": "Dr. David Lee",
+          "reason": "Evaluation of persistently elevated creatinine and reduced eGFR, suggestive of chronic kidney disease."
+        }
+      ]
+    },
+    {
+      "ref": "visit_03",
+      "date": "2024-04-15",
+      "type": "consult",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Nephrology consult for elevated creatinine",
+      "narrative": "Patient referred for evaluation of persistently elevated creatinine levels identified by PCP. History includes recent gout diagnosis. Reviewed previous labs showing creatinine 1.5 mg/dL and eGFR 55 mL/min/1.73m2. Patient denies specific symptoms of renal impairment such as edema or changes in urination. No history of diabetes or uncontrolled hypertension. Physical exam is unremarkable for overt signs of kidney disease. Urinalysis shows trace protein. Diagnosis of Chronic Kidney Disease Stage 2. Initiated Lisinopril 5mg daily for renal protection and blood pressure management. Advised on low-sodium diet and adequate fluid intake. Follow-up in 4 weeks for lab recheck.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_hassan_2024_apr.pdf"
+      },
+      "labs": [
+        {
+          "test": "Urinalysis",
+          "value": "trace protein, specific gravity 1.015, pH 6.0",
+          "unit": "composite",
+          "range": "negative for protein",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_hassan_2024_apr.pdf"
+      },
+      "medications_started": [
+        "Lisinopril"
+      ]
+    },
+    {
+      "ref": "visit_04",
+      "date": "2024-06-01",
+      "type": "follow-up",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Routine check-up, minor gout flare",
+      "narrative": "Patient returns for routine follow-up. Reports a mild flare of gout in the right ankle, which started 2 days ago. Pain is rated 3/10, improving with rest. Continues allopurinol and lisinopril without reported issues. Blood pressure 130/80 mmHg. Physical exam shows mild tenderness in the right ankle, with no significant swelling or erythema. Prescribed a short course of colchicine for acute flare management (0.6mg BID for 3 days). Reinforced the importance of adherence to allopurinol and ongoing dietary recommendations to prevent future episodes.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_hassan_2024_jun.pdf"
+      },
+      "medications_started": [
+        "Colchicine (Flare 2)"
+      ],
+      "medications_discontinued": [
+        "Colchicine (Flare 2)"
+      ]
+    },
+    {
+      "ref": "visit_05",
+      "date": "2024-07-10",
+      "type": "follow-up",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Nephrology follow-up for CKD management",
+      "narrative": "Follow-up visit with nephrology for ongoing management of CKD Stage 2. Patient reports no new symptoms or complications. Tolerating lisinopril well, blood pressure is well controlled at 126/76 mmHg. Reviewed recent labs showing stable creatinine at 1.4 mg/dL and eGFR 58 mL/min/1.73m2. Potassium level is 4.3 mEq/L, within normal limits. Urinalysis continues to show trace protein but no worsening. Discussed the ongoing importance of medication adherence, a low-sodium diet, and maintaining adequate hydration to preserve renal function. Continue current regimen. Next follow-up in 3 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_hassan_2024_jul.pdf"
+      },
+      "labs": [
+        {
+          "test": "Creatinine",
+          "value": "1.4",
+          "unit": "mg/dL",
+          "range": "0.7-1.3",
+          "flag": "high"
+        },
+        {
+          "test": "eGFR",
+          "value": "58",
+          "unit": "mL/min/1.73m2",
+          "range": ">60",
+          "flag": "low"
+        },
+        {
+          "test": "Potassium",
+          "value": "4.3",
+          "unit": "mEq/L",
+          "range": "3.5-5.0",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_hassan_2024_jul.pdf"
+      }
+    },
+    {
+      "ref": "visit_06",
+      "date": "2024-10-05",
+      "type": "routine",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Annual physical exam, gout and CKD check",
+      "narrative": "Patient presents for his annual physical examination. Reports no gout flares since the last mild episode in June. Feeling well overall, with no new concerning symptoms. Continues both allopurinol and lisinopril as prescribed. Review of systems is stable. Physical exam reveals no active joint inflammation or edema. Blood pressure 128/78 mmHg. Labs from today show controlled uric acid at 5.8 mg/dL and stable kidney function with creatinine 1.4 mg/dL and eGFR 57 mL/min/1.73m2. Continue current management plan. Advised on seasonal influenza vaccination. Schedule routine follow-up in 6 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_hassan_2024_oct.pdf"
+      },
+      "labs": [
+        {
+          "test": "Uric Acid",
+          "value": "5.8",
+          "unit": "mg/dL",
+          "range": "3.5-7.2",
+          "flag": "normal"
+        },
+        {
+          "test": "Creatinine",
+          "value": "1.4",
+          "unit": "mg/dL",
+          "range": "0.7-1.3",
+          "flag": "high"
+        },
+        {
+          "test": "eGFR",
+          "value": "57",
+          "unit": "mL/min/1.73m2",
+          "range": ">60",
+          "flag": "low"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_hassan_2024_oct.pdf"
+      }
+    }
+  ]
+}

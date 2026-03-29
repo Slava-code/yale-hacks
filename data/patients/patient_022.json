@@ -1,0 +1,341 @@
+{
+  "id": "patient_022",
+  "name": "Derek Washington",
+  "age": 66,
+  "sex": "male",
+  "mrn": "MRN-10123",
+  "dob": "1957-11-10",
+  "tier": "moderate",
+  "summary": "66-year-old male with a history of Type 2 Diabetes Mellitus, hypertension, and hyperlipidemia, presenting with worsening glycemic control and new onset peripheral neuropathy, leading to insulin initiation and ongoing management.",
+  "storyline": "Derek Washington, a long-standing patient with Type 2 Diabetes, hypertension, and hyperlipidemia, attends a routine physical where his glycemic control is noted to be suboptimal despite oral medications. Over several months, he develops new symptoms of tingling and numbness in his feet, prompting an endocrinology referral. After a comprehensive evaluation, insulin therapy is initiated to achieve better glucose control and manage his developing diabetic peripheral neuropathy. His care is coordinated between his PCP and endocrinologist, focusing on medication adherence, lifestyle modifications, and regular monitoring to prevent further complications.",
+  "conditions": [
+    {
+      "name": "Type 2 Diabetes Mellitus",
+      "icd_code": "E11.9",
+      "status": "chronic",
+      "diagnosed_visit": "visit_01",
+      "notes": "Diagnosed several years prior, currently managed with oral medication and insulin."
+    },
+    {
+      "name": "Hypertension",
+      "icd_code": "I10",
+      "status": "chronic",
+      "diagnosed_visit": "visit_01",
+      "notes": "Well-controlled with medication."
+    },
+    {
+      "name": "Hyperlipidemia",
+      "icd_code": "E78.5",
+      "status": "chronic",
+      "diagnosed_visit": "visit_01",
+      "notes": "Managed with statin therapy."
+    },
+    {
+      "name": "Diabetic Peripheral Neuropathy",
+      "icd_code": "G63",
+      "status": "active",
+      "diagnosed_visit": "visit_05",
+      "notes": "New onset, primarily affecting lower extremities."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Metformin",
+      "dosage": "1000mg",
+      "frequency": "twice daily",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Type 2 Diabetes Mellitus",
+      "monitored_by_labs": [
+        "HbA1c",
+        "Kidney Function Panel"
+      ],
+      "notes": "Long-term therapy for glucose control."
+    },
+    {
+      "name": "Lisinopril",
+      "dosage": "20mg",
+      "frequency": "daily",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Hypertension",
+      "monitored_by_labs": [
+        "Kidney Function Panel",
+        "Electrolytes"
+      ],
+      "notes": "For blood pressure control."
+    },
+    {
+      "name": "Simvastatin",
+      "dosage": "40mg",
+      "frequency": "daily",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Hyperlipidemia",
+      "monitored_by_labs": [
+        "Lipid Panel",
+        "Liver Function Panel"
+      ],
+      "notes": "For cholesterol management."
+    },
+    {
+      "name": "Insulin Glargine",
+      "dosage": "20 units",
+      "frequency": "daily at bedtime",
+      "start_visit": "visit_05",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Type 2 Diabetes Mellitus",
+      "monitored_by_labs": [
+        "HbA1c",
+        "Blood Glucose"
+      ],
+      "notes": "Initiated for persistent hyperglycemia and worsening symptoms."
+    }
+  ],
+  "family_history": [
+    {
+      "relation": "father",
+      "condition": "Type 2 Diabetes Mellitus",
+      "diagnosed_age": 55
+    },
+    {
+      "relation": "mother",
+      "condition": "Hypertension",
+      "diagnosed_age": 60
+    },
+    {
+      "relation": "brother",
+      "condition": "Coronary Artery Disease",
+      "diagnosed_age": 62
+    }
+  ],
+  "providers": [
+    {
+      "name": "Dr. Elena Rodriguez",
+      "role": "attending",
+      "department": "Internal Medicine"
+    },
+    {
+      "name": "Dr. Alex Lee",
+      "role": "specialist",
+      "department": "Endocrinology"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-03-10",
+      "type": "initial",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Routine annual physical exam",
+      "narrative": "Patient is a 66-year-old male with established history of Type 2 Diabetes Mellitus, Hypertension, and Hyperlipidemia. Presents for routine annual physical. Reports feeling generally well but admits to occasional fatigue and thirst. States he is adherent to current medications (Metformin, Lisinopril, Simvastatin) but struggles with consistent diet and exercise. Physical exam shows BP 138/85, HR 72, BMI 29. No acute distress. Ordered comprehensive labs including HbA1c, lipid panel, kidney and liver function tests, and urinalysis. Advised dietary modifications and increased activity. Will review labs in 1 week.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_washington_2024_mar.pdf"
+      },
+      "medications_started": [
+        "Metformin",
+        "Lisinopril",
+        "Simvastatin"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-03-20",
+      "type": "follow-up",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Review of lab results and medication adherence",
+      "narrative": "Patient returns to review labs. HbA1c is 8.2% (elevated from 7.5% 6 months prior), LDL 115 mg/dL (above target). Kidney function stable. BP in clinic today 135/82. Discussed implications of elevated HbA1c and LDL, reinforcing importance of diet, exercise, and medication adherence. Increased Metformin dosage. Patient expressed concern about fatigue and mild tingling in his feet, especially at night. Reassured and advised to monitor symptoms. Scheduled follow-up in 3 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_washington_2024_mar.pdf"
+      },
+      "labs": [
+        {
+          "test": "HbA1c",
+          "value": "8.2",
+          "unit": "%",
+          "range": "<6.5",
+          "flag": "high"
+        },
+        {
+          "test": "LDL Cholesterol",
+          "value": "115",
+          "unit": "mg/dL",
+          "range": "<100",
+          "flag": "high"
+        },
+        {
+          "test": "HDL Cholesterol",
+          "value": "45",
+          "unit": "mg/dL",
+          "range": ">40",
+          "flag": "normal"
+        },
+        {
+          "test": "Triglycerides",
+          "value": "180",
+          "unit": "mg/dL",
+          "range": "<150",
+          "flag": "high"
+        },
+        {
+          "test": "Kidney Function Panel",
+          "value": "WNL",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_washington_2024_mar.pdf"
+      }
+    },
+    {
+      "ref": "visit_03",
+      "date": "2024-06-15",
+      "type": "follow-up",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Persistent fatigue, increased thirst, new numbness/tingling in feet",
+      "narrative": "Patient returns expressing concerns about persistent fatigue and increased thirst/urination despite increased Metformin dose. More notably, he reports worsening numbness and tingling in both feet, described as a 'pins and needles' sensation, particularly at night, interfering with sleep. Symptoms are bilateral and symmetrical, ascending slightly above the ankles. Denies acute pain, weakness, or falls. Monofilament exam reveals decreased sensation in bilateral great toes and metatarsal heads. Deep tendon reflexes reduced at ankles. Discussed possibility of diabetic peripheral neuropathy. Ordered repeat HbA1c and nerve conduction studies (NCS) to evaluate neuropathy. Referral to endocrinology considered if glycemic control remains suboptimal.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_washington_2024_jun.pdf"
+      }
+    },
+    {
+      "ref": "visit_04",
+      "date": "2024-07-01",
+      "type": "follow-up",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Lab review, persistent neuropathy symptoms, endocrinology referral",
+      "narrative": "Patient returns for lab review and discussion of neuropathy symptoms. Repeat HbA1c is 8.0%, showing only minimal improvement. Neuropathy symptoms persist, affecting quality of life. Nerve conduction studies (NCS) results indicate mild-moderate sensorimotor polyneuropathy, consistent with diabetic neuropathy. Given persistent hyperglycemia and confirmed neuropathy despite maximal oral therapy, decided to refer to Dr. Alex Lee for endocrinology consultation to optimize diabetes management, likely involving insulin initiation. Provided patient with referral details and explained the rationale for starting insulin.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_washington_2024_jul.pdf"
+      },
+      "labs": [
+        {
+          "test": "HbA1c",
+          "value": "8.0",
+          "unit": "%",
+          "range": "<6.5",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_washington_2024_jul.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. Alex Lee",
+          "reason": "Optimization of Type 2 Diabetes management due to persistent hyperglycemia and new onset diabetic peripheral neuropathy, considering insulin initiation."
+        }
+      ]
+    },
+    {
+      "ref": "visit_05",
+      "date": "2024-07-15",
+      "type": "consult",
+      "provider": "Dr. Alex Lee",
+      "chief_complaint": "Endocrinology consult for Type 2 Diabetes and neuropathy",
+      "narrative": "New patient endocrinology consult for Type 2 Diabetes Mellitus with recent onset diabetic peripheral neuropathy. Reviewed PCP notes, current medications, and lab results (HbA1c 8.0%). Patient reports foot numbness and tingling, worse at night. Confirmed diagnosis of diabetic peripheral neuropathy based on symptoms and NCS. Discussed treatment intensification including insulin therapy. Started Insulin Glargine 20 units daily at bedtime. Provided detailed education on insulin administration, glucose monitoring, and hypoglycemia prevention. Emphasized lifestyle modifications. Patient will monitor blood glucose daily and adjust insulin with guidance. Follow-up in 6 weeks.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_washington_2024_jul.pdf"
+      },
+      "medications_started": [
+        "Insulin Glargine"
+      ]
+    },
+    {
+      "ref": "visit_06",
+      "date": "2024-09-01",
+      "type": "follow-up",
+      "provider": "Dr. Alex Lee",
+      "chief_complaint": "Follow-up for insulin titration and neuropathy symptoms",
+      "narrative": "Patient returns for follow-up after 6 weeks on Insulin Glargine. Reports improved fasting blood sugars, now consistently in 100-130 mg/dL range. Postprandial sugars also showing improvement. Neuropathy symptoms of numbness/tingling are stable, not worsening, but not significantly improved either. Discussed blood glucose logs and adjusted insulin glargine dose to 24 units daily. Emphasized continued foot care and regular glucose monitoring. Ordered repeat HbA1c and lipid panel for next visit. Encouraged referral to podiatry if symptoms progress. Scheduled next follow-up in 3 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_washington_2024_sep.pdf"
+      },
+      "labs": [
+        {
+          "test": "Fasting Blood Glucose",
+          "value": "115",
+          "unit": "mg/dL",
+          "range": "70-130",
+          "flag": "normal"
+        },
+        {
+          "test": "Postprandial Blood Glucose",
+          "value": "168",
+          "unit": "mg/dL",
+          "range": "<180",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_washington_2024_sep.pdf"
+      }
+    },
+    {
+      "ref": "visit_07",
+      "date": "2024-11-10",
+      "type": "routine",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Routine check-up, care coordination with endocrinology",
+      "narrative": "Patient presents for routine PCP check-up. Reports overall improved energy levels and less thirst since starting insulin. Glycemic control appears better based on home monitoring. Neuropathy symptoms remain consistent, no acute exacerbation. BP 130/80. Confirmed adherence to all medications. Reviewed recent communication from Dr. Lee confirming stable diabetes management. Discussed fall prevention strategies given peripheral neuropathy. Emphasized continued healthy diet and exercise. Next PCP visit in 6 months for general health maintenance and preventative screenings.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_washington_2024_nov.pdf"
+      }
+    },
+    {
+      "ref": "visit_08",
+      "date": "2025-01-20",
+      "type": "follow-up",
+      "provider": "Dr. Alex Lee",
+      "chief_complaint": "Quarterly endocrinology follow-up",
+      "narrative": "Patient returns for quarterly endocrinology follow-up. Reports good glycemic control with stable blood glucose levels. HbA1c 6.8% (at target). Neuropathy symptoms are stable, no significant improvement but also no worsening. Continues to use Insulin Glargine 24 units daily. Discussed importance of regular foot exams. Ordered annual microalbuminuria screening which showed trace albumin. Reinforced lifestyle modifications to protect kidney function. Reviewed medications, all remain active. Next follow-up in 3 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_washington_2025_jan.pdf"
+      },
+      "labs": [
+        {
+          "test": "HbA1c",
+          "value": "6.8",
+          "unit": "%",
+          "range": "<6.5",
+          "flag": "normal"
+        },
+        {
+          "test": "Lipid Panel",
+          "value": "WNL",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        },
+        {
+          "test": "Urinary Albumin-to-Creatinine Ratio",
+          "value": "45",
+          "unit": "mg/g",
+          "range": "<30",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_washington_2025_jan.pdf"
+      }
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "id": "patient_035",
+  "name": "Mei-Lin Chang",
+  "age": 39,
+  "sex": "female",
+  "mrn": "MRN-77470",
+  "dob": "1984-11-10",
+  "tier": "simple",
+  "summary": "39-year-old female presenting with progressive right hand and wrist pain, numbness, and tingling, ultimately diagnosed with Carpal Tunnel Syndrome confirmed by nerve conduction study, and managed with splinting and anti-inflammatory medication.",
+  "conditions": [
+    {
+      "name": "Carpal Tunnel Syndrome, Right Hand",
+      "icd_code": "G56.00",
+      "status": "active",
+      "diagnosed_visit": "visit_02",
+      "notes": "Confirmed by nerve conduction study; symptoms managed with conservative therapy."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Naproxen",
+      "dosage": "250mg",
+      "frequency": "twice daily",
+      "start_visit": "visit_01",
+      "end_visit": "visit_03",
+      "status": "discontinued",
+      "treats": "Carpal Tunnel Syndrome, Right Hand",
+      "notes": "Prescribed for symptomatic relief of pain and inflammation; tapered off as symptoms improved."
+    }
+  ],
+  "family_history": [],
+  "providers": [
+    {
+      "name": "Dr. Emily Roberts",
+      "role": "attending",
+      "department": "Family Medicine"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-03-10",
+      "type": "initial",
+      "provider": "Dr. Emily Roberts",
+      "chief_complaint": "Right hand numbness and tingling",
+      "narrative": "Patient reports gradual onset of numbness and tingling in her right thumb, index, middle, and half of the ring finger over the past 2 months. Symptoms are worse at night and with repetitive hand movements (typing, driving). Reports occasional shooting pain into the forearm. Denies trauma or recent injury. Exam reveals positive Phalen's and Tinel's signs at the right wrist. Motor strength intact. Provisional diagnosis of Carpal Tunnel Syndrome. Prescribed Naproxen for pain and inflammation, and recommended a neutral wrist splint for night use. Ordered nerve conduction study to confirm diagnosis. Follow up in 2 weeks.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_chang_2024_mar.pdf"
+      },
+      "medications_started": [
+        "Naproxen"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-03-24",
+      "type": "follow-up",
+      "provider": "Dr. Emily Roberts",
+      "chief_complaint": "Review nerve conduction study results",
+      "narrative": "Patient returns for review of nerve conduction study (NCS) results. Reports slight improvement in symptoms with Naproxen and consistent night splint use, but still experiences intermittent numbness. NCS confirmed mild to moderate right median nerve compression at the wrist. Given the clinical picture and supportive NCS, diagnosis of Carpal Tunnel Syndrome of the right hand is established. Continued conservative management with splinting and Naproxen. Discussed ergonomic modifications at work. Will follow up in 1 month to assess progress.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_chang_2024_mar.pdf"
+      },
+      "procedures": [
+        {
+          "name": "Nerve Conduction Study - Right Upper Extremity",
+          "outcome": "Confirmed mild to moderate median nerve compression at wrist"
+        }
+      ],
+      "labs_document": {
+        "type": "imaging_report",
+        "filename": "imaging_report_chang_2024_mar.pdf"
+      }
+    },
+    {
+      "ref": "visit_03",
+      "date": "2024-04-24",
+      "type": "follow-up",
+      "provider": "Dr. Emily Roberts",
+      "chief_complaint": "Follow-up for Carpal Tunnel Syndrome",
+      "narrative": "Patient reports significant improvement in symptoms since last visit. Numbness and tingling are now infrequent and milder, primarily occurring with prolonged computer use. Night symptoms have resolved with continuous splinting. Able to perform daily activities with much less discomfort. Advised to continue night splinting and ergonomic modifications. Naproxen may be tapered and discontinued if symptoms remain controlled. Patient is satisfied with conservative management. No surgical intervention currently indicated. Follow up as needed.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_chang_2024_apr.pdf"
+      },
+      "medications_discontinued": [
+        "Naproxen"
+      ]
+    }
+  ]
+}

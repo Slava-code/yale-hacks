@@ -1,0 +1,91 @@
+{
+  "id": "patient_038",
+  "name": "Daniel Eriksson",
+  "age": 58,
+  "sex": "male",
+  "mrn": "MRN-56789",
+  "dob": "1966-05-13",
+  "tier": "simple",
+  "summary": "58-year-old male presenting with progressive fatigue and weakness, diagnosed with Vitamin B12 Deficiency after lab confirmation, and initiated on oral supplementation.",
+  "conditions": [
+    {
+      "name": "Vitamin B12 Deficiency",
+      "icd_code": "E53.8",
+      "status": "active",
+      "diagnosed_visit": "visit_02",
+      "notes": "Confirmed by lab results at follow-up visit."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Vitamin B12 Supplementation",
+      "dosage": "1000mcg",
+      "frequency": "daily",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Vitamin B12 Deficiency",
+      "monitored_by_labs": [
+        "Vitamin B12"
+      ],
+      "notes": "Oral supplementation initiated based on symptoms and later confirmed by labs."
+    }
+  ],
+  "family_history": [],
+  "providers": [
+    {
+      "name": "Dr. Anya Sharma",
+      "role": "attending",
+      "department": "Internal Medicine"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-09-10",
+      "type": "initial",
+      "provider": "Dr. Anya Sharma",
+      "chief_complaint": "Persistent fatigue and weakness for 3 months",
+      "narrative": "Patient is a 58-year-old male presenting with a 3-month history of progressive fatigue, generalized weakness, and occasional tingling sensation in both feet. Symptoms are gradually worsening, affecting daily activities. Denies fever, chills, weight loss, or changes in bowel habits. Diet includes occasional meat and dairy.\n\nPhysical exam is largely unremarkable. Neurological exam reveals intact sensation to light touch but decreased vibratory sense at the ankles bilaterally. Deep tendon reflexes are 2+ symmetrical. Based on history, suspected Vitamin B12 deficiency. Ordered labs including CBC, CMP, and Vitamin B12 level. Started empirical Vitamin B12 supplementation 1000mcg daily pending lab results. Advised to return for lab review in 2 weeks.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_eriksson_2024_sep.pdf"
+      },
+      "medications_started": [
+        "Vitamin B12 Supplementation"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-09-24",
+      "type": "follow-up",
+      "provider": "Dr. Anya Sharma",
+      "chief_complaint": "Lab review for fatigue, follow-up on B12 supplementation",
+      "narrative": "Patient returns for lab review. Reports mild improvement in energy levels and a slight decrease in the tingling sensation in his feet since starting Vitamin B12 supplementation. Lab results confirm Vitamin B12 deficiency: level of 180 pg/mL. CBC is within normal limits. Other labs unremarkable.\n\nDiagnosis of Vitamin B12 Deficiency confirmed. Discussed the importance of continued daily Vitamin B12 supplementation. Explained potential causes, including dietary intake and malabsorption. Will continue current oral supplementation dosage. Scheduled follow-up in 3 months to recheck Vitamin B12 levels and assess symptom resolution.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_eriksson_2024_sep.pdf"
+      },
+      "labs": [
+        {
+          "test": "Vitamin B12",
+          "value": "180",
+          "unit": "pg/mL",
+          "range": "200-900",
+          "flag": "low"
+        },
+        {
+          "test": "CBC",
+          "value": "WBC 7.2, Hgb 14.5, Plt 250",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 13-17, Plt 150-400",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_eriksson_2024_sep.pdf"
+      }
+    }
+  ]
+}

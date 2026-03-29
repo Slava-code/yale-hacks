@@ -1,0 +1,578 @@
+{
+  "id": "patient_010",
+  "name": "William Thompson",
+  "age": 68,
+  "sex": "male",
+  "mrn": "MRN-81239",
+  "dob": "1956-06-17",
+  "tier": "complex",
+  "summary": "68-year-old male with a history of COPD, incidentally found to have Stage IIIA Non-Small Cell Lung Cancer (adenocarcinoma) during evaluation for a COPD exacerbation. Underwent concurrent chemoradiation, complicated by a pulmonary embolism requiring anticoagulation. Currently on maintenance therapy and anticoagulation.",
+  "storyline": "William Thompson, a 68-year-old retired mechanic with a significant smoking history and diagnosed COPD, initially presented to his primary care physician with a worsening COPD exacerbation. A chest X-ray revealed an unexpected lung opacity, prompting a subsequent CT scan which identified a suspicious mass in the right upper lobe. This led to a pulmonology referral, followed by bronchoscopy and biopsy, confirming Non-Small Cell Lung Cancer, adenocarcinoma subtype. Further staging with PET/CT and brain MRI revealed regional lymph node involvement, classifying it as Stage IIIA. \n\nHe began concurrent chemoradiation therapy. During his second cycle of chemotherapy, he developed acute dyspnea and leg swelling, necessitating an emergency room visit where a CT pulmonary angiogram confirmed a pulmonary embolism. Anticoagulation with apixaban was promptly initiated, and his chemotherapy regimen was adjusted and continued carefully. He completed the full course of chemoradiation and is now on post-treatment surveillance, remaining on long-term anticoagulation for the PE. His case highlights the complexities of managing lung cancer in the context of significant comorbidities.",
+  "conditions": [
+    {
+      "name": "Chronic Obstructive Pulmonary Disease (COPD)",
+      "icd_code": "J44.1",
+      "status": "chronic",
+      "diagnosed_visit": null,
+      "notes": "Long-standing history, managed with inhalers, presented with acute exacerbation."
+    },
+    {
+      "name": "Non-Small Cell Lung Cancer, Stage IIIA (Adenocarcinoma)",
+      "icd_code": "C34.1",
+      "status": "active",
+      "diagnosed_visit": "visit_06",
+      "notes": "Diagnosed via bronchoscopy biopsy, localized advanced disease."
+    },
+    {
+      "name": "Pulmonary Embolism (PE)",
+      "icd_code": "I26.99",
+      "status": "active",
+      "diagnosed_visit": "visit_12",
+      "notes": "Developed during chemotherapy treatment, likely due to malignancy and treatment-related hypercoagulability."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Tiotropium/Olodaterol",
+      "dosage": "2.5mcg/2.5mcg",
+      "frequency": "once daily",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Chronic Obstructive Pulmonary Disease (COPD)",
+      "notes": "Maintenance bronchodilator for COPD."
+    },
+    {
+      "name": "Salbutamol (Albuterol)",
+      "dosage": "90mcg/puff",
+      "frequency": "2 puffs every 4-6 hours PRN",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Chronic Obstructive Pulmonary Disease (COPD)",
+      "notes": "Rescue inhaler for COPD exacerbations."
+    },
+    {
+      "name": "Prednisone",
+      "dosage": "40mg",
+      "frequency": "daily, tapered",
+      "start_visit": "visit_01",
+      "end_visit": "visit_02",
+      "status": "discontinued",
+      "treats": "Chronic Obstructive Pulmonary Disease (COPD)",
+      "notes": "Short course for COPD exacerbation."
+    },
+    {
+      "name": "Carboplatin",
+      "dosage": "AUC 6",
+      "frequency": "IV every 3 weeks",
+      "start_visit": "visit_10",
+      "end_visit": "visit_15",
+      "status": "discontinued",
+      "treats": "Non-Small Cell Lung Cancer, Stage IIIA (Adenocarcinoma)",
+      "monitored_by_labs": [
+        "CBC",
+        "Creatinine"
+      ],
+      "notes": "Part of concurrent chemoradiation regimen."
+    },
+    {
+      "name": "Pemetrexed",
+      "dosage": "500 mg/m\u00b2",
+      "frequency": "IV every 3 weeks",
+      "start_visit": "visit_10",
+      "end_visit": "visit_15",
+      "status": "discontinued",
+      "treats": "Non-Small Cell Lung Cancer, Stage IIIA (Adenocarcinoma)",
+      "monitored_by_labs": [
+        "CBC",
+        "LFTs",
+        "Creatinine"
+      ],
+      "notes": "Part of concurrent chemoradiation regimen."
+    },
+    {
+      "name": "Ondansetron",
+      "dosage": "8mg",
+      "frequency": "prior to chemo, then every 8 hours PRN",
+      "start_visit": "visit_10",
+      "end_visit": null,
+      "status": "active",
+      "notes": "Anti-emetic for chemotherapy-induced nausea and vomiting."
+    },
+    {
+      "name": "Apixaban",
+      "dosage": "10mg BID for 7 days, then 5mg BID",
+      "frequency": "twice daily",
+      "start_visit": "visit_12",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Pulmonary Embolism (PE)",
+      "monitored_by_labs": [
+        "CBC",
+        "Creatinine"
+      ],
+      "notes": "Anticoagulation for PE, initiated in ER."
+    }
+  ],
+  "family_history": [
+    {
+      "relation": "father",
+      "condition": "Lung Cancer",
+      "diagnosed_age": 72
+    },
+    {
+      "relation": "mother",
+      "condition": "Heart Attack",
+      "diagnosed_age": 65
+    },
+    {
+      "relation": "paternal uncle",
+      "condition": "COPD",
+      "diagnosed_age": 60
+    }
+  ],
+  "providers": [
+    {
+      "name": "Dr. Emily Roberts",
+      "role": "attending",
+      "department": "Internal Medicine"
+    },
+    {
+      "name": "Dr. James Miller",
+      "role": "specialist",
+      "department": "Pulmonology"
+    },
+    {
+      "name": "Dr. Sarah Khan",
+      "role": "specialist",
+      "department": "Oncology"
+    },
+    {
+      "name": "Dr. David Green",
+      "role": "specialist",
+      "department": "Radiation Oncology"
+    },
+    {
+      "name": "Dr. Olivia White",
+      "role": "attending",
+      "department": "Emergency Medicine"
+    },
+    {
+      "name": "Dr. Robert Lee",
+      "role": "specialist",
+      "department": "Cardiology"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-10-15",
+      "type": "initial",
+      "provider": "Dr. Emily Roberts",
+      "chief_complaint": "Worsening shortness of breath, increased cough with sputum",
+      "narrative": "Patient presents with a 5-day history of increased dyspnea, particularly with exertion, and a productive cough with yellow sputum, consistent with a COPD exacerbation. Reports using his rescue inhaler more frequently without significant relief. Vital signs: T 99.2 F, HR 98, RR 24, SpO2 90% on room air. Lungs with diffuse wheezes and prolonged expiration. \n\nInitiated oral prednisone 40mg daily for 5 days. Prescribed a 5-day course of Azithromycin. Ordered chest X-ray to rule out pneumonia. Advised to continue maintenance inhalers and follow up in 3 days for X-ray review and symptom reassessment.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_thompson_2024_oct.pdf"
+      },
+      "medications_started": [
+        "Prednisone",
+        "Tiotropium/Olodaterol",
+        "Salbutamol (Albuterol)"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-10-18",
+      "type": "follow-up",
+      "provider": "Dr. Emily Roberts",
+      "chief_complaint": "COPD exacerbation follow-up, chest X-ray review",
+      "narrative": "Patient returns for follow-up. Symptoms are marginally improved but still significant dyspnea. Chest X-ray shows a new, ill-defined opacity in the right upper lobe, not typical for an acute infection. No frank pneumonia. Given the patient's smoking history and age, further imaging is warranted.\n\nDiscontinued prednisone. Ordered a contrast-enhanced Chest CT to further characterize the right upper lobe opacity. Referral to pulmonology for evaluation of lung mass. Patient advised to complete antibiotic course and continue COPD management. Will contact with CT results and pulmonology appointment details.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_thompson_2024_oct.pdf"
+      },
+      "medications_discontinued": [
+        "Prednisone"
+      ],
+      "procedures": [
+        {
+          "name": "Chest X-ray",
+          "outcome": "New ill-defined opacity in right upper lobe."
+        }
+      ],
+      "referrals": [
+        {
+          "to": "Dr. James Miller",
+          "reason": "Evaluation of new right upper lobe lung mass on chest X-ray."
+        }
+      ]
+    },
+    {
+      "ref": "visit_03",
+      "date": "2024-10-25",
+      "type": "follow-up",
+      "provider": "Dr. Emily Roberts",
+      "chief_complaint": "Chest CT results review, ongoing dyspnea",
+      "narrative": "Patient reviewed today. Chest CT results show a 4.5 cm spiculated mass in the right upper lobe with associated hilar and mediastinal lymphadenopathy. Findings are highly suspicious for malignancy. \n\nPatient counseled on the findings and the high suspicion for lung cancer. Pulmonology appointment with Dr. James Miller has been scheduled for November 5th. Emphasized the importance of this consultation for further diagnostic workup. Continued supportive care for COPD.",
+      "document": {
+        "type": "imaging_report",
+        "filename": "imaging_report_thompson_2024_oct.pdf"
+      },
+      "procedures": [
+        {
+          "name": "Chest CT with contrast",
+          "outcome": "4.5 cm spiculated mass in RUL, hilar/mediastinal lymphadenopathy."
+        }
+      ]
+    },
+    {
+      "ref": "visit_04",
+      "date": "2024-11-05",
+      "type": "consult",
+      "provider": "Dr. James Miller",
+      "chief_complaint": "Pulmonology consult for lung mass",
+      "narrative": "New patient consult for evaluation of right upper lobe lung mass. Reviewed Chest CT images. Discussed patient's smoking history and COPD. Physical exam unremarkable apart from diminished breath sounds at bases. \n\nRecommended diagnostic bronchoscopy with endobronchial ultrasound (EBUS) guided biopsy of the mass and mediastinal lymph nodes. Patient consented to the procedure. Discussed risks and benefits. Procedure scheduled for next week. Patient advised on pre-procedure fasting and medication adjustments.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_thompson_2024_nov.pdf"
+      }
+    },
+    {
+      "ref": "visit_05",
+      "date": "2024-11-12",
+      "type": "routine",
+      "provider": "Dr. James Miller",
+      "chief_complaint": "Bronchoscopy with biopsy",
+      "narrative": "Patient underwent bronchoscopy with EBUS-guided transbronchial needle aspiration (TBNA) of the right upper lobe mass and mediastinal lymph nodes (stations 4R and 7). Procedure tolerated well without complications. Tissue samples sent for histopathological analysis, immunohistochemistry, and molecular testing. \n\nPatient discharged home after recovery, stable. Advised to report any fever, hemoptysis, or increasing shortness of breath. Follow-up scheduled with pulmonology for results review.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_thompson_2024_nov.pdf"
+      },
+      "procedures": [
+        {
+          "name": "Bronchoscopy with EBUS-guided biopsy",
+          "outcome": "Samples obtained from RUL mass and mediastinal lymph nodes without complication."
+        }
+      ]
+    },
+    {
+      "ref": "visit_06",
+      "date": "2024-11-20",
+      "type": "follow-up",
+      "provider": "Dr. James Miller",
+      "chief_complaint": "Biopsy results review",
+      "narrative": "Patient returned for review of biopsy results. Pathology confirms Non-Small Cell Lung Cancer, adenocarcinoma subtype, with positive lymph node involvement in station 4R. Molecular testing for EGFR, ALK, ROS1 pending. \n\nPatient counseled on the diagnosis of lung cancer. Explained the importance of further staging to guide treatment. Referral placed to oncology for comprehensive staging and treatment planning. Patient provided with resources for support. Oncologist consult scheduled.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_thompson_2024_nov_2.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. Sarah Khan",
+          "reason": "New diagnosis of NSCLC adenocarcinoma with positive lymph nodes for staging and treatment."
+        }
+      ]
+    },
+    {
+      "ref": "visit_07",
+      "date": "2024-11-28",
+      "type": "consult",
+      "provider": "Dr. Sarah Khan",
+      "chief_complaint": "Oncology consult for newly diagnosed NSCLC",
+      "narrative": "New patient oncology consult for adenocarcinoma of the lung. Reviewed outside records and biopsy results confirming NSCLC with regional lymph node involvement. Patient's performance status is good (ECOG 1). \n\nOrdered comprehensive staging workup: PET/CT scan to assess for distant metastases and brain MRI to rule out brain metastases. Discussed preliminary treatment options based on potential staging. Will review all imaging and molecular results at next visit to finalize a treatment plan. Patient given contact information for questions.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_thompson_2024_nov_2.pdf"
+      }
+    },
+    {
+      "ref": "visit_08",
+      "date": "2024-12-05",
+      "type": "follow-up",
+      "provider": "Dr. Sarah Khan",
+      "chief_complaint": "Staging results review, treatment planning",
+      "narrative": "Patient seen for review of staging scans. PET/CT shows hypermetabolic activity only in the right upper lobe mass and associated hilar/mediastinal lymph nodes, no evidence of distant metastases. Brain MRI is negative for metastatic disease. Molecular testing showed no actionable mutations (EGFR/ALK/ROS1 negative).\n\nDiagnosis confirmed as Stage IIIA Non-Small Cell Lung Cancer (T2b N2 M0). Discussed multidisciplinary treatment approach including concurrent chemoradiation. Proposed regimen: Carboplatin + Pemetrexed every 3 weeks for 4 cycles, concurrently with thoracic radiation. Referral to Radiation Oncology for simulation and planning. Patient agreeable to treatment plan. Provided extensive education on treatment course and potential side effects.",
+      "document": {
+        "type": "imaging_report",
+        "filename": "imaging_report_thompson_2024_dec.pdf"
+      },
+      "procedures": [
+        {
+          "name": "PET/CT scan",
+          "outcome": "Hypermetabolic RUL mass and regional lymph nodes, no distant mets."
+        },
+        {
+          "name": "Brain MRI",
+          "outcome": "No evidence of brain metastases."
+        }
+      ],
+      "referrals": [
+        {
+          "to": "Dr. David Green",
+          "reason": "Concurrent radiation therapy planning for Stage IIIA NSCLC."
+        }
+      ]
+    },
+    {
+      "ref": "visit_09",
+      "date": "2024-12-10",
+      "type": "consult",
+      "provider": "Dr. David Green",
+      "chief_complaint": "Radiation Oncology consult, simulation",
+      "narrative": "New patient radiation oncology consult. Reviewed CT and PET scans. Discussed concurrent chemoradiation plan for Stage IIIA NSCLC. Patient underwent radiation simulation today for treatment planning. Target volumes (GTV, CTV, PTV) delineated for IMRT. \n\nDiscussed potential side effects, including esophagitis, pneumonitis, and fatigue. Consent obtained. Treatment expected to start next week, coordinated with medical oncology for chemotherapy cycles.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_thompson_2024_dec.pdf"
+      },
+      "procedures": [
+        {
+          "name": "Radiation therapy simulation",
+          "outcome": "Completed, planning for IMRT."
+        }
+      ]
+    },
+    {
+      "ref": "visit_10",
+      "date": "2024-12-17",
+      "type": "routine",
+      "provider": "Dr. Sarah Khan",
+      "chief_complaint": "Chemotherapy Cycle 1 start, Concurrent Radiation",
+      "narrative": "Patient initiated concurrent chemoradiation today. Received first cycle of Carboplatin (AUC 6) and Pemetrexed (500 mg/m\u00b2) intravenously. Pre-medications given including ondansetron. Tolerated infusion well with no immediate adverse reactions. \n\nStarted daily radiation treatments today. Patient counseled again on common side effects such as nausea, fatigue, myelosuppression, and skin irritation. Labs (CBC, CMP) ordered prior to treatment and will be monitored weekly. Scheduled for next chemotherapy cycle in 3 weeks. Provided anti-emetics for home use.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_thompson_2024_dec.pdf"
+      },
+      "medications_started": [
+        "Carboplatin",
+        "Pemetrexed",
+        "Ondansetron"
+      ],
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 7.2, Hgb 13.8, Plt 250",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "normal"
+        },
+        {
+          "test": "CMP",
+          "value": "within normal limits",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_thompson_2024_dec.pdf"
+      }
+    },
+    {
+      "ref": "visit_11",
+      "date": "2025-01-07",
+      "type": "routine",
+      "provider": "Dr. Sarah Khan",
+      "chief_complaint": "Chemotherapy Cycle 2, new dyspnea and leg swelling",
+      "narrative": "Patient presented for Cycle 2 of Carboplatin/Pemetrexed. Reports increasing dyspnea over the past 3 days, now persistent at rest, and new onset right leg swelling. Denies chest pain, cough, or fever. Radiation is ongoing.\n\nPhysical exam reveals mild tachypnea and unilateral (right) lower extremity edema, pitting to +2. Lungs with decreased breath sounds on the right. Given symptoms and hypercoagulable state of malignancy, high suspicion for pulmonary embolism or DVT. Chemotherapy held. Urgent labs ordered including D-dimer. Immediate referral to Emergency Department for further evaluation.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_thompson_2025_jan.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 3.5, Hgb 11.2, Plt 110",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "low"
+        },
+        {
+          "test": "D-Dimer",
+          "value": "1250",
+          "unit": "ng/mL FEU",
+          "range": "<500",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_thompson_2025_jan.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. Olivia White",
+          "reason": "Acute dyspnea and unilateral leg swelling, high suspicion for PE/DVT."
+        }
+      ]
+    },
+    {
+      "ref": "visit_12",
+      "date": "2025-01-08",
+      "type": "emergency",
+      "provider": "Dr. Olivia White",
+      "chief_complaint": "Acute dyspnea, right leg swelling, suspected PE",
+      "narrative": "Patient presented to ED from oncology clinic with acute dyspnea and right leg swelling. Vitals: HR 110, RR 26, SpO2 88% on room air. D-dimer elevated at 1250 ng/mL FEU. CT Pulmonary Angiogram (CTPA) performed, confirming multiple bilateral pulmonary emboli, largest in the right main pulmonary artery. Right lower extremity ultrasound negative for DVT. \n\nDiagnosis: Acute Pulmonary Embolism. Initiated therapeutic anticoagulation with Apixaban 10mg BID for 7 days, then 5mg BID. Patient admitted for observation and cardiology consult. Oncology team notified.",
+      "document": {
+        "type": "imaging_report",
+        "filename": "imaging_report_thompson_2025_jan.pdf"
+      },
+      "procedures": [
+        {
+          "name": "CT Pulmonary Angiogram (CTPA)",
+          "outcome": "Multiple bilateral pulmonary emboli confirmed."
+        },
+        {
+          "name": "Right lower extremity ultrasound",
+          "outcome": "Negative for DVT."
+        }
+      ],
+      "medications_started": [
+        "Apixaban"
+      ],
+      "referrals": [
+        {
+          "to": "Dr. Robert Lee",
+          "reason": "Management of acute pulmonary embolism."
+        }
+      ]
+    },
+    {
+      "ref": "visit_13",
+      "date": "2025-01-10",
+      "type": "consult",
+      "provider": "Dr. Robert Lee",
+      "chief_complaint": "Cardiology consult for PE management",
+      "narrative": "Cardiology consult for newly diagnosed pulmonary embolism in a patient with active lung cancer. Reviewed CTPA and clinical status. Patient is hemodynamically stable. No evidence of right heart strain. \n\nConfirmed plan for long-term anticoagulation with Apixaban for at least 6 months, likely longer given active malignancy. Discussed risks of bleeding versus recurrence. Recommended close monitoring of CBC and renal function. Oncology team consulted for chemotherapy continuation strategy. Patient educated on signs/symptoms of bleeding and PE recurrence.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_thompson_2025_jan.pdf"
+      }
+    },
+    {
+      "ref": "visit_14",
+      "date": "2025-01-28",
+      "type": "follow-up",
+      "provider": "Dr. Sarah Khan",
+      "chief_complaint": "Chemotherapy Cycle 3, PE management",
+      "narrative": "Patient presented for Cycle 3 of chemoradiation. PE diagnosed and successfully anticoagulated with Apixaban. Patient reports improved dyspnea and no further leg swelling. Labs today show improving counts: WBC 4.1, Hgb 11.5, Plt 130. Creatinine stable.\n\nReviewed with cardiology and radiation oncology. Agreed to proceed with Cycle 3 of Carboplatin/Pemetrexed, carefully monitoring for bleeding complications due to concurrent anticoagulation. Radiation therapy continuing without interruption. Patient tolerating Apixaban well. Emphasized adherence to both cancer treatment and anticoagulation.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_thompson_2025_jan_2.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 4.1, Hgb 11.5, Plt 130",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "low"
+        },
+        {
+          "test": "Creatinine",
+          "value": "0.9",
+          "unit": "mg/dL",
+          "range": "0.6-1.2",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_thompson_2025_jan_2.pdf"
+      }
+    },
+    {
+      "ref": "visit_15",
+      "date": "2025-02-18",
+      "type": "routine",
+      "provider": "Dr. Sarah Khan",
+      "chief_complaint": "Chemotherapy Cycle 4 (final), ongoing radiation",
+      "narrative": "Patient presented for Cycle 4 (final cycle) of Carboplatin/Pemetrexed. Overall feeling well. No new complaints. Radiation is nearing completion. Continues on Apixaban without any bleeding complications. \n\nLabs today within acceptable range for chemotherapy. Administered final cycle of systemic chemotherapy. Discussed plan for post-treatment evaluation scans approximately 4-6 weeks after completion of both chemotherapy and radiation. Patient remains engaged and motivated.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_thompson_2025_feb.pdf"
+      },
+      "medications_discontinued": [
+        "Carboplatin",
+        "Pemetrexed"
+      ],
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 4.8, Hgb 12.0, Plt 155",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_thompson_2025_feb.pdf"
+      }
+    },
+    {
+      "ref": "visit_16",
+      "date": "2025-03-10",
+      "type": "follow-up",
+      "provider": "Dr. David Green",
+      "chief_complaint": "Completion of Radiation Therapy",
+      "narrative": "Patient completed 30 fractions of definitive radiation therapy for Stage IIIA NSCLC today. Tolerated treatment well with expected side effects of fatigue and mild esophagitis, which are resolving. Skin reaction minimal. \n\nDiscussed acute and late radiation side effects. Patient instructed on supportive care measures. Follow-up with medical oncology for post-treatment surveillance scans. Provided contact for any questions or new symptoms.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_thompson_2025_mar.pdf"
+      }
+    },
+    {
+      "ref": "visit_17",
+      "date": "2025-04-15",
+      "type": "routine",
+      "provider": "Dr. Sarah Khan",
+      "chief_complaint": "Post-treatment evaluation scans ordered",
+      "narrative": "Patient seen for post-treatment surveillance planning. Approximately 5 weeks since completion of chemoradiation. Reports improved energy levels, resolution of esophagitis, and stable respiratory status. Continues on Apixaban. \n\nOrdered repeat PET/CT scan to assess treatment response and rule out recurrence or progression. Also ordered a baseline CT chest without contrast for future surveillance. Labs (CBC, CMP) checked prior to imaging. Scheduled for follow-up in 1 week to review scan results.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_thompson_2025_apr.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 6.5, Hgb 13.0, Plt 200",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "normal"
+        },
+        {
+          "test": "CMP",
+          "value": "within normal limits",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_thompson_2025_apr.pdf"
+      }
+    },
+    {
+      "ref": "visit_18",
+      "date": "2025-04-22",
+      "type": "follow-up",
+      "provider": "Dr. Sarah Khan",
+      "chief_complaint": "Review of post-treatment PET/CT and surveillance plan",
+      "narrative": "Patient returns for review of post-treatment PET/CT scan. Scan shows significant metabolic and size reduction of the right upper lobe mass and mediastinal lymph nodes, consistent with good partial response to therapy. No new hypermetabolic foci suggesting recurrence or metastases. \n\nDiscussed findings. Plan for ongoing surveillance with CT chest without contrast every 3 months for the first year. Continue Apixaban indefinitely for cancer-associated thrombosis prophylaxis. Patient expressed relief and understanding of the surveillance plan. Next oncology follow-up in 3 months.",
+      "document": {
+        "type": "imaging_report",
+        "filename": "imaging_report_thompson_2025_apr.pdf"
+      },
+      "procedures": [
+        {
+          "name": "PET/CT scan (post-treatment)",
+          "outcome": "Significant partial response of RUL mass and lymph nodes, no new disease."
+        }
+      ]
+    }
+  ]
+}

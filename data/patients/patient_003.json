@@ -1,0 +1,384 @@
+{
+  "id": "patient_003",
+  "name": "David Chen",
+  "age": 45,
+  "sex": "male",
+  "mrn": "MRN-55671",
+  "dob": "1978-11-10",
+  "tier": "moderate",
+  "summary": "45-year-old male presented with acute chest pain, diagnosed with ST-Elevation Myocardial Infarction (STEMI), successfully treated with percutaneous coronary intervention (PCI) and stent placement, now stable on medical therapy and undergoing cardiac rehabilitation.",
+  "storyline": "David Chen, a 45-year-old male with a history of hypertension, presented to the emergency department with sudden onset severe substernally chest pain radiating to his left arm. ECG confirmed an anterior ST-Elevation Myocardial Infarction (STEMI). He underwent emergency cardiac catheterization with successful percutaneous coronary intervention (PCI) and placement of a drug-eluting stent to his left anterior descending (LAD) artery. Post-procedure, he was started on dual antiplatelet therapy, a statin, and a beta-blocker. He then engaged in a 6-month cardiac rehabilitation program, showing good progress and adherence to lifestyle modifications.",
+  "conditions": [
+    {
+      "name": "ST-Elevation Myocardial Infarction (STEMI)",
+      "icd_code": "I21.0",
+      "status": "chronic",
+      "diagnosed_visit": "visit_01",
+      "notes": "Anterior wall STEMI, successfully treated with PCI and stent to LAD."
+    },
+    {
+      "name": "Hypertension",
+      "icd_code": "I10",
+      "status": "chronic",
+      "notes": "Pre-existing condition, now well-controlled with medication."
+    },
+    {
+      "name": "Hyperlipidemia",
+      "icd_code": "E78.5",
+      "status": "chronic",
+      "notes": "Diagnosed as contributing factor to CAD, managed with statin."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Aspirin",
+      "dosage": "81mg",
+      "frequency": "daily",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": "ST-Elevation Myocardial Infarction (STEMI)",
+      "monitored_by_labs": [
+        "CBC"
+      ],
+      "notes": "Lifelong antiplatelet therapy post-STEMI."
+    },
+    {
+      "name": "Clopidogrel",
+      "dosage": "75mg",
+      "frequency": "daily",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": "ST-Elevation Myocardial Infarction (STEMI)",
+      "monitored_by_labs": [
+        "CBC"
+      ],
+      "notes": "Part of dual antiplatelet therapy (DAPT) post-stent. Currently active."
+    },
+    {
+      "name": "Atorvastatin",
+      "dosage": "80mg",
+      "frequency": "daily",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Hyperlipidemia",
+      "monitored_by_labs": [
+        "Lipid Panel",
+        "Liver Enzymes"
+      ],
+      "notes": "High-intensity statin therapy for secondary prevention."
+    },
+    {
+      "name": "Metoprolol Succinate",
+      "dosage": "50mg",
+      "frequency": "daily",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Hypertension",
+      "monitored_by_labs": [
+        "Heart Rate",
+        "Blood Pressure"
+      ],
+      "notes": "Beta-blocker for heart rate and blood pressure control post-STEMI."
+    },
+    {
+      "name": "Nitroglycerin",
+      "dosage": "0.4mg",
+      "frequency": "as needed",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": null,
+      "notes": "PRN for chest pain."
+    },
+    {
+      "name": "Morphine",
+      "dosage": "2mg",
+      "frequency": "as needed IV",
+      "start_visit": "visit_01",
+      "end_visit": "visit_02",
+      "status": "discontinued",
+      "treats": null,
+      "notes": "Used for acute pain management during STEMI presentation."
+    }
+  ],
+  "family_history": [
+    {
+      "relation": "father",
+      "condition": "Coronary Artery Disease",
+      "diagnosed_age": 55
+    }
+  ],
+  "providers": [
+    {
+      "name": "Dr. Emily White",
+      "role": "attending",
+      "department": "Emergency Medicine"
+    },
+    {
+      "name": "Dr. Alex Kim",
+      "role": "specialist",
+      "department": "Cardiology"
+    },
+    {
+      "name": "Dr. Sara Lee",
+      "role": "specialist",
+      "department": "Cardiac Rehabilitation"
+    },
+    {
+      "name": "Dr. Michael Brown",
+      "role": "attending",
+      "department": "Internal Medicine"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-03-10",
+      "type": "emergency",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Acute onset severe chest pain radiating to left arm",
+      "narrative": "Patient presented to the Emergency Department via EMS with 9/10 substernal chest pain, sudden onset 1 hour prior. Associated with shortness of breath, diaphoresis, and left arm radiation. ECG performed showing ST-segment elevations in leads V2-V4. Troponin I was critically elevated at 8.2 ng/mL. Rapid activation of cardiac catheterization lab. Patient received aspirin 325mg chewable, clopidogrel 300mg loading dose, and morphine for pain. Suspected anterior STEMI. Transferred to cath lab for emergent PCI.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_chen_2024_mar.pdf"
+      },
+      "labs": [
+        {
+          "test": "Troponin I",
+          "value": "8.2",
+          "unit": "ng/mL",
+          "range": "<0.04",
+          "flag": "critical"
+        },
+        {
+          "test": "CBC",
+          "value": "WBC 10.5, Hgb 14.5, Plt 280",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 13-17, Plt 150-400",
+          "flag": "normal"
+        },
+        {
+          "test": "BMP",
+          "value": "Na 140, K 4.1, Cr 0.9",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_chen_2024_mar.pdf"
+      },
+      "procedures": [
+        {
+          "name": "12-lead Electrocardiogram (ECG)",
+          "outcome": "ST-segment elevation in V2-V4, consistent with anterior STEMI"
+        },
+        {
+          "name": "Cardiac Catheterization with PCI",
+          "outcome": "Successful placement of drug-eluting stent in LAD artery, TIMI 3 flow achieved"
+        }
+      ],
+      "medications_started": [
+        "Aspirin",
+        "Clopidogrel",
+        "Atorvastatin",
+        "Metoprolol Succinate",
+        "Nitroglycerin",
+        "Morphine"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-03-12",
+      "type": "follow-up",
+      "provider": "Dr. Alex Kim",
+      "chief_complaint": "Post-PCI status, chest pain resolved",
+      "narrative": "Patient is two days post-successful PCI to LAD. Chest pain has completely resolved. Hemodynamically stable. Peripheral pulses intact. No signs of bleeding at access site. Reviewed post-PCI care, including importance of dual antiplatelet therapy adherence. Troponin levels are trending down. Patient ambulating in the hallways with assistance. Tolerating oral intake well. Discussed cardiac rehabilitation referral. Morphine discontinued as acute pain has resolved.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_chen_2024_mar.pdf"
+      },
+      "labs": [
+        {
+          "test": "Troponin I",
+          "value": "1.1",
+          "unit": "ng/mL",
+          "range": "<0.04",
+          "flag": "high"
+        },
+        {
+          "test": "CBC",
+          "value": "WBC 9.8, Hgb 14.0, Plt 270",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 13-17, Plt 150-400",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_chen_2024_mar_2.pdf"
+      },
+      "medications_discontinued": [
+        "Morphine"
+      ],
+      "referrals": [
+        {
+          "to": "Dr. Sara Lee",
+          "reason": "Post-STEMI cardiac rehabilitation"
+        }
+      ]
+    },
+    {
+      "ref": "visit_03",
+      "date": "2024-03-13",
+      "type": "follow-up",
+      "provider": "Dr. Alex Kim",
+      "chief_complaint": "Discharge from hospital post-STEMI and PCI",
+      "narrative": "Patient discharged home in stable condition. Final instructions for medication adherence (Aspirin, Clopidogrel, Atorvastatin, Metoprolol, Nitroglycerin PRN), lifestyle modifications (diet, exercise, smoking cessation counseling), and symptom recognition (return precautions for chest pain). Follow-up scheduled with cardiology in 3 weeks and PCP in 1 month. Cardiac rehabilitation referral made. Patient verbalized understanding of discharge plan.",
+      "document": {
+        "type": "discharge_summary",
+        "filename": "discharge_summary_chen_2024_mar.pdf"
+      }
+    },
+    {
+      "ref": "visit_04",
+      "date": "2024-04-05",
+      "type": "follow-up",
+      "provider": "Dr. Alex Kim",
+      "chief_complaint": "One-month post-STEMI cardiology follow-up",
+      "narrative": "Patient returns for a one-month post-STEMI follow-up. Reports no recurrent chest pain, shortness of breath, or other cardiac symptoms. Tolerating all medications well, no adverse effects reported. Adhering to diet recommendations and has started light walking. Blood pressure 128/78 mmHg, heart rate 62 bpm. Re-emphasized importance of medication adherence, especially DAPT. Encouraged continued participation in cardiac rehab. Labs reviewed, showing good lipid control.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_chen_2024_apr.pdf"
+      },
+      "labs": [
+        {
+          "test": "Total Cholesterol",
+          "value": "150",
+          "unit": "mg/dL",
+          "range": "<200",
+          "flag": "normal"
+        },
+        {
+          "test": "LDL Cholesterol",
+          "value": "65",
+          "unit": "mg/dL",
+          "range": "<100",
+          "flag": "normal"
+        },
+        {
+          "test": "HDL Cholesterol",
+          "value": "48",
+          "unit": "mg/dL",
+          "range": ">40",
+          "flag": "normal"
+        },
+        {
+          "test": "Triglycerides",
+          "value": "110",
+          "unit": "mg/dL",
+          "range": "<150",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_chen_2024_apr.pdf"
+      }
+    },
+    {
+      "ref": "visit_05",
+      "date": "2024-04-10",
+      "type": "consult",
+      "provider": "Dr. Sara Lee",
+      "chief_complaint": "Initial cardiac rehabilitation consultation",
+      "narrative": "Patient attended initial cardiac rehabilitation consult. Reviewed medical history, recent STEMI, and PCI. Assessed current physical activity level and discussed goals for rehabilitation. Patient is motivated to improve fitness and reduce cardiac risk factors. Baseline exercise capacity assessed. Initiated Phase 2 cardiac rehabilitation program, including supervised exercise sessions, education on heart-healthy living, and stress management techniques. Provided individualized exercise prescription. Next session scheduled for next week.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_chen_2024_apr.pdf"
+      },
+      "procedures": [
+        {
+          "name": "Initial Exercise Capacity Assessment",
+          "outcome": "Good baseline tolerance, mild deconditioning, safe to proceed with moderate intensity exercise program."
+        }
+      ]
+    },
+    {
+      "ref": "visit_06",
+      "date": "2024-07-15",
+      "type": "routine",
+      "provider": "Dr. Michael Brown",
+      "chief_complaint": "Routine PCP follow-up post-STEMI",
+      "narrative": "Patient seen for routine follow-up with his primary care physician, approximately 4 months post-STEMI. Reports feeling much better, actively participating in cardiac rehab 3 times a week. Has lost 10 lbs through diet and exercise. Blood pressure consistently in normal range (120-130/70-80 mmHg) at home. No new concerns. Medications are well-tolerated. Reviewed diabetes screening labs, HbA1c is normal. Renal function stable. Encouraged continued progress in cardiac rehab and adherence to all medication regimens.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_chen_2024_jul.pdf"
+      },
+      "labs": [
+        {
+          "test": "HbA1c",
+          "value": "5.5",
+          "unit": "%",
+          "range": "<5.7",
+          "flag": "normal"
+        },
+        {
+          "test": "Creatinine",
+          "value": "0.9",
+          "unit": "mg/dL",
+          "range": "0.6-1.2",
+          "flag": "normal"
+        },
+        {
+          "test": "eGFR",
+          "value": "95",
+          "unit": "mL/min/1.73m2",
+          "range": ">60",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_chen_2024_jul.pdf"
+      }
+    },
+    {
+      "ref": "visit_07",
+      "date": "2024-09-10",
+      "type": "follow-up",
+      "provider": "Dr. Alex Kim",
+      "chief_complaint": "Six-month post-STEMI cardiology follow-up",
+      "narrative": "Patient returns for his 6-month post-STEMI cardiology follow-up. Has completed his cardiac rehabilitation program with significant improvement in exercise tolerance and overall well-being. Continues to maintain healthy lifestyle modifications. No cardiac symptoms. Blood pressure 125/75 mmHg, heart rate 60 bpm. Discussed continuation of DAPT (Aspirin and Clopidogrel) for at least 12 months as per guidelines, with a plan to re-evaluate at 1 year. Repeat lipid panel shows excellent control. Plan for next cardiology follow-up in 6 months for ongoing surveillance.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_chen_2024_sep.pdf"
+      },
+      "labs": [
+        {
+          "test": "Total Cholesterol",
+          "value": "145",
+          "unit": "mg/dL",
+          "range": "<200",
+          "flag": "normal"
+        },
+        {
+          "test": "LDL Cholesterol",
+          "value": "60",
+          "unit": "mg/dL",
+          "range": "<100",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_chen_2024_sep.pdf"
+      }
+    }
+  ]
+}

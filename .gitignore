@@ -26,6 +26,9 @@ Thumbs.db
 *.swp
 *.swo
 
+# Local Claude Code instructions
+CLAUDE.local.md
+
 # Data (large files)
 data/pdfs/
 *.pdf

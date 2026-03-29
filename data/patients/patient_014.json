@@ -1,0 +1,613 @@
+{
+  "id": "patient_014",
+  "name": "Carlos Rivera",
+  "age": 59,
+  "sex": "male",
+  "mrn": "MRN-84572",
+  "dob": "1965-06-17",
+  "tier": "complex",
+  "summary": "59-year-old male with a history of heavy alcohol use presenting with jaundice and ascites, diagnosed with cirrhosis and portal hypertension with esophageal varices. Experienced episodes of hepatic encephalopathy and is currently undergoing evaluation for liver transplant.",
+  "storyline": "Mr. Rivera, a 59-year-old male with a long history of heavy alcohol use, initially presented with progressive jaundice, abdominal distension due to ascites, and generalized fatigue. Initial workup by his PCP revealed significantly deranged liver function tests, prompting an urgent referral to Gastroenterology/Hepatology. Dr. Bell diagnosed advanced cirrhosis secondary to alcohol-related liver disease and initiated diuretics for ascites management. An endoscopy confirmed the presence of large esophageal varices, which were subsequently banded to prevent bleeding. Despite initial improvement, Mr. Rivera began experiencing episodes of confusion and disorientation, leading to a diagnosis of hepatic encephalopathy, managed with lactulose and later rifaximin. A critical component of his care became sustained alcohol sobriety, which he committed to with the support of addiction counseling. After demonstrating a period of sobriety and stable management of his complications, he was referred for liver transplant evaluation. He successfully completed the rigorous psychosocial and medical assessments and was eventually listed on the transplant waiting list, continuing close monitoring of his MELD score and adherence to medical therapy.",
+  "conditions": [
+    {
+      "name": "Cirrhosis secondary to Alcohol-Related Liver Disease",
+      "icd_code": "K70.30",
+      "status": "chronic",
+      "diagnosed_visit": "visit_02",
+      "notes": "Advanced liver fibrosis with portal hypertension"
+    },
+    {
+      "name": "Esophageal Varices, Grade 2",
+      "icd_code": "I85.00",
+      "status": "chronic",
+      "diagnosed_visit": "visit_03",
+      "notes": "Successfully banded on first EGD, monitored regularly"
+    },
+    {
+      "name": "Ascites",
+      "icd_code": "R18.8",
+      "status": "active",
+      "diagnosed_visit": "visit_02",
+      "notes": "Managed with diuretics and dietary sodium restriction"
+    },
+    {
+      "name": "Hepatic Encephalopathy",
+      "icd_code": "K72.90",
+      "status": "chronic",
+      "diagnosed_visit": "visit_06",
+      "notes": "Recurrent episodes, managed with lactulose and rifaximin"
+    }
+  ],
+  "medications": [
+    {
+      "name": "Furosemide",
+      "dosage": "40mg",
+      "frequency": "daily",
+      "start_visit": "visit_02",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Ascites",
+      "monitored_by_labs": [
+        "Electrolytes",
+        "Kidney Function Panel"
+      ],
+      "notes": "Loop diuretic for ascites management"
+    },
+    {
+      "name": "Spironolactone",
+      "dosage": "100mg",
+      "frequency": "daily",
+      "start_visit": "visit_02",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Ascites",
+      "monitored_by_labs": [
+        "Electrolytes",
+        "Kidney Function Panel"
+      ],
+      "notes": "Aldosterone antagonist for ascites management"
+    },
+    {
+      "name": "Propranolol",
+      "dosage": "20mg",
+      "frequency": "twice daily",
+      "start_visit": "visit_04",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Esophageal Varices, Grade 2",
+      "monitored_by_labs": [
+        "Blood Pressure",
+        "Heart Rate"
+      ],
+      "notes": "Non-selective beta-blocker for primary prophylaxis of variceal bleeding"
+    },
+    {
+      "name": "Lactulose",
+      "dosage": "30ml",
+      "frequency": "twice daily, titrated",
+      "start_visit": "visit_06",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Hepatic Encephalopathy",
+      "notes": "Osmotic laxative to reduce ammonia absorption"
+    },
+    {
+      "name": "Rifaximin",
+      "dosage": "550mg",
+      "frequency": "twice daily",
+      "start_visit": "visit_08",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Hepatic Encephalopathy",
+      "notes": "Non-absorbable antibiotic to reduce ammonia-producing gut bacteria"
+    }
+  ],
+  "family_history": [
+    {
+      "relation": "father",
+      "condition": "Hypertension",
+      "diagnosed_age": 55
+    },
+    {
+      "relation": "mother",
+      "condition": "Type 2 Diabetes",
+      "diagnosed_age": 60
+    }
+  ],
+  "providers": [
+    {
+      "name": "Dr. Elena Rodriguez",
+      "role": "attending",
+      "department": "Internal Medicine"
+    },
+    {
+      "name": "Dr. Marcus Bell",
+      "role": "specialist",
+      "department": "Gastroenterology and Hepatology"
+    },
+    {
+      "name": "Dr. Emily White",
+      "role": "specialist",
+      "department": "Addiction Psychiatry"
+    },
+    {
+      "name": "Dr. David Lee",
+      "role": "specialist",
+      "department": "Liver Transplant Surgery"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-10-15",
+      "type": "initial",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Yellow skin, abdominal swelling, fatigue for 2 months",
+      "narrative": "Mr. Rivera presents with progressive jaundice, increasing abdominal girth, and profound fatigue over the past 2 months. Reports a history of heavy alcohol consumption (approximately a fifth of liquor daily) for over 30 years, with recent reduction but not cessation. Denies acute pain, fever, or GI bleeding. Physical exam reveals icteric sclera, generalized jaundice, distended abdomen with shifting dullness suggestive of ascites, and spider angiomata on the chest. Liver edge palpable, firm. Initial labs ordered, including LFTs, bilirubin, CBC, INR, and kidney function. Urgent referral to Gastroenterology/Hepatology initiated.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_rivera_2024_oct.pdf"
+      },
+      "labs": [
+        {
+          "test": "Total Bilirubin",
+          "value": "7.8",
+          "unit": "mg/dL",
+          "range": "0.2-1.2",
+          "flag": "high"
+        },
+        {
+          "test": "Direct Bilirubin",
+          "value": "5.5",
+          "unit": "mg/dL",
+          "range": "0.0-0.3",
+          "flag": "high"
+        },
+        {
+          "test": "ALT",
+          "value": "120",
+          "unit": "U/L",
+          "range": "7-56",
+          "flag": "high"
+        },
+        {
+          "test": "AST",
+          "value": "180",
+          "unit": "U/L",
+          "range": "8-48",
+          "flag": "high"
+        },
+        {
+          "test": "ALP",
+          "value": "150",
+          "unit": "U/L",
+          "range": "40-129",
+          "flag": "high"
+        },
+        {
+          "test": "INR",
+          "value": "1.8",
+          "unit": "ratio",
+          "range": "0.8-1.1",
+          "flag": "high"
+        },
+        {
+          "test": "Albumin",
+          "value": "2.5",
+          "unit": "g/dL",
+          "range": "3.5-5.0",
+          "flag": "low"
+        },
+        {
+          "test": "Platelets",
+          "value": "90",
+          "unit": "x10^3/uL",
+          "range": "150-450",
+          "flag": "low"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_rivera_2024_oct.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. Marcus Bell",
+          "reason": "Evaluation of acute-on-chronic liver failure, suspected cirrhosis"
+        }
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-10-25",
+      "type": "consult",
+      "provider": "Dr. Marcus Bell",
+      "chief_complaint": "Hepatology consult for advanced liver disease",
+      "narrative": "Consultation for Mr. Rivera, 59M, presenting with jaundice and ascites, with labs significant for elevated LFTs, hyperbilirubinemia, coagulopathy (INR 1.8), and hypoalbuminemia. History of chronic heavy alcohol use confirmed. Physical exam confirms signs of chronic liver disease. An ultrasound of the abdomen performed today shows diffuse coarse echotexture of the liver consistent with cirrhosis, splenomegaly, and large volume ascites.\n\nDiagnosis: Cirrhosis secondary to Alcohol-Related Liver Disease with decompensation (ascites, coagulopathy). Initiated Furosemide 40mg daily and Spironolactone 100mg daily for ascites management. Advised strict alcohol cessation. Scheduled for upper endoscopy to screen for esophageal varices. Follow-up in 2 weeks for ascites and medication review.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_rivera_2024_oct.pdf"
+      },
+      "procedures": [
+        {
+          "name": "Abdominal Ultrasound",
+          "outcome": "Cirrhotic liver changes, splenomegaly, large volume ascites"
+        }
+      ],
+      "medications_started": [
+        "Furosemide",
+        "Spironolactone"
+      ]
+    },
+    {
+      "ref": "visit_03",
+      "date": "2024-11-08",
+      "type": "follow-up",
+      "provider": "Dr. Marcus Bell",
+      "chief_complaint": "Diagnostic and therapeutic upper endoscopy",
+      "narrative": "Upper endoscopy performed today for screening of esophageal varices. Procedure revealed grade 2 esophageal varices with red whale signs, consistent with a high risk of bleeding. Four variceal bands were placed during the procedure to obliterate these high-risk varices.\n\nPatient tolerated the procedure well with no immediate complications. Post-procedure instructions given, including proton pump inhibitor for 1 week and soft diet. Advised to avoid NSAIDs and alcohol. Scheduled follow-up with Dr. Bell in 1 week to discuss findings and long-term management.",
+      "document": {
+        "type": "imaging_report",
+        "filename": "imaging_report_rivera_2024_nov.pdf"
+      },
+      "procedures": [
+        {
+          "name": "Esophagogastroduodenoscopy (EGD) with Variceal Band Ligation",
+          "outcome": "Grade 2 esophageal varices banded"
+        }
+      ]
+    },
+    {
+      "ref": "visit_04",
+      "date": "2024-11-15",
+      "type": "follow-up",
+      "provider": "Dr. Marcus Bell",
+      "chief_complaint": "EGD results and varices management",
+      "narrative": "Follow-up after EGD. Patient reports mild throat soreness but no other complications. Discussed findings of grade 2 esophageal varices and successful banding. To prevent re-bleeding and progression, initiated Propranolol 20mg twice daily, titrating slowly. Re-emphasized the critical importance of absolute alcohol cessation. Ascites is improving with diuretics, weight down by 3 kg. Labs today show slight improvement in INR and bilirubin.\n\nPlan: Continue diuretics and Propranolol. Recheck labs in 2 weeks. Next EGD for repeat banding/surveillance in 2 months. Continued strong recommendation for alcohol cessation. Referral to addiction specialist discussed.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_rivera_2024_nov.pdf"
+      },
+      "labs": [
+        {
+          "test": "Total Bilirubin",
+          "value": "6.2",
+          "unit": "mg/dL",
+          "range": "0.2-1.2",
+          "flag": "high"
+        },
+        {
+          "test": "INR",
+          "value": "1.6",
+          "unit": "ratio",
+          "range": "0.8-1.1",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_rivera_2024_nov.pdf"
+      },
+      "medications_started": [
+        "Propranolol"
+      ]
+    },
+    {
+      "ref": "visit_05",
+      "date": "2024-12-05",
+      "type": "follow-up",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "PCP follow-up, occasional confusion",
+      "narrative": "Mr. Rivera returns for PCP follow-up. Ascites well controlled on current diuretic regimen. Reports occasional episodes of confusion or disorientation, particularly in the mornings, described by his family as 'sluggish thinking.' No overt tremor or asterixis noted on exam today, but he struggles with simple mental arithmetic. Family is concerned. Blood ammonia level ordered to rule out hepatic encephalopathy, given his cirrhosis.\n\nReviewed current medications. Emphasized sobriety. Will follow up with Dr. Bell regarding these new neurological symptoms and ammonia results. Continue current regimen, monitor for any worsening confusion.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_rivera_2024_dec.pdf"
+      },
+      "labs": [
+        {
+          "test": "Ammonia",
+          "value": "65",
+          "unit": "umol/L",
+          "range": "11-32",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_rivera_2024_dec.pdf"
+      }
+    },
+    {
+      "ref": "visit_06",
+      "date": "2024-12-12",
+      "type": "follow-up",
+      "provider": "Dr. Marcus Bell",
+      "chief_complaint": "Hepatology follow-up, new confusion (HE)",
+      "narrative": "Follow-up visit for Mr. Rivera with new reports of episodic confusion. Reviewed ammonia level of 65 umol/L from PCP. Based on clinical picture and elevated ammonia, diagnosis of Hepatic Encephalopathy (HE) is made. Initiated Lactulose 30ml orally twice daily, titrating dose to achieve 2-3 soft bowel movements per day. Patient and family educated on signs of worsening HE and importance of medication adherence. Emphasized again the need for strict alcohol abstinence.\n\nAscites remains well controlled. Propranolol tolerated. Scheduled for repeat EGD in January. MELD score calculated at 15. Discussed potential for liver transplant evaluation in the future, stressing the absolute requirement for sustained sobriety.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_rivera_2024_dec_2.pdf"
+      },
+      "medications_started": [
+        "Lactulose"
+      ]
+    },
+    {
+      "ref": "visit_07",
+      "date": "2025-01-05",
+      "type": "emergency",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Acute worsening confusion and disorientation",
+      "narrative": "Patient presented to ED with acute worsening of confusion and disorientation, brought by family. Family reports he missed several doses of Lactulose. On arrival, patient was disoriented to time and place, drowsy, with mild asterixis. Ammonia level drawn in ED was 110 umol/L. Admitted for acute hepatic encephalopathy management.\n\nTreatment included IV fluids, increased dose of oral Lactulose, and close neurological monitoring. Ammonia levels slowly trended down. After 2 days, patient's mental status returned to baseline. Discharged with strict instructions for Lactulose adherence and follow-up with Hepatology.",
+      "document": {
+        "type": "discharge_summary",
+        "filename": "discharge_summary_rivera_2025_jan.pdf"
+      },
+      "labs": [
+        {
+          "test": "Ammonia",
+          "value": "110",
+          "unit": "umol/L",
+          "range": "11-32",
+          "flag": "critical"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_rivera_2025_jan.pdf"
+      }
+    },
+    {
+      "ref": "visit_08",
+      "date": "2025-01-15",
+      "type": "follow-up",
+      "provider": "Dr. Marcus Bell",
+      "chief_complaint": "Post-hospitalization follow-up, HE management",
+      "narrative": "Follow-up post-ED visit for acute HE. Patient's mental status has returned to baseline. Reviewed hospital course and emphasized the critical importance of Lactulose adherence. Due to recurrent HE, decided to add Rifaximin 550mg twice daily to his regimen for secondary prophylaxis. Patient educated on the purpose of Rifaximin and potential side effects.\n\nConfirmed strict sobriety since hospital discharge. Liver function tests show stable but still elevated bilirubin (5.8 mg/dL). Next EGD scheduled next week. MELD score will be reassessed after EGD and sustained stability. Continued counseling on alcohol cessation.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_rivera_2025_jan.pdf"
+      },
+      "labs": [
+        {
+          "test": "Total Bilirubin",
+          "value": "5.8",
+          "unit": "mg/dL",
+          "range": "0.2-1.2",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_rivera_2025_jan_2.pdf"
+      },
+      "medications_started": [
+        "Rifaximin"
+      ]
+    },
+    {
+      "ref": "visit_09",
+      "date": "2025-01-22",
+      "type": "follow-up",
+      "provider": "Dr. Marcus Bell",
+      "chief_complaint": "Repeat EGD for variceal surveillance",
+      "narrative": "Repeat EGD performed. Exam showed persistent, but smaller, grade 1 esophageal varices. No active bleeding or new red whale signs. No further banding required at this time. Gastric varices were not seen. Patient tolerated the procedure well.\n\nFindings are reassuring, indicating stability of variceal disease with Propranolol therapy. Will continue current management. Next surveillance EGD in 1 year unless symptoms dictate earlier. Re-emphasized continued medication adherence and sobriety.",
+      "document": {
+        "type": "imaging_report",
+        "filename": "imaging_report_rivera_2025_jan.pdf"
+      },
+      "procedures": [
+        {
+          "name": "Repeat Esophagogastroduodenoscopy (EGD)",
+          "outcome": "Grade 1 esophageal varices, no further banding needed"
+        }
+      ]
+    },
+    {
+      "ref": "visit_10",
+      "date": "2025-02-10",
+      "type": "follow-up",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "PCP follow-up, alcohol cessation efforts",
+      "narrative": "Mr. Rivera returns for PCP follow-up. Reports feeling significantly better with mental clarity improved on Lactulose and Rifaximin. He is committed to sobriety and has remained abstinent from alcohol since his ED visit. He is actively seeking support groups.\n\nReferred him to Dr. Emily White, an addiction psychiatrist, for formal assessment and ongoing support for alcohol cessation. Reinforced the benefits of sobriety for his liver health and potential transplant candidacy. Labs today show stable liver function. BP and HR within normal limits on Propranolol. Ascites remains well controlled.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_rivera_2025_feb.pdf"
+      },
+      "labs": [
+        {
+          "test": "Total Bilirubin",
+          "value": "4.5",
+          "unit": "mg/dL",
+          "range": "0.2-1.2",
+          "flag": "high"
+        },
+        {
+          "test": "INR",
+          "value": "1.4",
+          "unit": "ratio",
+          "range": "0.8-1.1",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_rivera_2025_feb.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. Emily White",
+          "reason": "Alcohol use disorder, support for sustained sobriety"
+        }
+      ]
+    },
+    {
+      "ref": "visit_11",
+      "date": "2025-02-25",
+      "type": "consult",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Addiction Psychiatry consultation",
+      "narrative": "Consultation for Mr. Rivera regarding alcohol use disorder. Patient expresses strong motivation for sobriety due to his liver disease. Has been abstinent for 7 weeks. Discussed triggers and coping strategies. Will engage in regular individual therapy sessions and encouraged participation in a local support group. No immediate pharmacotherapy for alcohol use disorder initiated given his current commitment and stable mental status, but will be monitored closely.\n\nReviewed the importance of sobriety for transplant candidacy. Patient is fully aware of the implications. Scheduled for bi-weekly follow-up sessions.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_rivera_2025_feb.pdf"
+      }
+    },
+    {
+      "ref": "visit_12",
+      "date": "2025-03-20",
+      "type": "follow-up",
+      "provider": "Dr. Marcus Bell",
+      "chief_complaint": "Hepatology follow-up, MELD update, transplant discussion",
+      "narrative": "Routine hepatology follow-up. Mr. Rivera reports continued excellent adherence to medications and sustained alcohol sobriety (now 4 months). No episodes of HE. Ascites remains well controlled. Current labs show stable liver function, bilirubin 3.9 mg/dL, INR 1.3, creatinine 0.9 mg/dL, sodium 134 mEq/L. MELD score is 18.\n\nGiven sustained sobriety and stable condition, initiated formal referral to the Liver Transplant team for evaluation. Patient counseled on the rigorous process and requirements. Continue current medical regimen and follow-up with Dr. White for sobriety support. Next hepatology follow-up in 2 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_rivera_2025_mar.pdf"
+      },
+      "labs": [
+        {
+          "test": "Total Bilirubin",
+          "value": "3.9",
+          "unit": "mg/dL",
+          "range": "0.2-1.2",
+          "flag": "high"
+        },
+        {
+          "test": "INR",
+          "value": "1.3",
+          "unit": "ratio",
+          "range": "0.8-1.1",
+          "flag": "high"
+        },
+        {
+          "test": "Creatinine",
+          "value": "0.9",
+          "unit": "mg/dL",
+          "range": "0.6-1.3",
+          "flag": "normal"
+        },
+        {
+          "test": "Sodium",
+          "value": "134",
+          "unit": "mEq/L",
+          "range": "135-145",
+          "flag": "low"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_rivera_2025_mar.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. David Lee",
+          "reason": "Liver transplant evaluation for decompensated alcohol-related cirrhosis"
+        }
+      ]
+    },
+    {
+      "ref": "visit_13",
+      "date": "2025-04-10",
+      "type": "consult",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Initial Liver Transplant Clinic evaluation",
+      "narrative": "Initial evaluation for liver transplant. Comprehensive review of Mr. Rivera's medical history, including alcohol-related cirrhosis, esophageal varices, and recurrent hepatic encephalopathy. Confirmed 5 months of documented alcohol sobriety. All medical records reviewed.\n\nPatient underwent baseline labs, imaging (CT abdomen, chest X-ray), and cardiac evaluation (ECG, echo). Initial assessment finds him medically suitable for transplant evaluation. Referred for formal psychosocial assessment by transplant social worker and psychologist. Patient educated on transplant process, waitlist, and post-transplant care. Next visit after completion of all assessments.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_rivera_2025_apr.pdf"
+      },
+      "procedures": [
+        {
+          "name": "CT Abdomen/Pelvis",
+          "outcome": "Cirrhotic liver morphology, splenomegaly, no hepatocellular carcinoma"
+        },
+        {
+          "name": "Echocardiogram",
+          "outcome": "Normal cardiac function, no pulmonary hypertension"
+        }
+      ]
+    },
+    {
+      "ref": "visit_14",
+      "date": "2025-05-15",
+      "type": "consult",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Psychosocial assessment for transplant",
+      "narrative": "Psychosocial assessment for liver transplant candidacy. Mr. Rivera has maintained 6 months of continuous alcohol sobriety, verified by collateral and urine toxicology screens. He demonstrates a strong understanding of his disease and commitment to lifelong sobriety and medication adherence. He has good social support from his family. He has engaged consistently in individual therapy sessions. No active psychiatric contraindications to transplant identified.\n\nRecommended for transplant listing from a psychosocial perspective. Will continue to follow him for ongoing sobriety support.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_rivera_2025_may.pdf"
+      }
+    },
+    {
+      "ref": "visit_15",
+      "date": "2025-06-01",
+      "type": "routine",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Transplant Listing Committee review",
+      "narrative": "Mr. Rivera's case was presented to the Liver Transplant Listing Committee today. All required evaluations (medical, psychiatric, social) have been completed and are favorable. He has met the mandatory 6-month sobriety period. MELD score calculated at 19.\n\nThe committee approved Mr. Rivera for liver transplant listing. Patient was informed and expressed gratitude. He is now officially on the waiting list. Provided detailed instructions for remaining on the list, including quarterly clinic visits, monthly labs, and contact information for the transplant coordinator. Emphasized immediate notification for any changes in health status or new symptoms.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_rivera_2025_jun.pdf"
+      }
+    },
+    {
+      "ref": "visit_16",
+      "date": "2025-08-01",
+      "type": "follow-up",
+      "provider": "Dr. Marcus Bell",
+      "chief_complaint": "Quarterly Hepatology follow-up, transplant waitlist management",
+      "narrative": "Quarterly follow-up for Mr. Rivera, who is now listed for liver transplant. Patient remains clinically stable. No recent episodes of HE or ascites exacerbation. Reports continued sobriety. Physical exam is stable.\n\nLabs today: Total Bilirubin 3.5 mg/dL, INR 1.2, Creatinine 0.9 mg/dL, Sodium 135 mEq/L. MELD score calculated at 17. These values are stable and reflect ongoing management. Reinforced the importance of diet, adherence to medications, and communication with the transplant team. Next follow-up in 3 months with repeat labs.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_rivera_2025_aug.pdf"
+      },
+      "labs": [
+        {
+          "test": "Total Bilirubin",
+          "value": "3.5",
+          "unit": "mg/dL",
+          "range": "0.2-1.2",
+          "flag": "high"
+        },
+        {
+          "test": "INR",
+          "value": "1.2",
+          "unit": "ratio",
+          "range": "0.8-1.1",
+          "flag": "high"
+        },
+        {
+          "test": "Creatinine",
+          "value": "0.9",
+          "unit": "mg/dL",
+          "range": "0.6-1.3",
+          "flag": "normal"
+        },
+        {
+          "test": "Sodium",
+          "value": "135",
+          "unit": "mEq/L",
+          "range": "135-145",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_rivera_2025_aug.pdf"
+      }
+    },
+    {
+      "ref": "visit_17",
+      "date": "2025-11-01",
+      "type": "routine",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Annual physical and transplant waitlist review",
+      "narrative": "Annual physical for Mr. Rivera. Overall health remains stable. Patient is active on the liver transplant waiting list and continues to adhere strictly to all medical and sobriety requirements. No new complaints. BP 128/78, HR 68. Lungs clear, cardiac exam normal. Abdomen soft, non-tender, no significant ascites noted. \n\nReviewed recent labs from Hepatology (MELD 17, stable). Discussed flu shot and updated vaccinations. Emphasized maintaining healthy lifestyle and continued communication with all his specialists. Reviewed mental health and ongoing sobriety support with Dr. White. All systems are stable while awaiting transplant.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_rivera_2025_nov.pdf"
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+[project]
+name = "medgate"
+requires-python = ">=3.9"
+dependencies = [
+    "reportlab",
+    "python-dotenv",
+    "requests",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

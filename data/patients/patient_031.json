@@ -1,0 +1,72 @@
+{
+  "id": "patient_031",
+  "name": "Emily Carter",
+  "age": 35,
+  "sex": "female",
+  "mrn": "MRN-34567",
+  "dob": "1988-11-10",
+  "tier": "simple",
+  "summary": "35-year-old female presenting with acute onset of facial pain and nasal congestion, diagnosed with acute sinusitis, managed with symptomatic treatment.",
+  "conditions": [
+    {
+      "name": "Acute Sinusitis",
+      "icd_code": "J01.90",
+      "status": "resolved",
+      "diagnosed_visit": "visit_01",
+      "notes": "Likely viral etiology, managed symptomatically."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Ibuprofen",
+      "dosage": "400mg",
+      "frequency": "every 4-6 hours as needed",
+      "start_visit": "visit_01",
+      "end_visit": "visit_02",
+      "status": "discontinued",
+      "treats": "Acute Sinusitis",
+      "monitored_by_labs": [],
+      "notes": "For pain and inflammation associated with sinusitis."
+    }
+  ],
+  "family_history": [],
+  "providers": [
+    {
+      "name": "Dr. Emily Green",
+      "role": "attending",
+      "department": "Family Medicine"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-03-10",
+      "type": "initial",
+      "provider": "Dr. Emily Green",
+      "chief_complaint": "Acute onset of facial pain and nasal congestion",
+      "narrative": "Patient presents with a 3-day history of facial pressure, especially around the cheeks and forehead, accompanied by thick, yellowish nasal discharge and a dull headache. Denies fever, chills, or vision changes. Has tried OTC decongestants with minimal relief. Past medical history otherwise unremarkable.\n\nPhysical exam reveals mild erythema and swelling of nasal mucosa, with tenderness to palpation over the maxillary sinuses. Oropharyngeal exam is benign. No lymphadenopathy. Lungs clear to auscultation. Clinical diagnosis of acute sinusitis. Advised symptomatic management including saline nasal rinses, hydration, and initiated Ibuprofen for pain and inflammation. Counseled on signs of worsening symptoms requiring re-evaluation.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_carter_2024_mar.pdf"
+      },
+      "medications_started": [
+        "Ibuprofen"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-03-17",
+      "type": "follow-up",
+      "provider": "Dr. Emily Green",
+      "chief_complaint": "Follow-up for sinusitis",
+      "narrative": "Patient returns for follow-up regarding acute sinusitis symptoms. Reports significant improvement since the last visit. Nasal congestion has cleared, facial pain is completely resolved, and discharge has ceased. States she is feeling much better and has discontinued Ibuprofen as needed for the past 2 days. No new complaints.\n\nPhysical exam today is unremarkable. Nasal passages are clear, no tenderness over sinuses. Oropharynx clear. Lungs clear. Confirmed resolution of acute sinusitis. Reassured patient about the self-limiting nature of viral sinusitis and advised to continue good hydration and rest. Ibuprofen is officially discontinued. Patient is well and no further follow-up is immediately required.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_carter_2024_mar_2.pdf"
+      },
+      "medications_discontinued": [
+        "Ibuprofen"
+      ]
+    }
+  ]
+}

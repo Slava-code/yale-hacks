@@ -1,0 +1,300 @@
+{
+  "id": "patient_019",
+  "name": "Margaret Kelly",
+  "age": 71,
+  "sex": "female",
+  "mrn": "MRN-84321",
+  "dob": "1952-11-10",
+  "tier": "moderate",
+  "summary": "71-year-old female with long-standing essential hypertension and progressive bilateral knee osteoarthritis, presenting for management of knee pain and evaluation for surgical intervention.",
+  "conditions": [
+    {
+      "name": "Essential Hypertension",
+      "icd_code": "I10",
+      "status": "chronic",
+      "diagnosed_visit": "visit_01",
+      "notes": "Managed with medication; stable control achieved."
+    },
+    {
+      "name": "Osteoarthritis of Bilateral Knees",
+      "icd_code": "M17.0",
+      "status": "chronic",
+      "diagnosed_visit": "visit_03",
+      "notes": "Severe changes on X-ray, leading to consideration of total knee replacement."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Lisinopril",
+      "dosage": "10mg",
+      "frequency": "daily",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Essential Hypertension",
+      "monitored_by_labs": [
+        "Potassium",
+        "Creatinine"
+      ],
+      "notes": "For blood pressure control."
+    },
+    {
+      "name": "Acetaminophen",
+      "dosage": "650mg",
+      "frequency": "three times daily as needed",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Osteoarthritis of Bilateral Knees",
+      "notes": "Initial pain management for knee OA."
+    },
+    {
+      "name": "Meloxicam",
+      "dosage": "15mg",
+      "frequency": "daily",
+      "start_visit": "visit_03",
+      "end_visit": "visit_05",
+      "status": "discontinued",
+      "treats": "Osteoarthritis of Bilateral Knees",
+      "notes": "Discontinued due to mild increase in blood pressure."
+    },
+    {
+      "name": "Amlodipine",
+      "dosage": "5mg",
+      "frequency": "daily",
+      "start_visit": "visit_05",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Essential Hypertension",
+      "monitored_by_labs": [
+        "Blood Pressure"
+      ],
+      "notes": "Added for better blood pressure control after NSAID discontinuation."
+    }
+  ],
+  "family_history": [
+    {
+      "relation": "mother",
+      "condition": "Hypertension",
+      "diagnosed_age": 55
+    },
+    {
+      "relation": "father",
+      "condition": "Type 2 Diabetes",
+      "diagnosed_age": 60
+    }
+  ],
+  "providers": [
+    {
+      "name": "Dr. Emily White",
+      "role": "attending",
+      "department": "Internal Medicine"
+    },
+    {
+      "name": "Dr. Robert Lee",
+      "role": "specialist",
+      "department": "Orthopedic Surgery"
+    },
+    {
+      "name": "Dr. Anya Sharma",
+      "role": "specialist",
+      "department": "Cardiology"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-03-10",
+      "type": "initial",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Routine check-up, managing hypertension, new knee pain",
+      "narrative": "Patient presents for annual physical. Long-standing essential hypertension currently well-controlled on Lisinopril 10mg daily. Recent blood pressures have been within target range. New complaint of mild, intermittent pain in both knees, worse with activity and stairs, for the past 3 months. Denies trauma, swelling, or redness. No fever.\n\nPhysical exam reveals mild crepitus in both knees with flexion, no effusion or warmth. Cardiovascular exam normal. Labs ordered including CBC, CMP, and lipid panel. Advised continued Lisinopril, and started Acetaminophen for knee pain as needed. Follow up in 1 month for lab review.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_kelly_2024_mar.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 7.2, Hgb 13.8, Plt 250",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "normal"
+        },
+        {
+          "test": "CMP",
+          "value": "within normal limits",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        },
+        {
+          "test": "Lipid Panel",
+          "value": "Total Chol 180, HDL 55, LDL 100, Trig 90",
+          "unit": "mg/dL",
+          "range": "standard",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_kelly_2024_mar.pdf"
+      },
+      "medications_started": [
+        "Lisinopril",
+        "Acetaminophen"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-04-15",
+      "type": "follow-up",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Worsening bilateral knee pain",
+      "narrative": "Patient returns for follow-up. Lab results from last visit were all within normal limits. However, she reports that her bilateral knee pain has worsened significantly over the past month, despite regular use of acetaminophen. Pain is now rated 7/10 at its worst, interfering with daily activities such as walking and climbing stairs. Occasional stiffness, particularly in the mornings, lasting for about 30 minutes.\n\nExam shows bilateral knee tenderness along medial joint lines, with mild crepitus and pain on full flexion. No warmth, redness, or significant effusion. Range of motion limited by pain. Given the progression of symptoms, X-rays of both knees were ordered to evaluate for osteoarthritis. Advised to continue acetaminophen and avoid aggravating activities. Will review X-ray results when available.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_kelly_2024_apr.pdf"
+      }
+    },
+    {
+      "ref": "visit_03",
+      "date": "2024-05-01",
+      "type": "follow-up",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Knee X-ray review, continued pain",
+      "narrative": "Patient returns to review X-ray results of both knees. Imaging reveals severe tricompartmental osteoarthritis in both knees, with significant joint space narrowing, osteophyte formation, and subchondral sclerosis. Findings are consistent with advanced degenerative joint disease.\n\nDiscussed findings with patient and management options. Given the severity of pain and imaging findings, initiated Meloxicam 15mg daily as a trial for inflammatory pain relief, with close monitoring for blood pressure or GI side effects. Referral to Orthopedic Surgery (Dr. Robert Lee) for further evaluation and discussion of potential surgical interventions was provided. Patient understands the chronic nature of her condition and the need for specialist input.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_kelly_2024_may.pdf"
+      },
+      "procedures": [
+        {
+          "name": "X-ray Bilateral Knees",
+          "outcome": "Severe tricompartmental osteoarthritis with joint space narrowing and osteophytes."
+        }
+      ],
+      "imaging_document": {
+        "type": "imaging_report",
+        "filename": "imaging_report_kelly_2024_may.pdf"
+      },
+      "medications_started": [
+        "Meloxicam"
+      ],
+      "referrals": [
+        {
+          "to": "Dr. Robert Lee",
+          "reason": "Evaluation for severe bilateral knee osteoarthritis and consideration of surgical options."
+        }
+      ]
+    },
+    {
+      "ref": "visit_04",
+      "date": "2024-06-10",
+      "type": "consult",
+      "provider": "Dr. Robert Lee",
+      "chief_complaint": "Orthopedic consult for knee osteoarthritis",
+      "narrative": "Patient seen for orthopedic consultation regarding severe bilateral knee osteoarthritis. Reviewed PCP notes and imaging. Patient reports moderate relief with Meloxicam, but pain remains significant, especially in the right knee. Exam confirms severe degenerative changes, with marked crepitus, pain on palpation, and limited range of motion bilaterally. Right knee pain is slightly more dominant.\n\nDiscussed conservative management options including physical therapy, bracing, and injections. Offered corticosteroid injection for symptomatic relief in the right knee. Surgical options, including total knee arthroplasty, were discussed in detail, emphasizing risks and benefits. Patient elected for a right knee injection today and will consider surgical options in the future. Follow up in 6-8 weeks.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_kelly_2024_jun.pdf"
+      },
+      "procedures": [
+        {
+          "name": "Right Knee Corticosteroid Injection",
+          "outcome": "Injection administered without complication for pain relief."
+        }
+      ]
+    },
+    {
+      "ref": "visit_05",
+      "date": "2024-07-20",
+      "type": "follow-up",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Persistent knee pain, mild blood pressure elevation",
+      "narrative": "Patient returns reporting that the right knee injection provided about 3 weeks of good relief, but pain has returned. Meloxicam provided some relief but she noticed her home blood pressure readings were slightly elevated since starting it (averaging 145/85 mmHg, up from her usual 125/75 mmHg). No other side effects.\n\nBlood pressure checked in office today: 148/86 mmHg. Given the potential impact of NSAIDs on blood pressure, discontinued Meloxicam. To maintain hypertension control, added Amlodipine 5mg daily. Encouraged continued acetaminophen for pain. Discussed the need to revisit surgical options with orthopedics if conservative measures continue to fail. Patient advised to monitor BP at home and report any concerns.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_kelly_2024_jul.pdf"
+      },
+      "labs": [
+        {
+          "test": "Blood Pressure",
+          "value": "148/86",
+          "unit": "mmHg",
+          "range": "<130/80",
+          "flag": "high"
+        }
+      ],
+      "medications_started": [
+        "Amlodipine"
+      ],
+      "medications_discontinued": [
+        "Meloxicam"
+      ]
+    },
+    {
+      "ref": "visit_06",
+      "date": "2024-08-25",
+      "type": "follow-up",
+      "provider": "Dr. Robert Lee",
+      "chief_complaint": "Discuss total knee replacement for right knee",
+      "narrative": "Patient returns to Orthopedics after attempting conservative management, including a steroid injection which offered temporary relief. She reports that her right knee pain continues to be debilitating and is significantly impacting her quality of life and mobility. She has decided she wishes to proceed with total knee replacement for the right knee.\n\nReviewed the surgical procedure, recovery, and potential complications again. Patient is fully informed and wishes to move forward. Initiated pre-operative workup including blood tests and a cardiology consult for clearance given her history of hypertension. Scheduled surgery for late October. Follow-up with PCP for pre-operative clearance.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_kelly_2024_aug.pdf"
+      },
+      "procedures": [
+        {
+          "name": "Pre-operative blood work ordered",
+          "outcome": "Tests ordered for surgical clearance."
+        }
+      ],
+      "referrals": [
+        {
+          "to": "Dr. Anya Sharma",
+          "reason": "Cardiology clearance for total knee replacement due to history of hypertension."
+        }
+      ]
+    },
+    {
+      "ref": "visit_07",
+      "date": "2024-09-15",
+      "type": "routine",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Pre-operative clearance for right total knee replacement",
+      "narrative": "Patient presents for pre-operative medical clearance for right total knee replacement scheduled for October. Reviewed recent cardiology consult note (Dr. Anya Sharma) which cleared her for surgery, noting stable hypertension on Lisinopril and Amlodipine. Denies chest pain, shortness of breath, or new cardiac symptoms.\n\nPre-operative labs are within acceptable limits. CBC shows adequate hemoglobin. Renal function is stable. Reviewed medications and advised which ones to hold prior to surgery per orthopedic and anesthesia instructions. Patient is well-prepared for surgery. Clearance provided for total knee replacement.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_kelly_2024_sep.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC (Pre-op)",
+          "value": "WBC 6.8, Hgb 13.5, Plt 240",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "normal"
+        },
+        {
+          "test": "CMP (Pre-op)",
+          "value": "within normal limits",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        },
+        {
+          "test": "PT/INR",
+          "value": "1.0",
+          "unit": "INR",
+          "range": "0.8-1.2",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_kelly_2024_sep.pdf"
+      }
+    }
+  ]
+}

@@ -1,0 +1,470 @@
+{
+  "id": "patient_012",
+  "name": "Raymond Jackson",
+  "age": 75,
+  "sex": "male",
+  "mrn": "MRN-58423",
+  "dob": "1949-05-13",
+  "tier": "complex",
+  "summary": "75-year-old male with progressive Parkinson's Disease over 3 years, complicated by orthostatic hypotension and major depressive disorder, managed with a combination of dopaminergic, hypotensive, and antidepressant medications.",
+  "storyline": "Raymond Jackson, a 75-year-old male, initially presented to his PCP in late 2024 with subtle right-sided resting tremor and slowed movements. A neurological consult confirmed Parkinson's Disease (PD), leading to initiation of Carbidopa-Levetiracetam. Over the next year, despite careful medication titration, he experienced a 'wearing-off' phenomenon, requiring dosage adjustments and the addition of Rasagiline. Concurrently, he developed significant orthostatic hypotension, which led to several near-falls, prompting a cardiology consult and the initiation of Midodrine. Increasing apathy, low mood, and sleep disturbances then emerged, leading to a psychiatry referral. He was diagnosed with Major Depressive Disorder and started on Sertraline. His complex management now involves multiple specialists, ongoing medication adjustments to manage motor fluctuations and non-motor symptoms, and supportive therapies like physical therapy to maintain function and prevent falls, highlighting the multi-faceted challenges of advanced PD.",
+  "conditions": [
+    {
+      "name": "Parkinson's Disease",
+      "icd_code": "G20",
+      "status": "chronic",
+      "diagnosed_visit": "visit_02",
+      "notes": "Progressive neurodegenerative disorder affecting motor and non-motor functions."
+    },
+    {
+      "name": "Orthostatic Hypotension",
+      "icd_code": "I95.1",
+      "status": "active",
+      "diagnosed_visit": "visit_08",
+      "notes": "Common non-motor complication of Parkinson's Disease, exacerbated by some medications."
+    },
+    {
+      "name": "Major Depressive Disorder, recurrent, moderate",
+      "icd_code": "F33.1",
+      "status": "active",
+      "diagnosed_visit": "visit_11",
+      "notes": "Non-motor complication of Parkinson's Disease, impacting quality of life."
+    },
+    {
+      "name": "Constipation",
+      "icd_code": "K59.00",
+      "status": "active",
+      "diagnosed_visit": "visit_05",
+      "notes": "Common non-motor symptom of Parkinson's Disease."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Carbidopa-Levetiracetam 25/100mg",
+      "dosage": "1 tablet",
+      "frequency": "three times daily",
+      "start_visit": "visit_02",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Parkinson's Disease",
+      "notes": "Initial dose, titrated upwards. For motor symptoms."
+    },
+    {
+      "name": "Rasagiline",
+      "dosage": "0.5mg",
+      "frequency": "once daily",
+      "start_visit": "visit_05",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Parkinson's Disease",
+      "notes": "Added for motor fluctuations and neuroprotection."
+    },
+    {
+      "name": "Polyethylene Glycol",
+      "dosage": "17g",
+      "frequency": "daily as needed",
+      "start_visit": "visit_05",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Constipation",
+      "notes": "For chronic constipation related to PD."
+    },
+    {
+      "name": "Midodrine",
+      "dosage": "5mg",
+      "frequency": "three times daily",
+      "start_visit": "visit_08",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Orthostatic Hypotension",
+      "notes": "Vasoconstrictor for symptomatic orthostatic hypotension."
+    },
+    {
+      "name": "Sertraline",
+      "dosage": "50mg",
+      "frequency": "once daily",
+      "start_visit": "visit_11",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Major Depressive Disorder, recurrent, moderate",
+      "notes": "SSRI for depression."
+    },
+    {
+      "name": "Carbidopa-Levetiracetam 25/100mg ER",
+      "dosage": "1 tablet",
+      "frequency": "twice daily",
+      "start_visit": "visit_09",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Parkinson's Disease",
+      "notes": "Extended-release formulation for wearing-off phenomenon, replacing immediate-release for some doses."
+    }
+  ],
+  "family_history": [
+    {
+      "relation": "father",
+      "condition": "Hypertension",
+      "diagnosed_age": 55
+    },
+    {
+      "relation": "mother",
+      "condition": "Alzheimer's Disease",
+      "diagnosed_age": 78
+    }
+  ],
+  "providers": [
+    {
+      "name": "Dr. Eleanor Vance",
+      "role": "attending",
+      "department": "Internal Medicine"
+    },
+    {
+      "name": "Dr. David Kim",
+      "role": "specialist",
+      "department": "Neurology (Movement Disorders)"
+    },
+    {
+      "name": "Dr. Laura Bell",
+      "role": "specialist",
+      "department": "Cardiology"
+    },
+    {
+      "name": "Dr. Andrew Reed",
+      "role": "specialist",
+      "department": "Psychiatry"
+    },
+    {
+      "name": "Sarah Green, PT",
+      "role": "therapist",
+      "department": "Physical Therapy"
+    },
+    {
+      "name": "Michael Stone, OT",
+      "role": "therapist",
+      "department": "Occupational Therapy"
+    },
+    {
+      "name": "Emily White, SLP",
+      "role": "therapist",
+      "department": "Speech-Language Pathology"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-09-10",
+      "type": "initial",
+      "provider": "Dr. Eleanor Vance",
+      "chief_complaint": "Right hand tremor and general slowness for 3-4 months",
+      "narrative": "Patient, a 75-year-old male, presents with a chief complaint of a subtle tremor in his right hand, primarily noticeable at rest, and a general feeling of being slowed down in his movements over the past 3-4 months. He reports difficulty with fine motor tasks like buttoning shirts and a reduced arm swing when walking. Denies pain, dizziness, or weakness. Family history significant for hypertension in father and Alzheimer's in mother. No current medications aside from OTC vitamins.\n\nPhysical exam reveals a mild right-sided resting tremor, bradykinesia with finger-tapping, and slightly stooped posture. Gait is slow with reduced arm swing. Cognition appears intact. Given the progressive nature of symptoms and classic presentation, a neurological consult is warranted to investigate possible Parkinson's Disease. Ordered basic labs to rule out other causes.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_jackson_2024_sep.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 7.8, Hgb 14.5, Plt 250",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "normal"
+        },
+        {
+          "test": "CMP",
+          "value": "within normal limits",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        },
+        {
+          "test": "TSH",
+          "value": "2.8",
+          "unit": "mIU/L",
+          "range": "0.4-4.0",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_jackson_2024_sep.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. David Kim",
+          "reason": "Evaluation of new-onset resting tremor and bradykinesia, suspected Parkinson's Disease"
+        }
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-09-25",
+      "type": "consult",
+      "provider": "Dr. David Kim",
+      "chief_complaint": "Neurology consult for suspected Parkinson's Disease",
+      "narrative": "New patient neurology consultation for a 75-year-old male presenting with 4-month history of right-sided resting tremor and progressive bradykinesia. Patient reports associated rigidity and difficulty turning in bed. No history of stroke, head injury, or neuroleptic medication use. No clear autonomic symptoms yet. Physical exam confirms classic motor signs of Parkinson's Disease: clear right-sided resting tremor (4-5 Hz), cogwheel rigidity in right upper extremity, significant bradykinesia (slowed initiation and execution of movement, decrement in amplitude with repetitive tasks). Postural instability is mild with a single pull. Unified Parkinson's Disease Rating Scale (UPDRS) motor score 28.\n\nDiagnosis of Parkinson's Disease made clinically. Initiated Carbidopa-Levetiracetam 25/100mg, 1 tablet three times daily. Discussed potential side effects including nausea, dizziness, and dyskinesias. Reviewed importance of medication adherence. Will follow up in 3 weeks to assess response and titrate dosage.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_jackson_2024_sep.pdf"
+      },
+      "medications_started": [
+        "Carbidopa-Levetiracetam 25/100mg"
+      ]
+    },
+    {
+      "ref": "visit_03",
+      "date": "2024-10-15",
+      "type": "follow-up",
+      "provider": "Dr. David Kim",
+      "chief_complaint": "Parkinson's follow-up, medication titration",
+      "narrative": "Patient returns for follow-up 3 weeks after starting Carbidopa-Levetiracetam. Reports mild improvement in tremor and overall mobility. Still experiencing some morning stiffness and occasional difficulty initiating gait. No significant side effects reported, tolerating medication well.\n\nMotor exam shows improved bradykinesia, tremor is less prominent. UPDRS motor score 22. Given good tolerability and partial improvement, increased Carbidopa-Levetiracetam to 1.5 tablets three times daily. Emphasized consistency with medication timing. Reviewed non-motor symptoms like constipation which patient confirmed as present; advised increased fluid and fiber intake. Scheduled next follow-up in 4 weeks.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_jackson_2024_oct.pdf"
+      }
+    },
+    {
+      "ref": "visit_04",
+      "date": "2024-11-01",
+      "type": "routine",
+      "provider": "Dr. Eleanor Vance",
+      "chief_complaint": "Routine check-up, coordination of care for Parkinson's",
+      "narrative": "Patient seen for routine check-up and to coordinate care following Parkinson's diagnosis. Reports feeling generally better since starting medication, tremor is less noticeable. No new major concerns. Blood pressure stable. No issues with swallowing or speech reported.\n\nReviewed medication list with patient, confirmed adherence to Carbidopa-Levetiracetam. Discussed importance of regular exercise and maintaining good nutrition. Encouraged patient to continue communicating any new symptoms to both PCP and neurologist. Plan for regular follow-ups with neurology; PCP to monitor general health and blood pressure.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_jackson_2024_nov.pdf"
+      }
+    },
+    {
+      "ref": "visit_05",
+      "date": "2024-11-20",
+      "type": "follow-up",
+      "provider": "Dr. David Kim",
+      "chief_complaint": "Increased 'wearing-off' periods, worsening constipation",
+      "narrative": "Patient reports that despite Carbidopa-Levetiracetam, he experiences periods of increased stiffness and tremor before his next dose, indicating a 'wearing-off' phenomenon. He also complains of more significant constipation, with bowel movements only every 3-4 days despite dietary changes. No new falls or significant dizziness.\n\nMotor exam confirms mild wearing-off with return of rigidity and bradykinesia approximately 30-60 minutes before scheduled dose. To address this and provide additional symptom control, initiated Rasagiline 0.5mg once daily. Also recommended Polyethylene Glycol daily for constipation. Educated patient on medication timing for Carbidopa-Levetiracetam to minimize 'off' times. Next follow-up in 6 weeks.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_jackson_2024_nov_2.pdf"
+      },
+      "medications_started": [
+        "Rasagiline",
+        "Polyethylene Glycol"
+      ]
+    },
+    {
+      "ref": "visit_06",
+      "date": "2024-12-05",
+      "type": "follow-up",
+      "provider": "Dr. Eleanor Vance",
+      "chief_complaint": "Frequent lightheadedness, near-falls",
+      "narrative": "Patient presents with new complaint of frequent lightheadedness, especially when standing up quickly. Reports two near-falls in the past week, although no actual falls occurred. Denies chest pain, palpitations, or shortness of breath. Hydration status appears adequate.\n\nOrthostatic vital signs taken: Supine BP 130/80 mmHg, HR 70 bpm. Standing BP 100/60 mmHg, HR 78 bpm after 3 minutes. This represents a significant drop consistent with orthostatic hypotension. Reviewed current medications, some of which (like Rasagiline) can potentially exacerbate this. Advised patient to stand up slowly, use compression stockings, and increase fluid intake. Ordered ECG and repeat orthostatic vitals in 1 week. Consider cardiology referral if symptoms persist or worsen.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_jackson_2024_dec.pdf"
+      },
+      "labs": [
+        {
+          "test": "ECG",
+          "value": "Normal Sinus Rhythm, no acute changes",
+          "unit": "qualitative",
+          "range": "normal",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_jackson_2024_dec.pdf"
+      }
+    },
+    {
+      "ref": "visit_07",
+      "date": "2024-12-18",
+      "type": "follow-up",
+      "provider": "Dr. David Kim",
+      "chief_complaint": "Worsening orthostatic symptoms and near-falls",
+      "narrative": "Patient reports continued and worsening lightheadedness, now with actual falls (one minor fall at home with no injury). Orthostatic symptoms are significantly impacting daily activities and increasing anxiety about falls. Rasagiline initiated at last visit has provided some benefit for motor symptoms, but seems to be contributing to orthostatic issues.\n\nOrthostatic vital signs today: Supine BP 125/75 mmHg, standing BP 95/55 mmHg (drop of 30 mmHg systolic). Given the severity of symptoms and documented orthostatic hypotension, urgent referral to Cardiology for further evaluation and management of this significant non-motor complication of PD. Discussed potential options like Midodrine or fludrocortisone with patient. Advised increased salt and fluid intake, and strict fall precautions.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_jackson_2024_dec_2.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. Laura Bell",
+          "reason": "Management of severe symptomatic orthostatic hypotension in Parkinson's Disease."
+        }
+      ]
+    },
+    {
+      "ref": "visit_08",
+      "date": "2025-01-10",
+      "type": "consult",
+      "provider": "Dr. Laura Bell",
+      "chief_complaint": "Cardiology consult for orthostatic hypotension",
+      "narrative": "New patient cardiology consultation for severe orthostatic hypotension in the setting of Parkinson's Disease. Reviewed PCP and Neurology notes documenting significant drops in BP upon standing, leading to near-falls and one fall. ECG from previous visit was normal.\n\nRepeat orthostatic vital signs confirm significant drops (Supine BP 120/70, Standing BP 90/50). Excluded cardiac causes of syncope. Diagnosis of neurogenic orthostatic hypotension (NOH) related to PD. Initiated Midodrine 5mg three times daily, 30 minutes before standing, to manage NOH symptoms. Patient instructed to monitor standing blood pressure at home. Reviewed non-pharmacological interventions like increased fluid and salt intake, and careful position changes. Follow-up in 3 weeks to assess response.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_jackson_2025_jan.pdf"
+      },
+      "medications_started": [
+        "Midodrine"
+      ]
+    },
+    {
+      "ref": "visit_09",
+      "date": "2025-02-05",
+      "type": "follow-up",
+      "provider": "Dr. David Kim",
+      "chief_complaint": "Optimizing Parkinson's medications, Midodrine titration",
+      "narrative": "Patient returns for follow-up. Reports some improvement in orthostatic symptoms with Midodrine, but still occasional dizziness. Motor symptoms have become more variable with noticeable 'wearing-off' periods, indicating need for further optimization of dopaminergic therapy.\n\nAdjusted Carbidopa-Levetiracetam regimen to include an extended-release (ER) formulation to prolong 'on' times and reduce fluctuations. Patient will take Carbidopa-Levetiracetam 25/100mg ER twice daily, in addition to his current immediate-release (IR) doses. Midodrine dosage increased to 7.5mg three times daily, with instructions for home BP monitoring. Discussed potential for dyskinesias with increased dopaminergic load. Scheduled next follow-up in 6 weeks.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_jackson_2025_feb.pdf"
+      },
+      "medications_started": [
+        "Carbidopa-Levetiracetam 25/100mg ER"
+      ]
+    },
+    {
+      "ref": "visit_10",
+      "date": "2025-03-01",
+      "type": "follow-up",
+      "provider": "Dr. Eleanor Vance",
+      "chief_complaint": "Increased apathy, low mood, sleep disturbances",
+      "narrative": "Patient presents with new complaints of persistent low mood, loss of interest in hobbies (apathy), and difficulty falling asleep and staying asleep over the past 2 months. Reports feeling hopeless at times. Denies suicidal ideation. Daughter expresses concern for patient's overall mood and withdrawal from social activities.\n\nGeriatric Depression Scale (GDS-15) score 11, suggestive of moderate depression. Reviewed medication list; no obvious culprits for mood changes. Given the presence of Parkinson's Disease, depression is a common non-motor complication. Discussed options including psychotherapy and pharmacotherapy. Recommend psychiatric evaluation for formal diagnosis and management. Provided referral information. Patient open to seeking mental health support.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_jackson_2025_mar.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. Andrew Reed",
+          "reason": "Evaluation and management of new-onset apathy, low mood, and sleep disturbances, suspected Major Depressive Disorder."
+        }
+      ]
+    },
+    {
+      "ref": "visit_11",
+      "date": "2025-03-15",
+      "type": "consult",
+      "provider": "Dr. Andrew Reed",
+      "chief_complaint": "Psychiatry consult for depression and sleep issues",
+      "narrative": "New patient psychiatry consultation for evaluation of depression and sleep disturbances in a patient with Parkinson's Disease. Patient reports pervasive low mood, anhedonia, fatigue, and psychomotor agitation (restlessness). Daughter confirms significant change in patient's affect and activity level. Sleep architecture is fragmented.\n\nAfter comprehensive assessment, diagnosed with Major Depressive Disorder, recurrent, moderate severity. Discussed treatment options, including Selective Serotonin Reuptake Inhibitors (SSRIs). Started Sertraline 50mg once daily in the morning to avoid exacerbating sleep issues. Counseled on potential side effects and expected time to therapeutic effect. Advised sleep hygiene measures. Follow-up in 4 weeks to assess medication response and tolerability.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_jackson_2025_mar.pdf"
+      },
+      "medications_started": [
+        "Sertraline"
+      ]
+    },
+    {
+      "ref": "visit_12",
+      "date": "2025-04-10",
+      "type": "follow-up",
+      "provider": "Dr. David Kim",
+      "chief_complaint": "Overall Parkinson's management, gait instability, communication difficulties",
+      "narrative": "Patient presents for overall Parkinson's management. Reports mild improvement in mood with Sertraline. Motor symptoms are stable on current Carbidopa-Levetiracetam regimen, but continues to have some gait instability and occasional freezing. Daughter notes patient has become softer spoken and sometimes difficult to understand.\n\nMotor exam shows stable tremor and rigidity, but still notable postural instability and mild freezing of gait. Speech is hypophonic. Given these ongoing issues, recommended comprehensive therapy evaluation. Referred to Physical Therapy for gait and balance training, Occupational Therapy for ADL strategies, and Speech-Language Pathology for dysphagia and dysarthria evaluation. Emphasized importance of proactive rehabilitation. Scheduled next follow-up in 2 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_jackson_2025_apr.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Sarah Green, PT",
+          "reason": "Gait and balance training, fall prevention"
+        },
+        {
+          "to": "Michael Stone, OT",
+          "reason": "ADL training, adaptive equipment assessment"
+        },
+        {
+          "to": "Emily White, SLP",
+          "reason": "Dysarthria and dysphagia evaluation and therapy"
+        }
+      ]
+    },
+    {
+      "ref": "visit_13",
+      "date": "2025-05-05",
+      "type": "routine",
+      "provider": "Sarah Green, PT",
+      "chief_complaint": "Initial Physical Therapy assessment for gait and balance",
+      "narrative": "Patient seen for initial Physical Therapy assessment following referral for gait instability and fall prevention. Patient reports fear of falling limits his outdoor activities. Timed Up and Go (TUG) test 18 seconds (high risk for falls). Balance assessment reveals impaired static and dynamic balance. Gait analysis shows reduced step length, shuffling, and decreased arm swing.\n\nDeveloped a comprehensive rehabilitation plan focusing on balance exercises, gait retraining (cueing strategies), strengthening exercises, and education on fall prevention strategies for the home environment. Will work on improving postural control and reducing freezing episodes. Scheduled twice-weekly sessions for 6 weeks. Encouraged home exercise program. Will communicate progress with referring neurologist.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_jackson_2025_may.pdf"
+      },
+      "procedures": [
+        {
+          "name": "Timed Up and Go (TUG) test",
+          "outcome": "18 seconds (high fall risk)"
+        },
+        {
+          "name": "Balance Assessment",
+          "outcome": "Impaired static and dynamic balance"
+        }
+      ]
+    },
+    {
+      "ref": "visit_14",
+      "date": "2025-06-01",
+      "type": "follow-up",
+      "provider": "Dr. David Kim",
+      "chief_complaint": "Management of motor fluctuations and non-motor symptoms",
+      "narrative": "Patient returns for follow-up, approximately 3 months after starting Sertraline and initiating therapies. Reports moderate improvement in mood and sleep. Physical therapy is ongoing, with slight improvement in balance. Continue to manage motor fluctuations, but patient reports overall 'on' time is better with ER formulation.\n\nMotor exam shows continued presence of tremor and bradykinesia, but severity is generally stable. UPDRS motor score 25. No new dyskinesias observed. Orthostatic BPs remain stable with Midodrine. Encouraged continued adherence to all therapies and medications. Discussed potential future deep brain stimulation (DBS) as an option if motor fluctuations become intractable, but not considered at this time. Next follow-up in 3 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_jackson_2025_jun.pdf"
+      }
+    },
+    {
+      "ref": "visit_15",
+      "date": "2025-07-20",
+      "type": "routine",
+      "provider": "Dr. Eleanor Vance",
+      "chief_complaint": "PCP annual check-up, comprehensive medication review",
+      "narrative": "Patient seen for annual physical and comprehensive medication review. Reports stable health. Mood has improved significantly with Sertraline. Orthostatic symptoms are well-controlled with Midodrine. Parkinson's motor symptoms are managed with his current regimen, with good 'on' times. No new falls since starting PT.\n\nReviewed all medications, ensuring no interactions and appropriate dosages. Labs today are generally stable. Discussed importance of bone health given age and fall risk (though currently lower risk with PT). Encouraged continued engagement with his specialist team. Renewed all prescriptions. Plan for routine follow-up in 6 months, and as needed.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_jackson_2025_jul.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 7.1, Hgb 13.9, Plt 235",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "normal"
+        },
+        {
+          "test": "CMP",
+          "value": "within normal limits",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_jackson_2025_jul.pdf"
+      }
+    },
+    {
+      "ref": "visit_16",
+      "date": "2025-09-15",
+      "type": "routine",
+      "provider": "Dr. David Kim",
+      "chief_complaint": "Routine Parkinson's Disease follow-up, disease progression monitoring",
+      "narrative": "Routine 3-month follow-up for Parkinson's Disease. Patient reports generally stable motor symptoms. Non-motor symptoms (depression, orthostasis, constipation) are well-managed with current regimen. He continues physical therapy and reports maintaining an active lifestyle as much as possible.\n\nMotor exam: Resting tremor remains present but mild, rigidity is minimal. Bradykinesia is present but stable. Postural stability has shown some improvement since starting PT. UPDRS motor score 24. Reviewed cognitive function with a brief assessment, which shows no significant decline. Discussed the long-term prognosis of PD and the importance of continued active management of both motor and non-motor symptoms. Plan for next follow-up in 3 months. No changes to medication regimen today.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_jackson_2025_sep.pdf"
+      },
+      "procedures": [
+        {
+          "name": "Montreal Cognitive Assessment (MoCA)",
+          "outcome": "Score 27/30 (normal for age and education)"
+        }
+      ]
+    }
+  ]
+}

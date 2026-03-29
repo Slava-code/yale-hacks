@@ -1,0 +1,102 @@
+{
+  "id": "patient_034",
+  "name": "Patrick O'Brien",
+  "age": 67,
+  "sex": "male",
+  "mrn": "MRN-57890",
+  "dob": "1957-05-13",
+  "tier": "simple",
+  "summary": "67-year-old male presenting with a raised, waxy lesion on his back, diagnosed as seborrheic keratosis, managed with observation and reassurance.",
+  "conditions": [
+    {
+      "name": "Seborrheic Keratosis",
+      "icd_code": "L82.1",
+      "status": "chronic",
+      "diagnosed_visit": "visit_01",
+      "notes": "Benign epidermal tumor, typically requires no treatment beyond observation"
+    }
+  ],
+  "medications": [
+    {
+      "name": "Aspirin",
+      "dosage": "81mg",
+      "frequency": "daily",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": null,
+      "monitored_by_labs": [
+        "CBC"
+      ],
+      "notes": "For primary cardiovascular prevention"
+    },
+    {
+      "name": "Emollient cream",
+      "dosage": "apply thinly",
+      "frequency": "twice daily",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Seborrheic Keratosis",
+      "notes": "For mild irritation associated with the lesion, or general skin hydration"
+    }
+  ],
+  "family_history": [],
+  "providers": [
+    {
+      "name": "Dr. Emily White",
+      "role": "attending",
+      "department": "Family Medicine"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-09-10",
+      "type": "initial",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "New skin lesion on back",
+      "narrative": "Patient presents with a raised, dark brown, waxy lesion on his upper back, noticed approximately 6 months ago. Asymptomatic but patient concerned about appearance and potential malignancy. Denies pain, itching, or bleeding. History of extensive sun exposure in youth. No other concerning skin lesions or systemic symptoms.\n\nPhysical exam revealed a well-circumscribed, verrucous, pigmented lesion approximately 1.5 cm in diameter on the right scapular region, consistent with seborrheic keratosis. No features suggestive of melanoma or squamous cell carcinoma. Advised reassurance regarding benign nature. Started daily low-dose Aspirin for primary cardiovascular prevention and emollient cream for any mild irritation.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_obrien_2024_sep.pdf"
+      },
+      "medications_started": [
+        "Aspirin",
+        "Emollient cream"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2025-03-15",
+      "type": "follow-up",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Routine check-up, follow-up on back lesion",
+      "narrative": "Patient returns for routine check-up and follow-up on the seborrheic keratosis. Reports no changes in the lesion; it remains asymptomatic. Patient is reassured by the benign diagnosis provided previously. No new skin lesions or other dermatological concerns. General health good, tolerating Aspirin and emollient cream well.\n\nPhysical exam confirmed the seborrheic keratosis on the upper back appears stable, with no concerning changes in size, color, or texture. No new suspicious lesions noted. Reassured patient again. Advised continued observation and to report any changes. Routine labs for general health ordered.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_obrien_2025_mar.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 7.0, Hgb 14.5, Plt 250",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 13-17, Plt 150-400",
+          "flag": "normal"
+        },
+        {
+          "test": "Fasting Glucose",
+          "value": "95",
+          "unit": "mg/dL",
+          "range": "70-99",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_obrien_2025_mar.pdf"
+      }
+    }
+  ]
+}

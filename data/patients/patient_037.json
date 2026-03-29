@@ -1,0 +1,68 @@
+{
+  "id": "patient_037",
+  "name": "Grace Adeyemi",
+  "age": 33,
+  "sex": "female",
+  "mrn": "MRN-37001",
+  "dob": "1991-05-13",
+  "tier": "simple",
+  "summary": "33-year-old female presenting with chronic right heel pain, diagnosed with Plantar Fasciitis, managed with conservative measures including stretching and activity modification.",
+  "conditions": [
+    {
+      "name": "Plantar Fasciitis",
+      "icd_code": "M72.2",
+      "status": "active",
+      "diagnosed_visit": "visit_01",
+      "notes": "Right heel pain, worse in mornings and after activity."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Ibuprofen",
+      "dosage": "400mg",
+      "frequency": "as needed",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Plantar Fasciitis",
+      "notes": "For pain relief as needed for heel pain."
+    }
+  ],
+  "family_history": [],
+  "providers": [
+    {
+      "name": "Dr. Elena Rodriguez",
+      "role": "attending",
+      "department": "Family Medicine"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-09-10",
+      "type": "initial",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Right heel pain for 2 months",
+      "narrative": "Patient presents with a 2-month history of right heel pain, which is most severe with the first steps in the morning and after periods of rest. She reports the pain improves somewhat with activity but worsens again after prolonged standing or walking. Denies trauma, numbness, or tingling. She has tried OTC pain relievers with minimal benefit.\n\nPhysical examination revealed tenderness to palpation at the medial calcaneal tubercle of the right foot. Dorsiflexion of the ankle with toe extension elicited pain. No swelling or erythema noted. Strength and sensation intact. Clinical diagnosis of Plantar Fasciitis made. Patient was advised on conservative management including calf and plantar fascia stretching exercises, ice application, supportive footwear, and activity modification. Recommended OTC Ibuprofen for pain.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_adeyemi_2024_sep.pdf"
+      },
+      "medications_started": [
+        "Ibuprofen"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-10-15",
+      "type": "follow-up",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Follow-up for persistent right heel pain",
+      "narrative": "Patient returns for follow-up regarding her right heel pain. She reports a slight improvement in the severity and duration of morning stiffness since initiating the stretching exercises and ensuring supportive footwear. Pain is still present, especially towards the end of the day or after significant walking. She is using Ibuprofen occasionally, which provides some relief.\n\nRe-emphasized the importance of consistent stretching, proper footwear, and avoiding aggravating activities. Reviewed correct stretching techniques. Discussed the chronic nature of Plantar Fasciitis and advised to continue conservative management for at least another 4-6 weeks. Offered referral to physical therapy if symptoms do not continue to improve. Patient opted to continue home exercises for now. Return as needed.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_adeyemi_2024_oct.pdf"
+      }
+    }
+  ]
+}

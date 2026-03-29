@@ -1,0 +1,811 @@
+{
+  "id": "patient_007",
+  "name": "Elena Vasquez",
+  "age": 64,
+  "sex": "female",
+  "mrn": "MRN-88776",
+  "dob": "1959-09-17",
+  "tier": "complex",
+  "summary": "64-year-old female with Type 2 Diabetes presenting with progressive Chronic Kidney Disease Stage 4, complicated by secondary hyperparathyroidism and anemia of chronic disease, currently preparing for dialysis.",
+  "storyline": "Elena, a 64-year-old with long-standing Type 2 Diabetes, initially presented with worsening fatigue and swelling. Routine labs revealed a significant decline in her renal function, pushing her into CKD Stage 3, prompting a referral to nephrology. Over the next two years, despite close monitoring and lifestyle adjustments, her kidney function continued to deteriorate, reaching CKD Stage 4. This progression led to the development of secondary hyperparathyroidism, managed with calcitriol, and anemia of chronic disease, treated with epoetin alfa. Discussions about future renal replacement therapy began, culminating in a vascular surgery consultation and successful creation of an AV fistula. Elena is now under close nephrology surveillance, with ongoing efforts to optimize her diabetes control and manage CKD complications, while preparing for the eventual initiation of hemodialysis.",
+  "conditions": [
+    {
+      "name": "Type 2 Diabetes Mellitus",
+      "icd_code": "E11.9",
+      "status": "chronic",
+      "diagnosed_visit": "visit_01",
+      "notes": "Long-standing, managed with oral agents and later insulin."
+    },
+    {
+      "name": "Chronic Kidney Disease, Stage 4",
+      "icd_code": "N18.4",
+      "status": "chronic",
+      "diagnosed_visit": "visit_02",
+      "notes": "Progressing from Stage 3; primary cause diabetic nephropathy."
+    },
+    {
+      "name": "Hypertension",
+      "icd_code": "I10",
+      "status": "chronic",
+      "diagnosed_visit": "visit_01",
+      "notes": "Controlled with ACE inhibitor and calcium channel blocker."
+    },
+    {
+      "name": "Secondary Hyperparathyroidism",
+      "icd_code": "N25.81",
+      "status": "chronic",
+      "diagnosed_visit": "visit_07",
+      "notes": "Due to CKD, requiring calcitriol."
+    },
+    {
+      "name": "Anemia of Chronic Disease",
+      "icd_code": "D63.1",
+      "status": "chronic",
+      "diagnosed_visit": "visit_09",
+      "notes": "Requires erythropoietin stimulating agents."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Metformin",
+      "dosage": "500mg",
+      "frequency": "twice daily",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Type 2 Diabetes Mellitus",
+      "monitored_by_labs": [
+        "Glucose",
+        "A1c",
+        "eGFR"
+      ],
+      "notes": "Dose adjusted based on eGFR."
+    },
+    {
+      "name": "Lisinopril",
+      "dosage": "10mg",
+      "frequency": "daily",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Hypertension",
+      "monitored_by_labs": [
+        "Potassium",
+        "Creatinine"
+      ],
+      "notes": "For blood pressure control and renal protection."
+    },
+    {
+      "name": "Amlodipine",
+      "dosage": "5mg",
+      "frequency": "daily",
+      "start_visit": "visit_03",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Hypertension",
+      "notes": "Added for additional blood pressure control."
+    },
+    {
+      "name": "Sevelamer Carbonate",
+      "dosage": "800mg",
+      "frequency": "three times daily with meals",
+      "start_visit": "visit_06",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Hyperphosphatemia",
+      "monitored_by_labs": [
+        "Phosphorus"
+      ],
+      "notes": "Phosphate binder for CKD."
+    },
+    {
+      "name": "Calcitriol",
+      "dosage": "0.25mcg",
+      "frequency": "daily",
+      "start_visit": "visit_08",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Secondary Hyperparathyroidism",
+      "monitored_by_labs": [
+        "PTH",
+        "Calcium",
+        "Phosphorus"
+      ],
+      "notes": "For elevated PTH in CKD."
+    },
+    {
+      "name": "Epoetin Alfa",
+      "dosage": "4000 units",
+      "frequency": "three times weekly",
+      "start_visit": "visit_10",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Anemia of Chronic Disease",
+      "monitored_by_labs": [
+        "Hemoglobin",
+        "Ferritin"
+      ],
+      "notes": "Subcutaneous injection."
+    },
+    {
+      "name": "Insulin Glargine",
+      "dosage": "10 units",
+      "frequency": "daily at bedtime",
+      "start_visit": "visit_17",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Type 2 Diabetes Mellitus",
+      "monitored_by_labs": [
+        "Glucose",
+        "A1c"
+      ],
+      "notes": "Initiated due to persistently elevated A1c."
+    }
+  ],
+  "family_history": [
+    {
+      "relation": "mother",
+      "condition": "Type 2 Diabetes Mellitus",
+      "diagnosed_age": 58
+    },
+    {
+      "relation": "father",
+      "condition": "Hypertension",
+      "diagnosed_age": 60
+    },
+    {
+      "relation": "sister",
+      "condition": "Chronic Kidney Disease",
+      "diagnosed_age": 68
+    }
+  ],
+  "providers": [
+    {
+      "name": "Dr. Maria Rodriguez",
+      "role": "attending",
+      "department": "Internal Medicine"
+    },
+    {
+      "name": "Dr. David Lee",
+      "role": "specialist",
+      "department": "Nephrology"
+    },
+    {
+      "name": "Dr. Emily White",
+      "role": "specialist",
+      "department": "Endocrinology"
+    },
+    {
+      "name": "Dr. Robert Miller",
+      "role": "consulting",
+      "department": "Vascular Surgery"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-01-15",
+      "type": "initial",
+      "provider": "Dr. Maria Rodriguez",
+      "chief_complaint": "Increasing fatigue and ankle swelling",
+      "narrative": "Patient Elena Vasquez, a 64-year-old female with known Type 2 Diabetes and Hypertension, presents with a 3-month history of progressive fatigue and bilateral ankle swelling. Denies chest pain, shortness of breath, or fever. Diabetes currently managed with Metformin. Blood pressure has been well-controlled per home readings. Exam shows 1+ pitting edema bilaterally in ankles. Labs ordered to assess renal function and other contributing factors.\n\nReviewed current medications, including Metformin and Lisinopril. Emphasized adherence and monitoring of blood pressure. Advised elevation of legs and compression socks for swelling. Follow-up for lab review.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_vasquez_2024_jan.pdf"
+      },
+      "medications_started": [
+        "Metformin",
+        "Lisinopril"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-01-22",
+      "type": "follow-up",
+      "provider": "Dr. Maria Rodriguez",
+      "chief_complaint": "Lab review - worsening renal function",
+      "narrative": "Patient returns for lab review. Creatinine 2.1 mg/dL, eGFR 28 mL/min/1.73m2, indicating CKD Stage 4. Glucose 145 mg/dL, A1c 7.8%. Electrolytes otherwise normal. Urine microalbumin-to-creatinine ratio elevated. These findings suggest progressive diabetic nephropathy.\n\nDiscussed implications of CKD Stage 4 and the need for specialist input. Provided initial dietary counseling (low sodium, low protein). Urgent referral to Nephrology for comprehensive management and evaluation. Continued Metformin at reduced dose, Lisinopril as prescribed. Follow-up after nephrology consult.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_vasquez_2024_jan.pdf"
+      },
+      "labs": [
+        {
+          "test": "Creatinine",
+          "value": "2.1",
+          "unit": "mg/dL",
+          "range": "0.6-1.2",
+          "flag": "high"
+        },
+        {
+          "test": "eGFR",
+          "value": "28",
+          "unit": "mL/min/1.73m2",
+          "range": ">60",
+          "flag": "low"
+        },
+        {
+          "test": "Glucose",
+          "value": "145",
+          "unit": "mg/dL",
+          "range": "70-100",
+          "flag": "high"
+        },
+        {
+          "test": "A1c",
+          "value": "7.8",
+          "unit": "%",
+          "range": "<5.7",
+          "flag": "high"
+        },
+        {
+          "test": "Urine Microalbumin/Creatinine Ratio",
+          "value": "250",
+          "unit": "mg/g",
+          "range": "<30",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_vasquez_2024_jan.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. David Lee",
+          "reason": "New diagnosis of CKD Stage 4, presumed diabetic nephropathy."
+        }
+      ]
+    },
+    {
+      "ref": "visit_03",
+      "date": "2024-02-10",
+      "type": "consult",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Nephrology consult - new CKD Stage 4",
+      "narrative": "Initial nephrology consultation for new CKD Stage 4. Reviewed patient's history of Type 2 Diabetes and Hypertension, and recent decline in GFR. Discussed diet modifications (low potassium, low phosphorus, moderate protein), fluid management, and importance of strict blood pressure and glucose control to slow CKD progression.\n\nPhysical exam unremarkable aside from mild ankle edema. Blood pressure 145/88 mmHg. Added Amlodipine 5mg daily to Lisinopril to achieve target BP of <130/80 mmHg. Ordered comprehensive renal panel, PTH, Vitamin D levels. Educated patient on signs of worsening renal function and potential future need for renal replacement therapy. Follow-up in 4 weeks.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_vasquez_2024_feb.pdf"
+      },
+      "medications_started": [
+        "Amlodipine"
+      ]
+    },
+    {
+      "ref": "visit_04",
+      "date": "2024-03-15",
+      "type": "follow-up",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Nephrology follow-up - BP control, lab review",
+      "narrative": "Patient returns for follow-up. Reports feeling slightly better, ankle swelling reduced. Blood pressure improved at home. Labs show Creatinine 2.2 mg/dL, eGFR 27 mL/min/1.73m2, stable. Phosphorus 3.8 mg/dL, Calcium 9.0 mg/dL. PTH 85 pg/mL (mildly elevated). Vitamin D 25-OH 22 ng/mL (deficient).\n\nDiscussed importance of Vitamin D repletion, started D3 supplementation. Continued current antihypertensive regimen. Reviewed diet. Encouraged regular exercise. Scheduled next follow-up in 2 months. Reviewed importance of avoiding NSAIDs and contrast dyes.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_vasquez_2024_mar.pdf"
+      },
+      "labs": [
+        {
+          "test": "Creatinine",
+          "value": "2.2",
+          "unit": "mg/dL",
+          "range": "0.6-1.2",
+          "flag": "high"
+        },
+        {
+          "test": "eGFR",
+          "value": "27",
+          "unit": "mL/min/1.73m2",
+          "range": ">60",
+          "flag": "low"
+        },
+        {
+          "test": "Phosphorus",
+          "value": "3.8",
+          "unit": "mg/dL",
+          "range": "2.5-4.5",
+          "flag": "normal"
+        },
+        {
+          "test": "Calcium",
+          "value": "9.0",
+          "unit": "mg/dL",
+          "range": "8.5-10.2",
+          "flag": "normal"
+        },
+        {
+          "test": "PTH",
+          "value": "85",
+          "unit": "pg/mL",
+          "range": "15-65",
+          "flag": "high"
+        },
+        {
+          "test": "Vitamin D 25-OH",
+          "value": "22",
+          "unit": "ng/mL",
+          "range": "30-100",
+          "flag": "low"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_vasquez_2024_mar.pdf"
+      }
+    },
+    {
+      "ref": "visit_05",
+      "date": "2024-05-20",
+      "type": "routine",
+      "provider": "Dr. Maria Rodriguez",
+      "chief_complaint": "Routine diabetes and general health check",
+      "narrative": "Routine check-up with PCP. Patient reports stable energy levels and reduced edema. Continues with nephrology care. Blood pressure 135/82 mmHg. A1c 7.9% (stable but not at goal). Fasting glucose 138 mg/dL. No new symptoms. Discussed importance of ongoing dietary adherence and medication compliance for diabetes management, especially with CKD.\n\nEncouraged patient to continue working closely with nephrologist. Renewed prescriptions. Follow-up in 3 months for repeat A1c and general check-up.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_vasquez_2024_may.pdf"
+      },
+      "labs": [
+        {
+          "test": "A1c",
+          "value": "7.9",
+          "unit": "%",
+          "range": "<5.7",
+          "flag": "high"
+        },
+        {
+          "test": "Fasting Glucose",
+          "value": "138",
+          "unit": "mg/dL",
+          "range": "70-100",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_vasquez_2024_may.pdf"
+      }
+    },
+    {
+      "ref": "visit_06",
+      "date": "2024-07-01",
+      "type": "follow-up",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Nephrology follow-up - rising phosphorus",
+      "narrative": "Patient returns for follow-up. Creatinine 2.4 mg/dL, eGFR 25 mL/min/1.73m2. Phosphorus 5.0 mg/dL (elevated). Calcium 8.8 mg/dL. PTH 110 pg/mL (further elevated). Hemoglobin 11.5 g/dL (mild anemia).\n\nInitiated Sevelamer Carbonate 800mg with meals to control hyperphosphatemia. Discussed importance of limiting dietary phosphorus. Increased Vitamin D3 supplementation. Patient advised to continue close monitoring of blood pressure and glucose. Referred to renal dietitian for further dietary education. Follow-up in 6 weeks to recheck labs.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_vasquez_2024_jul.pdf"
+      },
+      "labs": [
+        {
+          "test": "Creatinine",
+          "value": "2.4",
+          "unit": "mg/dL",
+          "range": "0.6-1.2",
+          "flag": "high"
+        },
+        {
+          "test": "eGFR",
+          "value": "25",
+          "unit": "mL/min/1.73m2",
+          "range": ">60",
+          "flag": "low"
+        },
+        {
+          "test": "Phosphorus",
+          "value": "5.0",
+          "unit": "mg/dL",
+          "range": "2.5-4.5",
+          "flag": "high"
+        },
+        {
+          "test": "PTH",
+          "value": "110",
+          "unit": "pg/mL",
+          "range": "15-65",
+          "flag": "high"
+        },
+        {
+          "test": "Hemoglobin",
+          "value": "11.5",
+          "unit": "g/dL",
+          "range": "12-16",
+          "flag": "low"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_vasquez_2024_jul.pdf"
+      },
+      "medications_started": [
+        "Sevelamer Carbonate"
+      ]
+    },
+    {
+      "ref": "visit_07",
+      "date": "2024-08-15",
+      "type": "follow-up",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Secondary hyperparathyroidism management",
+      "narrative": "Follow-up visit. Phosphorus is better controlled at 4.6 mg/dL with sevelamer. However, PTH has risen to 140 pg/mL. Calcium remains stable at 8.9 mg/dL. This is consistent with worsening secondary hyperparathyroidism.\n\nInitiated discussion on calcitriol therapy. Given the complexity of managing PTH, calcium, and phosphorus in CKD, decided to refer to Endocrinology for co-management of secondary hyperparathyroidism and optimization of diabetes control in the setting of advanced CKD. Continue current medications. Follow-up in 1 month.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_vasquez_2024_aug.pdf"
+      },
+      "labs": [
+        {
+          "test": "Phosphorus",
+          "value": "4.6",
+          "unit": "mg/dL",
+          "range": "2.5-4.5",
+          "flag": "high"
+        },
+        {
+          "test": "PTH",
+          "value": "140",
+          "unit": "pg/mL",
+          "range": "15-65",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_vasquez_2024_aug.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. Emily White",
+          "reason": "Management of secondary hyperparathyroidism and complex diabetes in CKD Stage 4."
+        }
+      ]
+    },
+    {
+      "ref": "visit_08",
+      "date": "2024-09-01",
+      "type": "consult",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Endocrinology consult - secondary hyperparathyroidism, diabetes",
+      "narrative": "Endocrinology consult for management of secondary hyperparathyroidism and Type 2 Diabetes in CKD Stage 4. Reviewed nephrology notes. Patient reports understanding of dietary restrictions. A1c 8.1% (suboptimal).\n\nInitiated Calcitriol 0.25mcg daily to address elevated PTH. Reviewed Metformin dosing in CKD; maintained current dose given eGFR. Discussed options for better glycemic control, including GLP-1 agonists or basal insulin, but postponed until PTH and phosphorus are more stable. Emphasized monitoring calcium and phosphorus carefully while on calcitriol. Follow-up with labs in 1 month.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_vasquez_2024_sep.pdf"
+      },
+      "labs": [
+        {
+          "test": "A1c",
+          "value": "8.1",
+          "unit": "%",
+          "range": "<5.7",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_vasquez_2024_sep.pdf"
+      },
+      "medications_started": [
+        "Calcitriol"
+      ]
+    },
+    {
+      "ref": "visit_09",
+      "date": "2024-10-10",
+      "type": "follow-up",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Worsening anemia and fatigue",
+      "narrative": "Follow-up visit. Creatinine 2.5 mg/dL, eGFR 24 mL/min/1.73m2. Hemoglobin 10.2 g/dL (worsening anemia). Iron studies (Ferritin 150 ng/mL, Transferrin Saturation 28%) indicate functional iron deficiency despite adequate stores due to inflammation. PTH slightly improved to 125 pg/mL with calcitriol.\n\nDiagnosis of Anemia of Chronic Disease. Discussed initiating Erythropoietin Stimulating Agents (ESA). Ordered additional iron panel to confirm. Provided patient education on ESA therapy, potential side effects, and administration. Plan to start ESA after iron status confirmation. Follow-up in 3 weeks.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_vasquez_2024_oct.pdf"
+      },
+      "labs": [
+        {
+          "test": "Creatinine",
+          "value": "2.5",
+          "unit": "mg/dL",
+          "range": "0.6-1.2",
+          "flag": "high"
+        },
+        {
+          "test": "eGFR",
+          "value": "24",
+          "unit": "mL/min/1.73m2",
+          "range": ">60",
+          "flag": "low"
+        },
+        {
+          "test": "Hemoglobin",
+          "value": "10.2",
+          "unit": "g/dL",
+          "range": "12-16",
+          "flag": "low"
+        },
+        {
+          "test": "Ferritin",
+          "value": "150",
+          "unit": "ng/mL",
+          "range": "20-300",
+          "flag": "normal"
+        },
+        {
+          "test": "Transferrin Saturation",
+          "value": "28",
+          "unit": "%",
+          "range": "20-50",
+          "flag": "normal"
+        },
+        {
+          "test": "PTH",
+          "value": "125",
+          "unit": "pg/mL",
+          "range": "15-65",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_vasquez_2024_oct.pdf"
+      }
+    },
+    {
+      "ref": "visit_10",
+      "date": "2024-11-05",
+      "type": "follow-up",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Initiation of erythropoietin",
+      "narrative": "Patient returns to initiate Epoetin Alfa. Iron stores deemed adequate for ESA initiation. Prescribed Epoetin Alfa 4000 units subcutaneously three times weekly. Provided detailed instructions for self-administration and storage. Emphasized monitoring for side effects, particularly hypertension.\n\nReviewed target hemoglobin range for CKD patients (10-11 g/dL). Advised to report any new headaches or vision changes. Next labs for hemoglobin and iron studies in 4 weeks. Continue all other medications. Discussed progression towards needing renal replacement therapy in the future, as GFR is critically low.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_vasquez_2024_nov.pdf"
+      },
+      "medications_started": [
+        "Epoetin Alfa"
+      ]
+    },
+    {
+      "ref": "visit_11",
+      "date": "2024-12-01",
+      "type": "follow-up",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Discussion of renal replacement therapy, fistula planning",
+      "narrative": "Patient feeling slightly better with ESA, hemoglobin 10.8 g/dL. Creatinine 2.6 mg/dL, eGFR 23 mL/min/1.73m2. Phosphorus 4.8 mg/dL, PTH 118 pg/mL. Discussed in detail the options for renal replacement therapy: hemodialysis, peritoneal dialysis, or transplant. Patient expressed preference for hemodialysis.\n\nGiven declining GFR and likelihood of needing dialysis within the next 6-12 months, initiation of dialysis access planning is crucial. Explained AV fistula creation procedure and maturation time. Referred to Vascular Surgery for consultation and evaluation for AV fistula placement. Continue current medical management. Follow-up in 6 weeks.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_vasquez_2024_dec.pdf"
+      },
+      "labs": [
+        {
+          "test": "Hemoglobin",
+          "value": "10.8",
+          "unit": "g/dL",
+          "range": "12-16",
+          "flag": "low"
+        },
+        {
+          "test": "Creatinine",
+          "value": "2.6",
+          "unit": "mg/dL",
+          "range": "0.6-1.2",
+          "flag": "high"
+        },
+        {
+          "test": "eGFR",
+          "value": "23",
+          "unit": "mL/min/1.73m2",
+          "range": ">60",
+          "flag": "low"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_vasquez_2024_dec.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. Robert Miller",
+          "reason": "Evaluation for arteriovenous fistula creation for future hemodialysis."
+        }
+      ]
+    },
+    {
+      "ref": "visit_12",
+      "date": "2025-01-10",
+      "type": "consult",
+      "provider": "Dr. Robert Miller",
+      "chief_complaint": "Vascular surgery consult - AV fistula creation",
+      "narrative": "Vascular surgery consultation for hemodialysis access. Reviewed patient's medical history, CKD progression, and preference for AV fistula. Physical examination of upper extremities showed suitable veins for fistula creation, with palpable radial and ulnar pulses. Doppler ultrasound confirmed vessel patency and size.\n\nDiscussed risks and benefits of AV fistula creation, including potential for failure to mature, infection, and steal syndrome. Patient understands the procedure and the need for a 6-8 week maturation period. Consent obtained for left radiocephalic AV fistula creation. Scheduled for surgery in approximately 5 weeks. Pre-operative instructions provided. Refer to nephrology for continued medical management.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_vasquez_2025_jan.pdf"
+      }
+    },
+    {
+      "ref": "visit_13",
+      "date": "2025-02-15",
+      "type": "routine",
+      "provider": "Dr. Maria Rodriguez",
+      "chief_complaint": "Pre-operative evaluation for AV fistula",
+      "narrative": "Patient presents for pre-operative clearance for AV fistula creation. Overall health stable. No new cardiovascular symptoms. Blood pressure well-controlled. Labs show Hemoglobin 10.5 g/dL, Creatinine 2.7 mg/dL, eGFR 22 mL/min/1.73m2. Electrolytes stable. ECG normal. Cleared for elective surgery. Advised to hold Lisinopril morning of surgery. Continue all other medications.\n\nProvided patient with pre-op instructions, including fasting guidelines. Reminded to contact surgeon for any pre-op concerns. Encouraged positive outlook regarding the procedure as a step towards managing CKD.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_vasquez_2025_feb.pdf"
+      },
+      "labs": [
+        {
+          "test": "Hemoglobin",
+          "value": "10.5",
+          "unit": "g/dL",
+          "range": "12-16",
+          "flag": "low"
+        },
+        {
+          "test": "Creatinine",
+          "value": "2.7",
+          "unit": "mg/dL",
+          "range": "0.6-1.2",
+          "flag": "high"
+        },
+        {
+          "test": "eGFR",
+          "value": "22",
+          "unit": "mL/min/1.73m2",
+          "range": ">60",
+          "flag": "low"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_vasquez_2025_feb.pdf"
+      }
+    },
+    {
+      "ref": "visit_14",
+      "date": "2025-03-01",
+      "type": "follow-up",
+      "provider": "Dr. Robert Miller",
+      "chief_complaint": "Left radiocephalic AV fistula creation",
+      "narrative": "Patient underwent successful creation of a left radiocephalic arteriovenous fistula. Procedure performed under local anesthesia with sedation. Intraoperative findings confirmed good vessel quality. Anastomosis created without complication. Good thrill and bruit noted immediately post-operatively. Dressing applied. Patient tolerated procedure well.\n\nPost-operative instructions included strict limb elevation, avoiding compression, and daily exercise of the hand. Pain managed with acetaminophen. Discharged home same day. Follow-up with vascular surgery in 2 weeks for wound check and initial fistula assessment.",
+      "document": {
+        "type": "discharge_summary",
+        "filename": "discharge_summary_vasquez_2025_mar.pdf"
+      },
+      "procedures": [
+        {
+          "name": "Left radiocephalic AV fistula creation",
+          "outcome": "Successful creation with immediate thrill and bruit"
+        }
+      ]
+    },
+    {
+      "ref": "visit_15",
+      "date": "2025-03-15",
+      "type": "follow-up",
+      "provider": "Dr. Robert Miller",
+      "chief_complaint": "Post-operative AV fistula check",
+      "narrative": "Patient presents for post-operative check-up 2 weeks after AV fistula creation. Incision site clean, dry, and intact, without signs of infection. Good thrill and bruit palpable along the fistula. Arm circumference stable. Patient reports mild discomfort but is otherwise doing well.\n\nAdvised continuation of daily hand exercises to promote fistula maturation. Reinforced protecting the fistula arm. Next follow-up in 4 weeks for further maturation assessment. Instructions given to contact clinic if any redness, swelling, or loss of thrill/bruit occurs. Continued coordination with nephrology.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_vasquez_2025_mar.pdf"
+      }
+    },
+    {
+      "ref": "visit_16",
+      "date": "2025-04-10",
+      "type": "follow-up",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Nephrology follow-up - fistula maturation, CKD progression",
+      "narrative": "Patient returns for nephrology follow-up. Fistula maturing well, good thrill. Creatinine 2.8 mg/dL, eGFR 21 mL/min/1.73m2 (further decline). Hemoglobin 10.6 g/dL. Phosphorus 4.9 mg/dL. PTH 130 pg/mL. Labs indicate continued progression of CKD.\n\nDiscussion re-emphasized planning for dialysis initiation. Reviewed fistula care and maturation. Reassured patient about the process. Adjusted Epoetin Alfa dose slightly to maintain hemoglobin within target range. Encouraged patient to continue preparing for dialysis. Next visit in 6 weeks to assess fistula and further discuss dialysis planning.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_vasquez_2025_apr.pdf"
+      },
+      "labs": [
+        {
+          "test": "Creatinine",
+          "value": "2.8",
+          "unit": "mg/dL",
+          "range": "0.6-1.2",
+          "flag": "high"
+        },
+        {
+          "test": "eGFR",
+          "value": "21",
+          "unit": "mL/min/1.73m2",
+          "range": ">60",
+          "flag": "low"
+        },
+        {
+          "test": "Hemoglobin",
+          "value": "10.6",
+          "unit": "g/dL",
+          "range": "12-16",
+          "flag": "low"
+        },
+        {
+          "test": "Phosphorus",
+          "value": "4.9",
+          "unit": "mg/dL",
+          "range": "2.5-4.5",
+          "flag": "high"
+        },
+        {
+          "test": "PTH",
+          "value": "130",
+          "unit": "pg/mL",
+          "range": "15-65",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_vasquez_2025_apr.pdf"
+      }
+    },
+    {
+      "ref": "visit_17",
+      "date": "2025-05-15",
+      "type": "follow-up",
+      "provider": "Dr. Maria Rodriguez",
+      "chief_complaint": "PCP check-up, diabetes review",
+      "narrative": "PCP follow-up for general health and diabetes management. Patient feeling more fatigued lately, likely due to worsening CKD. Fistula maturing well. A1c 8.4% (worse). Blood pressure 140/85 mmHg.\n\nGiven the rising A1c and progressive CKD, initiated Insulin Glargine 10 units daily at bedtime to improve glycemic control and potentially slow renal decline. Counseled on insulin administration and monitoring for hypoglycemia. Discussed emotional impact of CKD progression and offered support resources. Encouraged close follow-up with nephrology. Will recheck A1c in 3 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_vasquez_2025_may.pdf"
+      },
+      "labs": [
+        {
+          "test": "A1c",
+          "value": "8.4",
+          "unit": "%",
+          "range": "<5.7",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_vasquez_2025_may.pdf"
+      },
+      "medications_started": [
+        "Insulin Glargine"
+      ]
+    },
+    {
+      "ref": "visit_18",
+      "date": "2025-06-01",
+      "type": "routine",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Final dialysis planning, fistula assessment",
+      "narrative": "Patient returns for nephrology follow-up. Creatinine 3.0 mg/dL, eGFR 19 mL/min/1.73m2. Hemoglobin 10.9 g/dL. Fistula fully matured and suitable for cannulation. Patient reports increasing fatigue and occasional nausea, consistent with uremic symptoms. Discussed final preparations for hemodialysis initiation.\n\nProvided schedule for first dialysis sessions. Emphasized dietary restrictions and importance of fluid balance. Answered all patient questions regarding dialysis. Commended patient on her resilience and active participation in her care. Continue all medications, particularly strict adherence to insulin regimen. Next visit will be at the dialysis unit.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_vasquez_2025_jun.pdf"
+      },
+      "labs": [
+        {
+          "test": "Creatinine",
+          "value": "3.0",
+          "unit": "mg/dL",
+          "range": "0.6-1.2",
+          "flag": "high"
+        },
+        {
+          "test": "eGFR",
+          "value": "19",
+          "unit": "mL/min/1.73m2",
+          "range": ">60",
+          "flag": "critical"
+        },
+        {
+          "test": "Hemoglobin",
+          "value": "10.9",
+          "unit": "g/dL",
+          "range": "12-16",
+          "flag": "low"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_vasquez_2025_jun.pdf"
+      }
+    }
+  ]
+}

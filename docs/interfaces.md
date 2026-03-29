@@ -88,7 +88,7 @@ Returns the full knowledge graph for the 3D visualization.
 | Field | Type | Required | Notes |
 |-------|------|----------|-------|
 | `id` | string | yes | Unique across all nodes |
-| `type` | string | yes | `"patient"` \| `"visit"` \| `"condition"` \| `"medication"` \| `"lab_result"` \| `"procedure"` \| `"provider"` |
+| `type` | string | yes | `"patient"` \| `"visit"` \| `"condition"` \| `"medication"` \| `"lab_result"` \| `"procedure"` \| `"provider"` \| `"family_history"` \| `"disease_reference"` |
 | `label` | string | yes | Display name for info card |
 | `color` | string | yes | Hex color for rendering |
 | `size` | number | yes | Relative node size for the graph |
@@ -103,7 +103,7 @@ Returns the full knowledge graph for the 3D visualization.
 |-------|------|----------|-------|
 | `source` | string | yes | Source node `id` |
 | `target` | string | yes | Target node `id` |
-| `type` | string | yes | One of the 9 edge types (see §4) |
+| `type` | string | yes | One of the 10 edge types (see §4) |
 
 ---
 
@@ -468,6 +468,8 @@ Hardcoded in the frontend, but agreed here for consistency:
 | `lab_result` | `#9B59B6` (purple) | 6 | Smallest — most numerous |
 | `procedure` | `#E67E22` (orange) | 8 | |
 | `provider` | `#1ABC9C` (teal) | 8 | |
+| `family_history` | `#D946EF` (magenta) | 7 | Family medical history entries |
+| `disease_reference` | `#3B82F6` (indigo) | 7 | Institutional knowledge base — not connected to patients |
 
 ### Edge types (exhaustive list)
 
@@ -482,6 +484,7 @@ Hardcoded in the frontend, but agreed here for consistency:
 | `TREATED_WITH` | condition → medication | |
 | `MONITORED_BY` | medication → lab_result | |
 | `REFERRED_TO` | provider → provider | |
+| `HAS_FAMILY_HISTORY` | patient → family_history | |
 
 ---
 
@@ -549,7 +552,9 @@ Pattern: `{type}_{lastname}_{yyyy}_{mon}.pdf`
 | Progress note | `progress_note` |
 | Imaging report | `imaging_report` |
 | Referral letter | `referral_letter` |
+| Consult note | `consult_note` |
 | Intake form | `intake_form` |
+| CDC advisory | `cdc_advisory` |
 
 Examples:
 ```

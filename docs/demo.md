@@ -56,7 +56,7 @@ The demo involves multiple round trips: user → GX10 → cloud → GX10 → clo
 
 A full interaction with 3 gatekeeper queries might take 15–30 seconds total. This is fine for a demo — the graph traversal animation, redacted view updates, and intermediate "thinking" indicators keep the audience engaged during processing.
 
-The gatekeeper's local inference (on-device) should be fast — under 3 seconds per query for a 27B model on the Blackwell GPU. This is not the bottleneck; the cloud API calls are.
+The gatekeeper's local inference (on-device) is fast but not instant — benchmarks show ~11-17 tok/s for 20-27B models when solo-loaded (see [speed benchmark](../eval/results/speed-benchmark-2026-03-28.md)). A typical 100-token gatekeeper response takes ~6-9 seconds. This is not the primary bottleneck; the cloud API calls (2-10 seconds each) still dominate total latency, but gatekeeper inference is no longer negligible.
 
 ---
 

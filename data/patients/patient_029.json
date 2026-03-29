@@ -1,0 +1,72 @@
+{
+  "id": "patient_029",
+  "name": "Claire Dubois",
+  "age": 28,
+  "sex": "female",
+  "mrn": "MRN-93516",
+  "dob": "1995-11-13",
+  "tier": "simple",
+  "summary": "28-year-old female presenting with an acute pruritic erythematous rash on her arms and chest, diagnosed as contact dermatitis likely due to a new laundry detergent, successfully treated with topical corticosteroids.",
+  "conditions": [
+    {
+      "name": "Contact Dermatitis",
+      "icd_code": "L25.9",
+      "status": "resolved",
+      "diagnosed_visit": "visit_01",
+      "notes": "Likely allergic reaction to a new laundry detergent."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Hydrocortisone Cream",
+      "dosage": "1%",
+      "frequency": "twice daily",
+      "start_visit": "visit_01",
+      "end_visit": "visit_02",
+      "status": "discontinued",
+      "treats": "Contact Dermatitis",
+      "monitored_by_labs": null,
+      "notes": "Applied to affected areas."
+    }
+  ],
+  "family_history": [],
+  "providers": [
+    {
+      "name": "Dr. Emily Green",
+      "role": "attending",
+      "department": "Family Medicine"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-03-12",
+      "type": "initial",
+      "provider": "Dr. Emily Green",
+      "chief_complaint": "New, itchy rash on arms and chest",
+      "narrative": "Patient presents with a 3-day history of an intensely pruritic, erythematous, mildly papular rash affecting both forearms and spreading to the upper chest. Reports changing to a new 'eco-friendly' laundry detergent approximately one week prior. Denies fever, chills, systemic symptoms. No known food allergies or new medications. Physical exam reveals well-demarcated patches of erythema with some papules and excoriations on bilateral extensor surfaces of forearms and upper sternal area. Impression: Acute Contact Dermatitis. Advised to discontinue new detergent and switch back to previous one. Prescribed Hydrocortisone Cream 1% twice daily. Return in 2 weeks for follow-up.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_dubois_2024_mar.pdf"
+      },
+      "medications_started": [
+        "Hydrocortisone Cream"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-03-26",
+      "type": "follow-up",
+      "provider": "Dr. Emily Green",
+      "chief_complaint": "Follow-up for rash",
+      "narrative": "Patient returns for follow-up regarding contact dermatitis. Reports significant improvement in rash and itching. Switched back to old laundry detergent immediately after last visit. States rash is almost entirely resolved, with only faint residual erythema and no active pruritus. Has been using hydrocortisone cream as directed. Physical exam shows clear skin with no active lesions, only mild post-inflammatory hyperpigmentation. Advised to continue avoiding the offending detergent. Discontinue hydrocortisone cream as rash resolved. Patient is pleased with outcome. No further follow-up needed unless recurrence.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_dubois_2024_mar.pdf"
+      },
+      "medications_discontinued": [
+        "Hydrocortisone Cream"
+      ]
+    }
+  ]
+}
