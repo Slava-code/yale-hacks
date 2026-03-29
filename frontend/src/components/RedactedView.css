@@ -1,0 +1,270 @@
+/* RedactedView - Premium PHI Pipeline */
+
+.redacted-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-primary);
+  border-left: 1px solid var(--border-subtle);
+}
+
+/* ===== HEADER ===== */
+.redacted-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+}
+
+.redacted-title-section {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.redacted-icon {
+  font-size: 0.875rem;
+  color: var(--node-lab);
+  opacity: 0.8;
+}
+
+.redacted-title {
+  font-size: 0.8125rem;
+  font-weight: 550;
+  color: var(--text-primary);
+}
+
+.redacted-subtitle {
+  font-size: 0.625rem;
+  color: var(--text-muted);
+  padding-left: var(--space-2);
+  border-left: 1px solid var(--border-subtle);
+}
+
+.redacted-close-btn {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.125rem;
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.redacted-close-btn:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+/* ===== EVENTS LIST ===== */
+.redacted-events {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* ===== EMPTY STATE ===== */
+.redacted-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-8);
+  gap: var(--space-4);
+}
+
+.redacted-empty-icon {
+  font-size: 1.5rem;
+  color: var(--node-lab);
+  opacity: 0.3;
+}
+
+.redacted-empty-text {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  max-width: 180px;
+  line-height: 1.5;
+}
+
+/* ===== EVENT CARDS ===== */
+.redacted-event {
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  animation: slide-up var(--duration-normal) var(--ease-out);
+}
+
+.redacted-event-deidentified_query {
+  border-left: 2px solid var(--node-patient);
+}
+
+.redacted-event-cloud_thinking {
+  border-left: 2px solid var(--node-medication);
+}
+
+.redacted-event-gatekeeper_query {
+  border-left: 2px solid var(--node-visit);
+}
+
+.redacted-event-gatekeeper_response {
+  border-left: 2px solid var(--node-lab);
+}
+
+.redacted-event-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.redacted-event-icon {
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+}
+
+.redacted-event-label {
+  font-size: 0.625rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.redacted-event-turn {
+  font-size: 0.5625rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  background: var(--bg-tertiary);
+  padding: 2px 5px;
+  border-radius: var(--radius-sm);
+  margin-left: auto;
+}
+
+.redacted-event-content {
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* ===== PHI TOKENS ===== */
+.redacted-token {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  padding: 1px 4px;
+  border-radius: var(--radius-sm);
+  margin: 0 1px;
+}
+
+.token-default {
+  background: rgba(113, 113, 122, 0.15);
+  color: var(--text-muted);
+}
+
+.token-patient {
+  background: rgba(96, 165, 250, 0.12);
+  color: var(--node-patient);
+}
+
+.token-provider {
+  background: rgba(45, 212, 191, 0.12);
+  color: var(--node-provider);
+}
+
+.token-date {
+  background: rgba(251, 191, 36, 0.12);
+  color: var(--node-visit);
+}
+
+.token-ref {
+  background: rgba(167, 139, 250, 0.12);
+  color: var(--node-lab);
+}
+
+.token-mrn {
+  background: rgba(248, 113, 113, 0.12);
+  color: var(--node-condition);
+}
+
+.token-location {
+  background: rgba(251, 146, 60, 0.12);
+  color: var(--node-procedure);
+}
+
+/* ===== TOKEN SUMMARY ===== */
+.redacted-token-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.redacted-token-badge {
+  font-size: 0.5625rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  background: var(--bg-tertiary);
+  padding: 2px 5px;
+  border-radius: var(--radius-sm);
+}
+
+/* ===== REFS ADDED ===== */
+.redacted-refs-added {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.redacted-refs-label {
+  font-size: 0.5625rem;
+  color: var(--text-muted);
+}
+
+.redacted-ref-badge {
+  font-size: 0.5625rem;
+  font-family: var(--font-mono);
+  color: var(--node-lab);
+  background: rgba(167, 139, 250, 0.08);
+  padding: 2px 5px;
+  border-radius: var(--radius-sm);
+}
+
+/* ===== LEGEND ===== */
+.redacted-legend {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+  overflow-x: auto;
+}
+
+.redacted-legend-title {
+  font-size: 0.5625rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.redacted-legend .redacted-token {
+  font-size: 0.5625rem;
+  white-space: nowrap;
+}
