@@ -676,6 +676,12 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf, isVisible = true, que
     // Store reference
     graphRef.current = graph
 
+    // Make zoom more sensitive
+    const controls = graph.controls()
+    if (controls) {
+      controls.zoomSpeed = 3.0  // default is 1.0
+    }
+
     // Set initial camera position to view the full spherical structure
     const cameraDistance = baseRadius * 2.4  // Slightly further for compacted structure
     setTimeout(() => {
