@@ -5,6 +5,9 @@ import PdfViewer from './components/PdfViewer'
 import RedactedView from './components/RedactedView'
 import IngestionAnimation from './components/IngestionAnimation'
 import HeartsOverlay from './components/HeartsOverlay'
+import logoFilter from './assets/logo-filter.svg'
+import logoHeartRed from './assets/logo-heart-red.svg'
+import logoArrow from './assets/logo-arrow.svg'
 import './App.css'
 
 // Model provider configurations
@@ -160,7 +163,13 @@ function App() {
       {/* Header */}
       <header className="app-header">
         <div className="logo">
-          <span className="logo-icon">+</span>
+          <div className="logo-icon">
+            <div className={`logo-flipper ${loveModeActive ? 'flipped' : ''}`}>
+              <img src={logoFilter} className="logo-img logo-front" alt="" />
+              <img src={logoHeartRed} className="logo-img logo-back" alt="" />
+            </div>
+            {loveModeActive && <img src={logoArrow} className="logo-img logo-arrow" alt="" />}
+          </div>
           <span className="logo-text">MedGate</span>
         </div>
         <div className="header-subtitle">

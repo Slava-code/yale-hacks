@@ -1,9 +1,9 @@
 {
   "meta": {
-    "generated_at": "2026-03-29T05:11:55Z",
-    "num_patients": 40,
-    "num_nodes": 1075,
-    "num_edges": 1652
+    "generated_at": "2026-03-29T08:42:56Z",
+    "num_patients": 41,
+    "num_nodes": 1126,
+    "num_edges": 1721
   },
   "nodes": {
     "provider_001": {
@@ -32101,6 +32101,1490 @@
       "source_pdf": "progress_note_chen_2024_nov.pdf",
       "source_page": 1
     },
+    "provider_055": {
+      "id": "provider_055",
+      "type": "provider",
+      "label": "Dr. Mia Castillo",
+      "fields": {
+        "name": {
+          "value": "Dr. Mia Castillo",
+          "phi": true
+        },
+        "role": {
+          "value": "attending",
+          "phi": false
+        },
+        "department": {
+          "value": "Student Health Services",
+          "phi": false
+        }
+      }
+    },
+    "provider_056": {
+      "id": "provider_056",
+      "type": "provider",
+      "label": "Dr. Ryan Everett",
+      "fields": {
+        "name": {
+          "value": "Dr. Ryan Everett",
+          "phi": true
+        },
+        "role": {
+          "value": "specialist",
+          "phi": false
+        },
+        "department": {
+          "value": "Cardiology",
+          "phi": false
+        }
+      }
+    },
+    "provider_057": {
+      "id": "provider_057",
+      "type": "provider",
+      "label": "Dr. Hannah Park",
+      "fields": {
+        "name": {
+          "value": "Dr. Hannah Park",
+          "phi": true
+        },
+        "role": {
+          "value": "specialist",
+          "phi": false
+        },
+        "department": {
+          "value": "Sleep Medicine",
+          "phi": false
+        }
+      }
+    },
+    "provider_058": {
+      "id": "provider_058",
+      "type": "provider",
+      "label": "Dr. Nora Kim",
+      "fields": {
+        "name": {
+          "value": "Dr. Nora Kim",
+          "phi": true
+        },
+        "role": {
+          "value": "specialist",
+          "phi": false
+        },
+        "department": {
+          "value": "Gastroenterology",
+          "phi": false
+        }
+      }
+    },
+    "provider_059": {
+      "id": "provider_059",
+      "type": "provider",
+      "label": "Dr. Leo Vasquez",
+      "fields": {
+        "name": {
+          "value": "Dr. Leo Vasquez",
+          "phi": true
+        },
+        "role": {
+          "value": "specialist",
+          "phi": false
+        },
+        "department": {
+          "value": "Psychiatry",
+          "phi": false
+        }
+      }
+    },
+    "patient_041": {
+      "id": "patient_041",
+      "type": "patient",
+      "label": "Valentine Torres",
+      "fields": {
+        "name": {
+          "value": "Valentine Torres",
+          "phi": true
+        },
+        "age": {
+          "value": 22,
+          "phi": false
+        },
+        "sex": {
+          "value": "female",
+          "phi": false
+        },
+        "mrn": {
+          "value": "MRN-14214",
+          "phi": true
+        },
+        "summary": {
+          "value": "A 22-year-old college student presenting with racing heart, insomnia, appetite loss, rosy flushed cheeks, butterflies in stomach, and inability to concentrate over 8 days \u2014 all workups normal \u2014 ultimately attributable to new-onset romantic attachment (Acute Amorosis Syndrome).",
+          "phi": false
+        }
+      },
+      "source_pdf": "intake_form_torres_2026_mar.pdf",
+      "source_page": 1
+    },
+    "condition_088": {
+      "id": "condition_088",
+      "type": "condition",
+      "label": "Sinus Tachycardia, Unspecified",
+      "fields": {
+        "name": {
+          "value": "Sinus Tachycardia, Unspecified",
+          "phi": false
+        },
+        "icd_code": {
+          "value": "R00.0",
+          "phi": false
+        },
+        "status": {
+          "value": "resolved",
+          "phi": false
+        }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_torres_2026_mar.pdf",
+          "page": 1
+        }
+      ]
+    },
+    "condition_089": {
+      "id": "condition_089",
+      "type": "condition",
+      "label": "Insomnia, Unspecified",
+      "fields": {
+        "name": {
+          "value": "Insomnia, Unspecified",
+          "phi": false
+        },
+        "icd_code": {
+          "value": "G47.00",
+          "phi": false
+        },
+        "status": {
+          "value": "resolved",
+          "phi": false
+        }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_torres_2026_mar_2.pdf",
+          "page": 1
+        }
+      ]
+    },
+    "condition_090": {
+      "id": "condition_090",
+      "type": "condition",
+      "label": "Anorexia (Appetite Loss)",
+      "fields": {
+        "name": {
+          "value": "Anorexia (Appetite Loss)",
+          "phi": false
+        },
+        "icd_code": {
+          "value": "R63.0",
+          "phi": false
+        },
+        "status": {
+          "value": "resolved",
+          "phi": false
+        }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_torres_2026_mar_3.pdf",
+          "page": 1
+        }
+      ]
+    },
+    "condition_091": {
+      "id": "condition_091",
+      "type": "condition",
+      "label": "Generalized Anxiety Disorder (Rule-Out)",
+      "fields": {
+        "name": {
+          "value": "Generalized Anxiety Disorder (Rule-Out)",
+          "phi": false
+        },
+        "icd_code": {
+          "value": "F41.1",
+          "phi": false
+        },
+        "status": {
+          "value": "resolved",
+          "phi": false
+        }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_torres_2026_mar_4.pdf",
+          "page": 1
+        }
+      ]
+    },
+    "condition_092": {
+      "id": "condition_092",
+      "type": "condition",
+      "label": "Acute Amorosis Syndrome (In other words, this patient is in Love!)",
+      "fields": {
+        "name": {
+          "value": "Acute Amorosis Syndrome (In other words, this patient is in Love!)",
+          "phi": false
+        },
+        "icd_code": {
+          "value": "F63.9",
+          "phi": false
+        },
+        "status": {
+          "value": "active",
+          "phi": false
+        }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_torres_2026_mar_8.pdf",
+          "page": 1
+        }
+      ]
+    },
+    "medication_127": {
+      "id": "medication_127",
+      "type": "medication",
+      "label": "Propranolol 10mg",
+      "fields": {
+        "name": {
+          "value": "Propranolol",
+          "phi": false
+        },
+        "dosage": {
+          "value": "10mg",
+          "phi": false
+        },
+        "frequency": {
+          "value": "as needed for palpitations",
+          "phi": false
+        },
+        "prescribing_provider": {
+          "value": "Dr. Mia Castillo",
+          "phi": true
+        },
+        "start_date": {
+          "value": "2026-03-16",
+          "phi": true
+        },
+        "status": {
+          "value": "discontinued",
+          "phi": false
+        }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_torres_2026_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_torres_2026_mar_7.pdf",
+          "page": 1
+        }
+      ]
+    },
+    "medication_128": {
+      "id": "medication_128",
+      "type": "medication",
+      "label": "Melatonin 3mg",
+      "fields": {
+        "name": {
+          "value": "Melatonin",
+          "phi": false
+        },
+        "dosage": {
+          "value": "3mg",
+          "phi": false
+        },
+        "frequency": {
+          "value": "nightly at bedtime",
+          "phi": false
+        },
+        "prescribing_provider": {
+          "value": "Dr. Mia Castillo",
+          "phi": true
+        },
+        "start_date": {
+          "value": "2026-03-18",
+          "phi": true
+        },
+        "status": {
+          "value": "discontinued",
+          "phi": false
+        }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_torres_2026_mar_2.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_torres_2026_mar_7.pdf",
+          "page": 1
+        }
+      ]
+    },
+    "medication_129": {
+      "id": "medication_129",
+      "type": "medication",
+      "label": "Ondansetron 4mg",
+      "fields": {
+        "name": {
+          "value": "Ondansetron",
+          "phi": false
+        },
+        "dosage": {
+          "value": "4mg",
+          "phi": false
+        },
+        "frequency": {
+          "value": "as needed for nausea",
+          "phi": false
+        },
+        "prescribing_provider": {
+          "value": "Dr. Mia Castillo",
+          "phi": true
+        },
+        "start_date": {
+          "value": "2026-03-19",
+          "phi": true
+        },
+        "status": {
+          "value": "discontinued",
+          "phi": false
+        }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_torres_2026_mar_3.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_torres_2026_mar_7.pdf",
+          "page": 1
+        }
+      ]
+    },
+    "medication_130": {
+      "id": "medication_130",
+      "type": "medication",
+      "label": "Dark Chocolate (Prescribed) 30g",
+      "fields": {
+        "name": {
+          "value": "Dark Chocolate (Prescribed)",
+          "phi": false
+        },
+        "dosage": {
+          "value": "30g",
+          "phi": false
+        },
+        "frequency": {
+          "value": "daily",
+          "phi": false
+        },
+        "prescribing_provider": {
+          "value": "Dr. Mia Castillo",
+          "phi": true
+        },
+        "start_date": {
+          "value": "2026-03-23",
+          "phi": true
+        },
+        "status": {
+          "value": "active",
+          "phi": false
+        }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_torres_2026_mar_8.pdf",
+          "page": 1
+        }
+      ]
+    },
+    "visit_296": {
+      "id": "visit_296",
+      "type": "visit",
+      "label": "Initial Visit \u2014 Mar 2026",
+      "fields": {
+        "date": {
+          "value": "2026-03-16",
+          "phi": true
+        },
+        "visit_type": {
+          "value": "initial",
+          "phi": false
+        },
+        "chief_complaint": {
+          "value": "Racing heart for 2 weeks, feels like heart is going to explode",
+          "phi": false
+        },
+        "attending_provider": {
+          "value": "Dr. Mia Castillo",
+          "phi": true
+        },
+        "notes": {
+          "value": "22-year-old female presents to Student Health with a 2-week history of racing heart. States she first noticed palpitations about 3 weeks ago but they have intensified. Denies chest pain, syncope, or shortness of breath at rest. Reports the sensation is worst when she thinks about 'certain things' but declines to elaborate. Also notes sweaty palms and flushed cheeks throughout the day. No prior cardiac history. No caffeine increase. Vitals notable for HR 98 bpm, BP 118/72 mmHg. Cardiac exam: regular rate, no murmurs. Basic labs ordered.",
+          "phi": false
+        }
+      },
+      "source_pdf": "intake_form_torres_2026_mar.pdf",
+      "source_page": 1
+    },
+    "lab_result_367": {
+      "id": "lab_result_367",
+      "type": "lab_result",
+      "label": "CBC",
+      "fields": {
+        "test_name": {
+          "value": "CBC",
+          "phi": false
+        },
+        "value": {
+          "value": "WBC 6.8, Hgb 13.2, Plt 245",
+          "phi": false
+        },
+        "unit": {
+          "value": "K/uL, g/dL, K/uL",
+          "phi": false
+        },
+        "reference_range": {
+          "value": "4.5-11.0, 12.0-16.0, 150-400",
+          "phi": false
+        },
+        "flag": {
+          "value": "normal",
+          "phi": false
+        },
+        "date": {
+          "value": "2026-03-16",
+          "phi": true
+        }
+      },
+      "source_pdf": "intake_form_torres_2026_mar.pdf",
+      "source_page": 1
+    },
+    "lab_result_368": {
+      "id": "lab_result_368",
+      "type": "lab_result",
+      "label": "TSH",
+      "fields": {
+        "test_name": {
+          "value": "TSH",
+          "phi": false
+        },
+        "value": {
+          "value": "2.1",
+          "phi": false
+        },
+        "unit": {
+          "value": "mIU/L",
+          "phi": false
+        },
+        "reference_range": {
+          "value": "0.4-4.0",
+          "phi": false
+        },
+        "flag": {
+          "value": "normal",
+          "phi": false
+        },
+        "date": {
+          "value": "2026-03-16",
+          "phi": true
+        }
+      },
+      "source_pdf": "intake_form_torres_2026_mar.pdf",
+      "source_page": 2
+    },
+    "lab_result_369": {
+      "id": "lab_result_369",
+      "type": "lab_result",
+      "label": "Comprehensive Metabolic Panel",
+      "fields": {
+        "test_name": {
+          "value": "Comprehensive Metabolic Panel",
+          "phi": false
+        },
+        "value": {
+          "value": "All within normal limits",
+          "phi": false
+        },
+        "unit": {
+          "value": "various",
+          "phi": false
+        },
+        "reference_range": {
+          "value": "standard",
+          "phi": false
+        },
+        "flag": {
+          "value": "normal",
+          "phi": false
+        },
+        "date": {
+          "value": "2026-03-16",
+          "phi": true
+        }
+      },
+      "source_pdf": "intake_form_torres_2026_mar.pdf",
+      "source_page": 3
+    },
+    "visit_297": {
+      "id": "visit_297",
+      "type": "visit",
+      "label": "Follow-up \u2014 Mar 2026",
+      "fields": {
+        "date": {
+          "value": "2026-03-16",
+          "phi": true
+        },
+        "visit_type": {
+          "value": "follow-up",
+          "phi": false
+        },
+        "chief_complaint": {
+          "value": "Same-day follow-up \u2014 lab results review, racing heart persists",
+          "phi": false
+        },
+        "attending_provider": {
+          "value": "Dr. Mia Castillo",
+          "phi": true
+        },
+        "notes": {
+          "value": "Patient returns same afternoon for lab review. CBC, TSH, CMP all normal. ECG performed in office: normal sinus rhythm at 98 bpm, no ST changes, no arrhythmia. HR remains elevated at 98 bpm despite being at rest for 15 minutes. Patient appears flushed with noticeably rosy cheeks. Working diagnosis: sinus tachycardia, unspecified. Started on low-dose propranolol 10mg PRN for symptom relief. Cardiology referral placed for next day.",
+          "phi": false
+        }
+      },
+      "source_pdf": "progress_note_torres_2026_mar.pdf",
+      "source_page": 1
+    },
+    "lab_result_370": {
+      "id": "lab_result_370",
+      "type": "lab_result",
+      "label": "ECG",
+      "fields": {
+        "test_name": {
+          "value": "ECG",
+          "phi": false
+        },
+        "value": {
+          "value": "Normal sinus rhythm, rate 98, no ST-T changes",
+          "phi": false
+        },
+        "unit": {
+          "value": "bpm",
+          "phi": false
+        },
+        "reference_range": {
+          "value": "60-100",
+          "phi": false
+        },
+        "flag": {
+          "value": "normal",
+          "phi": false
+        },
+        "date": {
+          "value": "2026-03-16",
+          "phi": true
+        }
+      },
+      "source_pdf": "progress_note_torres_2026_mar.pdf",
+      "source_page": 1
+    },
+    "lab_result_371": {
+      "id": "lab_result_371",
+      "type": "lab_result",
+      "label": "Heart Rate",
+      "fields": {
+        "test_name": {
+          "value": "Heart Rate",
+          "phi": false
+        },
+        "value": {
+          "value": "98",
+          "phi": false
+        },
+        "unit": {
+          "value": "bpm",
+          "phi": false
+        },
+        "reference_range": {
+          "value": "60-100",
+          "phi": false
+        },
+        "flag": {
+          "value": "normal",
+          "phi": false
+        },
+        "date": {
+          "value": "2026-03-16",
+          "phi": true
+        }
+      },
+      "source_pdf": "progress_note_torres_2026_mar.pdf",
+      "source_page": 2
+    },
+    "visit_298": {
+      "id": "visit_298",
+      "type": "visit",
+      "label": "Consult \u2014 Mar 2026",
+      "fields": {
+        "date": {
+          "value": "2026-03-17",
+          "phi": true
+        },
+        "visit_type": {
+          "value": "consult",
+          "phi": false
+        },
+        "chief_complaint": {
+          "value": "Cardiology consult \u2014 palpitations and persistent tachycardia",
+          "phi": false
+        },
+        "attending_provider": {
+          "value": "Dr. Ryan Everett",
+          "phi": true
+        },
+        "notes": {
+          "value": "Cardiology consultation for a 22-year-old female with 3-week history of palpitations and resting tachycardia (95-102 bpm). No chest pain, dyspnea, or syncope. No family history of sudden cardiac death or cardiomyopathy. Physical exam: well-appearing young woman with flushed cheeks, regular cardiac rhythm, no murmurs or gallops. Troponin negative. BNP normal. Transthoracic echocardiogram performed: normal LV function (EF 62%), no valvular abnormalities, no structural defects, no pericardial effusion. Holter monitor not indicated given benign presentation. Impression: benign sinus tachycardia, likely related to autonomic hyperactivation. No cardiac pathology identified. Continue propranolol PRN, return to PCP.",
+          "phi": false
+        }
+      },
+      "source_pdf": "consult_note_torres_2026_mar.pdf",
+      "source_page": 1
+    },
+    "lab_result_372": {
+      "id": "lab_result_372",
+      "type": "lab_result",
+      "label": "Troponin I",
+      "fields": {
+        "test_name": {
+          "value": "Troponin I",
+          "phi": false
+        },
+        "value": {
+          "value": "<0.01",
+          "phi": false
+        },
+        "unit": {
+          "value": "ng/mL",
+          "phi": false
+        },
+        "reference_range": {
+          "value": "<0.04",
+          "phi": false
+        },
+        "flag": {
+          "value": "normal",
+          "phi": false
+        },
+        "date": {
+          "value": "2026-03-17",
+          "phi": true
+        }
+      },
+      "source_pdf": "consult_note_torres_2026_mar.pdf",
+      "source_page": 1
+    },
+    "lab_result_373": {
+      "id": "lab_result_373",
+      "type": "lab_result",
+      "label": "BNP",
+      "fields": {
+        "test_name": {
+          "value": "BNP",
+          "phi": false
+        },
+        "value": {
+          "value": "22",
+          "phi": false
+        },
+        "unit": {
+          "value": "pg/mL",
+          "phi": false
+        },
+        "reference_range": {
+          "value": "<100",
+          "phi": false
+        },
+        "flag": {
+          "value": "normal",
+          "phi": false
+        },
+        "date": {
+          "value": "2026-03-17",
+          "phi": true
+        }
+      },
+      "source_pdf": "consult_note_torres_2026_mar.pdf",
+      "source_page": 2
+    },
+    "procedure_050": {
+      "id": "procedure_050",
+      "type": "procedure",
+      "label": "Transthoracic Echocardiogram",
+      "fields": {
+        "name": {
+          "value": "Transthoracic Echocardiogram",
+          "phi": false
+        },
+        "date": {
+          "value": "2026-03-17",
+          "phi": true
+        },
+        "provider": {
+          "value": "Dr. Ryan Everett",
+          "phi": true
+        },
+        "outcome": {
+          "value": "Normal LV function (EF 62%), no valvular abnormalities, no structural defects, no pericardial effusion",
+          "phi": false
+        }
+      },
+      "source_pdf": "consult_note_torres_2026_mar.pdf",
+      "source_page": 1
+    },
+    "visit_299": {
+      "id": "visit_299",
+      "type": "visit",
+      "label": "Follow-up \u2014 Mar 2026",
+      "fields": {
+        "date": {
+          "value": "2026-03-18",
+          "phi": true
+        },
+        "visit_type": {
+          "value": "follow-up",
+          "phi": false
+        },
+        "chief_complaint": {
+          "value": "Cannot sleep \u2014 up all night with racing thoughts, mind won't turn off",
+          "phi": false
+        },
+        "attending_provider": {
+          "value": "Dr. Mia Castillo",
+          "phi": true
+        },
+        "notes": {
+          "value": "Patient returns reporting severe difficulty initiating sleep for the past 2 weeks. States she lies awake for hours with her mind racing, thinking about someone she recently met. When asked what she thinks about, she blushes and says 'just stuff.' Reports checking her phone constantly at night waiting for messages. Denies nightmares, sleep apnea symptoms, or restless legs. No history of insomnia. Cardiology workup was clean. Working diagnosis: insomnia, unspecified. Started melatonin 3mg nightly. Referred to sleep medicine for evaluation.",
+          "phi": false
+        }
+      },
+      "source_pdf": "progress_note_torres_2026_mar_2.pdf",
+      "source_page": 1
+    },
+    "visit_300": {
+      "id": "visit_300",
+      "type": "visit",
+      "label": "Consult \u2014 Mar 2026",
+      "fields": {
+        "date": {
+          "value": "2026-03-19",
+          "phi": true
+        },
+        "visit_type": {
+          "value": "consult",
+          "phi": false
+        },
+        "chief_complaint": {
+          "value": "Sleep medicine consult \u2014 insomnia, racing thoughts at night",
+          "phi": false
+        },
+        "attending_provider": {
+          "value": "Dr. Hannah Park",
+          "phi": true
+        },
+        "notes": {
+          "value": "Sleep medicine consultation for a 22-year-old college student with 2-3 week history of difficulty initiating sleep. Reports lying awake 2-3 hours nightly with intrusive thoughts that she describes as 'not anxious, more like excited.' Overnight sleep study performed: total sleep time 5.2 hours, sleep onset latency 68 minutes (prolonged), normal sleep architecture once asleep, normal REM latency, AHI 0.3 (normal), no periodic limb movements. No narcolepsy features. Impression: prolonged sleep onset latency without primary sleep disorder. Pattern most consistent with hyperarousal state, etiology unclear. Continue melatonin, sleep hygiene counseling provided.",
+          "phi": false
+        }
+      },
+      "source_pdf": "consult_note_torres_2026_mar_2.pdf",
+      "source_page": 1
+    },
+    "lab_result_374": {
+      "id": "lab_result_374",
+      "type": "lab_result",
+      "label": "Sleep Study (PSG)",
+      "fields": {
+        "test_name": {
+          "value": "Sleep Study (PSG)",
+          "phi": false
+        },
+        "value": {
+          "value": "TST 5.2h, SOL 68min, AHI 0.3, normal architecture",
+          "phi": false
+        },
+        "unit": {
+          "value": "hours/min/events per hr",
+          "phi": false
+        },
+        "reference_range": {
+          "value": "TST >6h, SOL <30min, AHI <5",
+          "phi": false
+        },
+        "flag": {
+          "value": "high",
+          "phi": false
+        },
+        "date": {
+          "value": "2026-03-19",
+          "phi": true
+        }
+      },
+      "source_pdf": "consult_note_torres_2026_mar_2.pdf",
+      "source_page": 1
+    },
+    "visit_301": {
+      "id": "visit_301",
+      "type": "visit",
+      "label": "Follow-up \u2014 Mar 2026",
+      "fields": {
+        "date": {
+          "value": "2026-03-19",
+          "phi": true
+        },
+        "visit_type": {
+          "value": "follow-up",
+          "phi": false
+        },
+        "chief_complaint": {
+          "value": "Lost appetite, hasn't eaten properly in days, butterflies in stomach",
+          "phi": false
+        },
+        "attending_provider": {
+          "value": "Dr. Mia Castillo",
+          "phi": true
+        },
+        "notes": {
+          "value": "Patient presents same day as sleep consult with new complaint of decreased appetite for approximately 2 weeks. Reports persistent sensation of butterflies in her stomach, especially when she receives text messages. Has lost approximately 3 lbs. Denies abdominal pain, vomiting, diarrhea, or dysphagia. Notes that she feels mildly nauseous but attributes it to 'nervous excitement.' Weight: 127 lbs (down from 130 lbs at visit_01). Working diagnosis: anorexia (appetite loss). Started ondansetron 4mg PRN for nausea. GI referral placed.",
+          "phi": false
+        }
+      },
+      "source_pdf": "progress_note_torres_2026_mar_3.pdf",
+      "source_page": 1
+    },
+    "visit_302": {
+      "id": "visit_302",
+      "type": "visit",
+      "label": "Consult \u2014 Mar 2026",
+      "fields": {
+        "date": {
+          "value": "2026-03-20",
+          "phi": true
+        },
+        "visit_type": {
+          "value": "consult",
+          "phi": false
+        },
+        "chief_complaint": {
+          "value": "GI consult \u2014 appetite loss, butterflies sensation, mild nausea, weight loss",
+          "phi": false
+        },
+        "attending_provider": {
+          "value": "Dr. Nora Kim",
+          "phi": true
+        },
+        "notes": {
+          "value": "Gastroenterology consultation for a 22-year-old female with 2-week history of decreased appetite, epigastric fluttering sensation she describes as 'butterflies,' mild nausea, and 3 lb weight loss. No hematemesis, melena, or hematochezia. No NSAID use. No travel history. Physical exam: abdomen soft, non-tender, non-distended, normal bowel sounds, no organomegaly. Lipase normal. H. pylori breath test negative. CMP unremarkable. Impression: no organic GI pathology identified. Symptoms may reflect functional dyspepsia or psychosomatic manifestation. Return to PCP for further workup of systemic etiology.",
+          "phi": false
+        }
+      },
+      "source_pdf": "consult_note_torres_2026_mar_3.pdf",
+      "source_page": 1
+    },
+    "lab_result_375": {
+      "id": "lab_result_375",
+      "type": "lab_result",
+      "label": "Lipase",
+      "fields": {
+        "test_name": {
+          "value": "Lipase",
+          "phi": false
+        },
+        "value": {
+          "value": "32",
+          "phi": false
+        },
+        "unit": {
+          "value": "U/L",
+          "phi": false
+        },
+        "reference_range": {
+          "value": "10-73",
+          "phi": false
+        },
+        "flag": {
+          "value": "normal",
+          "phi": false
+        },
+        "date": {
+          "value": "2026-03-20",
+          "phi": true
+        }
+      },
+      "source_pdf": "consult_note_torres_2026_mar_3.pdf",
+      "source_page": 1
+    },
+    "lab_result_376": {
+      "id": "lab_result_376",
+      "type": "lab_result",
+      "label": "H. pylori Breath Test",
+      "fields": {
+        "test_name": {
+          "value": "H. pylori Breath Test",
+          "phi": false
+        },
+        "value": {
+          "value": "Negative",
+          "phi": false
+        },
+        "unit": {
+          "value": "qualitative",
+          "phi": false
+        },
+        "reference_range": {
+          "value": "Negative",
+          "phi": false
+        },
+        "flag": {
+          "value": "normal",
+          "phi": false
+        },
+        "date": {
+          "value": "2026-03-20",
+          "phi": true
+        }
+      },
+      "source_pdf": "consult_note_torres_2026_mar_3.pdf",
+      "source_page": 2
+    },
+    "lab_result_377": {
+      "id": "lab_result_377",
+      "type": "lab_result",
+      "label": "Comprehensive Metabolic Panel",
+      "fields": {
+        "test_name": {
+          "value": "Comprehensive Metabolic Panel",
+          "phi": false
+        },
+        "value": {
+          "value": "All within normal limits",
+          "phi": false
+        },
+        "unit": {
+          "value": "various",
+          "phi": false
+        },
+        "reference_range": {
+          "value": "standard",
+          "phi": false
+        },
+        "flag": {
+          "value": "normal",
+          "phi": false
+        },
+        "date": {
+          "value": "2026-03-20",
+          "phi": true
+        }
+      },
+      "source_pdf": "consult_note_torres_2026_mar_3.pdf",
+      "source_page": 3
+    },
+    "visit_303": {
+      "id": "visit_303",
+      "type": "visit",
+      "label": "Follow-up \u2014 Mar 2026",
+      "fields": {
+        "date": {
+          "value": "2026-03-20",
+          "phi": true
+        },
+        "visit_type": {
+          "value": "follow-up",
+          "phi": false
+        },
+        "chief_complaint": {
+          "value": "Cannot concentrate on coursework, constant daydreaming, flushed cheeks",
+          "phi": false
+        },
+        "attending_provider": {
+          "value": "Dr. Mia Castillo",
+          "phi": true
+        },
+        "notes": {
+          "value": "Patient returns same day after GI consult (negative). Now reports a third major complaint: complete inability to concentrate on her studies for the past 2-3 weeks. Describes sitting in lecture and daydreaming for the entire hour. Grades slipping. Also notes persistently flushed rosy cheeks that friends have commented on. Denies fever or rash elsewhere. No substance use. Morning cortisol and urinalysis ordered to rule out endocrine causes. Given the constellation of symptoms \u2014 tachycardia, insomnia, appetite loss, and now cognitive disruption \u2014 anxiety is suspected. Psychiatry referral placed.",
+          "phi": false
+        }
+      },
+      "source_pdf": "progress_note_torres_2026_mar_4.pdf",
+      "source_page": 1
+    },
+    "lab_result_378": {
+      "id": "lab_result_378",
+      "type": "lab_result",
+      "label": "Morning Cortisol",
+      "fields": {
+        "test_name": {
+          "value": "Morning Cortisol",
+          "phi": false
+        },
+        "value": {
+          "value": "14.2",
+          "phi": false
+        },
+        "unit": {
+          "value": "mcg/dL",
+          "phi": false
+        },
+        "reference_range": {
+          "value": "6.0-18.0",
+          "phi": false
+        },
+        "flag": {
+          "value": "normal",
+          "phi": false
+        },
+        "date": {
+          "value": "2026-03-20",
+          "phi": true
+        }
+      },
+      "source_pdf": "progress_note_torres_2026_mar_4.pdf",
+      "source_page": 1
+    },
+    "lab_result_379": {
+      "id": "lab_result_379",
+      "type": "lab_result",
+      "label": "Urinalysis",
+      "fields": {
+        "test_name": {
+          "value": "Urinalysis",
+          "phi": false
+        },
+        "value": {
+          "value": "Clear, no protein, no glucose, no WBC",
+          "phi": false
+        },
+        "unit": {
+          "value": "qualitative",
+          "phi": false
+        },
+        "reference_range": {
+          "value": "Normal",
+          "phi": false
+        },
+        "flag": {
+          "value": "normal",
+          "phi": false
+        },
+        "date": {
+          "value": "2026-03-20",
+          "phi": true
+        }
+      },
+      "source_pdf": "progress_note_torres_2026_mar_4.pdf",
+      "source_page": 2
+    },
+    "visit_304": {
+      "id": "visit_304",
+      "type": "visit",
+      "label": "Consult \u2014 Mar 2026",
+      "fields": {
+        "date": {
+          "value": "2026-03-21",
+          "phi": true
+        },
+        "visit_type": {
+          "value": "consult",
+          "phi": false
+        },
+        "chief_complaint": {
+          "value": "Psychiatry consult \u2014 rule out generalized anxiety disorder or panic disorder",
+          "phi": false
+        },
+        "attending_provider": {
+          "value": "Dr. Leo Vasquez",
+          "phi": true
+        },
+        "notes": {
+          "value": "Psychiatric evaluation of a 22-year-old college student referred for possible GAD or panic disorder. Symptom constellation includes tachycardia, insomnia, appetite loss, difficulty concentrating, and autonomic hyperarousal \u2014 all of which overlap with anxiety spectrum. PHQ-9 administered: score 5 (mild). GAD-7 administered: score 4 (minimal). Neither score meets threshold for clinical depression or anxiety disorder. Patient denies worry about academics, finances, or family. When asked what she thinks about at night, she smiles and says 'a person.' No suicidal ideation, no psychotic symptoms, no history of trauma. Impression: screening scores do not support primary anxiety or depressive disorder. Symptom pattern is unusual \u2014 autonomic hyperarousal with positive affect rather than distress. Recommend further social history exploration with PCP.",
+          "phi": false
+        }
+      },
+      "source_pdf": "consult_note_torres_2026_mar_4.pdf",
+      "source_page": 1
+    },
+    "lab_result_380": {
+      "id": "lab_result_380",
+      "type": "lab_result",
+      "label": "PHQ-9",
+      "fields": {
+        "test_name": {
+          "value": "PHQ-9",
+          "phi": false
+        },
+        "value": {
+          "value": "5",
+          "phi": false
+        },
+        "unit": {
+          "value": "score",
+          "phi": false
+        },
+        "reference_range": {
+          "value": "0-4 minimal, 5-9 mild, 10+ moderate",
+          "phi": false
+        },
+        "flag": {
+          "value": "normal",
+          "phi": false
+        },
+        "date": {
+          "value": "2026-03-21",
+          "phi": true
+        }
+      },
+      "source_pdf": "consult_note_torres_2026_mar_4.pdf",
+      "source_page": 1
+    },
+    "lab_result_381": {
+      "id": "lab_result_381",
+      "type": "lab_result",
+      "label": "GAD-7",
+      "fields": {
+        "test_name": {
+          "value": "GAD-7",
+          "phi": false
+        },
+        "value": {
+          "value": "4",
+          "phi": false
+        },
+        "unit": {
+          "value": "score",
+          "phi": false
+        },
+        "reference_range": {
+          "value": "0-4 minimal, 5-9 mild, 10+ moderate",
+          "phi": false
+        },
+        "flag": {
+          "value": "normal",
+          "phi": false
+        },
+        "date": {
+          "value": "2026-03-21",
+          "phi": true
+        }
+      },
+      "source_pdf": "consult_note_torres_2026_mar_4.pdf",
+      "source_page": 2
+    },
+    "visit_305": {
+      "id": "visit_305",
+      "type": "visit",
+      "label": "Follow-up \u2014 Mar 2026",
+      "fields": {
+        "date": {
+          "value": "2026-03-21",
+          "phi": true
+        },
+        "visit_type": {
+          "value": "follow-up",
+          "phi": false
+        },
+        "chief_complaint": {
+          "value": "Follow-up \u2014 all specialist workups negative, symptoms persist, what is wrong with me?",
+          "phi": false
+        },
+        "attending_provider": {
+          "value": "Dr. Mia Castillo",
+          "phi": true
+        },
+        "notes": {
+          "value": "Patient returns frustrated and anxious after cardiology, sleep medicine, GI, and psychiatry all found nothing wrong. States: 'I've seen four specialists in five days and nobody can tell me what's happening to me.' Repeat vitals: HR 95 bpm, BP 116/74. Still flushed cheeks. Detailed social history taken for the first time: Patient reveals she met someone at a campus event approximately 3 weeks ago \u2014 precisely when symptoms began. They have been texting constantly, seeing each other daily, and she describes feeling 'like electricity' when they are together. Symptoms notably worse when apart, better when together. Phone-checking behavior is obsessive. Friends say she 'glows' (likely the flushed cheeks). Clinician notes the temporal correlation is striking.",
+          "phi": false
+        }
+      },
+      "source_pdf": "progress_note_torres_2026_mar_5.pdf",
+      "source_page": 1
+    },
+    "lab_result_382": {
+      "id": "lab_result_382",
+      "type": "lab_result",
+      "label": "Heart Rate",
+      "fields": {
+        "test_name": {
+          "value": "Heart Rate",
+          "phi": false
+        },
+        "value": {
+          "value": "95",
+          "phi": false
+        },
+        "unit": {
+          "value": "bpm",
+          "phi": false
+        },
+        "reference_range": {
+          "value": "60-100",
+          "phi": false
+        },
+        "flag": {
+          "value": "normal",
+          "phi": false
+        },
+        "date": {
+          "value": "2026-03-21",
+          "phi": true
+        }
+      },
+      "source_pdf": "progress_note_torres_2026_mar_5.pdf",
+      "source_page": 1
+    },
+    "visit_306": {
+      "id": "visit_306",
+      "type": "visit",
+      "label": "Follow-up \u2014 Mar 2026",
+      "fields": {
+        "date": {
+          "value": "2026-03-22",
+          "phi": true
+        },
+        "visit_type": {
+          "value": "follow-up",
+          "phi": false
+        },
+        "chief_complaint": {
+          "value": "Detailed social history and symptom timeline mapping",
+          "phi": false
+        },
+        "attending_provider": {
+          "value": "Dr. Mia Castillo",
+          "phi": true
+        },
+        "notes": {
+          "value": "Extended visit to map symptom timeline against social history. Working backward: palpitations started ~March 1 (2 days after meeting new partner on Feb 27). Insomnia started ~March 3 (after first date). Appetite loss and butterflies started ~March 5 (after first kiss, per patient). Concentration problems started ~March 8 (began spending every free moment together). Rosy cheeks first noticed by roommate ~March 4. Every symptom onset correlates precisely with relationship milestones. Patient had not previously connected the dots. When presented with the timeline, patient pauses and says: 'Oh my god. Am I... is this because I'm in love?' Clinician documents the temporal correlation and begins literature review.",
+          "phi": false
+        }
+      },
+      "source_pdf": "progress_note_torres_2026_mar_6.pdf",
+      "source_page": 1
+    },
+    "visit_307": {
+      "id": "visit_307",
+      "type": "visit",
+      "label": "Follow-up \u2014 Mar 2026",
+      "fields": {
+        "date": {
+          "value": "2026-03-22",
+          "phi": true
+        },
+        "visit_type": {
+          "value": "follow-up",
+          "phi": false
+        },
+        "chief_complaint": {
+          "value": "Medication review and discontinuation \u2014 symptoms attributable to new relationship",
+          "phi": false
+        },
+        "attending_provider": {
+          "value": "Dr. Mia Castillo",
+          "phi": true
+        },
+        "notes": {
+          "value": "Following the social history mapping, all current medications are being discontinued as the underlying etiology appears to be new-onset romantic attachment rather than cardiac, sleep, or GI pathology. Propranolol discontinued \u2014 tachycardia is catecholamine-driven and benign. Melatonin discontinued \u2014 insomnia is excitement-based, not pathological. Ondansetron discontinued \u2014 butterflies are psychosomatic, not GI. Patient tolerating discontinuation well. HR today: 92 bpm. Patient reports she saw her partner this morning and 'felt amazing.' Formal diagnostic assessment planned for next visit.",
+          "phi": false
+        }
+      },
+      "source_pdf": "progress_note_torres_2026_mar_7.pdf",
+      "source_page": 1
+    },
+    "lab_result_383": {
+      "id": "lab_result_383",
+      "type": "lab_result",
+      "label": "Heart Rate",
+      "fields": {
+        "test_name": {
+          "value": "Heart Rate",
+          "phi": false
+        },
+        "value": {
+          "value": "92",
+          "phi": false
+        },
+        "unit": {
+          "value": "bpm",
+          "phi": false
+        },
+        "reference_range": {
+          "value": "60-100",
+          "phi": false
+        },
+        "flag": {
+          "value": "normal",
+          "phi": false
+        },
+        "date": {
+          "value": "2026-03-22",
+          "phi": true
+        }
+      },
+      "source_pdf": "progress_note_torres_2026_mar_7.pdf",
+      "source_page": 1
+    },
+    "visit_308": {
+      "id": "visit_308",
+      "type": "visit",
+      "label": "Follow-up \u2014 Mar 2026",
+      "fields": {
+        "date": {
+          "value": "2026-03-23",
+          "phi": true
+        },
+        "visit_type": {
+          "value": "follow-up",
+          "phi": false
+        },
+        "chief_complaint": {
+          "value": "Formal diagnostic assessment \u2014 Acute Amorosis Syndrome",
+          "phi": false
+        },
+        "attending_provider": {
+          "value": "Dr. Mia Castillo",
+          "phi": true
+        },
+        "notes": {
+          "value": "Formal diagnostic synthesis. Patient meets all criteria for Acute Amorosis Syndrome: (1) Persistent sympathetic hyperarousal lasting >2 weeks \u2014 confirmed. (2) Normal cardiac workup \u2014 confirmed (ECG, troponin, BNP, echo all normal). (3) Normal thyroid function \u2014 confirmed (TSH 2.1). (4) Anxiety/depression screening below clinical threshold \u2014 confirmed (PHQ-9: 5, GAD-7: 4). (5) New romantic attachment temporally correlated with symptom onset \u2014 confirmed (met partner Feb 27, symptoms began March 1). (6) Symptoms improve in presence of attachment figure \u2014 confirmed per patient report. Diagnosis: Acute Amorosis Syndrome. In other words, this patient is in Love! Prescribed dark chocolate 30g daily (theobromine and phenylethylamine support endorphin release). Prognosis: excellent. Condition is expected to transition to stable attachment phase within 12-18 months.",
+          "phi": false
+        }
+      },
+      "source_pdf": "progress_note_torres_2026_mar_8.pdf",
+      "source_page": 1
+    },
+    "visit_309": {
+      "id": "visit_309",
+      "type": "visit",
+      "label": "Consult \u2014 Mar 2026",
+      "fields": {
+        "date": {
+          "value": "2026-03-23",
+          "phi": true
+        },
+        "visit_type": {
+          "value": "consult",
+          "phi": false
+        },
+        "chief_complaint": {
+          "value": "Psychiatry clearance \u2014 confirming benign etiology of symptoms",
+          "phi": false
+        },
+        "attending_provider": {
+          "value": "Dr. Leo Vasquez",
+          "phi": true
+        },
+        "notes": {
+          "value": "Follow-up psychiatric consultation at PCP request to confirm that the patient's symptom constellation does not represent an emerging psychiatric disorder. Review of updated social history and symptom timeline confirms that all symptoms are temporally linked to new romantic attachment. No evidence of obsessive-compulsive disorder (intrusive thoughts are ego-syntonic and pleasurable, not distressing). No evidence of erotomania or delusional disorder (relationship is real and reciprocal). No evidence of mania (sleep is reduced but patient is not irritable, no grandiosity, no reckless spending). Impression: concur with PCP assessment. This is a normal human experience presenting with prominent somatic features. No psychiatric intervention indicated.",
+          "phi": false
+        }
+      },
+      "source_pdf": "consult_note_torres_2026_mar_5.pdf",
+      "source_page": 1
+    },
+    "visit_310": {
+      "id": "visit_310",
+      "type": "visit",
+      "label": "Routine \u2014 Mar 2026",
+      "fields": {
+        "date": {
+          "value": "2026-03-24",
+          "phi": true
+        },
+        "visit_type": {
+          "value": "routine",
+          "phi": false
+        },
+        "chief_complaint": {
+          "value": "Final check-in \u2014 patient reports feeling wonderful",
+          "phi": false
+        },
+        "attending_provider": {
+          "value": "Dr. Mia Castillo",
+          "phi": true
+        },
+        "notes": {
+          "value": "One-week follow-up since initial presentation. Patient appears notably improved and reports feeling 'better than I've ever felt in my life.' Palpitations have decreased \u2014 she no longer notices them unless she thinks about it. Sleep improving \u2014 falling asleep within 30 minutes (down from 2-3 hours). Appetite returning \u2014 ate a full breakfast for the first time in weeks. Concentration still impaired but 'manageable.' Rosy cheeks persist but patient says her partner 'loves them.' HR 72 bpm \u2014 normal for the first time since presentation. All symptoms trending toward resolution. Patient asked if being in love is really a medical condition. Clinician explained that while not a disease, the neurochemistry of early romantic love produces real physiological effects that are indistinguishable from medical symptoms. Patient laughed and said: 'Best diagnosis I've ever gotten.' Plan: no further follow-up needed. Return PRN.",
+          "phi": false
+        }
+      },
+      "source_pdf": "progress_note_torres_2026_mar_9.pdf",
+      "source_page": 1
+    },
+    "lab_result_384": {
+      "id": "lab_result_384",
+      "type": "lab_result",
+      "label": "Heart Rate",
+      "fields": {
+        "test_name": {
+          "value": "Heart Rate",
+          "phi": false
+        },
+        "value": {
+          "value": "72",
+          "phi": false
+        },
+        "unit": {
+          "value": "bpm",
+          "phi": false
+        },
+        "reference_range": {
+          "value": "60-100",
+          "phi": false
+        },
+        "flag": {
+          "value": "normal",
+          "phi": false
+        },
+        "date": {
+          "value": "2026-03-24",
+          "phi": true
+        }
+      },
+      "source_pdf": "progress_note_torres_2026_mar_9.pdf",
+      "source_page": 1
+    },
+    "family_hx_043": {
+      "id": "family_hx_043",
+      "type": "family_history",
+      "label": "Mother \u2014 Panic Disorder",
+      "fields": {
+        "relation": {
+          "value": "mother",
+          "phi": false
+        },
+        "condition": {
+          "value": "Panic Disorder",
+          "phi": false
+        },
+        "diagnosed_age": {
+          "value": 30,
+          "phi": false
+        }
+      },
+      "source_pdf": "intake_form_torres_2026_mar.pdf",
+      "source_page": 1
+    },
     "disease_ref_001": {
       "id": "disease_ref_001",
       "type": "disease_reference",
@@ -32721,6 +34205,45 @@
         },
         "icd_code": {
           "value": "J20.9",
+          "phi": false
+        }
+      }
+    },
+    "disease_ref_017": {
+      "id": "disease_ref_017",
+      "type": "disease_reference",
+      "label": "Acute Amorosis Syndrome (In other words, this patient is in Love!)",
+      "fields": {
+        "name": {
+          "value": "Acute Amorosis Syndrome (In other words, this patient is in Love!)",
+          "phi": false
+        },
+        "category": {
+          "value": "psychosomatic/behavioral",
+          "phi": false
+        },
+        "description": {
+          "value": "A benign, self-limiting psychophysiological state characterized by elevated catecholamine release, disrupted executive function, and intrusive reward-seeking cognition, triggered by the formation of a new romantic attachment. Often misdiagnosed as anxiety, cardiac arrhythmia, or thyroid dysfunction due to overlapping sympathetic symptoms. Biochemically mediated by surges in dopamine, norepinephrine, and oxytocin. Onset is acute, typically within days of initial romantic contact.",
+          "phi": false
+        },
+        "symptoms": {
+          "value": "Cardiovascular: resting tachycardia (85-110 bpm), palpitations, diaphoresis (sweaty palms), rosy flushed cheeks (cutaneous vasodilation). Gastrointestinal: decreased appetite, epigastric fluttering sensation (butterflies in stomach), mild nausea. Neuropsychiatric: insomnia with racing thoughts, inability to concentrate, intrusive daydreaming, euphoria alternating with anxious anticipation, compulsive idealization of another individual, frequent phone-checking behavior. Ophthalmologic: mydriasis (dilated pupils), increased eye contact-seeking. General: increased energy despite poor sleep, unintentional weight loss.",
+          "phi": false
+        },
+        "diagnostic_criteria": {
+          "value": "All of the following must be met: (1) Persistent sympathetic hyperarousal symptoms (tachycardia, insomnia, appetite loss, rosy cheeks, butterflies) lasting more than 2 weeks, (2) Normal cardiac workup (ECG, troponin, echocardiography), (3) Normal thyroid function, (4) Normal anxiety/depression screening excluding primary psychiatric etiology (PHQ-9 below 10, GAD-7 below 10), (5) Social history revealing a new romantic attachment temporally correlated with symptom onset, (6) Symptoms improve in the presence of the attachment figure.",
+          "phi": false
+        },
+        "lab_markers": {
+          "value": "All standard labs normal: CBC, CMP, TSH, free T4, troponin, BNP, cortisol, urinalysis. Elevated catecholamines (dopamine, norepinephrine) on 24-hour urine collection if tested, but not routinely ordered. ECG: normal sinus rhythm, may show sinus tachycardia or occasional PVCs. Echocardiogram: structurally normal heart.",
+          "phi": false
+        },
+        "epidemiology": {
+          "value": "Extremely common; estimated lifetime prevalence approaching 95-98% of the global population. No sex predilection. Peak incidence in ages 15-30 but can occur at any age. Typically self-limiting, transitioning to stable attachment phase within 12-18 months as catecholamine levels normalize. Recurrence is common and expected.",
+          "phi": false
+        },
+        "icd_code": {
+          "value": "F63.9",
           "phi": false
         }
       }
@@ -40986,6 +42509,351 @@
       "source": "visit_295",
       "target": "provider_010",
       "type": "ATTENDED_BY"
+    },
+    {
+      "source": "patient_041",
+      "target": "condition_088",
+      "type": "HAS_CONDITION"
+    },
+    {
+      "source": "patient_041",
+      "target": "condition_089",
+      "type": "HAS_CONDITION"
+    },
+    {
+      "source": "patient_041",
+      "target": "condition_090",
+      "type": "HAS_CONDITION"
+    },
+    {
+      "source": "patient_041",
+      "target": "condition_091",
+      "type": "HAS_CONDITION"
+    },
+    {
+      "source": "patient_041",
+      "target": "medication_127",
+      "type": "PRESCRIBED"
+    },
+    {
+      "source": "condition_088",
+      "target": "medication_127",
+      "type": "TREATED_WITH"
+    },
+    {
+      "source": "patient_041",
+      "target": "medication_128",
+      "type": "PRESCRIBED"
+    },
+    {
+      "source": "condition_089",
+      "target": "medication_128",
+      "type": "TREATED_WITH"
+    },
+    {
+      "source": "patient_041",
+      "target": "medication_129",
+      "type": "PRESCRIBED"
+    },
+    {
+      "source": "condition_090",
+      "target": "medication_129",
+      "type": "TREATED_WITH"
+    },
+    {
+      "source": "patient_041",
+      "target": "medication_130",
+      "type": "PRESCRIBED"
+    },
+    {
+      "source": "condition_092",
+      "target": "medication_130",
+      "type": "TREATED_WITH"
+    },
+    {
+      "source": "patient_041",
+      "target": "visit_296",
+      "type": "HAD_VISIT"
+    },
+    {
+      "source": "visit_296",
+      "target": "provider_055",
+      "type": "ATTENDED_BY"
+    },
+    {
+      "source": "visit_296",
+      "target": "lab_result_367",
+      "type": "RESULTED_IN"
+    },
+    {
+      "source": "visit_296",
+      "target": "lab_result_368",
+      "type": "RESULTED_IN"
+    },
+    {
+      "source": "visit_296",
+      "target": "lab_result_369",
+      "type": "RESULTED_IN"
+    },
+    {
+      "source": "provider_055",
+      "target": "provider_056",
+      "type": "REFERRED_TO"
+    },
+    {
+      "source": "patient_041",
+      "target": "visit_297",
+      "type": "HAD_VISIT"
+    },
+    {
+      "source": "visit_297",
+      "target": "provider_055",
+      "type": "ATTENDED_BY"
+    },
+    {
+      "source": "visit_297",
+      "target": "lab_result_370",
+      "type": "RESULTED_IN"
+    },
+    {
+      "source": "visit_297",
+      "target": "lab_result_371",
+      "type": "RESULTED_IN"
+    },
+    {
+      "source": "patient_041",
+      "target": "visit_298",
+      "type": "HAD_VISIT"
+    },
+    {
+      "source": "visit_298",
+      "target": "provider_056",
+      "type": "ATTENDED_BY"
+    },
+    {
+      "source": "visit_298",
+      "target": "lab_result_372",
+      "type": "RESULTED_IN"
+    },
+    {
+      "source": "visit_298",
+      "target": "lab_result_373",
+      "type": "RESULTED_IN"
+    },
+    {
+      "source": "visit_298",
+      "target": "procedure_050",
+      "type": "PERFORMED"
+    },
+    {
+      "source": "patient_041",
+      "target": "visit_299",
+      "type": "HAD_VISIT"
+    },
+    {
+      "source": "visit_299",
+      "target": "provider_055",
+      "type": "ATTENDED_BY"
+    },
+    {
+      "source": "provider_055",
+      "target": "provider_057",
+      "type": "REFERRED_TO"
+    },
+    {
+      "source": "patient_041",
+      "target": "visit_300",
+      "type": "HAD_VISIT"
+    },
+    {
+      "source": "visit_300",
+      "target": "provider_057",
+      "type": "ATTENDED_BY"
+    },
+    {
+      "source": "visit_300",
+      "target": "lab_result_374",
+      "type": "RESULTED_IN"
+    },
+    {
+      "source": "patient_041",
+      "target": "visit_301",
+      "type": "HAD_VISIT"
+    },
+    {
+      "source": "visit_301",
+      "target": "provider_055",
+      "type": "ATTENDED_BY"
+    },
+    {
+      "source": "provider_055",
+      "target": "provider_058",
+      "type": "REFERRED_TO"
+    },
+    {
+      "source": "patient_041",
+      "target": "visit_302",
+      "type": "HAD_VISIT"
+    },
+    {
+      "source": "visit_302",
+      "target": "provider_058",
+      "type": "ATTENDED_BY"
+    },
+    {
+      "source": "visit_302",
+      "target": "lab_result_375",
+      "type": "RESULTED_IN"
+    },
+    {
+      "source": "visit_302",
+      "target": "lab_result_376",
+      "type": "RESULTED_IN"
+    },
+    {
+      "source": "visit_302",
+      "target": "lab_result_377",
+      "type": "RESULTED_IN"
+    },
+    {
+      "source": "patient_041",
+      "target": "visit_303",
+      "type": "HAD_VISIT"
+    },
+    {
+      "source": "visit_303",
+      "target": "provider_055",
+      "type": "ATTENDED_BY"
+    },
+    {
+      "source": "visit_303",
+      "target": "lab_result_378",
+      "type": "RESULTED_IN"
+    },
+    {
+      "source": "visit_303",
+      "target": "lab_result_379",
+      "type": "RESULTED_IN"
+    },
+    {
+      "source": "patient_041",
+      "target": "visit_304",
+      "type": "HAD_VISIT"
+    },
+    {
+      "source": "visit_304",
+      "target": "provider_059",
+      "type": "ATTENDED_BY"
+    },
+    {
+      "source": "visit_304",
+      "target": "lab_result_380",
+      "type": "RESULTED_IN"
+    },
+    {
+      "source": "visit_304",
+      "target": "lab_result_381",
+      "type": "RESULTED_IN"
+    },
+    {
+      "source": "patient_041",
+      "target": "visit_305",
+      "type": "HAD_VISIT"
+    },
+    {
+      "source": "visit_305",
+      "target": "provider_055",
+      "type": "ATTENDED_BY"
+    },
+    {
+      "source": "visit_305",
+      "target": "lab_result_382",
+      "type": "RESULTED_IN"
+    },
+    {
+      "source": "patient_041",
+      "target": "visit_306",
+      "type": "HAD_VISIT"
+    },
+    {
+      "source": "visit_306",
+      "target": "provider_055",
+      "type": "ATTENDED_BY"
+    },
+    {
+      "source": "patient_041",
+      "target": "visit_307",
+      "type": "HAD_VISIT"
+    },
+    {
+      "source": "visit_307",
+      "target": "provider_055",
+      "type": "ATTENDED_BY"
+    },
+    {
+      "source": "visit_307",
+      "target": "lab_result_383",
+      "type": "RESULTED_IN"
+    },
+    {
+      "source": "patient_041",
+      "target": "visit_308",
+      "type": "HAD_VISIT"
+    },
+    {
+      "source": "visit_308",
+      "target": "provider_055",
+      "type": "ATTENDED_BY"
+    },
+    {
+      "source": "patient_041",
+      "target": "visit_309",
+      "type": "HAD_VISIT"
+    },
+    {
+      "source": "visit_309",
+      "target": "provider_059",
+      "type": "ATTENDED_BY"
+    },
+    {
+      "source": "patient_041",
+      "target": "visit_310",
+      "type": "HAD_VISIT"
+    },
+    {
+      "source": "visit_310",
+      "target": "provider_055",
+      "type": "ATTENDED_BY"
+    },
+    {
+      "source": "visit_310",
+      "target": "lab_result_384",
+      "type": "RESULTED_IN"
+    },
+    {
+      "source": "patient_041",
+      "target": "family_hx_043",
+      "type": "HAS_FAMILY_HISTORY"
+    },
+    {
+      "source": "medication_127",
+      "target": "lab_result_371",
+      "type": "MONITORED_BY"
+    },
+    {
+      "source": "medication_127",
+      "target": "lab_result_382",
+      "type": "MONITORED_BY"
+    },
+    {
+      "source": "medication_127",
+      "target": "lab_result_383",
+      "type": "MONITORED_BY"
+    },
+    {
+      "source": "medication_127",
+      "target": "lab_result_384",
+      "type": "MONITORED_BY"
     }
   ]
 }

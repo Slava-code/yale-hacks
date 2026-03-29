@@ -73,6 +73,23 @@ DEMO_PROMPTS = [
         "expect_min_turns": 3,
         "expect_keywords": ["encephalopathy"],
     },
+    # --- Demo scenario 3: Valentine Torres / Love Syndrome ---
+    {
+        "id": "love_primary",
+        "message": "Tell me about Valentine Torres, she's been having racing heart, insomnia, and can't concentrate",
+        "description": "Love demo: cardiac/neuro symptoms → Acute Amorosis Syndrome",
+        "expect_patient": True,
+        "expect_min_turns": 2,
+        "expect_keywords": ["normal"],
+    },
+    {
+        "id": "love_full",
+        "message": "I need a full workup for Valentine Torres. She's a 22 year old with palpitations, appetite loss, flushed cheeks, and butterflies in her stomach.",
+        "description": "Love full workup — all tests normal, love diagnosis",
+        "expect_patient": True,
+        "expect_min_turns": 3,
+        "expect_keywords": ["normal"],
+    },
 ]
 
 MODELS = ["claude", "gpt4", "gemini"]
@@ -126,6 +143,8 @@ def analyze_result(result, prompt_config):
     }
 
     if not analysis["success"]:
+        analysis["grade"] = "FAIL"
+        analysis["issues"] = [f"Request error: {analysis['error']}"]
         return analysis
 
     # Extract key data
@@ -200,8 +219,25 @@ def analyze_result(result, prompt_config):
 
     analysis["issues"] = issues
     analysis["grade"] = "PASS" if not issues else "WARN" if len(issues) <= 1 else "FAIL"
-
     return analysis
+
+
+def safe_analyze(result, prompt_config):
+    """Wrapper that always returns a valid analysis dict."""
+    try:
+        return analyze_result(result, prompt_config)
+    except Exception as e:
+        return {
+            "success": False,
+            "error": str(e),
+            "grade": "FAIL",
+            "issues": [f"Analysis error: {e}"],
+            "elapsed_s": result.get("elapsed", 0),
+            "event_count": len(result.get("events", [])),
+            "gatekeeper_turns": 0,
+            "graph_nodes_accessed": 0,
+            "citation_count": 0,
+        }
 
 
 def main():
@@ -233,8 +269,11 @@ def main():
                 sys.stdout.write(f"{label} ... ")
                 sys.stdout.flush()
 
-                result = run_query(args.host, prompt_cfg["message"], model)
-                analysis = analyze_result(result, prompt_cfg)
+                try:
+                    result = run_query(args.host, prompt_cfg["message"], model)
+                except Exception as e:
+                    result = {"error": str(e), "events": [], "elapsed": 0}
+                analysis = safe_analyze(result, prompt_cfg)
                 analysis["model"] = model
                 analysis["prompt_id"] = prompt_cfg["id"]
                 analysis["run"] = run + 1
