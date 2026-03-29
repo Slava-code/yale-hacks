@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import ChatPanel from './components/ChatPanel'
 import GraphPanel from './components/GraphPanel'
 import PdfViewer from './components/PdfViewer'
@@ -56,6 +56,24 @@ function App() {
   // Ingestion animation state
   const [showAnimation, setShowAnimation] = useState(true)
   const [graphStats, setGraphStats] = useState(null)
+
+  // Terminal resize
+  const [termHeight, setTermHeight] = useState(200)
+  const resizingRef = useRef(false)
+  const panelRightRef = useRef(null)
+
+  useEffect(() => {
+    const onMouseMove = (e) => {
+      if (!resizingRef.current || !panelRightRef.current) return
+      const rect = panelRightRef.current.getBoundingClientRect()
+      const newHeight = rect.bottom - e.clientY
+      setTermHeight(Math.max(80, Math.min(newHeight, rect.height - 100)))
+    }
+    const onMouseUp = () => { resizingRef.current = false; document.body.style.cursor = '' }
+    window.addEventListener('mousemove', onMouseMove)
+    window.addEventListener('mouseup', onMouseUp)
+    return () => { window.removeEventListener('mousemove', onMouseMove); window.removeEventListener('mouseup', onMouseUp) }
+  }, [])
 
   // Love mode - Yhack theme easter egg
   const [loveModeActive, setLoveModeActive] = useState(false)
@@ -244,33 +262,40 @@ function App() {
           />
         </div>
         <div className="panel-divider" />
-        <div className={`panel-right ${showRedacted ? 'with-redacted' : ''}`}>
-          {/* GraphPanel stays mounted but hidden when PDF is open - prevents expensive re-initialization */}
-          <GraphPanel
-            traversalData={traversalData}
-            sseEvents={sseEvents}
-            onOpenPdf={handleOpenPdf}
-            isVisible={!pdfView}
-            queryGeneration={queryGeneration}
-          />
-          {pdfView && (
-            <PdfViewer
-              pdfPath={pdfView.pdf}
-              initialPage={pdfView.page}
-              citation={pdfView.citation}
-              onClose={handleClosePdf}
+        <div className="panel-right" ref={panelRightRef}>
+          <div className="panel-right-top">
+            {/* GraphPanel stays mounted but hidden when PDF is open - prevents expensive re-initialization */}
+            <GraphPanel
+              traversalData={traversalData}
+              sseEvents={sseEvents}
+              onOpenPdf={handleOpenPdf}
+              isVisible={!pdfView}
+              queryGeneration={queryGeneration}
             />
+            {pdfView && (
+              <PdfViewer
+                pdfPath={pdfView.pdf}
+                initialPage={pdfView.page}
+                citation={pdfView.citation}
+                onClose={handleClosePdf}
+              />
+            )}
+          </div>
+          {showRedacted && (
+            <>
+              <div
+                className="term-resize-handle"
+                onMouseDown={() => { resizingRef.current = true; document.body.style.cursor = 'row-resize' }}
+              />
+              <div className="panel-right-bottom" style={{ height: termHeight, flexShrink: 0 }}>
+                <RedactedView
+                  sseEvents={sseEvents}
+                  isVisible={showRedacted}
+                />
+              </div>
+            </>
           )}
         </div>
-        {showRedacted && (
-          <div className="panel-redacted">
-            <RedactedView
-              sseEvents={sseEvents}
-              isVisible={showRedacted}
-              onClose={() => setShowRedacted(false)}
-            />
-          </div>
-        )}
       </main>
 
       {/* Love splash — big heart center, fades out, then heart appears in logo corner */}

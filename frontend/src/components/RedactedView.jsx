@@ -1,137 +1,92 @@
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import './RedactedView.css'
 
-function RedactedView({ sseEvents, isVisible, onClose }) {
-  const eventsEndRef = useRef(null)
+function RedactedView({ sseEvents, isVisible }) {
+  const scrollRef = useRef(null)
 
-  // Auto-scroll to bottom when events change
   useEffect(() => {
-    eventsEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight
+    }
   }, [sseEvents])
 
-  // Filter relevant events for the redacted view
   const relevantEvents = sseEvents.filter(e =>
     ['deidentified_query', 'cloud_thinking', 'gatekeeper_query', 'gatekeeper_response'].includes(e.type)
   )
 
-  // Render PHI tokens with highlighting
   const renderWithTokens = (text) => {
     if (!text) return null
-
-    // Match PHI tokens like [PATIENT_1], [REF_1], [DATE_1], etc.
     const tokenPattern = /(\[[A-Z]+_\d+\])/g
     const parts = text.split(tokenPattern)
-
     return parts.map((part, index) => {
       if (part.match(tokenPattern)) {
-        // Determine token type for coloring
-        let tokenClass = 'token-default'
-        if (part.includes('PATIENT')) tokenClass = 'token-patient'
-        else if (part.includes('PROVIDER')) tokenClass = 'token-provider'
-        else if (part.includes('DATE')) tokenClass = 'token-date'
-        else if (part.includes('REF')) tokenClass = 'token-ref'
-        else if (part.includes('MRN')) tokenClass = 'token-mrn'
-        else if (part.includes('LOCATION')) tokenClass = 'token-location'
-
-        return (
-          <span key={index} className={`redacted-token ${tokenClass}`}>
-            {part}
-          </span>
-        )
+        let tokenClass = 'tok-default'
+        if (part.includes('PATIENT')) tokenClass = 'tok-patient'
+        else if (part.includes('PROVIDER')) tokenClass = 'tok-provider'
+        else if (part.includes('DATE')) tokenClass = 'tok-date'
+        else if (part.includes('REF')) tokenClass = 'tok-ref'
+        else if (part.includes('MRN')) tokenClass = 'tok-mrn'
+        else if (part.includes('LOCATION')) tokenClass = 'tok-location'
+        return <span key={index} className={`tok ${tokenClass}`}>{part}</span>
       }
       return <span key={index}>{part}</span>
     })
   }
 
-  // Get event icon and label
-  const getEventMeta = (type) => {
+  const getLogPrefix = (type, turn) => {
     switch (type) {
       case 'deidentified_query':
-        return { label: 'De-identified Query', icon: '→' }
+        return { prefix: '[GATEKEEPER → CLOUD]', cls: 'log-gatekeeper' }
       case 'cloud_thinking':
-        return { label: 'Cloud Model', icon: '◆' }
+        return { prefix: '[CLOUD]', cls: 'log-cloud' }
       case 'gatekeeper_query':
-        return { label: 'Gatekeeper Query', icon: '↓' }
+        return { prefix: `[CLOUD → GATEKEEPER] turn=${turn || '?'}`, cls: 'log-cloud' }
       case 'gatekeeper_response':
-        return { label: 'Gatekeeper Response', icon: '↑' }
+        return { prefix: `[GATEKEEPER → CLOUD] turn=${turn || '?'}`, cls: 'log-gatekeeper' }
       default:
-        return { label: type, icon: '•' }
+        return { prefix: `[${type}]`, cls: 'log-default' }
     }
   }
 
   if (!isVisible) return null
 
   return (
-    <div className="redacted-view">
-      {/* Header */}
-      <div className="redacted-header">
-        <div className="redacted-title-section">
-          <span className="redacted-icon">◇</span>
-          <span className="redacted-title">PHI Pipeline</span>
-          <span className="redacted-subtitle">Cloud view</span>
-        </div>
-        <button className="redacted-close-btn" onClick={onClose}>
-          ×
-        </button>
+    <div className="term-pipeline">
+      <div className="term-header">
+        <span className="term-dot term-dot-red"></span>
+        <span className="term-dot term-dot-yellow"></span>
+        <span className="term-dot term-dot-green"></span>
+        <span className="term-title">phi-pipeline</span>
       </div>
-
-      {/* Events List */}
-      <div className="redacted-events">
+      <div className="term-body" ref={scrollRef}>
         {relevantEvents.length === 0 ? (
-          <div className="redacted-empty">
-            <div className="redacted-empty-icon">◇</div>
-            <div className="redacted-empty-text">
-              Submit a query to see the de-identified data flow
-            </div>
+          <div className="term-line term-muted">
+            <span className="term-prompt">$</span> waiting for query...
           </div>
         ) : (
-          <>
-            {relevantEvents.map((event, index) => {
-              const meta = getEventMeta(event.type)
-              return (
-                <div key={index} className={`redacted-event redacted-event-${event.type}`}>
-                  <div className="redacted-event-header">
-                    <span className="redacted-event-icon">{meta.icon}</span>
-                    <span className="redacted-event-label">{meta.label}</span>
-                    {event.turn && (
-                      <span className="redacted-event-turn">Turn {event.turn}</span>
-                    )}
+          relevantEvents.map((event, i) => {
+            const { prefix, cls } = getLogPrefix(event.type, event.turn)
+            return (
+              <div key={i} className="term-line">
+                <span className={`term-prefix ${cls}`}>{prefix}</span>
+                <span className="term-content">{renderWithTokens(event.content)}</span>
+                {event.token_summary && (
+                  <div className="term-tokens">
+                    <span className="term-muted">  tokens: </span>
+                    {Object.entries(event.token_summary).map(([token, type]) => (
+                      <span key={token} className="term-muted">{token}={type} </span>
+                    ))}
                   </div>
-                  <div className="redacted-event-content">
-                    {renderWithTokens(event.content)}
+                )}
+                {event.refs_added && event.refs_added.length > 0 && (
+                  <div className="term-tokens">
+                    <span className="term-muted">  refs: {event.refs_added.join(', ')}</span>
                   </div>
-                  {event.token_summary && (
-                    <div className="redacted-token-summary">
-                      {Object.entries(event.token_summary).map(([token, type]) => (
-                        <span key={token} className="redacted-token-badge">
-                          {token}: {type}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                  {event.refs_added && event.refs_added.length > 0 && (
-                    <div className="redacted-refs-added">
-                      <span className="redacted-refs-label">Citations added:</span>
-                      {event.refs_added.map(ref => (
-                        <span key={ref} className="redacted-ref-badge">{ref}</span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )
-            })}
-            <div ref={eventsEndRef} />
-          </>
+                )}
+              </div>
+            )
+          })
         )}
-      </div>
-
-      {/* Legend */}
-      <div className="redacted-legend">
-        <span className="redacted-legend-title">PHI Tokens:</span>
-        <span className="redacted-token token-patient">[PATIENT]</span>
-        <span className="redacted-token token-provider">[PROVIDER]</span>
-        <span className="redacted-token token-date">[DATE]</span>
-        <span className="redacted-token token-ref">[REF]</span>
       </div>
     </div>
   )
