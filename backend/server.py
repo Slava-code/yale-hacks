@@ -244,19 +244,19 @@ async def _run_pipeline(
 
             # Send all tool results back to the cloud model
             try:
-                # For the first result, use send_tool_result (which appends to messages)
-                response = await adapter.send_tool_result(
-                    messages, tool_results[0][0], tool_results[0][1]
-                )
-                # For additional parallel results (GPT-4), append them to messages too
-                for tool_id, result_content in tool_results[1:]:
-                    messages.append({
-                        "role": "tool",
-                        "tool_call_id": tool_id,
-                        "content": result_content,
-                    })
-                if len(tool_results) > 1:
-                    # Re-send with all tool results included
+                if len(tool_results) == 1:
+                    # Single tool call — use adapter's send_tool_result
+                    response = await adapter.send_tool_result(
+                        messages, tool_results[0][0], tool_results[0][1]
+                    )
+                else:
+                    # Multiple parallel tool calls — append ALL results then send
+                    for tool_id, result_content in tool_results:
+                        messages.append({
+                            "role": "tool",
+                            "tool_call_id": tool_id,
+                            "content": result_content,
+                        })
                     response = await adapter.send_query(messages)
                 continue
             except Exception as e:
