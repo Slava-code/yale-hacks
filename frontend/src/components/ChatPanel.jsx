@@ -155,24 +155,7 @@ function ChatMessage({ message, index, renderContent, onOpenPdf }) {
           renderContent(message)
         )}
       </div>
-      {message.citations && message.citations.length > 0 && (
-        <div className="message-citations">
-          <span className="citations-label">Sources:</span>
-          {message.citations.map((citation, citationIndex) => (
-            <button
-              key={citation.ref_id}
-              className="citation-chip"
-              title={`${citation.pdf}, page ${citation.page}`}
-              onClick={() => onOpenPdf?.(citation.pdf, citation.page, citation)}
-              style={{ '--citation-index': citationIndex }}
-            >
-              <span className="citation-icon">{getIcon(citation)}</span>
-              <span className="citation-ref">[{citation.index}]</span>
-              <span className="citation-text">{citation.display}</span>
-            </button>
-          ))}
-        </div>
-      )}
+      {/* Inline citations are shown in the response text; no separate sources section */}
     </div>
   )
 }
