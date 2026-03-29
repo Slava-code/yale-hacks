@@ -111,14 +111,22 @@ function IngestionAnimation({ onComplete, graphStats }) {
   return (
     <div className="ingestion-overlay" ref={containerRef}>
       <div className="ingestion-container">
-        {/* Title */}
-        <div className={`ingestion-title ${phase !== 'intro' ? 'title-small' : ''}`}>
-          <span className="ingestion-logo"><img src={logoFilter} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain' }} /></span>
-          <span className="ingestion-name">MedGate</span>
-          {phase === 'intro' && (
+        {/* Intro title — big centered, fades out */}
+        {phase === 'intro' && (
+          <div className="ingestion-title ingestion-title-intro">
+            <span className="ingestion-logo"><img src={logoFilter} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain' }} /></span>
+            <span className="ingestion-name">MedGate</span>
             <span className="ingestion-subtitle">Initializing knowledge graph</span>
-          )}
-        </div>
+          </div>
+        )}
+
+        {/* Compact title — small top-left, fades in */}
+        {phase !== 'intro' && (
+          <div className="ingestion-title title-small ingestion-title-compact">
+            <span className="ingestion-logo"><img src={logoFilter} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain' }} /></span>
+            <span className="ingestion-name">MedGate</span>
+          </div>
+        )}
 
         {/* Processing Phase */}
         {(phase === 'processing' || phase === 'building') && (
