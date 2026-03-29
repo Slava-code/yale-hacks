@@ -17,7 +17,7 @@ import asyncio
 import json
 import os
 from pathlib import Path
-from typing import AsyncGenerator, Optional
+from typing import AsyncGenerator
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
@@ -70,7 +70,6 @@ NODE_CONFIG = {
 
 _graph: Graph | None = None
 _gatekeeper: Gatekeeper | None = None
-_session_counters: dict[str, dict[str, int]] = {}  # session_id → token counters
 
 
 def _get_graph() -> Graph:
@@ -146,7 +145,7 @@ def _load_graph_for_api() -> dict:
 # --- Pipeline ---
 
 async def _run_pipeline(
-    message: str, model: str, session_id: str | None = None
+    message: str, model: str
 ) -> AsyncGenerator[tuple[str, dict], None]:
     """Run the full MedGate pipeline, yielding SSE events.
 
@@ -157,19 +156,11 @@ async def _run_pipeline(
     gatekeeper = _get_gatekeeper()
     adapter = _get_adapter(model)
 
-    # Retrieve session-level token counters so different patients across
-    # requests in the same chat get different tokens (Person1, Person2, ...).
-    initial_counters = _session_counters.get(session_id, {}) if session_id else {}
-
     # Step 1: De-identify
-    deidentify_result = await gatekeeper.deidentify_query(message, graph, initial_counters=initial_counters)
+    deidentify_result = await gatekeeper.deidentify_query(message, graph)
     tm = deidentify_result["token_mapping"]
     patient_id = deidentify_result["patient_id"]
     cm = CitationManager()
-
-    # Persist updated counters back to the session
-    if session_id:
-        _session_counters[session_id] = tm.get_counters()
 
     yield "deidentified_query", {
         "type": "deidentified_query",
@@ -284,10 +275,6 @@ async def _run_pipeline(
                     "done": True,
                 }
 
-            # Save final counter state (includes PHI found during graph queries)
-            if session_id:
-                _session_counters[session_id] = tm.get_counters()
-
             # Step 4: Rehydrate
             final = gatekeeper.rehydrate_response(text_content, tm, cm)
 
@@ -313,14 +300,13 @@ async def _run_pipeline(
 class QueryRequest(BaseModel):
     message: str
     model: str
-    session_id: Optional[str] = None
 
 
 @app.post("/api/query")
 async def query(req: QueryRequest):
     """Stream SSE events for a clinical query."""
     async def event_stream():
-        async for event_type, event_data in _run_pipeline(req.message, req.model, session_id=req.session_id):
+        async for event_type, event_data in _run_pipeline(req.message, req.model):
             yield _format_sse_event(event_type, event_data)
 
     return StreamingResponse(event_stream(), media_type="text/event-stream")
