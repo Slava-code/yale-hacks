@@ -1,5 +1,46 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import './ChatPanel.css'
+
+// TypeWriter component for character-by-character animation
+function TypeWriter({ content, speed = 20, onComplete, skipAnimation = false }) {
+  const [displayedContent, setDisplayedContent] = useState(skipAnimation ? content : '')
+  const [isTyping, setIsTyping] = useState(!skipAnimation)
+  const indexRef = useRef(0)
+
+  useEffect(() => {
+    if (skipAnimation) {
+      setDisplayedContent(content)
+      setIsTyping(false)
+      return
+    }
+
+    if (!content) return
+
+    indexRef.current = 0
+    setDisplayedContent('')
+    setIsTyping(true)
+
+    const timer = setInterval(() => {
+      if (indexRef.current < content.length) {
+        setDisplayedContent(content.slice(0, indexRef.current + 1))
+        indexRef.current++
+      } else {
+        clearInterval(timer)
+        setIsTyping(false)
+        onComplete?.()
+      }
+    }, speed)
+
+    return () => clearInterval(timer)
+  }, [content, speed, skipAnimation, onComplete])
+
+  return (
+    <span className="typewriter-text">
+      {displayedContent}
+      {isTyping && <span className="typewriter-cursor">|</span>}
+    </span>
+  )
+}
 
 function ChatPanel({ selectedModel, onModelChange, onSseEvent, onQueryStart, onOpenPdf }) {
   const [messages, setMessages] = useState([])
@@ -255,16 +296,40 @@ function ChatPanel({ selectedModel, onModelChange, onSseEvent, onQueryStart, onO
     }
   }
 
+  // Track which messages have finished typing animation
+  const [typedMessages, setTypedMessages] = useState(new Set())
+
+  const handleTypingComplete = useCallback((messageId) => {
+    setTypedMessages(prev => new Set([...prev, messageId]))
+  }, [])
+
   // Render message content with citation links
   const renderContent = (message) => {
     if (!message.content) return null
 
-    // If no citations, just return the content
+    const shouldAnimate = message.role === 'assistant' &&
+                          message.isComplete &&
+                          !typedMessages.has(message.id) &&
+                          !message.skipAnimation
+
+    // If no citations, use TypeWriter for animation
     if (!message.citations || message.citations.length === 0) {
+      if (shouldAnimate) {
+        return (
+          <div className="message-text">
+            <TypeWriter
+              content={message.content}
+              speed={20}
+              onComplete={() => handleTypingComplete(message.id)}
+            />
+          </div>
+        )
+      }
       return <div className="message-text">{message.content}</div>
     }
 
-    // Replace [N] with clickable citation links
+    // For messages with citations, render with clickable links
+    // Skip animation for these as they have complex structure
     const parts = message.content.split(/(\[\d+\])/g)
 
     return (
@@ -327,13 +392,30 @@ function ChatPanel({ selectedModel, onModelChange, onSseEvent, onQueryStart, onO
               de-identified before reaching the cloud model.
             </div>
             <div className="chat-empty-examples">
-              <span className="example-label">Try:</span>
-              <button
-                className="example-btn"
-                onClick={() => setInputValue("Tell me about John Smith's recent lab results")}
-              >
-                "Tell me about John Smith's recent lab results"
-              </button>
+              <span className="example-label">Try asking:</span>
+              <div className="example-grid">
+                <button
+                  className="example-btn"
+                  onClick={() => setInputValue("Tell me about John Smith's recent lab results")}
+                >
+                  <span className="example-icon">🔬</span>
+                  <span className="example-text">"Tell me about John Smith's recent lab results"</span>
+                </button>
+                <button
+                  className="example-btn"
+                  onClick={() => setInputValue("What medications is Sarah Johnson currently taking?")}
+                >
+                  <span className="example-icon">💊</span>
+                  <span className="example-text">"What medications is Sarah Johnson currently taking?"</span>
+                </button>
+                <button
+                  className="example-btn"
+                  onClick={() => setInputValue("Summarize Michael Chen's visit history")}
+                >
+                  <span className="example-icon">📋</span>
+                  <span className="example-text">"Summarize Michael Chen's visit history"</span>
+                </button>
+              </div>
             </div>
           </div>
         ) : (
@@ -374,16 +456,30 @@ function ChatPanel({ selectedModel, onModelChange, onSseEvent, onQueryStart, onO
                 {message.citations && message.citations.length > 0 && (
                   <div className="message-citations">
                     <span className="citations-label">Sources:</span>
-                    {message.citations.map((citation) => (
-                      <button
-                        key={citation.ref_id}
-                        className="citation-chip"
-                        title={`${citation.pdf}, page ${citation.page}`}
-                        onClick={() => onOpenPdf?.(citation.pdf, citation.page, citation)}
-                      >
-                        [{citation.index}] {citation.display}
-                      </button>
-                    ))}
+                    {message.citations.map((citation) => {
+                      // Determine icon based on citation type
+                      const getIcon = () => {
+                        const display = citation.display?.toLowerCase() || ''
+                        if (display.includes('lab')) return '🔬'
+                        if (display.includes('med') || display.includes('rx')) return '💊'
+                        if (display.includes('visit') || display.includes('note')) return '📋'
+                        if (display.includes('procedure')) return '⚕'
+                        if (display.includes('imaging') || display.includes('radiology')) return '📷'
+                        return '📄'
+                      }
+                      return (
+                        <button
+                          key={citation.ref_id}
+                          className="citation-chip"
+                          title={`${citation.pdf}, page ${citation.page}`}
+                          onClick={() => onOpenPdf?.(citation.pdf, citation.page, citation)}
+                        >
+                          <span className="citation-icon">{getIcon()}</span>
+                          <span className="citation-ref">[{citation.index}]</span>
+                          <span className="citation-text">{citation.display}</span>
+                        </button>
+                      )
+                    })}
                   </div>
                 )}
               </div>

@@ -103,7 +103,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-md);
+  width: 100%;
+  max-width: 500px;
 }
 
 .example-label {
@@ -113,22 +115,60 @@
   letter-spacing: 0.05em;
 }
 
+.example-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  width: 100%;
+}
+
 .example-btn {
   font-family: var(--font-sans);
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   padding: var(--space-sm) var(--space-md);
   background: var(--bg-tertiary);
   border: 1px solid var(--border-default);
   border-radius: var(--radius-md);
   color: var(--text-secondary);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-align: left;
+  animation: example-fade-in 0.4s ease-out backwards;
+}
+
+.example-btn:nth-child(1) { animation-delay: 0.1s; }
+.example-btn:nth-child(2) { animation-delay: 0.2s; }
+.example-btn:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes example-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.example-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.example-text {
+  flex: 1;
 }
 
 .example-btn:hover {
   background: var(--bg-elevated);
-  border-color: var(--node-patient);
+  border-color: var(--accent-teal);
   color: var(--text-primary);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(26, 188, 156, 0.15);
 }
 
 /* ===== MESSAGES ===== */
@@ -205,6 +245,28 @@
   white-space: pre-wrap;
 }
 
+/* ===== TYPEWRITER EFFECT ===== */
+.typewriter-text {
+  display: inline;
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  color: var(--accent-teal);
+  font-weight: 300;
+  animation: cursor-blink 0.8s ease-in-out infinite;
+  margin-left: 1px;
+}
+
+@keyframes cursor-blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
 /* ===== CITATIONS ===== */
 .citation-link {
   font-family: var(--font-mono);
@@ -249,18 +311,39 @@
   color: var(--text-secondary);
   background: var(--bg-tertiary);
   border: 1px solid var(--border-subtle);
-  padding: 4px 8px;
+  padding: 4px 10px;
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all var(--transition-fast);
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+}
+
+.citation-icon {
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.citation-ref {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--node-lab);
+  font-size: 0.65rem;
+}
+
+.citation-text {
+  color: var(--text-secondary);
 }
 
 .citation-chip:hover {
   background: var(--bg-secondary);
   border-color: var(--node-lab);
+  color: var(--text-primary);
+  box-shadow: 0 2px 8px rgba(155, 89, 182, 0.15);
+}
+
+.citation-chip:hover .citation-text {
   color: var(--text-primary);
 }
 

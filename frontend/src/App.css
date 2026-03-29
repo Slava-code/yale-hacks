@@ -19,6 +19,27 @@
   border-bottom: 1px solid var(--border-subtle);
   background: var(--bg-secondary);
   flex-shrink: 0;
+  position: relative;
+}
+
+/* Animated gradient border on header */
+.app-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--accent-teal) 20%,
+    var(--node-patient) 50%,
+    var(--accent-teal) 80%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: gradient-shift 8s ease infinite;
+  opacity: 0.6;
 }
 
 .logo {
@@ -74,6 +95,7 @@
   background: rgba(155, 89, 182, 0.15);
   border-color: var(--node-lab);
   color: var(--node-lab);
+  box-shadow: 0 0 12px rgba(155, 89, 182, 0.2);
 }
 
 .redacted-toggle-icon {
@@ -107,10 +129,12 @@
 
 .panel-left {
   background: var(--bg-secondary);
+  background-image: radial-gradient(ellipse at 0% 100%, rgba(26, 188, 156, 0.03) 0%, transparent 50%);
 }
 
 .panel-right {
   background: var(--bg-primary);
+  background-image: radial-gradient(ellipse at 100% 0%, rgba(74, 144, 217, 0.04) 0%, transparent 50%);
   position: relative;
 }
 

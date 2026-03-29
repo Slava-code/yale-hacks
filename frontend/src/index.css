@@ -20,6 +20,17 @@
   --accent-gold: #ffd700;
   --accent-gold-glow: rgba(255, 215, 0, 0.4);
 
+  /* Teal accent system (Modal-inspired) */
+  --accent-teal: #1ABC9C;
+  --accent-teal-light: #2ECC71;
+  --accent-teal-glow: rgba(26, 188, 156, 0.4);
+  --accent-teal-subtle: rgba(26, 188, 156, 0.15);
+
+  /* Gradient accents */
+  --gradient-teal: linear-gradient(135deg, #1ABC9C 0%, #2ECC71 100%);
+  --gradient-clinical: linear-gradient(135deg, #4A90D9 0%, #1ABC9C 100%);
+  --gradient-subtle: linear-gradient(135deg, rgba(74, 144, 217, 0.1) 0%, rgba(26, 188, 156, 0.1) 100%);
+
   /* Node colors (from spec) */
   --node-patient: #4A90D9;
   --node-visit: #F5C542;
@@ -131,6 +142,24 @@ code, pre, .mono {
   box-shadow: 0 0 30px rgba(74, 144, 217, 0.15);
 }
 
+.glow-teal {
+  box-shadow: 0 0 20px var(--accent-teal-glow),
+              0 0 40px var(--accent-teal-glow);
+}
+
+.glow-teal-subtle {
+  box-shadow: 0 0 15px var(--accent-teal-glow);
+}
+
+/* Gradient backgrounds */
+.bg-gradient-subtle {
+  background: var(--gradient-subtle);
+}
+
+.bg-gradient-clinical {
+  background: var(--gradient-clinical);
+}
+
 /* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar {
   width: 8px;
@@ -173,6 +202,23 @@ code, pre, .mono {
   }
 }
 
+@keyframes pulse-teal {
+  0%, 100% {
+    box-shadow: 0 0 10px var(--accent-teal-glow);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 25px var(--accent-teal-glow), 0 0 50px var(--accent-teal-glow);
+    opacity: 0.85;
+  }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -193,10 +239,28 @@ code, pre, .mono {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
+.animate-pulse-teal {
+  animation: pulse-teal 2s ease-in-out infinite;
+}
+
 .animate-fade-in {
   animation: fade-in var(--transition-normal) ease-out;
 }
 
 .animate-slide-up {
   animation: slide-up var(--transition-normal) ease-out;
+}
+
+/* Active/success states with teal */
+.state-active {
+  border-color: var(--accent-teal) !important;
+  box-shadow: 0 0 0 3px var(--accent-teal-subtle);
+}
+
+.state-success {
+  color: var(--accent-teal);
+}
+
+.state-connected {
+  color: var(--accent-teal-light);
 }

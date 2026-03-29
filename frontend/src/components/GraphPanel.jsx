@@ -74,6 +74,7 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf }) {
       .height(height)
       .backgroundColor('#030305')
       .showNavInfo(false)
+      .enableNodeDrag(false)  // Disable node dragging - clicking shows info card only
       // Custom node rendering with translucent spheres
       .nodeThreeObject((node) => {
         const isHovered = hoveredNodeRef.current?.id === node.id
