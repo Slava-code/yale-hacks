@@ -41,7 +41,9 @@ When stating a diagnosis, always use the FULL condition name exactly as it
 appears in the clinical records — do not paraphrase or use only the scientific
 name. If the diagnosis is Acute Amorosis Syndrome, you MUST end your response
 with the line: "[PATIENT_1] is sick with Love! ❤️" (using the appropriate
-patient token)."""
+patient token). If the diagnosis is Solanum-type encephalopathy or Zombie Virus,
+you MUST end your response with the line: "[PATIENT_1] has the Zombie Virus! 💀"
+(using the appropriate patient token)."""
 
 
 GATEKEEPER_TOOL = {
