@@ -245,6 +245,20 @@ function ChatPanel({ selectedModel, onSseEvent, onQueryStart, onOpenPdf, connect
         )
         break
 
+      case 'web_search_query':
+        updateStreamingStatus(
+          assistantMessageId,
+          `Searching web: "${data.content}"`
+        )
+        break
+
+      case 'web_search_result':
+        updateStreamingStatus(
+          assistantMessageId,
+          `Found ${data.num_results || 0} reference${data.num_results !== 1 ? 's' : ''} from web search`
+        )
+        break
+
       case 'final_response':
         // Update the assistant message with final content and citations
         setMessages((prev) =>

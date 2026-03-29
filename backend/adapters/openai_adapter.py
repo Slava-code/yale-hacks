@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import json
 import openai
-from backend.adapters.base import CloudAdapter, CLOUD_SYSTEM_PROMPT, GATEKEEPER_TOOL
+from backend.adapters.base import CloudAdapter, CLOUD_SYSTEM_PROMPT, GATEKEEPER_TOOL, WEB_SEARCH_TOOL
 
 
 class OpenAIAdapter(CloudAdapter):
@@ -17,16 +17,19 @@ class OpenAIAdapter(CloudAdapter):
     def model(self) -> str:
         return "gpt-4o"
 
-    def format_tool(self) -> dict:
+    def format_tools(self) -> list[dict]:
         """OpenAI uses {"type": "function", "function": {...}} format."""
-        return {
-            "type": "function",
-            "function": {
-                "name": GATEKEEPER_TOOL["name"],
-                "description": GATEKEEPER_TOOL["description"],
-                "parameters": GATEKEEPER_TOOL["parameters"],
-            },
-        }
+        tools = []
+        for tool_def in [GATEKEEPER_TOOL, WEB_SEARCH_TOOL]:
+            tools.append({
+                "type": "function",
+                "function": {
+                    "name": tool_def["name"],
+                    "description": tool_def["description"],
+                    "parameters": tool_def["parameters"],
+                },
+            })
+        return tools
 
     def parse_tool_call(self, tool_call: dict) -> dict | None:
         # Native OpenAI format: {"type": "function", "function": {...}, "id": ...}
@@ -52,7 +55,7 @@ class OpenAIAdapter(CloudAdapter):
         response = await client.chat.completions.create(
             model=self.model,
             messages=full_messages,
-            tools=[self.format_tool()],
+            tools=self.format_tools(),
             max_tokens=2048,
         )
         return self._response_to_dict(response)

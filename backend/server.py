@@ -34,6 +34,7 @@ from backend.adapters.base import CloudAdapter
 from backend.adapters.claude_adapter import ClaudeAdapter
 from backend.adapters.openai_adapter import OpenAIAdapter
 from backend.adapters.gemini_adapter import GeminiAdapter
+from backend.web_search import web_search
 
 load_dotenv()
 
@@ -111,6 +112,14 @@ def _get_adapter(model: str) -> CloudAdapter:
 def _format_sse_event(event_type: str, data: dict) -> str:
     """Format an SSE event string."""
     return f"event: {event_type}\ndata: {json.dumps(data)}\n\n"
+
+
+def _format_search_results(search_result: dict) -> str:
+    """Format web search results as text for the cloud model."""
+    parts = []
+    for r in search_result.get("results", []):
+        parts.append(f"=== {r['title']} ===\n{r['extract']}\nSource: {r['url']}")
+    return "\n\n".join(parts) if parts else "No relevant results found."
 
 
 # --- Graph API transform ---
@@ -197,7 +206,7 @@ async def _run_pipeline(
 
         for block in response.get("content", []):
             parsed = adapter.parse_tool_call(block)
-            if parsed and parsed["tool_name"] == "query_gatekeeper":
+            if parsed and parsed["tool_name"] in ("query_gatekeeper", "web_search"):
                 tool_calls.append(parsed)
             elif block.get("type") == "text":
                 text_content += block.get("text", "")
@@ -210,52 +219,73 @@ async def _run_pipeline(
             )
 
             # Process each tool call and collect results
+            # Each result is (tool_id, content, tool_name)
             tool_results = []
             for tool_call in tool_calls:
                 turn += 1
+                tool_name = tool_call["tool_name"]
                 query = tool_call["arguments"].get("query", "")
 
-                yield "gatekeeper_query", {
-                    "type": "gatekeeper_query",
-                    "content": query,
-                    "turn": turn,
-                }
+                if tool_name == "query_gatekeeper":
+                    yield "gatekeeper_query", {
+                        "type": "gatekeeper_query",
+                        "content": query,
+                        "turn": turn,
+                    }
 
-                # Query the knowledge graph
-                kg_result = await gatekeeper.query_knowledge_graph(query, tm, graph, cm, patient_id=patient_id)
+                    kg_result = await gatekeeper.query_knowledge_graph(query, tm, graph, cm, patient_id=patient_id)
 
-                # Emit graph traversal
-                traversal = get_traversal_path(graph, kg_result["accessed_nodes"])
-                yield "graph_traversal", {
-                    "type": "graph_traversal",
-                    "nodes": [n.id for n in traversal.nodes],
-                    "edges": traversal.edges,
-                    "turn": turn,
-                }
+                    traversal = get_traversal_path(graph, kg_result["accessed_nodes"])
+                    yield "graph_traversal", {
+                        "type": "graph_traversal",
+                        "nodes": [n.id for n in traversal.nodes],
+                        "edges": traversal.edges,
+                        "turn": turn,
+                    }
 
-                yield "gatekeeper_response", {
-                    "type": "gatekeeper_response",
-                    "content": kg_result["content"],
-                    "turn": turn,
-                    "refs_added": kg_result["refs_added"],
-                }
+                    yield "gatekeeper_response", {
+                        "type": "gatekeeper_response",
+                        "content": kg_result["content"],
+                        "turn": turn,
+                        "refs_added": kg_result["refs_added"],
+                    }
 
-                tool_results.append((tool_call["tool_id"], kg_result["content"]))
+                    tool_results.append((tool_call["tool_id"], kg_result["content"], "query_gatekeeper"))
+
+                elif tool_name == "web_search":
+                    yield "web_search_query", {
+                        "type": "web_search_query",
+                        "content": query,
+                        "turn": turn,
+                    }
+
+                    search_result = await web_search(query)
+                    result_text = _format_search_results(search_result)
+
+                    yield "web_search_result", {
+                        "type": "web_search_result",
+                        "content": result_text,
+                        "query": query,
+                        "num_results": len(search_result["results"]),
+                        "turn": turn,
+                    }
+
+                    tool_results.append((tool_call["tool_id"], result_text, "web_search"))
 
             # Send all tool results back to the cloud model
             try:
                 if len(tool_results) == 1:
-                    # Single tool call — use adapter's send_tool_result
+                    tid, content, tname = tool_results[0]
                     response = await adapter.send_tool_result(
-                        messages, tool_results[0][0], tool_results[0][1]
+                        messages, tid, content
                     )
                 else:
-                    # Multiple parallel tool calls — append ALL results then send
-                    for tool_id, result_content in tool_results:
+                    for tid, content, tname in tool_results:
                         messages.append({
                             "role": "tool",
-                            "tool_call_id": tool_id,
-                            "content": result_content,
+                            "tool_call_id": tid,
+                            "content": content,
+                            "name": tname,
                         })
                     response = await adapter.send_query(messages)
                 continue

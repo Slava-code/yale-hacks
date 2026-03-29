@@ -30,6 +30,18 @@ Use the query_gatekeeper tool for each. You may query it additional times if
 you need more information (imaging results, procedure history, vital trends,
 specialist notes, etc.).
 
+WEB SEARCH:
+You also have access to a "web_search" tool for looking up medical reference
+information. You SHOULD use it at least once per clinical assessment to:
+- Look up the formal diagnostic criteria for any condition you suspect
+  (e.g., "ACR EULAR classification criteria for SLE")
+- Verify treatment guidelines for medications the patient is on
+- Research the clinical significance of abnormal lab findings
+
+This demonstrates evidence-based reasoning. Keep searches targeted and specific.
+Cite the source naturally in your response (e.g., "According to the ACR/EULAR
+criteria (Wikipedia)...").
+
 Only provide your clinical assessment after you have gathered enough context
 to reason carefully.
 
@@ -67,6 +79,26 @@ GATEKEEPER_TOOL = {
     },
 }
 
+WEB_SEARCH_TOOL = {
+    "name": "web_search",
+    "description": (
+        "Search the web for medical reference information. Use this to look up "
+        "diagnostic criteria, interpret lab values, verify treatment guidelines, "
+        "or research unfamiliar conditions. Returns summaries from medical reference sources. "
+        "Use targeted, specific queries (e.g., 'SLE ACR diagnostic criteria' rather than 'lupus')."
+    ),
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "query": {
+                "type": "string",
+                "description": "A specific medical search query",
+            }
+        },
+        "required": ["query"],
+    },
+}
+
 
 class CloudAdapter(ABC):
     """Abstract base for cloud model adapters."""
@@ -80,8 +112,8 @@ class CloudAdapter(ABC):
         """Return the model identifier."""
 
     @abstractmethod
-    def format_tool(self) -> dict:
-        """Format the gatekeeper tool for this provider's API."""
+    def format_tools(self) -> list[dict]:
+        """Format all tools for this provider's API."""
 
     @abstractmethod
     def parse_tool_call(self, response_block: dict) -> dict | None:

@@ -7,7 +7,7 @@ Spec: docs/backend.md §4.1 — Google GenAI with function declarations.
 from __future__ import annotations
 
 import google.generativeai as genai
-from backend.adapters.base import CloudAdapter, CLOUD_SYSTEM_PROMPT, GATEKEEPER_TOOL
+from backend.adapters.base import CloudAdapter, CLOUD_SYSTEM_PROMPT, GATEKEEPER_TOOL, WEB_SEARCH_TOOL
 
 
 class GeminiAdapter(CloudAdapter):
@@ -16,17 +16,16 @@ class GeminiAdapter(CloudAdapter):
     def model(self) -> str:
         return "gemini-2.5-flash"
 
-    def format_tool(self) -> dict:
-        """Gemini uses function_declarations format."""
-        return {
-            "function_declarations": [
-                {
-                    "name": GATEKEEPER_TOOL["name"],
-                    "description": GATEKEEPER_TOOL["description"],
-                    "parameters": GATEKEEPER_TOOL["parameters"],
-                }
-            ]
-        }
+    def format_tools(self) -> list:
+        """Gemini uses function_declarations format — all tools in one declarations block."""
+        declarations = []
+        for tool_def in [GATEKEEPER_TOOL, WEB_SEARCH_TOOL]:
+            declarations.append({
+                "name": tool_def["name"],
+                "description": tool_def["description"],
+                "parameters": tool_def["parameters"],
+            })
+        return [{"function_declarations": declarations}]
 
     def parse_tool_call(self, part: dict) -> dict | None:
         # Handle normalized format from _response_to_dict
@@ -51,7 +50,7 @@ class GeminiAdapter(CloudAdapter):
         model = genai.GenerativeModel(
             self.model,
             system_instruction=CLOUD_SYSTEM_PROMPT,
-            tools=[self.format_tool()],
+            tools=self.format_tools(),
         )
         # Convert messages to Gemini format
         gemini_history = self._to_gemini_messages(messages[:-1])
@@ -65,12 +64,12 @@ class GeminiAdapter(CloudAdapter):
         response = await chat.send_message_async(last_msg, tool_config=tool_config)
         return self._response_to_dict(response)
 
-    async def send_tool_result(self, messages: list[dict], tool_id: str, result: str) -> dict:
+    async def send_tool_result(self, messages: list[dict], tool_id: str, result: str, tool_name: str = "query_gatekeeper") -> dict:
         genai.configure(api_key=self.api_key)
         model = genai.GenerativeModel(
             self.model,
             system_instruction=CLOUD_SYSTEM_PROMPT,
-            tools=[self.format_tool()],
+            tools=self.format_tools(),
         )
         gemini_history = self._to_gemini_messages(messages)
         chat = model.start_chat(history=gemini_history)
@@ -81,7 +80,7 @@ class GeminiAdapter(CloudAdapter):
                 parts=[
                     genai.protos.Part(
                         function_response=genai.protos.FunctionResponse(
-                            name="query_gatekeeper",
+                            name=tool_name,
                             response={"result": result},
                         )
                     )
@@ -116,7 +115,7 @@ class GeminiAdapter(CloudAdapter):
                         elif block.get("type") == "tool_result":
                             parts.append(genai.protos.Part(
                                 function_response=genai.protos.FunctionResponse(
-                                    name="query_gatekeeper",
+                                    name=block.get("name", "query_gatekeeper"),
                                     response={"result": block.get("content", "")},
                                 )
                             ))

@@ -74,7 +74,7 @@ FIELD_PHI_TYPES = {
 
 class Gatekeeper:
     def __init__(self, ollama_url: str = "http://localhost:11434", model: str = "qwen2.5:32b"):
-        self.ollama_url = ollama_url
+        self.ollama_url = ollama_url.rstrip("/")
         self.model = model
 
     # ------------------------------------------------------------------

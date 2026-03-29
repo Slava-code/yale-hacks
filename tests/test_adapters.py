@@ -22,9 +22,13 @@ class TestToolDefinition:
 class TestClaudeAdapter:
     def test_formats_tool_for_anthropic(self):
         adapter = ClaudeAdapter(api_key="test-key")
-        tool = adapter.format_tool()
-        assert tool["name"] == "query_gatekeeper"
-        assert "input_schema" in tool
+        tools = adapter.format_tools()
+        assert isinstance(tools, list)
+        assert len(tools) == 2
+        names = [t["name"] for t in tools]
+        assert "query_gatekeeper" in names
+        assert "web_search" in names
+        assert "input_schema" in tools[0]
 
     def test_parse_tool_call_from_response(self):
         adapter = ClaudeAdapter(api_key="test-key")
@@ -54,9 +58,13 @@ class TestClaudeAdapter:
 class TestOpenAIAdapter:
     def test_formats_tool_for_openai(self):
         adapter = OpenAIAdapter(api_key="test-key")
-        tool = adapter.format_tool()
-        assert tool["type"] == "function"
-        assert tool["function"]["name"] == "query_gatekeeper"
+        tools = adapter.format_tools()
+        assert isinstance(tools, list)
+        assert len(tools) == 2
+        assert tools[0]["type"] == "function"
+        names = [t["function"]["name"] for t in tools]
+        assert "query_gatekeeper" in names
+        assert "web_search" in names
 
     def test_parse_tool_call_from_response(self):
         adapter = OpenAIAdapter(api_key="test-key")
@@ -82,9 +90,12 @@ class TestOpenAIAdapter:
 class TestGeminiAdapter:
     def test_formats_tool_for_gemini(self):
         adapter = GeminiAdapter(api_key="test-key")
-        tool = adapter.format_tool()
-        assert "function_declarations" in tool
-        assert tool["function_declarations"][0]["name"] == "query_gatekeeper"
+        tools = adapter.format_tools()
+        assert isinstance(tools, list)
+        assert "function_declarations" in tools[0]
+        names = [d["name"] for d in tools[0]["function_declarations"]]
+        assert "query_gatekeeper" in names
+        assert "web_search" in names
 
     def test_parse_tool_call_from_response(self):
         adapter = GeminiAdapter(api_key="test-key")
@@ -110,7 +121,7 @@ class TestAdapterInterface:
     @pytest.mark.parametrize("AdapterClass", [ClaudeAdapter, OpenAIAdapter, GeminiAdapter])
     def test_has_required_methods(self, AdapterClass):
         adapter = AdapterClass(api_key="test-key")
-        assert hasattr(adapter, "format_tool")
+        assert hasattr(adapter, "format_tools")
         assert hasattr(adapter, "parse_tool_call")
         assert hasattr(adapter, "send_query")
         assert hasattr(adapter, "send_tool_result")
