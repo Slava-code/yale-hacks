@@ -1,0 +1,372 @@
+{
+  "id": "patient_002",
+  "name": "Maria Garcia",
+  "age": 58,
+  "sex": "female",
+  "mrn": "MRN-41092",
+  "summary": "58-year-old female with long-standing Type 2 Diabetes Mellitus and Essential Hypertension, well-controlled on Metformin, Lisinopril, Aspirin, and Simvastatin through consistent follow-up with primary care and endocrinology.",
+  "tier": "moderate",
+  "storyline": "Maria Garcia, a 58-year-old female, establishes care with a new primary care physician (PCP) for her long-standing Type 2 Diabetes Mellitus (T2DM) and Essential Hypertension (HTN). Initial labs reveal elevated HbA1c and dyslipidemia. She is referred to an endocrinologist for optimized diabetes management. Over the next two years, through regular follow-ups with both her PCP and endocrinologist, her medications are carefully titrated, and additional cardiovascular protective therapies (Aspirin, Simvastatin) are introduced. Her HbA1c gradually improves and stabilizes within target ranges, and blood pressure is brought under good control, demonstrating effective chronic disease management.",
+  "conditions": [
+    {
+      "name": "Type 2 Diabetes Mellitus",
+      "icd_code": "E11.9",
+      "status": "chronic",
+      "diagnosed_visit": null,
+      "notes": "Long-standing condition, well-controlled with medication and lifestyle"
+    },
+    {
+      "name": "Essential Hypertension",
+      "icd_code": "I10",
+      "status": "chronic",
+      "diagnosed_visit": null,
+      "notes": "Managed with ACE inhibitor, blood pressure well-controlled"
+    },
+    {
+      "name": "Dyslipidemia",
+      "icd_code": "E78.5",
+      "status": "chronic",
+      "diagnosed_visit": "visit_01",
+      "notes": "Identified on initial labs, managed with statin therapy"
+    }
+  ],
+  "medications": [
+    {
+      "name": "Metformin",
+      "dosage": "1000mg",
+      "frequency": "twice daily",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Type 2 Diabetes Mellitus",
+      "monitored_by_labs": [
+        "HbA1c",
+        "Glucose",
+        "Kidney Function Panel"
+      ],
+      "notes": "Initial dosage 500mg BID, increased to 1000mg BID at visit_03 based on endocrinology recommendation. Continued from previous provider when establishing care."
+    },
+    {
+      "name": "Lisinopril",
+      "dosage": "10mg",
+      "frequency": "daily",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Essential Hypertension",
+      "monitored_by_labs": [
+        "Blood Pressure",
+        "Kidney Function Panel",
+        "Potassium"
+      ],
+      "notes": "Maintained for blood pressure control. Continued from previous provider when establishing care."
+    },
+    {
+      "name": "Aspirin",
+      "dosage": "81mg",
+      "frequency": "daily",
+      "start_visit": "visit_03",
+      "end_visit": null,
+      "status": "active",
+      "treats": null,
+      "monitored_by_labs": [
+        "Platelet Count"
+      ],
+      "notes": "Prescribed for cardiovascular risk reduction following endocrinology consult."
+    },
+    {
+      "name": "Simvastatin",
+      "dosage": "20mg",
+      "frequency": "daily",
+      "start_visit": "visit_04",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Dyslipidemia",
+      "monitored_by_labs": [
+        "Lipid Panel",
+        "Liver Function Panel"
+      ],
+      "notes": "Initiated for dyslipidemia management and cardiovascular prevention."
+    }
+  ],
+  "family_history": [
+    {
+      "relation": "mother",
+      "condition": "Type 2 Diabetes Mellitus",
+      "diagnosed_age": 62
+    },
+    {
+      "relation": "father",
+      "condition": "Hypertension",
+      "diagnosed_age": 55
+    },
+    {
+      "relation": "paternal uncle",
+      "condition": "Coronary Artery Disease",
+      "diagnosed_age": 60
+    }
+  ],
+  "providers": [
+    {
+      "name": "Dr. Elena Rodriguez",
+      "role": "attending",
+      "department": "Internal Medicine"
+    },
+    {
+      "name": "Dr. David Lee",
+      "role": "specialist",
+      "department": "Endocrinology"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-03-10",
+      "type": "initial",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Establish primary care, routine diabetes and hypertension management",
+      "narrative": "Patient Maria Garcia, a 58-year-old female, establishes care with Dr. Rodriguez today. She reports long-standing diagnoses of Type 2 Diabetes Mellitus and Essential Hypertension, both previously managed by a physician in another city. Her current medications are Metformin 500mg BID and Lisinopril 10mg QD. She reports no acute complaints but expresses desire for proactive management of her chronic conditions. She checks her blood sugar intermittently at home, generally reporting values in the 150-200 mg/dL range. Blood pressure today is 148/92 mmHg.\n\nPhysical exam reveals no acute distress. Fundoscopic exam unremarkable. No peripheral edema. Ordered comprehensive baseline labs including HbA1c, full lipid panel, and kidney function panel to assess current disease control and organ function. Reinforced the importance of diet and exercise for chronic disease management. Will follow up in two weeks for lab review.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_garcia_2024_mar.pdf"
+      },
+      "medications_started": [
+        "Metformin",
+        "Lisinopril"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-03-24",
+      "type": "follow-up",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Lab review, diabetes and hypertension follow-up",
+      "narrative": "Patient returns for review of labs ordered at initial visit. Results indicate suboptimal control of both diabetes and hypertension. HbA1c is 8.0%, fasting glucose 168 mg/dL. Lipid panel shows elevated LDL 135 mg/dL and triglycerides 210 mg/dL. Kidney function panel is within normal limits, with estimated GFR >60 mL/min/1.73m\u00b2. Blood pressure today remains elevated at 145/90 mmHg.\n\nDiscussed the implications of these lab results with the patient, emphasizing the need for stricter control to prevent long-term complications. Reviewed current dietary habits and encouraged increased physical activity. Due to persistent elevated HbA1c, a referral to endocrinology was initiated to optimize her diabetes regimen. Referral letter provided. Patient encouraged to continue current medications and lifestyle modifications.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_garcia_2024_mar.pdf"
+      },
+      "labs": [
+        {
+          "test": "HbA1c",
+          "value": "8.0",
+          "unit": "%",
+          "range": "<5.7",
+          "flag": "high"
+        },
+        {
+          "test": "Fasting Glucose",
+          "value": "168",
+          "unit": "mg/dL",
+          "range": "70-99",
+          "flag": "high"
+        },
+        {
+          "test": "LDL Cholesterol",
+          "value": "135",
+          "unit": "mg/dL",
+          "range": "<100",
+          "flag": "high"
+        },
+        {
+          "test": "Triglycerides",
+          "value": "210",
+          "unit": "mg/dL",
+          "range": "<150",
+          "flag": "high"
+        },
+        {
+          "test": "HDL Cholesterol",
+          "value": "42",
+          "unit": "mg/dL",
+          "range": ">40",
+          "flag": "normal"
+        },
+        {
+          "test": "Kidney Function Panel",
+          "value": "WNL",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_garcia_2024_mar.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. David Lee",
+          "reason": "Optimization of Type 2 Diabetes Mellitus management due to elevated HbA1c"
+        }
+      ]
+    },
+    {
+      "ref": "visit_03",
+      "date": "2024-04-15",
+      "type": "consult",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Endocrinology consult for uncontrolled diabetes and dyslipidemia",
+      "narrative": "Patient seen for initial endocrinology consultation following referral from Dr. Rodriguez. Reviewed medical history, including long-standing T2DM and HTN. Patient reports adherence to Metformin 500mg BID and Lisinopril 10mg QD, but notes difficulty with consistent dietary changes. Home blood glucose readings average around 150-180 mg/dL. Current HbA1c is 8.0% (from prior PCP visit).\n\nAssessment: Uncontrolled Type 2 Diabetes Mellitus and Essential Hypertension. Plan: Increased Metformin dosage to 1000mg twice daily to improve glycemic control. Advised initiating low-dose aspirin (81mg daily) for primary cardiovascular prevention given her age, diabetes, and hypertension. Patient given prescription for Aspirin. Will follow up in 6 weeks to re-evaluate glycemic control and discuss further management.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_garcia_2024_apr.pdf"
+      },
+      "medications_started": [
+        "Aspirin"
+      ]
+    },
+    {
+      "ref": "visit_04",
+      "date": "2024-06-01",
+      "type": "follow-up",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Endocrinology follow-up, diabetes and dyslipidemia management",
+      "narrative": "Patient returns for follow-up with endocrinology. Reports improved energy levels and slightly lower home blood glucose readings since increasing Metformin to 1000mg BID. She is also taking Aspirin 81mg daily. Blood pressure today is 138/85 mmHg. Repeat HbA1c is 7.5%, showing good response to increased Metformin. However, lipid panel still indicates dyslipidemia with LDL 128 mg/dL.\n\nGiven persistent dyslipidemia and overall cardiovascular risk profile, initiated Simvastatin 20mg daily. Patient educated on potential side effects and the importance of adherence. Reviewed diet and exercise goals. Emphasized consistency with home blood pressure monitoring. Plan to recheck labs, including lipid panel and HbA1c, in 2 months. Follow up in 3 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_garcia_2024_jun.pdf"
+      },
+      "labs": [
+        {
+          "test": "HbA1c",
+          "value": "7.5",
+          "unit": "%",
+          "range": "<5.7",
+          "flag": "high"
+        },
+        {
+          "test": "LDL Cholesterol",
+          "value": "128",
+          "unit": "mg/dL",
+          "range": "<100",
+          "flag": "high"
+        },
+        {
+          "test": "Triglycerides",
+          "value": "180",
+          "unit": "mg/dL",
+          "range": "<150",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_garcia_2024_jun.pdf"
+      },
+      "medications_started": [
+        "Simvastatin"
+      ]
+    },
+    {
+      "ref": "visit_05",
+      "date": "2024-08-10",
+      "type": "routine",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Routine PCP follow-up, general health check",
+      "narrative": "Patient presents for routine follow-up with her primary care physician. She reports feeling much better overall, with significantly improved fatigue and no new concerns. Blood pressure readings at home are consistently around 125-135/75-85 mmHg. Review of systems is negative for chest pain, shortness of breath, or any new neurological symptoms. Medications are well-tolerated.\n\nPhysical exam today is unremarkable. Blood pressure 128/80 mmHg. Discussed continued adherence to medications and lifestyle recommendations. Labs ordered for HbA1c and kidney function to monitor the effects of current management. Patient to follow up with endocrinology next, and then return to PCP in 3 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_garcia_2024_aug.pdf"
+      },
+      "labs": [
+        {
+          "test": "HbA1c",
+          "value": "7.0",
+          "unit": "%",
+          "range": "<5.7",
+          "flag": "high"
+        },
+        {
+          "test": "Kidney Function Panel",
+          "value": "WNL",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_garcia_2024_aug.pdf"
+      }
+    },
+    {
+      "ref": "visit_06",
+      "date": "2024-11-05",
+      "type": "follow-up",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Endocrinology follow-up, stable diabetes and dyslipidemia",
+      "narrative": "Patient returns to endocrinology for routine follow-up. Reports good glycemic control with home blood sugars mostly below 140 mg/dL. No hypoglycemic episodes. Continues to take Metformin 1000mg BID, Lisinopril 10mg QD, Aspirin 81mg QD, and Simvastatin 20mg QD. Blood pressure today is 128/78 mmHg. Repeat HbA1c is 6.8%, indicating excellent control. Lipid panel shows LDL 95 mg/dL and triglycerides 140 mg/dL, both within target ranges.\n\nAssessment: Well-controlled Type 2 Diabetes Mellitus, Essential Hypertension, and Dyslipidemia. Encouraged continued adherence to medications and healthy lifestyle. No changes to medication regimen at this time. Plan to follow up in 4-5 months. Continue annual eye and foot exams.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_garcia_2024_nov.pdf"
+      },
+      "labs": [
+        {
+          "test": "HbA1c",
+          "value": "6.8",
+          "unit": "%",
+          "range": "<5.7",
+          "flag": "high"
+        },
+        {
+          "test": "LDL Cholesterol",
+          "value": "95",
+          "unit": "mg/dL",
+          "range": "<100",
+          "flag": "normal"
+        },
+        {
+          "test": "Triglycerides",
+          "value": "140",
+          "unit": "mg/dL",
+          "range": "<150",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_garcia_2024_nov.pdf"
+      }
+    },
+    {
+      "ref": "visit_07",
+      "date": "2025-02-20",
+      "type": "routine",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Annual physical and chronic condition review",
+      "narrative": "Patient presents for her annual physical examination and review of chronic conditions. She continues to feel well, maintaining good control of her diabetes and hypertension. She reports consistent adherence to all medications. Home blood pressure readings remain within target, and she has experienced no diabetic complications or hypertensive symptoms. No new concerns.\n\nPhysical exam is stable. Blood pressure 125/75 mmHg. Heart and lung exams are normal. No new findings. Reviewed all current medications and confirmed dosages. Discussed the importance of upcoming annual screenings, including mammogram and colonoscopy. Encouraged flu vaccination. Overall, patient continues to manage her chronic conditions effectively. Continue current plan.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_garcia_2025_feb.pdf"
+      },
+      "labs": [
+        {
+          "test": "Comprehensive Metabolic Panel",
+          "value": "WNL",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        },
+        {
+          "test": "Thyroid Stimulating Hormone (TSH)",
+          "value": "2.5",
+          "unit": "mIU/L",
+          "range": "0.4-4.0",
+          "flag": "normal"
+        },
+        {
+          "test": "Urinalysis",
+          "value": "clear, negative for protein",
+          "unit": "qualitative",
+          "range": "negative",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_garcia_2025_feb.pdf"
+      }
+    }
+  ]
+}

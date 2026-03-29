@@ -1,0 +1,100 @@
+{
+  "id": "patient_030",
+  "name": "Samuel Nkomo",
+  "age": 56,
+  "sex": "male",
+  "mrn": "MRN-84567",
+  "summary": "56-year-old male presenting with sudden onset positional vertigo, diagnosed with Benign Paroxysmal Positional Vertigo (BPPV) and successfully treated with the Epley maneuver.",
+  "tier": "simple",
+  "conditions": [
+    {
+      "name": "Benign Paroxysmal Positional Vertigo",
+      "icd_code": "H81.10",
+      "status": "resolved",
+      "diagnosed_visit": "visit_01",
+      "notes": "Posterior canal type confirmed by Dix-Hallpike."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Meclizine",
+      "dosage": "25mg",
+      "frequency": "every 6-8 hours as needed",
+      "start_visit": "visit_01",
+      "end_visit": "visit_02",
+      "status": "discontinued",
+      "treats": "Benign Paroxysmal Positional Vertigo",
+      "notes": "Prescribed for symptomatic relief of dizziness; discontinued after Epley maneuver."
+    }
+  ],
+  "family_history": [],
+  "providers": [
+    {
+      "name": "Dr. Elena Rodriguez",
+      "role": "attending",
+      "department": "Internal Medicine"
+    },
+    {
+      "name": "Dr. James Lee",
+      "role": "specialist",
+      "department": "Otolaryngology"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-10-15",
+      "type": "initial",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Sudden onset severe dizziness with head movement",
+      "narrative": "Patient is a 56-year-old male presenting with acute onset vertigo, experiencing severe spinning sensations, nausea, and imbalance when changing head position, especially lying down or turning in bed. Symptoms started 2 days ago. Denies hearing loss, tinnitus, headache, or focal neurological deficits. No recent head trauma or illness.\n\nPhysical exam notable for normal otoscopy, no nystagmus at rest. Dix-Hallpike maneuver performed, eliciting classic torsional nystagmus with latency, fatigability, and symptoms, consistent with right posterior canal BPPV. Given clear clinical picture, referred to Otolaryngology for definitive treatment. Prescribed Meclizine for symptomatic relief.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_nkomo_2024_oct.pdf"
+      },
+      "labs": [
+        {
+          "test": "Basic Metabolic Panel",
+          "value": "within normal limits",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_nkomo_2024_oct.pdf"
+      },
+      "medications_started": [
+        "Meclizine"
+      ],
+      "referrals": [
+        {
+          "to": "Dr. James Lee",
+          "reason": "Evaluation and management of suspected BPPV"
+        }
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-10-22",
+      "type": "consult",
+      "provider": "Dr. James Lee",
+      "chief_complaint": "Otolaryngology consult for vertigo, BPPV treatment",
+      "narrative": "Patient presented to Otolaryngology following referral for BPPV. Confirmed history of positional vertigo consistent with prior PCP assessment. Repeat Dix-Hallpike maneuver performed, confirming right posterior canal BPPV with characteristic nystagmus and vertigo.\n\nEpley maneuver (canalith repositioning procedure) was performed successfully. Post-procedure, repeat Dix-Hallpike maneuver was negative, with no nystagmus or reported vertigo. Patient tolerated the procedure well and reported significant improvement in symptoms. Advised to avoid provocative head movements for 24-48 hours and to sleep propped up. Discontinued Meclizine as symptoms resolved. Patient to follow up if symptoms recur, otherwise no further ENT follow-up needed.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_nkomo_2024_oct.pdf"
+      },
+      "procedures": [
+        {
+          "name": "Epley Maneuver (Canalith Repositioning Procedure)",
+          "outcome": "Successful, complete resolution of positional vertigo"
+        }
+      ],
+      "medications_discontinued": [
+        "Meclizine"
+      ]
+    }
+  ]
+}

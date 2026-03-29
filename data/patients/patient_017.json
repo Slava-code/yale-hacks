@@ -1,0 +1,302 @@
+{
+  "id": "patient_017",
+  "name": "Jessica Wu",
+  "age": 34,
+  "sex": "female",
+  "mrn": "MRN-33188",
+  "summary": "34-year-old G1P0 female diagnosed with Gestational Diabetes in the second trimester, requiring insulin for glycemic control. Later developed Preeclampsia with severe features requiring delivery.",
+  "tier": "moderate",
+  "storyline": "Jessica Wu, a 34-year-old G1P0, begins her pregnancy with routine care. She is diagnosed with Gestational Diabetes at 28 weeks, initially managed with diet and exercise, but later requires insulin due to persistent hyperglycemia. In her third trimester, she develops new-onset hypertension and proteinuria, leading to a diagnosis of Preeclampsia. Her pregnancy is managed closely until delivery.",
+  "conditions": [
+    {
+      "name": "Gestational Diabetes Mellitus",
+      "icd_code": "O24.419",
+      "status": "resolved",
+      "diagnosed_visit": "visit_04",
+      "notes": "Diagnosed during 28-week glucose tolerance test, resolved postpartum."
+    },
+    {
+      "name": "Preeclampsia",
+      "icd_code": "O14.10",
+      "status": "resolved",
+      "diagnosed_visit": "visit_07",
+      "notes": "Diagnosed in third trimester, resolved postpartum."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Prenatal Vitamins",
+      "dosage": "1 tablet",
+      "frequency": "daily",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": null,
+      "notes": "Routine pregnancy supplementation."
+    },
+    {
+      "name": "Insulin Aspart (Novolog)",
+      "dosage": "dosage adjusted",
+      "frequency": "before meals",
+      "start_visit": "visit_05",
+      "end_visit": "visit_08",
+      "status": "discontinued",
+      "treats": "Gestational Diabetes Mellitus",
+      "monitored_by_labs": [
+        "Glucose, Fasting",
+        "HbA1c"
+      ],
+      "notes": "Started due to uncontrolled GDM with diet/exercise."
+    },
+    {
+      "name": "Labetalol",
+      "dosage": "100mg",
+      "frequency": "twice daily",
+      "start_visit": "visit_07",
+      "end_visit": "visit_08",
+      "status": "discontinued",
+      "treats": "Preeclampsia",
+      "notes": "Antihypertensive for blood pressure control in preeclampsia."
+    }
+  ],
+  "family_history": [
+    {
+      "relation": "mother",
+      "condition": "Type 2 Diabetes",
+      "diagnosed_age": 55
+    }
+  ],
+  "providers": [
+    {
+      "name": "Dr. Emily Green",
+      "role": "attending",
+      "department": "Obstetrics and Gynecology"
+    },
+    {
+      "name": "Dr. Robert Lee",
+      "role": "specialist",
+      "department": "Maternal-Fetal Medicine"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-03-15",
+      "type": "initial",
+      "provider": "Dr. Emily Green",
+      "chief_complaint": "First prenatal visit",
+      "narrative": "34-year-old G1P0 patient presenting for her first prenatal visit at 8 weeks gestation. Confirmed pregnancy with home test. Last menstrual period (LMP) 2024-01-20. Reports mild nausea and fatigue. Medical history otherwise unremarkable. Social history: non-smoker, occasional alcohol pre-pregnancy, denies illicit drug use. Discussed routine prenatal care, healthy diet, and lifestyle modifications.\n\nOrdered comprehensive prenatal labs including CBC, blood type and screen, RPR, HIV, Hepatitis B and C, Rubella, Varicella, Urinalysis. Started on Prenatal Vitamins. Scheduled for follow-up in 4 weeks.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_wu_2024_mar.pdf"
+      },
+      "medications_started": [
+        "Prenatal Vitamins"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-04-12",
+      "type": "follow-up",
+      "provider": "Dr. Emily Green",
+      "chief_complaint": "Prenatal lab review",
+      "narrative": "Patient returns for review of initial prenatal labs. All labs within normal limits, including CBC, infectious disease panel, and urinalysis. Blood pressure 110/70 mmHg, weight 135 lbs. Fetal heart tones audible at 140 bpm. Patient continues to experience mild nausea but it is improving. Denies any bleeding or contractions. Discussed genetic screening options. Scheduled for anatomy scan at 20 weeks and glucose screening at 28 weeks.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_wu_2024_apr.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 7.1, Hgb 13.0, Plt 280",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "normal"
+        },
+        {
+          "test": "Blood Type",
+          "value": "O+",
+          "unit": "type",
+          "range": "standard",
+          "flag": "normal"
+        },
+        {
+          "test": "Urinalysis",
+          "value": "negative for protein, glucose, leukocytes",
+          "unit": "qualitative",
+          "range": "negative",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_wu_2024_apr.pdf"
+      }
+    },
+    {
+      "ref": "visit_03",
+      "date": "2024-09-06",
+      "type": "routine",
+      "provider": "Dr. Emily Green",
+      "chief_complaint": "28-week prenatal check-up",
+      "narrative": "Patient presents for 28-week routine prenatal visit. Reports feeling well, fetal movements active. Blood pressure 115/75 mmHg. Fundal height 28 cm. No edema. Discussed third-trimester discomforts and warning signs. Ordered 1-hour glucose tolerance test (GTT) for gestational diabetes screening, per protocol. Reviewed results of 20-week anatomy scan which was normal. Scheduled for GTT and follow-up lab review.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_wu_2024_sep.pdf"
+      }
+    },
+    {
+      "ref": "visit_04",
+      "date": "2024-09-13",
+      "type": "follow-up",
+      "provider": "Dr. Emily Green",
+      "chief_complaint": "Glucose Tolerance Test results and Gestational Diabetes diagnosis",
+      "narrative": "Patient called in for urgent review of GTT results. 1-hour GTT was elevated, requiring a 3-hour GTT. The 3-hour GTT results were: Fasting 98 mg/dL (normal <95), 1-hr 195 mg/dL (normal <180), 2-hr 165 mg/dL (normal <155), 3-hr 142 mg/dL (normal <140). Two values elevated, confirming diagnosis of Gestational Diabetes Mellitus (GDM).\n\nPatient counseled on GDM diagnosis, dietary modifications, and importance of blood glucose monitoring. Referred to a nutritionist for education and meal planning. Will start with diet and exercise modifications; if blood sugars remain uncontrolled, insulin therapy will be considered. Scheduled for weekly follow-up visits.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_wu_2024_sep_2.pdf"
+      },
+      "labs": [
+        {
+          "test": "Glucose, Fasting (3-hr GTT)",
+          "value": "98",
+          "unit": "mg/dL",
+          "range": "<95",
+          "flag": "high"
+        },
+        {
+          "test": "Glucose, 1-hr (3-hr GTT)",
+          "value": "195",
+          "unit": "mg/dL",
+          "range": "<180",
+          "flag": "high"
+        },
+        {
+          "test": "Glucose, 2-hr (3-hr GTT)",
+          "value": "165",
+          "unit": "mg/dL",
+          "range": "<155",
+          "flag": "high"
+        },
+        {
+          "test": "Glucose, 3-hr (3-hr GTT)",
+          "value": "142",
+          "unit": "mg/dL",
+          "range": "<140",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_wu_2024_sep.pdf"
+      }
+    },
+    {
+      "ref": "visit_05",
+      "date": "2024-09-27",
+      "type": "follow-up",
+      "provider": "Dr. Emily Green",
+      "chief_complaint": "Uncontrolled GDM, starting insulin",
+      "narrative": "Patient has been monitoring blood glucose for 2 weeks. Despite adherence to dietary recommendations from nutritionist, fasting blood sugars remain elevated (averaging 105-110 mg/dL). Post-prandial readings also frequently exceed target. Fetal growth scan shows fundal height tracking large for gestational age.\n\nDiscussed need for insulin therapy to achieve optimal glycemic control and prevent macrosomia. Initiated Insulin Aspart (Novolog) with a starting dose regimen, and educated on proper injection technique and hypoglycemic precautions. Continue close monitoring of blood glucose and weekly prenatal visits. Referred to Maternal-Fetal Medicine for co-management.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_wu_2024_sep_3.pdf"
+      },
+      "medications_started": [
+        "Insulin Aspart (Novolog)"
+      ],
+      "referrals": [
+        {
+          "to": "Dr. Robert Lee",
+          "reason": "Maternal-Fetal Medicine consult for uncontrolled Gestational Diabetes."
+        }
+      ]
+    },
+    {
+      "ref": "visit_06",
+      "date": "2024-11-08",
+      "type": "routine",
+      "provider": "Dr. Robert Lee",
+      "chief_complaint": "35-week prenatal check-up, new onset hypertension",
+      "narrative": "Patient at 35 weeks gestation. GDM well-controlled on insulin. However, today's blood pressure is 145/95 mmHg, repeat 148/92 mmHg (previously normotensive). Patient reports mild headache and some swelling in her hands and feet. No visual changes or epigastric pain. Urinalysis dipstick shows 2+ protein. Given new onset hypertension with proteinuria in late pregnancy, strong suspicion for Preeclampsia.\n\nOrdered comprehensive Preeclampsia labs (CBC, CMP, LDH, Uric Acid, 24-hour urine protein) and fetal non-stress test. Discussed warning signs of preeclampsia and advised immediate return for any severe symptoms. Will review labs urgently.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_wu_2024_nov.pdf"
+      },
+      "labs": [
+        {
+          "test": "Urinalysis",
+          "value": "protein 2+",
+          "unit": "qualitative",
+          "range": "negative",
+          "flag": "high"
+        }
+      ]
+    },
+    {
+      "ref": "visit_07",
+      "date": "2024-11-10",
+      "type": "emergency",
+      "provider": "Dr. Robert Lee",
+      "chief_complaint": "Lab review, Preeclampsia diagnosis, and management",
+      "narrative": "Patient presented to Labor & Delivery for severe headache and blurred vision. Repeat BP 155/98 mmHg. Review of labs from previous visit and current: Platelets 120,000 (low, ref >150,000), AST 78 U/L (high, ref <35), ALT 85 U/L (high, ref <35), 24-hour urine protein 850 mg (high, ref <300). Fetal non-stress test reactive. These findings confirm diagnosis of Preeclampsia with severe features.\n\nAdmitted for inpatient management. Started on Labetalol for blood pressure control. Discussed induction of labor given gestational age (35+ weeks) and severe features of preeclampsia. Informed patient about risks and benefits. Plan for delivery within 24-48 hours.",
+      "document": {
+        "type": "discharge_summary",
+        "filename": "discharge_summary_wu_2024_nov.pdf"
+      },
+      "labs": [
+        {
+          "test": "Platelets",
+          "value": "120",
+          "unit": "K/uL",
+          "range": "150-400",
+          "flag": "low"
+        },
+        {
+          "test": "AST",
+          "value": "78",
+          "unit": "U/L",
+          "range": "0-35",
+          "flag": "high"
+        },
+        {
+          "test": "ALT",
+          "value": "85",
+          "unit": "U/L",
+          "range": "0-35",
+          "flag": "high"
+        },
+        {
+          "test": "24-hr Urine Protein",
+          "value": "850",
+          "unit": "mg",
+          "range": "<300",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_wu_2024_nov.pdf"
+      },
+      "medications_started": [
+        "Labetalol"
+      ]
+    },
+    {
+      "ref": "visit_08",
+      "date": "2024-11-15",
+      "type": "follow-up",
+      "provider": "Dr. Emily Green",
+      "chief_complaint": "Postpartum discharge after delivery",
+      "narrative": "Patient discharged postpartum after successful delivery of a healthy term infant on 2024-11-12. Preeclampsia symptoms resolved postpartum; blood pressure stabilized to 120/80 mmHg without medication. Gestational Diabetes also resolved, no longer requiring insulin. Patient advised to discontinue Labetalol and Insulin.\n\nDiscussed postpartum care, warning signs, and follow-up plan. Recommended 6-week postpartum check-up. Counselled on increased risk for Type 2 Diabetes after GDM and future risk of preeclampsia in subsequent pregnancies. Discharged home in stable condition.",
+      "document": {
+        "type": "discharge_summary",
+        "filename": "discharge_summary_wu_2024_nov_2.pdf"
+      },
+      "medications_discontinued": [
+        "Insulin Aspart (Novolog)",
+        "Labetalol"
+      ]
+    }
+  ]
+}

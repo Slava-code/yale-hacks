@@ -1,0 +1,94 @@
+{
+  "id": "patient_032",
+  "name": "Dmitri Volkov",
+  "age": 42,
+  "sex": "male",
+  "mrn": "MRN-45987",
+  "summary": "42-year-old male presenting with right elbow pain consistent with lateral epicondylitis, managed initially with NSAIDs and subsequently resolved after physical therapy.",
+  "tier": "simple",
+  "conditions": [
+    {
+      "name": "Lateral Epicondylitis - Tennis Elbow",
+      "icd_code": "M77.10",
+      "status": "resolved",
+      "diagnosed_visit": "visit_01",
+      "notes": "Right elbow pain, worse with gripping and pronation/supination"
+    }
+  ],
+  "medications": [
+    {
+      "name": "Ibuprofen",
+      "dosage": "400mg",
+      "frequency": "three times daily as needed",
+      "start_visit": "visit_01",
+      "end_visit": "visit_03",
+      "status": "discontinued",
+      "treats": "Lateral Epicondylitis - Tennis Elbow",
+      "monitored_by_labs": null,
+      "notes": "Discontinued after significant improvement with PT."
+    }
+  ],
+  "family_history": [],
+  "providers": [
+    {
+      "name": "Dr. Elena Petrov",
+      "role": "attending",
+      "department": "Family Medicine"
+    },
+    {
+      "name": "Dr. Michael Lee",
+      "role": "specialist",
+      "department": "Physical Therapy"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-09-10",
+      "type": "initial",
+      "provider": "Dr. Elena Petrov",
+      "chief_complaint": "Right elbow pain, 2 months duration",
+      "narrative": "Patient presents with persistent right elbow pain for the past two months, insidious onset, aggravated by activities involving wrist extension and gripping, such as using tools or lifting groceries. Pain is localized to the lateral aspect of the elbow. Denies trauma, numbness, or tingling. Work involves some manual labor.\n\nPhysical exam reveals tenderness over the lateral epicondyle, positive Cozen's test and Maudsley's test on the right. Range of motion of elbow and wrist is full and pain-free passively. No swelling or erythema. Assessment: Lateral Epicondylitis (Tennis Elbow), right. Prescribed Ibuprofen for pain relief. Advised activity modification and stretching. Follow up in 2 weeks.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_volkov_2024_sep.pdf"
+      },
+      "medications_started": [
+        "Ibuprofen"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-09-24",
+      "type": "follow-up",
+      "provider": "Dr. Elena Petrov",
+      "chief_complaint": "Elbow pain persists despite Ibuprofen",
+      "narrative": "Patient returns for follow-up regarding right elbow pain. Reports slight improvement with Ibuprofen but pain remains bothersome, especially with prolonged activity. Continues to have difficulty with gripping and lifting.\n\nPhysical exam findings are similar to the previous visit, with persistent tenderness over the lateral epicondyle. Discussed options including further conservative management. Given limited improvement with NSAIDs and activity modification, recommended a course of physical therapy. Referral placed to Dr. Michael Lee for evaluation and treatment. Will follow up after PT completion.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_volkov_2024_sep.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. Michael Lee",
+          "reason": "Evaluation and treatment for right lateral epicondylitis"
+        }
+      ]
+    },
+    {
+      "ref": "visit_03",
+      "date": "2024-11-15",
+      "type": "follow-up",
+      "provider": "Dr. Elena Petrov",
+      "chief_complaint": "Improved elbow pain after physical therapy",
+      "narrative": "Patient presents for follow-up after completing a 6-week course of physical therapy for right lateral epicondylitis. Reports significant improvement in elbow pain, now rated 1/10 (down from 7/10 at peak). Able to perform daily activities, including work tasks, with minimal discomfort. Denies any residual weakness or functional limitation.\n\nPhysical exam today shows no tenderness over the lateral epicondyle. Cozen's and Maudsley's tests are negative. Full, pain-free range of motion. Patient is very satisfied with the outcome of physical therapy. Ibuprofen discontinued. Advised to continue home exercise program and return if symptoms recur. Condition considered resolved.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_volkov_2024_nov.pdf"
+      },
+      "medications_discontinued": [
+        "Ibuprofen"
+      ]
+    }
+  ]
+}

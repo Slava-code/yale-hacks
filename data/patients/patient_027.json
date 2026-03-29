@@ -1,0 +1,97 @@
+{
+  "id": "patient_027",
+  "name": "Hannah Lewis",
+  "age": 31,
+  "sex": "female",
+  "mrn": "MRN-05123",
+  "summary": "31-year-old female presenting with dysuria and frequency, diagnosed with an uncomplicated urinary tract infection, successfully treated with a short course of antibiotics.",
+  "tier": "simple",
+  "conditions": [
+    {
+      "name": "Urinary Tract Infection",
+      "icd_code": "N39.0",
+      "status": "resolved",
+      "diagnosed_visit": "visit_01",
+      "notes": "Uncomplicated UTI, resolved with Ciprofloxacin."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Ciprofloxacin",
+      "dosage": "250mg",
+      "frequency": "twice daily",
+      "start_visit": "visit_01",
+      "end_visit": "visit_02",
+      "status": "discontinued",
+      "treats": "Urinary Tract Infection",
+      "monitored_by_labs": [],
+      "notes": "7-day course completed."
+    }
+  ],
+  "family_history": [],
+  "providers": [
+    {
+      "name": "Dr. Emily Green",
+      "role": "attending",
+      "department": "Family Medicine"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2025-03-10",
+      "type": "initial",
+      "provider": "Dr. Emily Green",
+      "chief_complaint": "Burning urination and frequent urges",
+      "narrative": "Patient presents with 2 days of dysuria, urinary frequency, and urgency. Denies fever, chills, flank pain, or vaginal discharge. No recent sexual activity. Physical exam unremarkable. Urinalysis ordered, and empiric Ciprofloxacin prescribed pending culture results. Patient advised to return for follow-up to discuss results and symptom resolution.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_lewis_2025_mar.pdf"
+      },
+      "labs": [
+        {
+          "test": "Urinalysis",
+          "value": "Leukocyte Esterase positive, Nitrites positive, WBC 20-30/hpf",
+          "unit": "composite",
+          "range": "negative",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_lewis_2025_mar.pdf"
+      },
+      "medications_started": [
+        "Ciprofloxacin"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2025-03-17",
+      "type": "follow-up",
+      "provider": "Dr. Emily Green",
+      "chief_complaint": "Follow-up on UTI symptoms and culture results",
+      "narrative": "Patient reports complete resolution of dysuria, frequency, and urgency after 5 days of Ciprofloxacin. Urine culture results from previous visit grew E. coli (>100,000 CFU/mL) sensitive to Ciprofloxacin, confirming the diagnosis. Patient completed the 7-day course of antibiotics without side effects. Advised on proper hygiene and adequate hydration to prevent recurrence. No further follow-up needed unless symptoms recur.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_lewis_2025_mar.pdf"
+      },
+      "labs": [
+        {
+          "test": "Urine Culture",
+          "value": "E. coli >100,000 CFU/mL",
+          "unit": "CFU/mL",
+          "range": "<1,000",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_lewis_2025_mar_2.pdf"
+      },
+      "medications_discontinued": [
+        "Ciprofloxacin"
+      ]
+    }
+  ]
+}

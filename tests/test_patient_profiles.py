@@ -281,3 +281,172 @@ def test_profile_exercises_all_graph_functions(demo_profiles):
 
     missing_edges = ALL_EDGE_TYPES - producible_edge_types
     assert not missing_edges, f"Profiles can't produce edge types: {missing_edges}"
+
+
+# ---------------------------------------------------------------------------
+# All-profile validation (covers generated profiles, not just demo)
+# ---------------------------------------------------------------------------
+
+def test_all_profiles_have_required_fields(all_profiles):
+    """Every profile must have all required top-level fields."""
+    for profile in all_profiles:
+        missing = REQUIRED_TOP_LEVEL_FIELDS - set(profile.keys())
+        assert not missing, f"{profile['id']} missing: {missing}"
+
+
+def test_all_profiles_valid_tier(all_profiles):
+    """Every profile must have a valid tier."""
+    for profile in all_profiles:
+        assert profile["tier"] in VALID_TIERS, (
+            f"{profile['id']}: invalid tier '{profile['tier']}'"
+        )
+
+
+def test_all_profiles_visit_refs_unique(all_profiles):
+    """Visit refs must be unique within each profile."""
+    for profile in all_profiles:
+        refs = [v["ref"] for v in profile["visits"]]
+        dupes = [r for r in refs if refs.count(r) > 1]
+        assert not dupes, f"{profile['id']} has duplicate visit refs: {set(dupes)}"
+
+
+def test_all_profiles_provider_references_resolve(all_profiles):
+    """Every provider name used in visits must exist in the providers array."""
+    for profile in all_profiles:
+        provider_names = {p["name"] for p in profile["providers"]}
+        for visit in profile["visits"]:
+            assert visit["provider"] in provider_names, (
+                f"{profile['id']} visit {visit['ref']}: provider "
+                f"'{visit['provider']}' not in providers"
+            )
+
+
+def test_all_profiles_filenames_valid(all_profiles):
+    """All document filenames must follow the naming convention."""
+    for profile in all_profiles:
+        for visit in profile["visits"]:
+            doc = visit.get("document")
+            if doc:
+                assert PDF_FILENAME_PATTERN.match(doc["filename"]), (
+                    f"{profile['id']} visit {visit['ref']}: "
+                    f"'{doc['filename']}' invalid"
+                )
+            labs_doc = visit.get("labs_document")
+            if labs_doc:
+                assert PDF_FILENAME_PATTERN.match(labs_doc["filename"]), (
+                    f"{profile['id']} visit {visit['ref']}: "
+                    f"labs '{labs_doc['filename']}' invalid"
+                )
+
+
+def test_all_profiles_visits_chronological(all_profiles):
+    """Visit dates must be in chronological order in every profile."""
+    for profile in all_profiles:
+        dates = [v["date"] for v in profile["visits"]]
+        assert dates == sorted(dates), (
+            f"{profile['id']}: visits not chronological"
+        )
+
+
+def test_all_profiles_conditions_have_icd(all_profiles):
+    """Every condition must have a non-empty icd_code."""
+    for profile in all_profiles:
+        for cond in profile["conditions"]:
+            assert cond.get("icd_code"), (
+                f"{profile['id']}: condition '{cond['name']}' missing icd_code"
+            )
+
+
+def test_all_profiles_medication_refs_resolve(all_profiles):
+    """Medication names in started/discontinued must exist in the medications array."""
+    for profile in all_profiles:
+        med_names = {m["name"] for m in profile["medications"]}
+        for visit in profile["visits"]:
+            for med in visit.get("medications_started", []):
+                assert med in med_names, (
+                    f"{profile['id']} visit {visit['ref']}: "
+                    f"'{med}' not in medications"
+                )
+            for med in visit.get("medications_discontinued", []):
+                assert med in med_names, (
+                    f"{profile['id']} visit {visit['ref']}: "
+                    f"'{med}' not in medications"
+                )
+
+
+def test_all_profiles_valid_visit_types(all_profiles):
+    """Every visit must have a valid type."""
+    for profile in all_profiles:
+        for visit in profile["visits"]:
+            assert visit["type"] in VALID_VISIT_TYPES, (
+                f"{profile['id']} visit {visit['ref']}: "
+                f"invalid type '{visit['type']}'"
+            )
+
+
+def test_all_profiles_valid_condition_statuses(all_profiles):
+    """Every condition must have a valid status."""
+    for profile in all_profiles:
+        for cond in profile["conditions"]:
+            assert cond["status"] in VALID_CONDITION_STATUSES, (
+                f"{profile['id']}: condition '{cond['name']}' "
+                f"invalid status '{cond['status']}'"
+            )
+
+
+def test_all_profiles_valid_medication_statuses(all_profiles):
+    """Every medication must have a valid status."""
+    for profile in all_profiles:
+        for med in profile["medications"]:
+            assert med["status"] in VALID_MEDICATION_STATUSES, (
+                f"{profile['id']}: medication '{med['name']}' "
+                f"invalid status '{med['status']}'"
+            )
+
+
+def test_all_profiles_valid_lab_flags(all_profiles):
+    """Every lab result must have a valid flag."""
+    for profile in all_profiles:
+        for visit in profile["visits"]:
+            for lab in visit.get("labs", []):
+                assert lab["flag"] in VALID_LAB_FLAGS, (
+                    f"{profile['id']} visit {visit['ref']}: "
+                    f"lab '{lab['test']}' invalid flag '{lab['flag']}'"
+                )
+
+
+def test_all_profiles_tier_visit_counts(all_profiles):
+    """Each tier must have the required number of visits."""
+    for profile in all_profiles:
+        nv = len(profile["visits"])
+        tier = profile["tier"]
+        if tier in ("demo", "complex"):
+            assert nv >= 15, (
+                f"{profile['id']}: {tier} tier requires >= 15 visits, got {nv}"
+            )
+        elif tier == "moderate":
+            assert 5 <= nv <= 10, (
+                f"{profile['id']}: moderate tier requires 5-10 visits, got {nv}"
+            )
+        elif tier == "simple":
+            assert 2 <= nv <= 3, (
+                f"{profile['id']}: simple tier requires 2-3 visits, got {nv}"
+            )
+
+
+def test_all_profiles_complex_demo_have_storyline(all_profiles):
+    """Demo and complex tier profiles must have a non-empty storyline."""
+    for profile in all_profiles:
+        if profile["tier"] in ("demo", "complex"):
+            assert profile.get("storyline"), (
+                f"{profile['id']}: {profile['tier']} tier requires a storyline"
+            )
+
+
+def test_patient_distribution(all_profiles):
+    """The dataset must have a minimum number of each tier."""
+    tiers = [p["tier"] for p in all_profiles]
+    assert tiers.count("demo") >= 2, f"Need >= 2 demo, got {tiers.count('demo')}"
+    assert tiers.count("complex") >= 5, f"Need >= 5 complex, got {tiers.count('complex')}"
+    assert tiers.count("moderate") >= 10, f"Need >= 10 moderate, got {tiers.count('moderate')}"
+    assert tiers.count("simple") >= 15, f"Need >= 15 simple, got {tiers.count('simple')}"

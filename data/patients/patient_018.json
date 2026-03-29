@@ -1,0 +1,225 @@
+{
+  "id": "patient_018",
+  "name": "Thomas Oduya",
+  "age": 48,
+  "sex": "male",
+  "mrn": "MRN-50123",
+  "tier": "moderate",
+  "summary": "48-year-old male with chronic obesity and newly diagnosed obstructive sleep apnea, presenting with fatigue and snoring. Undergoing CPAP therapy and managing dyslipidemia with medication and lifestyle changes.",
+  "storyline": "Thomas Oduya initially presented with complaints of chronic fatigue, loud snoring, and difficulty losing weight. Initial workup revealed dyslipidemia and confirmed obesity. Further investigation via sleep study led to a diagnosis of severe obstructive sleep apnea, for which CPAP therapy was initiated. Concurrently, he began medical management for dyslipidemia and received counseling for weight reduction, showing initial positive response to treatment.",
+  "conditions": [
+    {
+      "name": "Obesity",
+      "icd_code": "E66.01",
+      "status": "chronic",
+      "diagnosed_visit": "visit_01",
+      "notes": "BMI 32.5 kg/m^2 at initial presentation."
+    },
+    {
+      "name": "Dyslipidemia",
+      "icd_code": "E78.5",
+      "status": "active",
+      "diagnosed_visit": "visit_01",
+      "notes": "Elevated LDL cholesterol and triglycerides."
+    },
+    {
+      "name": "Obstructive Sleep Apnea, Severe",
+      "icd_code": "G47.33",
+      "status": "chronic",
+      "diagnosed_visit": "visit_04",
+      "notes": "Diagnosed after polysomnography (AHI 35 events/hr)."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Rosuvastatin",
+      "dosage": "10mg",
+      "frequency": "daily",
+      "start_visit": "visit_05",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Dyslipidemia",
+      "monitored_by_labs": [
+        "Lipid Panel"
+      ],
+      "notes": "Started for elevated LDL and triglycerides."
+    }
+  ],
+  "family_history": [
+    {
+      "relation": "father",
+      "condition": "Hypertension",
+      "diagnosed_age": 50
+    },
+    {
+      "relation": "mother",
+      "condition": "Type 2 Diabetes",
+      "diagnosed_age": 55
+    }
+  ],
+  "providers": [
+    {
+      "name": "Dr. Evelyn Reed",
+      "role": "attending",
+      "department": "Internal Medicine"
+    },
+    {
+      "name": "Dr. David Lee",
+      "role": "specialist",
+      "department": "Sleep Medicine"
+    },
+    {
+      "name": "Dr. Maya Patel",
+      "role": "specialist",
+      "department": "Nutrition and Dietetics"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-03-15",
+      "type": "initial",
+      "provider": "Dr. Evelyn Reed",
+      "chief_complaint": "Chronic fatigue and loud snoring",
+      "narrative": "Patient is a 48-year-old male presenting with a 6-month history of worsening fatigue, unrefreshing sleep, and reports of very loud snoring from his partner. Denies leg swelling, chest pain, or recent illness. BMI is 32.5 kg/m^2. Social history notable for sedentary lifestyle and occasional alcohol use. Given symptoms and body habitus, high suspicion for Obstructive Sleep Apnea. Ordered comprehensive labs including CBC, CMP, TSH, and a full lipid panel. Counselled on healthy diet and exercise.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_oduya_2024_mar.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 7.2, Hgb 15.1, Plt 250",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 13-17, Plt 150-400",
+          "flag": "normal"
+        },
+        {
+          "test": "CMP",
+          "value": "within normal limits",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        },
+        {
+          "test": "TSH",
+          "value": "2.8",
+          "unit": "mIU/L",
+          "range": "0.4-4.0",
+          "flag": "normal"
+        },
+        {
+          "test": "Lipid Panel",
+          "value": "Total Chol 235, LDL 155, HDL 40, Trig 180",
+          "unit": "mg/dL",
+          "range": "Total <200, LDL <100, HDL >40, Trig <150",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_oduya_2024_mar.pdf"
+      }
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-03-22",
+      "type": "follow-up",
+      "provider": "Dr. Evelyn Reed",
+      "chief_complaint": "Lab review; persistent snoring and fatigue",
+      "narrative": "Patient returns for lab review. CBC, CMP, and TSH are all within normal limits. Lipid panel shows elevated Total Cholesterol (235 mg/dL), LDL (155 mg/dL), and Triglycerides (180 mg/dL), confirming dyslipidemia. Patient reports no change in snoring or fatigue. Given his symptoms and the high suspicion for OSA, a formal referral to a sleep specialist (Dr. David Lee) was made for further evaluation and a sleep study. Discussed initial steps for diet modification.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_oduya_2024_mar.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. David Lee",
+          "reason": "Evaluation for obstructive sleep apnea given chronic snoring, fatigue, and obesity."
+        }
+      ]
+    },
+    {
+      "ref": "visit_03",
+      "date": "2024-04-05",
+      "type": "consult",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Sleep medicine consultation for suspected OSA",
+      "narrative": "New patient consultation for evaluation of suspected Obstructive Sleep Apnea. Reviewed PCP notes and patient history of loud snoring, daytime fatigue, and unrefreshing sleep. Physical exam reveals a crowded oropharynx (Mallampati score III) and increased neck circumference. Discussed risks of untreated OSA including cardiovascular complications. Explained the polysomnography procedure. Scheduled an in-lab sleep study to confirm diagnosis and determine severity.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_oduya_2024_apr.pdf"
+      },
+      "procedures": [
+        {
+          "name": "Polysomnography (Sleep Study)",
+          "outcome": "Scheduled for 2024-04-20"
+        }
+      ]
+    },
+    {
+      "ref": "visit_04",
+      "date": "2024-05-01",
+      "type": "follow-up",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Review sleep study results; OSA diagnosis and CPAP initiation",
+      "narrative": "Follow-up visit to review results of polysomnography. Sleep study revealed an Apnea-Hypopnea Index (AHI) of 35 events per hour, with significant oxygen desaturations. This confirms a diagnosis of severe Obstructive Sleep Apnea. Discussed CPAP (Continuous Positive Airway Pressure) as the primary treatment. Patient expressed understanding and willingness to start therapy. CPAP machine ordered, and patient was scheduled for an education session with a respiratory therapist for device setup and mask fitting. Encouraged continued weight management efforts.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_oduya_2024_may.pdf"
+      },
+      "procedures": [
+        {
+          "name": "CPAP setup and education",
+          "outcome": "Scheduled for 2024-05-08"
+        }
+      ]
+    },
+    {
+      "ref": "visit_05",
+      "date": "2024-05-15",
+      "type": "follow-up",
+      "provider": "Dr. Evelyn Reed",
+      "chief_complaint": "PCP follow-up after OSA diagnosis and CPAP initiation; dyslipidemia management",
+      "narrative": "Patient reports he started CPAP therapy one week ago and is already noticing some improvement in daytime alertness and reduced snoring. Adherence is good so far. Discussed the importance of weight loss in managing OSA and overall health. Given persistent dyslipidemia and lack of significant lifestyle changes yet, decided to initiate Rosuvastatin 10mg daily. Referred to Dr. Maya Patel for specialized nutrition counseling to support weight management. Encouraged regular exercise.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_oduya_2024_may_2.pdf"
+      },
+      "medications_started": [
+        "Rosuvastatin"
+      ],
+      "referrals": [
+        {
+          "to": "Dr. Maya Patel",
+          "reason": "Nutrition counseling for weight management in patient with obesity and OSA."
+        }
+      ]
+    },
+    {
+      "ref": "visit_06",
+      "date": "2024-07-20",
+      "type": "routine",
+      "provider": "Dr. Evelyn Reed",
+      "chief_complaint": "Routine check-up, CPAP adherence, and dyslipidemia follow-up",
+      "narrative": "Patient presents for routine follow-up. Reports significant improvement in fatigue and sleep quality since starting CPAP, with excellent adherence. Partner confirms snoring has almost completely resolved. He has lost 5 lbs since last visit through dietary changes recommended by Dr. Patel. Rosuvastatin is well-tolerated with no side effects. Rechecked lipid panel to assess medication efficacy. Reinforced continued adherence to CPAP and lifestyle modifications. Next follow-up in 3 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_oduya_2024_jul.pdf"
+      },
+      "labs": [
+        {
+          "test": "Lipid Panel",
+          "value": "Total Chol 180, LDL 95, HDL 45, Trig 130",
+          "unit": "mg/dL",
+          "range": "Total <200, LDL <100, HDL >40, Trig <150",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_oduya_2024_jul.pdf"
+      }
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "id": "patient_039",
+  "name": "Yuki Watanabe",
+  "age": 26,
+  "sex": "female",
+  "mrn": "MRN-58123",
+  "summary": "26-year-old female presenting with acute sore throat and low-grade fever, diagnosed with acute pharyngitis after negative strep test.",
+  "tier": "simple",
+  "conditions": [
+    {
+      "name": "Acute Pharyngitis",
+      "icd_code": "J02.9",
+      "status": "resolved",
+      "diagnosed_visit": "visit_01",
+      "notes": "Non-streptococcal, viral etiology suspected"
+    }
+  ],
+  "medications": [
+    {
+      "name": "Acetaminophen",
+      "dosage": "500mg",
+      "frequency": "every 4-6 hours as needed",
+      "start_visit": "visit_01",
+      "end_visit": "visit_02",
+      "status": "discontinued",
+      "treats": "Acute Pharyngitis",
+      "notes": "For fever and pain relief"
+    },
+    {
+      "name": "Throat Lozenges",
+      "dosage": "1 lozenge",
+      "frequency": "every 2-3 hours as needed",
+      "start_visit": "visit_01",
+      "end_visit": "visit_02",
+      "status": "discontinued",
+      "treats": "Acute Pharyngitis",
+      "notes": "For symptomatic throat relief"
+    }
+  ],
+  "family_history": [],
+  "providers": [
+    {
+      "name": "Dr. Emily Carter",
+      "role": "attending",
+      "department": "Family Medicine"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-03-10",
+      "type": "initial",
+      "provider": "Dr. Emily Carter",
+      "chief_complaint": "Sore throat and low-grade fever for 2 days",
+      "narrative": "Patient presents with chief complaint of sudden onset sore throat, described as scratchy and painful, worsening with swallowing. Reports associated low-grade fever (max 100.5F at home), mild fatigue, and body aches. Denies cough, runny nose, or difficulty breathing. No known sick contacts. Last oral intake was a small amount of soup due to discomfort.\n\nPhysical exam reveals erythematous pharynx with mild tonsillar exudates. No cervical lymphadenopathy. Lungs clear to auscultation. Ordered rapid strep test to rule out streptococcal pharyngitis. Advised symptomatic care with acetaminophen and throat lozenges. Will follow up with lab results.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_watanabe_2024_mar.pdf"
+      },
+      "medications_started": [
+        "Acetaminophen",
+        "Throat Lozenges"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-03-13",
+      "type": "follow-up",
+      "provider": "Dr. Emily Carter",
+      "chief_complaint": "Strep test results review, improving symptoms",
+      "narrative": "Patient returns for review of rapid strep test results and follow-up on symptoms. Rapid strep test was negative. Patient reports significant improvement in sore throat and fever since starting acetaminophen and using throat lozenges. Fever resolved, throat pain is now mild and intermittent. Fatigue has lessened. Able to swallow solids with minimal discomfort.\n\nPhysical exam today shows resolving pharyngeal erythema. No exudates. Patient reassured that this is likely a viral pharyngitis. Advised to continue symptomatic care as needed and to complete rest. Medications (Acetaminophen, Throat Lozenges) discontinued as symptoms are largely resolved. Return if symptoms worsen or new symptoms develop.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_watanabe_2024_mar.pdf"
+      },
+      "labs": [
+        {
+          "test": "Strep A Rapid Test",
+          "value": "Negative",
+          "unit": "qualitative",
+          "range": "Negative",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_watanabe_2024_mar.pdf"
+      },
+      "medications_discontinued": [
+        "Acetaminophen",
+        "Throat Lozenges"
+      ]
+    }
+  ]
+}

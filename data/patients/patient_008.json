@@ -1,0 +1,655 @@
+{
+  "id": "patient_008",
+  "name": "James Okafor",
+  "age": 52,
+  "sex": "male",
+  "mrn": "MRN-34981",
+  "tier": "complex",
+  "summary": "52-year-old male with a history of progressive Heart Failure with Reduced Ejection Fraction (HFrEF), complicated by Chronic Kidney Disease Stage 3, and new onset Atrial Fibrillation requiring multiple medication adjustments and two hospitalizations for decompensation.",
+  "storyline": "James Okafor's clinical journey began with subtle dyspnea, which progressed over several months, leading to a diagnosis of HFrEF with an initial ejection fraction (EF) of 40%. He was initiated on guideline-directed medical therapy (GDMT) including an ACE inhibitor and beta-blocker. Despite medication titrations, his symptoms persisted, and his EF gradually declined. A significant turning point was an acute decompensation requiring hospitalization, where his underlying renal impairment was clarified as CKD Stage 3, complicating diuretic management. Shortly after stabilizing from this event, he experienced new onset Atrial Fibrillation with rapid ventricular response, necessitating another emergency admission for rate control and initiation of anticoagulation. His EF ultimately stabilized at 25%. His ongoing care involves complex polypharmacy management, close monitoring of cardiac and renal function, and coordination between cardiology, nephrology, and primary care.",
+  "conditions": [
+    {
+      "name": "Heart Failure with Reduced Ejection Fraction",
+      "icd_code": "I50.20",
+      "status": "chronic",
+      "diagnosed_visit": "visit_02",
+      "notes": "Initially EF 40%, later declined to 25%."
+    },
+    {
+      "name": "Chronic Kidney Disease Stage 3",
+      "icd_code": "N18.3",
+      "status": "chronic",
+      "diagnosed_visit": "visit_09",
+      "notes": "Diagnosed during hospitalization for HF exacerbation; eGFR ~45-50 mL/min."
+    },
+    {
+      "name": "Atrial Fibrillation with Rapid Ventricular Response",
+      "icd_code": "I48.91",
+      "status": "active",
+      "diagnosed_visit": "visit_14",
+      "notes": "New onset, requiring anticoagulation and rate control."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Lisinopril",
+      "dosage": "20mg",
+      "frequency": "daily",
+      "start_visit": "visit_02",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Heart Failure with Reduced Ejection Fraction",
+      "monitored_by_labs": [
+        "Potassium",
+        "Creatinine"
+      ],
+      "notes": "Titrated from 5mg to 20mg."
+    },
+    {
+      "name": "Metoprolol Succinate ER",
+      "dosage": "100mg",
+      "frequency": "daily",
+      "start_visit": "visit_02",
+      "end_visit": "visit_12",
+      "status": "discontinued",
+      "treats": "Heart Failure with Reduced Ejection Fraction",
+      "notes": "Switched to Carvedilol for better HFrEF evidence."
+    },
+    {
+      "name": "Furosemide",
+      "dosage": "40mg",
+      "frequency": "twice daily",
+      "start_visit": "visit_10",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Heart Failure with Reduced Ejection Fraction",
+      "monitored_by_labs": [
+        "Potassium",
+        "Creatinine",
+        "Sodium"
+      ],
+      "notes": "Initial dose 20mg daily, increased to BID post-hospitalization."
+    },
+    {
+      "name": "Spironolactone",
+      "dosage": "25mg",
+      "frequency": "daily",
+      "start_visit": "visit_06",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Heart Failure with Reduced Ejection Fraction",
+      "monitored_by_labs": [
+        "Potassium",
+        "Creatinine"
+      ],
+      "notes": "Added after EF remained low despite ACEi/beta-blocker."
+    },
+    {
+      "name": "Carvedilol",
+      "dosage": "25mg",
+      "frequency": "twice daily",
+      "start_visit": "visit_12",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Heart Failure with Reduced Ejection Fraction",
+      "monitored_by_labs": [
+        "Blood Pressure",
+        "Heart Rate"
+      ],
+      "notes": "Switched from Metoprolol Succinate ER."
+    },
+    {
+      "name": "Apixaban",
+      "dosage": "5mg",
+      "frequency": "twice daily",
+      "start_visit": "visit_15",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Atrial Fibrillation with Rapid Ventricular Response",
+      "notes": "Initiated for stroke prevention in new-onset A-fib."
+    },
+    {
+      "name": "Diltiazem ER",
+      "dosage": "180mg",
+      "frequency": "daily",
+      "start_visit": "visit_15",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Atrial Fibrillation with Rapid Ventricular Response",
+      "monitored_by_labs": [
+        "Heart Rate",
+        "Blood Pressure"
+      ],
+      "notes": "For rate control of Atrial Fibrillation."
+    }
+  ],
+  "family_history": [
+    {
+      "relation": "father",
+      "condition": "Hypertension",
+      "diagnosed_age": 55
+    },
+    {
+      "relation": "mother",
+      "condition": "Type 2 Diabetes",
+      "diagnosed_age": 60
+    },
+    {
+      "relation": "paternal uncle",
+      "condition": "Coronary Artery Disease",
+      "diagnosed_age": 62
+    }
+  ],
+  "providers": [
+    {
+      "name": "Dr. Emily White",
+      "role": "attending",
+      "department": "Internal Medicine"
+    },
+    {
+      "name": "Dr. David Lee",
+      "role": "specialist",
+      "department": "Cardiology"
+    },
+    {
+      "name": "Dr. Anya Sharma",
+      "role": "specialist",
+      "department": "Nephrology"
+    },
+    {
+      "name": "Dr. Chris Green",
+      "role": "attending",
+      "department": "Emergency Medicine"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-02-10",
+      "type": "initial",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Increasing shortness of breath on exertion",
+      "narrative": "Patient is a 52-year-old male presenting with a 3-month history of progressive shortness of breath, initially with heavy exertion, now with moderate activity like climbing stairs. Reports occasional mild pedal edema by end of day. Denies chest pain, palpitations, orthopnea, or PND. Past medical history notable for controlled hypertension. Social history: non-smoker, occasional alcohol. \n\nPhysical exam reveals mild bilateral pedal edema. Lungs clear to auscultation. Heart regular rate and rhythm, no murmurs. Ordered CBC, CMP, BNP, TSH, and a transthoracic echocardiogram. Referral for cardiology consult pending echo results.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_okafor_2024_feb.pdf"
+      }
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-03-01",
+      "type": "follow-up",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Review of echo results, initiation of heart failure treatment",
+      "narrative": "Patient returns to discuss imaging and lab results. Echo shows Left Ventricular Ejection Fraction (LVEF) of 40%, consistent with Heart Failure with Reduced Ejection Fraction (HFrEF). Mild left ventricular hypertrophy noted. BNP was elevated at 450 pg/mL. Other labs within normal limits. \n\nDiscussed diagnosis of HFrEF and importance of guideline-directed medical therapy. Started Lisinopril 5mg daily and Metoprolol Succinate ER 25mg daily. Counseled on low-sodium diet and fluid restriction. Scheduled follow-up in 2 weeks for medication tolerance and titration.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_okafor_2024_mar.pdf"
+      },
+      "labs": [
+        {
+          "test": "BNP",
+          "value": "450",
+          "unit": "pg/mL",
+          "range": "<100",
+          "flag": "high"
+        },
+        {
+          "test": "Echocardiogram",
+          "value": "LVEF 40%, mild LVH",
+          "unit": "composite",
+          "range": ">55% normal",
+          "flag": "low"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_okafor_2024_mar.pdf"
+      },
+      "medications_started": [
+        "Lisinopril",
+        "Metoprolol Succinate ER"
+      ]
+    },
+    {
+      "ref": "visit_03",
+      "date": "2024-03-15",
+      "type": "follow-up",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Medication tolerance and titration for HFrEF",
+      "narrative": "Patient reports tolerating Lisinopril and Metoprolol Succinate ER well, with only mild initial dizziness that has resolved. No worsening of shortness of breath or edema. Blood pressure 128/80 mmHg, heart rate 68 bpm. \n\nTitrated Lisinopril to 10mg daily. Ordered repeat CMP to monitor renal function and potassium. Reviewed importance of continuing lifestyle modifications. Scheduled cardiology consult next month.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_okafor_2024_mar_2.pdf"
+      },
+      "labs": [
+        {
+          "test": "Potassium",
+          "value": "4.2",
+          "unit": "mEq/L",
+          "range": "3.5-5.0",
+          "flag": "normal"
+        },
+        {
+          "test": "Creatinine",
+          "value": "1.0",
+          "unit": "mg/dL",
+          "range": "0.7-1.3",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_okafor_2024_mar_2.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. David Lee",
+          "reason": "Ongoing management of Heart Failure with Reduced Ejection Fraction"
+        }
+      ]
+    },
+    {
+      "ref": "visit_04",
+      "date": "2024-04-10",
+      "type": "consult",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Cardiology consult for HFrEF management",
+      "narrative": "Patient seen for initial cardiology consultation for HFrEF. Reviewed PCP notes, echo, and current medication regimen. Patient reports slight improvement in dyspnea but still limited. Exam reveals S3 gallop, mild JVD. \n\nConcur with current GDMT. Plan to continue titrating Lisinopril and Metoprolol Succinate ER to target doses. Recommend repeat echo in 3 months to assess EF. Discussed potential for additional therapies if EF remains reduced. Emphasized strict adherence to fluid/sodium restriction.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_okafor_2024_apr.pdf"
+      }
+    },
+    {
+      "ref": "visit_05",
+      "date": "2024-05-01",
+      "type": "follow-up",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Persistent dyspnea on exertion despite medication titration",
+      "narrative": "Patient reports some continued dyspnea, particularly with sustained activity. Lisinopril increased to 15mg daily. Metoprolol Succinate ER increased to 50mg daily. Blood pressure 122/78 mmHg, heart rate 62 bpm. No new symptoms. \n\nOrdered repeat BNP and CMP. Encouraged continued adherence to diet and exercise. Discussed the slow process of improving heart function. Advised to notify immediately if significant worsening of symptoms or weight gain occurs.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_okafor_2024_may.pdf"
+      },
+      "labs": [
+        {
+          "test": "BNP",
+          "value": "510",
+          "unit": "pg/mL",
+          "range": "<100",
+          "flag": "high"
+        },
+        {
+          "test": "Creatinine",
+          "value": "1.1",
+          "unit": "mg/dL",
+          "range": "0.7-1.3",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_okafor_2024_may.pdf"
+      }
+    },
+    {
+      "ref": "visit_06",
+      "date": "2024-06-15",
+      "type": "follow-up",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Cardiology follow-up, re-evaluation of EF",
+      "narrative": "Patient seen for cardiology follow-up. Repeat echocardiogram performed today. LVEF now estimated at 35%, a slight decline despite medication titrations. Symptoms remain stable but persistent. \n\nDue to persistent low EF, initiated Spironolactone 25mg daily. Counseled on potential for hyperkalemia and need for close lab monitoring. Titrated Lisinopril to target dose of 20mg daily. Continue Metoprolol Succinate ER 50mg daily. Repeat CMP in 1 week to monitor for hyperkalemia.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_okafor_2024_jun.pdf"
+      },
+      "labs": [
+        {
+          "test": "Echocardiogram",
+          "value": "LVEF 35%",
+          "unit": "composite",
+          "range": ">55% normal",
+          "flag": "low"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_okafor_2024_jun.pdf"
+      },
+      "medications_started": [
+        "Spironolactone"
+      ]
+    },
+    {
+      "ref": "visit_07",
+      "date": "2024-07-01",
+      "type": "follow-up",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Spironolactone tolerance and lab review",
+      "narrative": "Patient reports tolerating Spironolactone well. No signs of hyperkalemia. Repeat CMP shows Potassium 4.8 mEq/L (normal) and Creatinine 1.2 mg/dL (mildly increased from baseline, eGFR 65 mL/min). \n\nContinue all current medications. Reinforce strict low-sodium diet. Discussed the importance of monitoring renal function with these medications. Follow up with cardiology in 2 months. Advised to call if any signs of fluid overload (e.g., significant weight gain, worsening dyspnea) occur.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_okafor_2024_jul.pdf"
+      },
+      "labs": [
+        {
+          "test": "Potassium",
+          "value": "4.8",
+          "unit": "mEq/L",
+          "range": "3.5-5.0",
+          "flag": "normal"
+        },
+        {
+          "test": "Creatinine",
+          "value": "1.2",
+          "unit": "mg/dL",
+          "range": "0.7-1.3",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_okafor_2024_jul.pdf"
+      }
+    },
+    {
+      "ref": "visit_08",
+      "date": "2024-08-05",
+      "type": "emergency",
+      "provider": "Dr. Chris Green",
+      "chief_complaint": "Acute worsening dyspnea, increased pedal edema",
+      "narrative": "Patient presented to ED with rapidly worsening shortness of breath over 2 days, now with orthopnea and marked increase in bilateral pedal edema (3+ pitting). Reports a 5lb weight gain since last week. BP 150/90 mmHg, HR 98 bpm, RR 24, O2 Sat 90% on room air. \n\nPhysical exam reveals crackles at lung bases, elevated JVP, and significant peripheral edema. ECG showed sinus tachycardia. Chest X-ray revealed cardiomegaly and pulmonary edema. Labs: BNP 1200 pg/mL, Creatinine 1.5 mg/dL. Admitted to hospital for acute decompensated heart failure.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_okafor_2024_aug.pdf"
+      },
+      "labs": [
+        {
+          "test": "BNP",
+          "value": "1200",
+          "unit": "pg/mL",
+          "range": "<100",
+          "flag": "high"
+        },
+        {
+          "test": "Creatinine",
+          "value": "1.5",
+          "unit": "mg/dL",
+          "range": "0.7-1.3",
+          "flag": "high"
+        },
+        {
+          "test": "Chest X-ray",
+          "value": "Cardiomegaly, pulmonary edema",
+          "unit": "composite",
+          "range": "normal",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_okafor_2024_aug.pdf"
+      }
+    },
+    {
+      "ref": "visit_09",
+      "date": "2024-08-06",
+      "type": "routine",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Hospital admission for acute decompensated heart failure",
+      "narrative": "Patient admitted with acute decompensated HFrEF. Initiated IV Furosemide with good diuresis. Strict I/Os monitored. Creatinine initially 1.5 mg/dL, declined to 1.3 mg/dL after diuresis. Based on sustained elevated creatinine (eGFR ~45-50 mL/min), diagnosed with Chronic Kidney Disease Stage 3. \n\nCardiology team consulted nephrology for co-management given kidney involvement. All GDMT for HF were continued, careful monitoring of renal function and electrolytes. Patient's symptoms gradually improved over several days.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_okafor_2024_aug_2.pdf"
+      },
+      "labs": [
+        {
+          "test": "Creatinine",
+          "value": "1.3",
+          "unit": "mg/dL",
+          "range": "0.7-1.3",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_okafor_2024_aug_2.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. Anya Sharma",
+          "reason": "Co-management of Chronic Kidney Disease Stage 3 in context of HFrEF"
+        }
+      ]
+    },
+    {
+      "ref": "visit_10",
+      "date": "2024-08-12",
+      "type": "routine",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Discharge post-HF exacerbation",
+      "narrative": "Patient is stable for discharge. Significant fluid offload achieved. Dyspnea resolved, no pedal edema. Creatinine stable at 1.3 mg/dL. Discharged on revised medication list including Furosemide 40mg twice daily, along with continued Lisinopril 20mg, Metoprolol Succinate ER 50mg, and Spironolactone 25mg. \n\nExtensive patient education provided regarding medication adherence, daily weights, strict fluid/sodium restriction, and follow-up appointments with PCP, cardiology, and nephrology. Given written instructions and red flag symptoms.",
+      "document": {
+        "type": "discharge_summary",
+        "filename": "discharge_summary_okafor_2024_aug.pdf"
+      },
+      "medications_started": [
+        "Furosemide"
+      ]
+    },
+    {
+      "ref": "visit_11",
+      "date": "2024-08-26",
+      "type": "follow-up",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Post-hospitalization follow-up, medication review",
+      "narrative": "Patient seen for post-hospitalization follow-up. Reports feeling much better, no recurrent dyspnea or edema. Adhering to medication regimen and dietary restrictions. Weight stable. \n\nReviewed all discharge medications. Labs show Creatinine 1.3 mg/dL, Potassium 4.5 mEq/L, Sodium 138 mEq/L. Discussed the need for continued vigilance with heart failure management and CKD. Confirmed follow-up with cardiology and nephrology. Continue current plan.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_okafor_2024_aug_3.pdf"
+      },
+      "labs": [
+        {
+          "test": "Creatinine",
+          "value": "1.3",
+          "unit": "mg/dL",
+          "range": "0.7-1.3",
+          "flag": "high"
+        },
+        {
+          "test": "Potassium",
+          "value": "4.5",
+          "unit": "mEq/L",
+          "range": "3.5-5.0",
+          "flag": "normal"
+        },
+        {
+          "test": "Sodium",
+          "value": "138",
+          "unit": "mEq/L",
+          "range": "135-145",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_okafor_2024_aug_3.pdf"
+      }
+    },
+    {
+      "ref": "visit_12",
+      "date": "2024-09-15",
+      "type": "follow-up",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Cardiology follow-up post-hospitalization, medication optimization",
+      "narrative": "Patient stable post-HF exacerbation. Current medications are well-tolerated. Reviewed current GDMT. Decided to switch Metoprolol Succinate ER to Carvedilol 25mg twice daily, as Carvedilol has stronger evidence in HFrEF. \n\nPatient was educated on the new medication and titration schedule. Plan to monitor blood pressure and heart rate closely. Will recheck labs in 2 weeks. Discussed potential for SGLT2 inhibitor in the future if renal function permits.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_okafor_2024_sep.pdf"
+      },
+      "medications_started": [
+        "Carvedilol"
+      ],
+      "medications_discontinued": [
+        "Metoprolol Succinate ER"
+      ]
+    },
+    {
+      "ref": "visit_13",
+      "date": "2024-10-10",
+      "type": "consult",
+      "provider": "Dr. Anya Sharma",
+      "chief_complaint": "Nephrology consult for CKD Stage 3 management",
+      "narrative": "Patient seen for initial nephrology consult for CKD Stage 3, eGFR averaging 48 mL/min. Reviewed complete medical history and current medication list, particularly ACE inhibitor and MRA. \n\nDiscussed strategies for renal protection including strict BP control, avoiding NSAIDs, and continued lifestyle modifications. Emphasized close monitoring of renal function and electrolytes with HF medications. No immediate changes to current GDMT recommended. Follow-up in 3 months with repeat labs.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_okafor_2024_oct.pdf"
+      }
+    },
+    {
+      "ref": "visit_14",
+      "date": "2025-01-20",
+      "type": "emergency",
+      "provider": "Dr. Chris Green",
+      "chief_complaint": "Sudden onset palpitations, dizziness, and dyspnea",
+      "narrative": "Patient presented to ED with acute onset of rapid, irregular heartbeats, associated with dizziness and worsening dyspnea, starting approximately 4 hours ago. BP 110/70 mmHg, HR 160 bpm, O2 Sat 92% on room air. \n\nECG revealed Atrial Fibrillation with Rapid Ventricular Response (AFib with RVR). Chest X-ray showed no acute pulmonary edema. Labs: BNP elevated at 850 pg/mL. Admitted to hospital for rate control and initiation of anticoagulation. Cardizem drip initiated.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_okafor_2025_jan.pdf"
+      },
+      "labs": [
+        {
+          "test": "ECG",
+          "value": "Atrial Fibrillation with RVR",
+          "unit": "rhythm",
+          "range": "Normal Sinus Rhythm",
+          "flag": "critical"
+        },
+        {
+          "test": "BNP",
+          "value": "850",
+          "unit": "pg/mL",
+          "range": "<100",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_okafor_2025_jan.pdf"
+      }
+    },
+    {
+      "ref": "visit_15",
+      "date": "2025-01-22",
+      "type": "routine",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Hospital admission for new onset Atrial Fibrillation",
+      "narrative": "Patient admitted for new onset AFib with RVR. Successfully rate-controlled with Diltiazem. Reviewed patient's CHA2DS2-VASc score (e.g., age, HF, HTN) indicating high risk for stroke. Initiated Apixaban 5mg twice daily for anticoagulation. \n\nRepeat echocardiogram performed shows LVEF now 25%, further decline. Discussed need for continued aggressive GDMT for HFrEF. Patient educated on new medications, particularly anticoagulation and the risks/benefits. Plan for discharge in 2 days.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_okafor_2025_jan_2.pdf"
+      },
+      "labs": [
+        {
+          "test": "Echocardiogram",
+          "value": "LVEF 25%",
+          "unit": "composite",
+          "range": ">55% normal",
+          "flag": "low"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_okafor_2025_jan_2.pdf"
+      },
+      "medications_started": [
+        "Apixaban",
+        "Diltiazem ER"
+      ]
+    },
+    {
+      "ref": "visit_16",
+      "date": "2025-01-28",
+      "type": "routine",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Discharge post-AFib rate control",
+      "narrative": "Patient is stable for discharge. AFib rate controlled on oral Diltiazem ER 180mg daily. No further palpitations or dizziness. Anticoagulation with Apixaban is well-established. Discharged on his full regimen: Lisinopril 20mg, Furosemide 40mg BID, Spironolactone 25mg, Carvedilol 25mg BID, Apixaban 5mg BID, Diltiazem ER 180mg. \n\nReinforced strict adherence to all medications, particularly anticoagulation. Provided detailed discharge instructions, including signs of bleeding. Scheduled follow-up with PCP and cardiology in 2 weeks, and nephrology in 1 month.",
+      "document": {
+        "type": "discharge_summary",
+        "filename": "discharge_summary_okafor_2025_jan.pdf"
+      }
+    },
+    {
+      "ref": "visit_17",
+      "date": "2025-02-15",
+      "type": "follow-up",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Cardiology follow-up post-AFib, HFrEF management",
+      "narrative": "Patient seen for follow-up after recent hospitalization for new onset AFib and further decline in EF. Reports feeling well, no palpitations, dyspnea is stable. Tolerating all new medications without significant side effects. \n\nHeart rate is well-controlled at ~70-80 bpm. Blood pressure 118/72 mmHg. Reinforce importance of lifelong anticoagulation. Discussed potential for future AFib ablation given young age and new onset. Will continue to monitor EF and symptoms. Next cardiology follow-up in 3 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_okafor_2025_feb.pdf"
+      },
+      "labs": [
+        {
+          "test": "ECG",
+          "value": "Atrial Fibrillation with controlled ventricular response",
+          "unit": "rhythm",
+          "range": "Normal Sinus Rhythm",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_okafor_2025_feb.pdf"
+      }
+    },
+    {
+      "ref": "visit_18",
+      "date": "2025-03-20",
+      "type": "routine",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Routine PCP follow-up, polypharmacy review",
+      "narrative": "Patient seen for routine follow-up with PCP. Reports stable symptoms, no fluid overload, good energy levels. Adhering to all 6 medications. BP 120/75 mmHg, HR 72 bpm. \n\nReviewed all medications, addressing any potential drug-drug interactions or side effects. Emphasized adherence and continued communication between specialists. Labs today: Creatinine 1.4 mg/dL (eGFR 46 mL/min), Potassium 4.6 mEq/L, Sodium 137 mEq/L. BNP 600 pg/mL (improved from crisis). Continue multidisciplinary approach to care.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_okafor_2025_mar.pdf"
+      },
+      "labs": [
+        {
+          "test": "Creatinine",
+          "value": "1.4",
+          "unit": "mg/dL",
+          "range": "0.7-1.3",
+          "flag": "high"
+        },
+        {
+          "test": "Potassium",
+          "value": "4.6",
+          "unit": "mEq/L",
+          "range": "3.5-5.0",
+          "flag": "normal"
+        },
+        {
+          "test": "Sodium",
+          "value": "137",
+          "unit": "mEq/L",
+          "range": "135-145",
+          "flag": "normal"
+        },
+        {
+          "test": "BNP",
+          "value": "600",
+          "unit": "pg/mL",
+          "range": "<100",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_okafor_2025_mar.pdf"
+      }
+    }
+  ]
+}

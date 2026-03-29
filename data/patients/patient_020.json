@@ -1,0 +1,274 @@
+{
+  "id": "patient_020",
+  "name": "Kenji Tanaka",
+  "age": 40,
+  "sex": "male",
+  "mrn": "MRN-10009",
+  "summary": "40-year-old male presenting with chronic diarrhea, rectal bleeding, and abdominal pain, diagnosed with Ulcerative Colitis, complicated by Iron Deficiency Anemia, managed with mesalamine and iron supplementation.",
+  "tier": "moderate",
+  "storyline": "Kenji Tanaka initially presents to his PCP with several months of worsening gastrointestinal symptoms. Initial workup reveals anemia and elevated inflammatory markers, prompting a referral to gastroenterology. A colonoscopy confirms a diagnosis of Ulcerative Colitis. Treatment with mesalamine is initiated, and iron supplementation is added to address the associated anemia. Over several months, his symptoms improve, and his anemia resolves, leading to a stable remission on maintenance therapy.",
+  "conditions": [
+    {
+      "name": "Ulcerative Colitis",
+      "icd_code": "K51.90",
+      "status": "chronic",
+      "diagnosed_visit": "visit_04",
+      "notes": "Pancolitis confirmed by colonoscopy with biopsy."
+    },
+    {
+      "name": "Iron Deficiency Anemia",
+      "icd_code": "D50.9",
+      "status": "active",
+      "diagnosed_visit": "visit_02",
+      "notes": "Secondary to chronic blood loss from Ulcerative Colitis."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Mesalamine",
+      "dosage": "1.2g",
+      "frequency": "three times daily",
+      "start_visit": "visit_04",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Ulcerative Colitis",
+      "monitored_by_labs": [
+        "CBC",
+        "CRP"
+      ],
+      "notes": "Oral formulation for induction and maintenance of remission."
+    },
+    {
+      "name": "Ferrous Sulfate",
+      "dosage": "325mg",
+      "frequency": "daily",
+      "start_visit": "visit_05",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Iron Deficiency Anemia",
+      "monitored_by_labs": [
+        "CBC",
+        "Ferritin",
+        "Iron"
+      ],
+      "notes": "Started after persistent anemia noted on follow-up labs."
+    }
+  ],
+  "family_history": [
+    {
+      "relation": "father",
+      "condition": "Crohn's Disease",
+      "diagnosed_age": 45
+    }
+  ],
+  "providers": [
+    {
+      "name": "Dr. Emily Carter",
+      "role": "attending",
+      "department": "Internal Medicine"
+    },
+    {
+      "name": "Dr. David Lee",
+      "role": "specialist",
+      "department": "Gastroenterology"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-10-10",
+      "type": "initial",
+      "provider": "Dr. Emily Carter",
+      "chief_complaint": "Chronic diarrhea and rectal bleeding",
+      "narrative": "Patient presents with a 2-month history of increasing stool frequency (4-5 loose stools/day), occasional rectal bleeding, and intermittent lower abdominal cramping. Denies fever, nausea, vomiting, or significant weight loss. Reports fatigue. No recent travel or dietary changes. Family history notable for father with Crohn's Disease.\n\nPhysical exam reveals mild diffuse abdominal tenderness. No rebound or guarding. Digital rectal exam showed trace heme-positive stool. Ordered CBC, CMP, ESR, CRP, and stool studies (culture, C. diff, ova & parasites). Advised clear liquids for 24 hours and return for lab review.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_tanaka_2024_oct.pdf"
+      }
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-10-17",
+      "type": "follow-up",
+      "provider": "Dr. Emily Carter",
+      "chief_complaint": "Lab review, persistent GI symptoms",
+      "narrative": "Patient returns for lab review. CBC shows microcytic anemia (Hgb 10.5 g/dL, MCV 75 fL). ESR 35 mm/hr and CRP 1.8 mg/dL are both elevated. Stool studies negative for infection. Given the chronicity of symptoms, rectal bleeding, anemia, and elevated inflammatory markers, concern for inflammatory bowel disease (IBD) is high.\n\nDiscussed findings with the patient. Explained the need for specialist evaluation. Initiated referral to Gastroenterology for further workup, including colonoscopy. Counseled on increasing dietary iron intake and monitoring symptoms.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_tanaka_2024_oct.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 8.1, Hgb 10.5, Hct 31.8, MCV 75, Plt 380",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Hct 36-48, MCV 80-100, Plt 150-400",
+          "flag": "low"
+        },
+        {
+          "test": "ESR",
+          "value": "35",
+          "unit": "mm/hr",
+          "range": "0-20",
+          "flag": "high"
+        },
+        {
+          "test": "CRP",
+          "value": "1.8",
+          "unit": "mg/dL",
+          "range": "<1.0",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_tanaka_2024_oct.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. David Lee",
+          "reason": "Evaluation for suspected inflammatory bowel disease given chronic GI symptoms, rectal bleeding, anemia, and elevated inflammatory markers."
+        }
+      ]
+    },
+    {
+      "ref": "visit_03",
+      "date": "2024-11-05",
+      "type": "consult",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Gastroenterology consult for suspected IBD",
+      "narrative": "New patient gastroenterology consultation for chronic diarrhea and rectal bleeding. Reviewed PCP notes, labs (anemia, elevated ESR/CRP), and negative stool studies. Patient reports ongoing symptoms, though bleeding has lessened slightly. Physical exam reveals mild abdominal tenderness in the left lower quadrant.\n\nDiscussed differential diagnosis, including Ulcerative Colitis and Crohn's Disease. Recommended full colonoscopy with ileal intubation and biopsies to confirm diagnosis and assess disease extent. Pre-procedure instructions provided. Will follow up after the procedure to discuss findings and initiate treatment.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_tanaka_2024_nov.pdf"
+      }
+    },
+    {
+      "ref": "visit_04",
+      "date": "2024-11-20",
+      "type": "follow-up",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Colonoscopy results and treatment plan",
+      "narrative": "Follow-up post-colonoscopy. Colonoscopy revealed continuous inflammation extending from the rectum through the entire colon, with loss of vascular pattern, erythema, friability, and erosions, consistent with pancolitis. Terminal ileum was normal. Biopsies confirmed chronic active colitis with crypt architectural distortion and increased plasma cells, confirming Ulcerative Colitis.\n\nDiscussed diagnosis and treatment options. Initiated oral Mesalamine 1.2g three times daily. Counseled on medication adherence, potential side effects, and diet modifications. Will re-evaluate symptoms and labs in approximately 4 weeks. Referred patient back to PCP for ongoing anemia management.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_tanaka_2024_nov.pdf"
+      },
+      "procedures": [
+        {
+          "name": "Colonoscopy with biopsies",
+          "outcome": "Pancolitis with mucosal inflammation and erosions, biopsies confirm Ulcerative Colitis."
+        }
+      ],
+      "medications_started": [
+        "Mesalamine"
+      ]
+    },
+    {
+      "ref": "visit_05",
+      "date": "2024-12-15",
+      "type": "follow-up",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Mesalamine efficacy and anemia management",
+      "narrative": "Patient reports significant improvement in GI symptoms since starting Mesalamine 3 weeks ago. Stool frequency reduced to 2-3 formed stools per day, and rectal bleeding has ceased. Abdominal pain is minimal. However, fatigue persists.\n\nRepeat labs show Hgb 10.8 g/dL, Ferritin 12 ng/mL (low), Iron 30 mcg/dL (low). Anemia remains despite symptom improvement. Initiated Ferrous Sulfate 325mg daily. Emphasized importance of consistent medication intake for both UC and anemia. Follow-up in 6 weeks to assess iron repletion and UC control.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_tanaka_2024_dec.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 7.8, Hgb 10.8, Hct 32.5, MCV 78, Plt 350",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Hct 36-48, MCV 80-100, Plt 150-400",
+          "flag": "low"
+        },
+        {
+          "test": "Ferritin",
+          "value": "12",
+          "unit": "ng/mL",
+          "range": "30-400",
+          "flag": "low"
+        },
+        {
+          "test": "Iron",
+          "value": "30",
+          "unit": "mcg/dL",
+          "range": "60-170",
+          "flag": "low"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_tanaka_2024_dec.pdf"
+      },
+      "medications_started": [
+        "Ferrous Sulfate"
+      ]
+    },
+    {
+      "ref": "visit_06",
+      "date": "2025-01-20",
+      "type": "follow-up",
+      "provider": "Dr. Emily Carter",
+      "chief_complaint": "PCP follow-up, anemia check",
+      "narrative": "Routine PCP follow-up. Patient reports feeling significantly better overall. UC symptoms remain well-controlled with Mesalamine. Fatigue has improved with iron supplementation. No new GI complaints. Tolerating both medications well.\n\nRepeat CBC shows Hgb 12.1 g/dL, Ferritin 45 ng/mL. Anemia is resolving. Advised to continue Ferrous Sulfate for another month and recheck. Reinforced importance of regular follow-ups with gastroenterology and adherence to medication regimen. Will coordinate care with Dr. Lee for ongoing UC management.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_tanaka_2025_jan.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 7.5, Hgb 12.1, Hct 36.3, MCV 82, Plt 320",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Hct 36-48, MCV 80-100, Plt 150-400",
+          "flag": "normal"
+        },
+        {
+          "test": "Ferritin",
+          "value": "45",
+          "unit": "ng/mL",
+          "range": "30-400",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_tanaka_2025_jan.pdf"
+      }
+    },
+    {
+      "ref": "visit_07",
+      "date": "2025-02-25",
+      "type": "routine",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Quarterly GI follow-up, UC in remission",
+      "narrative": "Quarterly follow-up with Gastroenterology. Patient reports sustained remission of Ulcerative Colitis. No diarrhea, bleeding, or abdominal pain. Eating well, energy levels normal. Has been consistent with Mesalamine and Ferrous Sulfate.\n\nPhysical exam unremarkable. Abdomen soft, non-tender. Repeat labs show Hgb 13.0 g/dL, CRP <0.5 mg/dL. Both within normal limits. Discussed long-term management strategies. Plan to continue Mesalamine 1.2g TID indefinitely for maintenance. Continue Ferrous Sulfate for one more month, then discontinue if follow-up labs confirm sustained iron levels. Next GI follow-up in 3 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_tanaka_2025_feb.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 7.2, Hgb 13.0, Hct 39.0, MCV 85, Plt 300",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Hct 36-48, MCV 80-100, Plt 150-400",
+          "flag": "normal"
+        },
+        {
+          "test": "CRP",
+          "value": "<0.5",
+          "unit": "mg/dL",
+          "range": "<1.0",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_tanaka_2025_feb.pdf"
+      }
+    }
+  ]
+}

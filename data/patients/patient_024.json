@@ -1,0 +1,202 @@
+{
+  "id": "patient_024",
+  "name": "Marcus Brown",
+  "age": 37,
+  "sex": "male",
+  "mrn": "MRN-26028",
+  "summary": "37-year-old male presenting with seasonal allergies and intermittent wheezing, diagnosed with Allergic Rhinitis and later with Moderate Persistent Asthma, managed with inhaled corticosteroids and rescue inhaler.",
+  "tier": "moderate",
+  "conditions": [
+    {
+      "name": "Allergic Rhinitis",
+      "icd_code": "J30.9",
+      "status": "chronic",
+      "diagnosed_visit": "visit_01",
+      "notes": "Seasonal, primarily spring and fall, controlled with antihistamines"
+    },
+    {
+      "name": "Asthma, Moderate Persistent",
+      "icd_code": "J45.40",
+      "status": "active",
+      "diagnosed_visit": "visit_03",
+      "notes": "Requires daily inhaled corticosteroid and rescue inhaler"
+    }
+  ],
+  "medications": [
+    {
+      "name": "Loratadine",
+      "dosage": "10mg",
+      "frequency": "daily",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Allergic Rhinitis",
+      "notes": "Taken during allergy season"
+    },
+    {
+      "name": "Albuterol HFA",
+      "dosage": "90mcg/puff",
+      "frequency": "as needed for wheezing",
+      "start_visit": "visit_03",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Asthma, Moderate Persistent",
+      "notes": "Rescue inhaler for acute symptoms"
+    },
+    {
+      "name": "Fluticasone Propionate (Flovent HFA)",
+      "dosage": "110mcg",
+      "frequency": "twice daily",
+      "start_visit": "visit_03",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Asthma, Moderate Persistent",
+      "monitored_by_labs": [
+        "PFTs"
+      ],
+      "notes": "Maintenance inhaled corticosteroid for asthma control"
+    }
+  ],
+  "family_history": [],
+  "providers": [
+    {
+      "name": "Dr. Emily White",
+      "role": "attending",
+      "department": "Internal Medicine"
+    },
+    {
+      "name": "Dr. David Lee",
+      "role": "specialist",
+      "department": "Allergy & Immunology"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-03-10",
+      "type": "initial",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Seasonal allergies, intermittent wheezing",
+      "narrative": "Mr. Brown, a 37-year-old male, presents with symptoms consistent with seasonal allergies, including sneezing, runny nose, and itchy eyes, worse during spring. He also reports intermittent wheezing, particularly after exercise or exposure to cold air, but denies significant shortness of breath or nocturnal awakenings. History reveals similar symptoms since childhood, but never formally diagnosed with asthma. No known food or drug allergies.\n\nPhysical exam reveals clear nasal discharge and mild conjunctival injection. Lungs clear to auscultation at rest, but mild expiratory wheezes noted after a brief stair climb. Diagnosed with Allergic Rhinitis. Prescribed Loratadine 10mg daily as needed for allergy symptoms. Ordered baseline Pulmonary Function Tests (PFTs) to evaluate lung function and rule out underlying asthma. Follow-up in 2 weeks for PFT review.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_brown_2024_mar.pdf"
+      },
+      "medications_started": [
+        "Loratadine"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-03-24",
+      "type": "follow-up",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Review of PFTs, persistent wheezing",
+      "narrative": "Mr. Brown returns for review of PFT results. Spirometry shows FEV1 78% predicted, FEV1/FVC 0.68, consistent with mild obstructive pattern that improves by 15% post-bronchodilator, strongly suggestive of asthma. He reports that while Loratadine has helped with allergy symptoms, his intermittent wheezing persists, especially with physical activity.\n\nGiven the PFT findings and persistent symptoms, a diagnosis of suspected asthma is made. Due to the chronic nature and obstructive pattern, a referral to Allergy & Immunology is initiated for further evaluation, confirmation, and management of asthma. Patient advised to avoid known triggers and continue Loratadine. Referral letter prepared and sent.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_brown_2024_mar.pdf"
+      },
+      "labs": [
+        {
+          "test": "FEV1",
+          "value": "78",
+          "unit": "% predicted",
+          "range": ">80",
+          "flag": "low"
+        },
+        {
+          "test": "FEV1/FVC",
+          "value": "0.68",
+          "unit": "ratio",
+          "range": ">0.70",
+          "flag": "low"
+        },
+        {
+          "test": "Post-bronchodilator FEV1 improvement",
+          "value": "15",
+          "unit": "%",
+          "range": "<12",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_brown_2024_mar.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. David Lee",
+          "reason": "Evaluation and management of suspected asthma following abnormal PFTs and persistent wheezing"
+        }
+      ]
+    },
+    {
+      "ref": "visit_03",
+      "date": "2024-04-15",
+      "type": "consult",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Allergy & Immunology consult for asthma",
+      "narrative": "Mr. Brown presents for an Allergy & Immunology consultation following referral from his PCP for suspected asthma. Reviewed PCP notes and PFTs. Patient's symptoms (intermittent wheezing, exercise-induced, seasonal allergy history) are highly consistent with asthma. Further skin prick testing confirms sensitivity to common environmental allergens (dust mites, tree pollen).\n\nDiagnosis of Asthma, Moderate Persistent, confirmed. Initiated Albuterol HFA 90mcg/puff, 2 puffs as needed for wheezing or before exercise, and Fluticasone Propionate (Flovent HFA) 110mcg, 2 puffs twice daily as a maintenance inhaled corticosteroid. Reviewed inhaler technique in detail. Advised on trigger avoidance and the importance of daily maintenance therapy. Follow-up in 4 weeks to assess asthma control.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_brown_2024_apr.pdf"
+      },
+      "procedures": [
+        {
+          "name": "Skin Prick Testing",
+          "outcome": "Positive for dust mites, tree pollen"
+        }
+      ],
+      "medications_started": [
+        "Albuterol HFA",
+        "Fluticasone Propionate (Flovent HFA)"
+      ]
+    },
+    {
+      "ref": "visit_04",
+      "date": "2024-05-13",
+      "type": "follow-up",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Asthma control check",
+      "narrative": "Mr. Brown returns for follow-up regarding his asthma management. He reports significant improvement in symptoms since starting Fluticasone daily. Wheezing episodes are less frequent and less severe, primarily occurring only with intense exercise or significant allergen exposure. He uses his Albuterol rescue inhaler 1-2 times per week. No nocturnal awakenings due to asthma. He feels his breathing is much better overall.\n\nPhysical exam reveals clear lung sounds bilaterally without wheezes. Peak expiratory flow (PEF) measurements are consistently in his green zone. Reviewed proper inhaler technique and adherence to medication regimen. Asthma Action Plan reviewed and provided. Continue current medications. Follow-up in 3 months or as needed for worsening symptoms.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_brown_2024_may.pdf"
+      }
+    },
+    {
+      "ref": "visit_05",
+      "date": "2024-08-01",
+      "type": "follow-up",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Routine check-up, allergy/asthma management",
+      "narrative": "Mr. Brown presents for a routine primary care follow-up. He reports his asthma has been well-controlled since his last visit with Dr. Lee. No recent exacerbations or emergency room visits. He continues to take Fluticasone daily and uses Albuterol rarely. His seasonal allergy symptoms are mild with Loratadine.\n\nDiscussed fall allergy season preparation and importance of flu shot. Reviewed medication adherence. Lung exam clear. Overall, doing well. Encouraged continued adherence to his asthma action plan and regular follow-ups with his allergist. Referred for routine annual physical in 6 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_brown_2024_aug.pdf"
+      }
+    },
+    {
+      "ref": "visit_06",
+      "date": "2024-11-04",
+      "type": "routine",
+      "provider": "Dr. David Lee",
+      "chief_complaint": "Quarterly asthma review",
+      "narrative": "Mr. Brown is here for his quarterly asthma review. He states his asthma remains well-controlled. He's had no significant flares or increase in rescue inhaler use, even during the change of seasons. He continues on Fluticasone daily and uses Albuterol only as needed, approximately once a month.\n\nObjective measures including PEF readings are stable. Allergy symptoms are minimal. Emphasized the importance of annual influenza vaccination and discussed pneumococcal vaccine readiness given his chronic condition. Continue current medication regimen. Next follow-up scheduled for 6 months, or sooner if symptoms worsen.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_brown_2024_nov.pdf"
+      },
+      "labs": [
+        {
+          "test": "Peak Expiratory Flow",
+          "value": "450",
+          "unit": "L/min",
+          "range": "400-500",
+          "flag": "normal"
+        }
+      ]
+    }
+  ]
+}

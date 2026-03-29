@@ -1,0 +1,86 @@
+{
+  "id": "patient_028",
+  "name": "Victor Gomez",
+  "age": 45,
+  "sex": "male",
+  "mrn": "MRN-83144",
+  "summary": "45-year-old male presenting with acute low back pain after heavy lifting, managed conservatively with NSAIDs and physical therapy, resulting in complete resolution.",
+  "tier": "simple",
+  "conditions": [
+    {
+      "name": "Acute Low Back Pain",
+      "icd_code": "M54.5",
+      "status": "resolved",
+      "diagnosed_visit": "visit_01",
+      "notes": "Likely musculoskeletal strain from heavy lifting."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Ibuprofen",
+      "dosage": "600mg",
+      "frequency": "three times daily",
+      "start_visit": "visit_01",
+      "end_visit": "visit_02",
+      "status": "discontinued",
+      "treats": "Acute Low Back Pain",
+      "monitored_by_labs": [
+        "Kidney Function Panel"
+      ],
+      "notes": "Prescribed for acute pain management."
+    }
+  ],
+  "family_history": [],
+  "providers": [
+    {
+      "name": "Dr. Emily White",
+      "role": "attending",
+      "department": "Family Medicine"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-03-10",
+      "type": "initial",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Acute low back pain after lifting",
+      "narrative": "Patient presents with sudden onset low back pain after lifting a heavy box yesterday. Pain is 8/10, localized to lumbar region, non-radiating. No neurological deficits, no bowel/bladder changes. Physical exam shows tenderness to palpation in lumbar paraspinal muscles, limited flexion. Straight leg raise negative. Impression: Acute lumbar strain. Prescribed Ibuprofen 600mg TID. Advised rest, heat/ice, and gentle stretching. Return in 1 week if no improvement.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_gomez_2024_mar.pdf"
+      },
+      "medications_started": [
+        "Ibuprofen"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-03-17",
+      "type": "follow-up",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Follow-up for low back pain",
+      "narrative": "Patient returns reporting significant improvement in low back pain. Pain is now 2/10, occurring only with specific movements. Has been compliant with Ibuprofen and self-care measures. Physical exam shows mild residual tenderness, full range of motion without pain. Patient feels much better and able to return to normal activities. Impression: Resolved acute lumbar strain. Advised to continue gentle activity, discontinue Ibuprofen as pain resolves. No further follow-up needed unless symptoms recur.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_gomez_2024_mar.pdf"
+      },
+      "labs": [
+        {
+          "test": "Creatinine",
+          "value": "0.9",
+          "unit": "mg/dL",
+          "range": "0.6-1.2",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_gomez_2024_mar.pdf"
+      },
+      "medications_discontinued": [
+        "Ibuprofen"
+      ]
+    }
+  ]
+}

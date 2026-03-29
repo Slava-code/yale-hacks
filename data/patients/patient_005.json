@@ -1,0 +1,129 @@
+{
+  "id": "patient_005",
+  "name": "Robert Williams",
+  "age": 72,
+  "sex": "male",
+  "mrn": "MRN-62417",
+  "summary": "72-year-old male with severe Chronic Obstructive Pulmonary Disease (COPD), on home oxygen, presenting for routine follow-ups following a history of recurrent pneumonia.",
+  "tier": "simple",
+  "conditions": [
+    {
+      "name": "Chronic Obstructive Pulmonary Disease",
+      "icd_code": "J44.1",
+      "status": "chronic",
+      "diagnosed_visit": "visit_01",
+      "notes": "Patient has severe COPD with emphysema component, requiring continuous home oxygen. History of multiple hospitalizations for exacerbations and recurrent pneumonia."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Tiotropium Bromide",
+      "dosage": "18mcg",
+      "frequency": "once daily",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Chronic Obstructive Pulmonary Disease",
+      "notes": "Maintenance bronchodilator therapy."
+    },
+    {
+      "name": "Albuterol Sulfate HFA",
+      "dosage": "90mcg/puff",
+      "frequency": "2 puffs every 4-6 hours as needed",
+      "start_visit": "visit_01",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Chronic Obstructive Pulmonary Disease",
+      "notes": "Rescue inhaler for acute shortness of breath."
+    }
+  ],
+  "family_history": [],
+  "providers": [
+    {
+      "name": "Dr. Emily White",
+      "role": "attending",
+      "department": "Internal Medicine"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-07-10",
+      "type": "initial",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Establish care for severe COPD, review current management",
+      "narrative": "Patient is a 72-year-old male with a long history of severe COPD, primarily emphysema type, with significant dyspnea on exertion. He is on 2L home oxygen continuously. He reports generally stable symptoms but recalls his last pneumonia exacerbation 3 months ago. He is compliant with his current inhaler regimen of Tiotropium and Albuterol PRN. He smokes 1/2 pack per day and has a 50 pack-year history. \n\nPhysical exam reveals barrel chest, distant breath sounds, and mild wheezing. Oxygen saturation is 92% on 2L nasal cannula. Reviewed medication adherence and emphasized smoking cessation. Confirmed COPD diagnosis and current home oxygen use. Ordered baseline labs and chest X-ray. Scheduled follow-up.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_williams_2024_jul.pdf"
+      },
+      "medications_started": [
+        "Tiotropium Bromide",
+        "Albuterol Sulfate HFA"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-09-05",
+      "type": "follow-up",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Routine follow-up, review labs and chest X-ray",
+      "narrative": "Patient returns for follow-up. Reports no acute exacerbations since last visit. Continues to use home oxygen regularly and manages dyspnea with Albuterol PRN. He admits to occasional smoking but states he is trying to cut down. \n\nReview of chest X-ray shows hyperinflation and flattened diaphragms consistent with emphysema, no acute infiltrates. Labs: CBC within normal limits, electrolytes normal. Oxygen saturation today is 93% on 2L NC. Discussed importance of flu and pneumonia vaccinations. Continue current medications. Reinforced smoking cessation counseling. Scheduled next routine follow-up.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_williams_2024_sep.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 7.5, Hgb 14.2, Plt 250",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "normal"
+        },
+        {
+          "test": "Electrolytes",
+          "value": "within normal limits",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        },
+        {
+          "test": "Oxygen Saturation",
+          "value": "93",
+          "unit": "%",
+          "range": ">92",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_williams_2024_sep.pdf"
+      },
+      "procedures": [
+        {
+          "name": "Chest X-ray (PA & Lat)",
+          "outcome": "Findings consistent with emphysema, no acute infiltrates"
+        }
+      ]
+    },
+    {
+      "ref": "visit_03",
+      "date": "2025-01-20",
+      "type": "routine",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Annual COPD check-up, vaccination status",
+      "narrative": "Patient presents for annual COPD check-up. Reports good stability over the past few months, no hospitalizations or emergency visits. Denies worsening cough, shortness of breath, or fever. He received his flu shot last fall but has not yet received the latest pneumonia vaccine. \n\nPhysical exam stable. Lung sounds remain distant but clear, no new wheezing. Oxygen saturation 94% on 2L NC. Discussed and administered pneumococcal vaccine today. Emphasized continued smoking cessation efforts and adherence to home oxygen therapy. Advised to continue current bronchodilator regimen. Return in 6 months or sooner for any acute concerns.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_williams_2025_jan.pdf"
+      },
+      "procedures": [
+        {
+          "name": "Pneumococcal Vaccination",
+          "outcome": "Administered successfully"
+        }
+      ]
+    }
+  ]
+}

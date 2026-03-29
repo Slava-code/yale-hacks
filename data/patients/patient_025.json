@@ -1,0 +1,390 @@
+{
+  "id": "patient_025",
+  "name": "Olga Federova",
+  "age": 60,
+  "sex": "female",
+  "mrn": "MRN-71538",
+  "summary": "60-year-old female with a history of progressive polyarthritis, initially managed as osteoarthritis, later diagnosed with seropositive Rheumatoid Arthritis, now also diagnosed with osteoporosis following a fragility fracture.",
+  "tier": "moderate",
+  "storyline": "Olga Federova, a 60-year-old female, initially presented with gradual onset joint pain attributed to osteoarthritis. After progression to multiple joints and systemic symptoms, she was diagnosed with seropositive Rheumatoid Arthritis and started on Methotrexate. During her workup, a fragility fracture led to a diagnosis of Osteoporosis, for which she initiated bisphosphonate therapy. Her case highlights the challenges of differentiating inflammatory from degenerative arthritis and managing co-occurring conditions.",
+  "conditions": [
+    {
+      "name": "Osteoarthritis, bilateral knees",
+      "icd_code": "M17.11",
+      "status": "resolved",
+      "diagnosed_visit": "visit_01",
+      "notes": "Initial diagnosis; symptoms later reattributed to RA."
+    },
+    {
+      "name": "Rheumatoid Arthritis, seropositive",
+      "icd_code": "M05.9",
+      "status": "chronic",
+      "diagnosed_visit": "visit_03",
+      "notes": "Diagnosed based on clinical criteria, positive RF, and anti-CCP."
+    },
+    {
+      "name": "Osteoporosis with current pathological fracture, unspecified site",
+      "icd_code": "M80.00XA",
+      "status": "active",
+      "diagnosed_visit": "visit_05",
+      "notes": "Diagnosed after low-trauma vertebral compression fracture."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Ibuprofen",
+      "dosage": "400mg",
+      "frequency": "as needed",
+      "start_visit": "visit_01",
+      "end_visit": "visit_04",
+      "status": "discontinued",
+      "treats": null,
+      "notes": "Discontinued due to initiation of Methotrexate and need for stronger anti-inflammatory."
+    },
+    {
+      "name": "Methotrexate",
+      "dosage": "15mg",
+      "frequency": "once weekly",
+      "start_visit": "visit_03",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Rheumatoid Arthritis, seropositive",
+      "monitored_by_labs": [
+        "CBC",
+        "Liver Function Panel"
+      ],
+      "notes": "Disease-modifying antirheumatic drug (DMARD)."
+    },
+    {
+      "name": "Folic Acid",
+      "dosage": "1mg",
+      "frequency": "daily",
+      "start_visit": "visit_03",
+      "end_visit": null,
+      "status": "active",
+      "treats": null,
+      "notes": "Supplementation to reduce Methotrexate side effects."
+    },
+    {
+      "name": "Prednisone",
+      "dosage": "10mg",
+      "frequency": "daily, tapering",
+      "start_visit": "visit_03",
+      "end_visit": "visit_05",
+      "status": "discontinued",
+      "treats": "Rheumatoid Arthritis, seropositive",
+      "notes": "Bridging therapy for RA, tapered off."
+    },
+    {
+      "name": "Alendronate",
+      "dosage": "70mg",
+      "frequency": "once weekly",
+      "start_visit": "visit_06",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Osteoporosis with current pathological fracture, unspecified site",
+      "monitored_by_labs": [
+        "Calcium",
+        "Vitamin D"
+      ],
+      "notes": "Bisphosphonate for osteoporosis."
+    }
+  ],
+  "family_history": [
+    {
+      "relation": "mother",
+      "condition": "Rheumatoid Arthritis",
+      "diagnosed_age": 55
+    },
+    {
+      "relation": "sister",
+      "condition": "Osteoporosis",
+      "diagnosed_age": 62
+    }
+  ],
+  "providers": [
+    {
+      "name": "Dr. Elena Petrova",
+      "role": "attending",
+      "department": "Internal Medicine"
+    },
+    {
+      "name": "Dr. Anya Volkov",
+      "role": "specialist",
+      "department": "Rheumatology"
+    },
+    {
+      "name": "Dr. Ivan Sokolov",
+      "role": "specialist",
+      "department": "Endocrinology"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-03-15",
+      "type": "initial",
+      "provider": "Dr. Elena Petrova",
+      "chief_complaint": "Bilateral knee pain, worsening over 6 months",
+      "narrative": "Patient is a 60-year-old female presenting with bilateral knee pain, gradually worsening over the past 6 months. Pain is achy, worse with activity and relieved by rest. Reports occasional stiffness in the morning lasting about 15-20 minutes. No swelling or redness noted. Denies fever or systemic symptoms. Patient attributes pain to 'old age'.\n\nPhysical exam reveals mild crepitus in both knees, with full range of motion but pain on extreme flexion. No warmth or effusion. Initial diagnosis of osteoarthritis. Started ibuprofen 400mg PRN. Recommended physical therapy referral and follow-up in 4 weeks.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_federova_2024_mar.pdf"
+      },
+      "medications_started": [
+        "Ibuprofen"
+      ],
+      "referrals": [
+        {
+          "to": "Dr. Elena Petrova",
+          "reason": "Physical therapy consultation for knee pain."
+        }
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-05-20",
+      "type": "follow-up",
+      "provider": "Dr. Elena Petrova",
+      "chief_complaint": "Persistent knee pain, new hand and wrist stiffness",
+      "narrative": "Patient returns reporting persistent knee pain despite ibuprofen and physical therapy. Now also experiencing new onset stiffness and pain in bilateral hands and wrists, particularly in the mornings, lasting over an hour. Reports general fatigue. No fever or weight changes. Family history notable for mother with RA.\n\nPhysical exam reveals mild tenderness and swelling in bilateral MCPs and wrists. Knees show continued crepitus. Given polyarticular symptoms, prolonged morning stiffness, and family history, concern for inflammatory arthritis. Ordered CBC, ESR, CRP, Rheumatoid Factor (RF), and anti-CCP antibodies. Referral to Rheumatology initiated.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_federova_2024_may.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "within normal limits",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        },
+        {
+          "test": "ESR",
+          "value": "35",
+          "unit": "mm/hr",
+          "range": "0-30",
+          "flag": "high"
+        },
+        {
+          "test": "CRP",
+          "value": "12.5",
+          "unit": "mg/L",
+          "range": "<5.0",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_federova_2024_may.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. Anya Volkov",
+          "reason": "Evaluation of suspected inflammatory polyarthritis, possibly Rheumatoid Arthritis."
+        }
+      ]
+    },
+    {
+      "ref": "visit_03",
+      "date": "2024-06-18",
+      "type": "consult",
+      "provider": "Dr. Anya Volkov",
+      "chief_complaint": "Rheumatology consult for polyarthritis",
+      "narrative": "New patient consultation for polyarticular joint pain. Reviewed PCP notes and labs: ESR 35, CRP 12.5. Additional labs from today show RF positive (150 IU/mL, ref <14), anti-CCP antibodies positive (120 U/mL, ref <20). Patient meets ACR/EULAR criteria for Rheumatoid Arthritis.\n\nDiagnosis: Seropositive Rheumatoid Arthritis. Discussed treatment options. Initiated Methotrexate 15mg weekly, with Folic Acid 1mg daily. Also started Prednisone 10mg daily as bridging therapy, with a plan to taper off gradually as Methotrexate takes effect. Baseline labs for Methotrexate monitoring (CBC, LFTs) ordered. Follow-up in 4 weeks.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_federova_2024_jun.pdf"
+      },
+      "labs": [
+        {
+          "test": "Rheumatoid Factor",
+          "value": "150",
+          "unit": "IU/mL",
+          "range": "<14",
+          "flag": "high"
+        },
+        {
+          "test": "Anti-CCP Antibody",
+          "value": "120",
+          "unit": "U/mL",
+          "range": "<20",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_federova_2024_jun.pdf"
+      },
+      "medications_started": [
+        "Methotrexate",
+        "Folic Acid",
+        "Prednisone"
+      ]
+    },
+    {
+      "ref": "visit_04",
+      "date": "2024-07-16",
+      "type": "follow-up",
+      "provider": "Dr. Anya Volkov",
+      "chief_complaint": "Rheumatoid Arthritis follow-up, Methotrexate tolerance",
+      "narrative": "Patient returns for follow-up on Methotrexate and Prednisone. Reports significant improvement in joint pain and stiffness, morning stiffness now lasting less than 30 minutes. Fatigue also improved. Tolerating Methotrexate well, no significant side effects reported. Prednisone taper initiated, currently at 7.5mg daily.\n\nLabs show stable CBC and LFTs, confirming good tolerance to Methotrexate. ESR and CRP trending down. Ibuprofen discontinued as symptoms are better controlled with current regimen. Advised to continue current medications and taper prednisone as planned. Next visit in 6 weeks.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_federova_2024_jul.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "within normal limits",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        },
+        {
+          "test": "Liver Function Panel",
+          "value": "within normal limits",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        },
+        {
+          "test": "ESR",
+          "value": "20",
+          "unit": "mm/hr",
+          "range": "0-30",
+          "flag": "normal"
+        },
+        {
+          "test": "CRP",
+          "value": "7.2",
+          "unit": "mg/L",
+          "range": "<5.0",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_federova_2024_jul.pdf"
+      },
+      "medications_discontinued": [
+        "Ibuprofen"
+      ]
+    },
+    {
+      "ref": "visit_05",
+      "date": "2024-09-02",
+      "type": "emergency",
+      "provider": "Dr. Elena Petrova",
+      "chief_complaint": "Acute back pain after minor fall",
+      "narrative": "Patient presented to urgent care with acute onset severe lower back pain after a minor fall at home (tripped on rug). Pain is localized to the thoracic-lumbar junction, 8/10, exacerbated by movement. No neurological deficits noted. Currently still on prednisone 2.5mg daily, planning to stop within the week.\n\nPhysical exam reveals significant tenderness over T12-L1 vertebrae. X-ray of thoracic and lumbar spine performed, revealing a new T12 compression fracture. Given patient's age and minor trauma, concern for underlying osteoporosis. Prednisone discontinued. Ordered DEXA scan and referral to Endocrinology. Discharged with pain medication and strict instructions for back precautions.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_federova_2024_sep.pdf"
+      },
+      "procedures": [
+        {
+          "name": "X-ray Thoracic/Lumbar Spine",
+          "outcome": "New T12 compression fracture identified."
+        }
+      ],
+      "medications_discontinued": [
+        "Prednisone"
+      ],
+      "referrals": [
+        {
+          "to": "Dr. Ivan Sokolov",
+          "reason": "Evaluation and management of osteoporosis following fragility fracture."
+        }
+      ]
+    },
+    {
+      "ref": "visit_06",
+      "date": "2024-10-10",
+      "type": "consult",
+      "provider": "Dr. Ivan Sokolov",
+      "chief_complaint": "Endocrinology consult for osteoporosis",
+      "narrative": "New patient endocrinology consultation for osteoporosis following a T12 compression fracture. Patient recently completed a prednisone taper for RA. DEXA scan results reviewed: T-score -2.8 at lumbar spine, -2.6 at femoral neck. Confirmed diagnosis of Osteoporosis.\n\nDiscussed bone health management. Initiated Alendronate 70mg weekly. Recommended Calcium 1200mg daily and Vitamin D3 2000 IU daily. Emphasized importance of fall prevention and good nutrition. Baseline labs for calcium and vitamin D ordered. Follow-up in 3 months to monitor treatment response.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_federova_2024_oct.pdf"
+      },
+      "procedures": [
+        {
+          "name": "DEXA Scan",
+          "outcome": "Osteoporosis confirmed (Lumbar spine T-score -2.8, Femoral neck T-score -2.6)."
+        }
+      ],
+      "labs": [
+        {
+          "test": "Calcium",
+          "value": "9.2",
+          "unit": "mg/dL",
+          "range": "8.5-10.2",
+          "flag": "normal"
+        },
+        {
+          "test": "Vitamin D, 25-OH",
+          "value": "28",
+          "unit": "ng/mL",
+          "range": "30-100",
+          "flag": "low"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_federova_2024_oct.pdf"
+      },
+      "medications_started": [
+        "Alendronate"
+      ]
+    },
+    {
+      "ref": "visit_07",
+      "date": "2025-01-20",
+      "type": "routine",
+      "provider": "Dr. Anya Volkov",
+      "chief_complaint": "Quarterly Rheumatology follow-up, RA and osteoporosis",
+      "narrative": "Routine quarterly follow-up for Rheumatoid Arthritis. Patient reports good control of RA symptoms on Methotrexate and Folic Acid. No new flares. Joint stiffness minimal, fatigue well-managed. Also reports starting Alendronate for osteoporosis and tolerating it well. Back pain from fracture has largely resolved.\n\nExam shows no active synovitis. Review of labs indicates continued stable CBC and LFTs, ESR 15, CRP 4.8. Discussed coordination of care with Dr. Sokolov for osteoporosis management. Continue Methotrexate, Folic Acid. Next rheumatology visit in 3 months. Encourage continued adherence to Alendronate and Calcium/Vitamin D.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_federova_2025_jan.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 7.1, Hgb 13.8, Plt 250",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "normal"
+        },
+        {
+          "test": "Liver Function Panel",
+          "value": "ALT 25, AST 22",
+          "unit": "U/L",
+          "range": "ALT <40, AST <40",
+          "flag": "normal"
+        },
+        {
+          "test": "ESR",
+          "value": "15",
+          "unit": "mm/hr",
+          "range": "0-30",
+          "flag": "normal"
+        },
+        {
+          "test": "CRP",
+          "value": "4.8",
+          "unit": "mg/L",
+          "range": "<5.0",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_federova_2025_jan.pdf"
+      }
+    }
+  ]
+}

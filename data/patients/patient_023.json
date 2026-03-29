@@ -1,0 +1,288 @@
+{
+  "id": "patient_023",
+  "name": "Irene Nakamura",
+  "age": 53,
+  "sex": "female",
+  "mrn": "MRN-51289",
+  "summary": "53-year-old female diagnosed with hypothyroidism and hyperlipidemia, currently managed with levothyroxine and atorvastatin with good clinical control.",
+  "tier": "moderate",
+  "conditions": [
+    {
+      "name": "Hypothyroidism",
+      "icd_code": "E03.9",
+      "status": "chronic",
+      "diagnosed_visit": "visit_02",
+      "notes": "Diagnosed based on elevated TSH levels; well-controlled with levothyroxine."
+    },
+    {
+      "name": "Hyperlipidemia",
+      "icd_code": "E78.5",
+      "status": "chronic",
+      "diagnosed_visit": "visit_03",
+      "notes": "Diagnosed based on elevated total cholesterol and LDL; managed with atorvastatin."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Levothyroxine",
+      "dosage": "50mcg",
+      "frequency": "daily",
+      "start_visit": "visit_02",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Hypothyroidism",
+      "monitored_by_labs": [
+        "TSH"
+      ],
+      "notes": "Initial dose for hypothyroidism."
+    },
+    {
+      "name": "Atorvastatin",
+      "dosage": "20mg",
+      "frequency": "daily",
+      "start_visit": "visit_03",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Hyperlipidemia",
+      "monitored_by_labs": [
+        "Lipid Panel"
+      ],
+      "notes": "Initial dose for hyperlipidemia, later adjusted to 40mg."
+    }
+  ],
+  "family_history": [
+    {
+      "relation": "mother",
+      "condition": "Hypothyroidism",
+      "diagnosed_age": 48
+    },
+    {
+      "relation": "father",
+      "condition": "Hyperlipidemia",
+      "diagnosed_age": 55
+    }
+  ],
+  "providers": [
+    {
+      "name": "Dr. Elena Rodriguez",
+      "role": "attending",
+      "department": "Internal Medicine"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-03-10",
+      "type": "initial",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Fatigue, weight gain, feeling sluggish",
+      "narrative": "Patient presents with a 3-month history of increasing fatigue, unintentional weight gain of 8 lbs, and general feeling of sluggishness. Denies fever, chills, night sweats. Reports mild constipation and dry skin. On review of systems, no other significant complaints. No known chronic medical conditions or regular medications. Family history significant for hypothyroidism in mother.\n\nPhysical exam reveals mild bradycardia (HR 58 bpm), normal BP. Skin appears dry. No goiter palpable. Neurological exam normal. Ordered TSH, CBC, CMP, and Vitamin D levels to investigate symptoms. Will follow up with lab results.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_nakamura_2024_mar.pdf"
+      }
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-03-20",
+      "type": "follow-up",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Lab review, worsening fatigue and cold intolerance",
+      "narrative": "Patient returns for lab review. TSH returned significantly elevated at 8.9 mIU/L (normal range 0.4-4.0). CBC, CMP, and Vitamin D levels were all within normal limits. Patient reports worsening fatigue and new onset of cold intolerance. These symptoms, coupled with elevated TSH, are highly suggestive of primary hypothyroidism.\n\nDiscussed diagnosis and initiated Levothyroxine 50mcg daily. Counseled on medication administration (take on empty stomach, separate from other medications/supplements by 4 hours). Emphasized importance of adherence and follow-up for dose titration. Will recheck TSH in 6 weeks to assess response.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_nakamura_2024_mar.pdf"
+      },
+      "labs": [
+        {
+          "test": "TSH",
+          "value": "8.9",
+          "unit": "mIU/L",
+          "range": "0.4-4.0",
+          "flag": "high"
+        },
+        {
+          "test": "CBC",
+          "value": "WBC 7.1, Hgb 13.5, Plt 280",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "normal"
+        },
+        {
+          "test": "CMP",
+          "value": "within normal limits",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        },
+        {
+          "test": "Vitamin D",
+          "value": "45",
+          "unit": "ng/mL",
+          "range": "30-100",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_nakamura_2024_mar.pdf"
+      },
+      "medications_started": [
+        "Levothyroxine"
+      ]
+    },
+    {
+      "ref": "visit_03",
+      "date": "2024-04-15",
+      "type": "follow-up",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Follow-up on Levothyroxine, new lipid panel results",
+      "narrative": "Patient reports significant improvement in fatigue, cold intolerance, and energy levels since starting Levothyroxine. Weight is stable. Overall feeling much better. A fasting lipid panel was ordered at the last visit to screen for hyperlipidemia given family history (father with hyperlipidemia).\n\nLipid panel results show Total Cholesterol 245 mg/dL (high), LDL 160 mg/dL (high), HDL 55 mg/dL (normal), Triglycerides 130 mg/dL (normal). Based on these results, patient is diagnosed with hyperlipidemia. Discussed lifestyle modifications including diet and exercise. Initiated Atorvastatin 20mg daily for hyperlipidemia management. Counseled on potential side effects and importance of adherence. Will recheck TSH and lipid panel in 3 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_nakamura_2024_apr.pdf"
+      },
+      "labs": [
+        {
+          "test": "Total Cholesterol",
+          "value": "245",
+          "unit": "mg/dL",
+          "range": "<200",
+          "flag": "high"
+        },
+        {
+          "test": "LDL Cholesterol",
+          "value": "160",
+          "unit": "mg/dL",
+          "range": "<100",
+          "flag": "high"
+        },
+        {
+          "test": "HDL Cholesterol",
+          "value": "55",
+          "unit": "mg/dL",
+          "range": ">40",
+          "flag": "normal"
+        },
+        {
+          "test": "Triglycerides",
+          "value": "130",
+          "unit": "mg/dL",
+          "range": "<150",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_nakamura_2024_apr.pdf"
+      },
+      "medications_started": [
+        "Atorvastatin"
+      ]
+    },
+    {
+      "ref": "visit_04",
+      "date": "2024-07-01",
+      "type": "follow-up",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Check TSH and lipid levels, medication review",
+      "narrative": "Patient returns for follow-up on hypothyroidism and hyperlipidemia management. Reports continued improvement in hypothyroid symptoms. No muscle aches or other side effects from atorvastatin. Labs from today show TSH at 2.8 mIU/L (well-controlled). Lipid panel shows Total Cholesterol 210 mg/dL, LDL 125 mg/dL, HDL 58 mg/dL. While improved, LDL is still above target.\n\nIncreased Atorvastatin dosage to 40mg daily to achieve better LDL control. Continued Levothyroxine 50mcg daily. Reinforced diet and exercise recommendations. Scheduled next follow-up in 4 months to re-evaluate lipid profile and TSH.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_nakamura_2024_jul.pdf"
+      },
+      "labs": [
+        {
+          "test": "TSH",
+          "value": "2.8",
+          "unit": "mIU/L",
+          "range": "0.4-4.0",
+          "flag": "normal"
+        },
+        {
+          "test": "Total Cholesterol",
+          "value": "210",
+          "unit": "mg/dL",
+          "range": "<200",
+          "flag": "high"
+        },
+        {
+          "test": "LDL Cholesterol",
+          "value": "125",
+          "unit": "mg/dL",
+          "range": "<100",
+          "flag": "high"
+        },
+        {
+          "test": "HDL Cholesterol",
+          "value": "58",
+          "unit": "mg/dL",
+          "range": ">40",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_nakamura_2024_jul.pdf"
+      }
+    },
+    {
+      "ref": "visit_05",
+      "date": "2024-11-15",
+      "type": "routine",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Routine follow-up for chronic conditions",
+      "narrative": "Patient presents for routine follow-up. Reports feeling well, with no recurrence of hypothyroid symptoms or new concerns related to hyperlipidemia. No side effects from medications. Adherent to both Levothyroxine and Atorvastatin 40mg daily. Continues with regular walking and a balanced diet.\n\nPhysical exam stable. Blood pressure 125/78 mmHg. Heart rate 62 bpm. No new findings. Will defer labs to the annual physical next year, given good clinical control and patient stability. Encouraged continued lifestyle measures and medication adherence. Next appointment scheduled for annual physical.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_nakamura_2024_nov.pdf"
+      }
+    },
+    {
+      "ref": "visit_06",
+      "date": "2025-03-10",
+      "type": "routine",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Annual physical and medication review",
+      "narrative": "Annual physical examination. Patient reports sustained excellent control of her hypothyroidism and hyperlipidemia. No complaints of fatigue, weight fluctuations, or muscle pain. Continues to take both medications as prescribed. Adherence is excellent. Reviewed diet and exercise habits, which remain consistent.\n\nLabs today show TSH 2.1 mIU/L (normal), Total Cholesterol 185 mg/dL (normal), LDL 92 mg/dL (normal), HDL 60 mg/dL (normal). All parameters are now within target ranges. Will continue Levothyroxine 50mcg and Atorvastatin 40mg daily. Encouraged continued regular physical activity and healthy eating. Next annual physical in one year.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_nakamura_2025_mar.pdf"
+      },
+      "labs": [
+        {
+          "test": "TSH",
+          "value": "2.1",
+          "unit": "mIU/L",
+          "range": "0.4-4.0",
+          "flag": "normal"
+        },
+        {
+          "test": "Total Cholesterol",
+          "value": "185",
+          "unit": "mg/dL",
+          "range": "<200",
+          "flag": "normal"
+        },
+        {
+          "test": "LDL Cholesterol",
+          "value": "92",
+          "unit": "mg/dL",
+          "range": "<100",
+          "flag": "normal"
+        },
+        {
+          "test": "HDL Cholesterol",
+          "value": "60",
+          "unit": "mg/dL",
+          "range": ">40",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_nakamura_2025_mar.pdf"
+      }
+    }
+  ]
+}

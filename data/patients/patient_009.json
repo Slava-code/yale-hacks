@@ -1,0 +1,556 @@
+{
+  "id": "patient_009",
+  "name": "Priya Sharma",
+  "age": 38,
+  "sex": "female",
+  "mrn": "MRN-84512",
+  "tier": "complex",
+  "summary": "38-year-old female presenting with acute vision loss and paresthesias, diagnosed with Relapsing-Remitting Multiple Sclerosis after MRI and lumbar puncture, managed with disease-modifying therapies and later addressed for depression.",
+  "storyline": "Priya Sharma initially presented with acute left eye vision loss consistent with optic neuritis, which prompted an ophthalmology referral. Subsequent neurological evaluation, brain MRI, and lumbar puncture confirmed a diagnosis of Relapsing-Remitting Multiple Sclerosis. She began treatment with interferon beta-1a but experienced a relapse with new sensory symptoms, leading to a switch to fingolimod. During this period, she developed significant depressive symptoms, requiring psychiatric intervention and medication. Regular follow-ups with neurology, ophthalmology, and eventually physical therapy, ensure comprehensive management of her MS symptoms and associated complications, including chronic fatigue and neuropathic pain.",
+  "conditions": [
+    {
+      "name": "Multiple Sclerosis, Relapsing-Remitting",
+      "icd_code": "G35",
+      "status": "chronic",
+      "diagnosed_visit": "visit_05",
+      "notes": "Diagnosed after optic neuritis, MRI with demyelinating lesions, and positive CSF oligoclonal bands."
+    },
+    {
+      "name": "Depression, Moderate Single Episode",
+      "icd_code": "F32.1",
+      "status": "active",
+      "diagnosed_visit": "visit_13",
+      "notes": "Developed during chronic illness management; responsive to antidepressant therapy."
+    },
+    {
+      "name": "Vitamin D Deficiency",
+      "icd_code": "E55.9",
+      "status": "resolved",
+      "diagnosed_visit": "visit_07",
+      "notes": "Common in MS patients; supplemented effectively."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Methylprednisolone",
+      "dosage": "1000mg IV",
+      "frequency": "daily for 3 days",
+      "start_visit": "visit_03",
+      "end_visit": "visit_04",
+      "status": "discontinued",
+      "treats": "Multiple Sclerosis, Relapsing-Remitting",
+      "notes": "Initial pulse therapy for optic neuritis."
+    },
+    {
+      "name": "Interferon beta-1a",
+      "dosage": "44mcg",
+      "frequency": "3 times weekly (subcutaneous)",
+      "start_visit": "visit_06",
+      "end_visit": "visit_10",
+      "status": "discontinued",
+      "treats": "Multiple Sclerosis, Relapsing-Remitting",
+      "monitored_by_labs": [
+        "CBC",
+        "LFTs"
+      ],
+      "notes": "Initial disease-modifying therapy; switched due to relapse."
+    },
+    {
+      "name": "Vitamin D3",
+      "dosage": "5000 IU",
+      "frequency": "daily",
+      "start_visit": "visit_07",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Vitamin D Deficiency",
+      "monitored_by_labs": [
+        "Vitamin D"
+      ],
+      "notes": "Supplementation for deficiency."
+    },
+    {
+      "name": "Methylprednisolone",
+      "dosage": "1000mg IV",
+      "frequency": "daily for 3 days",
+      "start_visit": "visit_09",
+      "end_visit": "visit_10",
+      "status": "discontinued",
+      "treats": "Multiple Sclerosis, Relapsing-Remitting",
+      "notes": "Pulse therapy for relapse with new sensory symptoms."
+    },
+    {
+      "name": "Fingolimod",
+      "dosage": "0.5mg",
+      "frequency": "daily",
+      "start_visit": "visit_10",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Multiple Sclerosis, Relapsing-Remitting",
+      "monitored_by_labs": [
+        "CBC",
+        "LFTs"
+      ],
+      "notes": "Second-line disease-modifying therapy after relapse on Interferon."
+    },
+    {
+      "name": "Sertraline",
+      "dosage": "50mg",
+      "frequency": "daily",
+      "start_visit": "visit_13",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Depression, Moderate Single Episode",
+      "notes": "SSRI initiated for depressive symptoms."
+    },
+    {
+      "name": "Gabapentin",
+      "dosage": "300mg",
+      "frequency": "twice daily",
+      "start_visit": "visit_14",
+      "end_visit": null,
+      "status": "active",
+      "treats": "Multiple Sclerosis, Relapsing-Remitting",
+      "notes": "For neuropathic pain."
+    }
+  ],
+  "family_history": [
+    {
+      "relation": "maternal aunt",
+      "condition": "Multiple Sclerosis",
+      "diagnosed_age": 45
+    },
+    {
+      "relation": "father",
+      "condition": "Hypertension",
+      "diagnosed_age": 50
+    }
+  ],
+  "providers": [
+    {
+      "name": "Dr. Neha Patel",
+      "role": "attending",
+      "department": "Internal Medicine"
+    },
+    {
+      "name": "Dr. Alex Lee",
+      "role": "specialist",
+      "department": "Ophthalmology"
+    },
+    {
+      "name": "Dr. Samuel Kim",
+      "role": "specialist",
+      "department": "Neurology"
+    },
+    {
+      "name": "Dr. Elena Rodriguez",
+      "role": "specialist",
+      "department": "Psychiatry"
+    },
+    {
+      "name": "Ms. Jessica Green",
+      "role": "therapist",
+      "department": "Physical Therapy"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-03-10",
+      "type": "initial",
+      "provider": "Dr. Neha Patel",
+      "chief_complaint": "Acute vision loss in left eye",
+      "narrative": "Patient presents with sudden onset of blurred vision and pain with eye movement in her left eye for the past 2 days. Reports vision is significantly dimmed, like looking through a fog. No history of similar episodes or known neurological conditions. Denies fever, headache, or recent trauma. Otherwise healthy, no other focal neurological symptoms. \n\nVisual acuity tested: Right eye 20/20, Left eye 20/80. Funduscopic exam shows mild optic disc edema in the left eye. Pupils equal and reactive to light, but relative afferent pupillary defect noted in the left eye. Urgent referral to ophthalmology made for suspected optic neuritis.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_sharma_2024_mar.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. Alex Lee",
+          "reason": "Acute left eye vision loss, suspected optic neuritis"
+        }
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-03-15",
+      "type": "consult",
+      "provider": "Dr. Alex Lee",
+      "chief_complaint": "Ophthalmology consult for optic neuritis",
+      "narrative": "Patient seen in ophthalmology for acute left eye vision loss. Confirmed findings of optic neuritis: decreased visual acuity (20/80 left eye), dyschromatopsia, and left relative afferent pupillary defect. Full neurological exam performed, revealing no other cranial nerve palsies or motor deficits at this time. \n\nGiven the presentation, MS-related optic neuritis is a strong consideration. Discussed the need for urgent neurological evaluation, brain MRI, and potential lumbar puncture. Initiated high-dose IV methylprednisolone for 3 days to hasten visual recovery. Referred to neurology for further workup.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_sharma_2024_mar.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. Samuel Kim",
+          "reason": "Suspected MS-related optic neuritis; neurological workup"
+        }
+      ]
+    },
+    {
+      "ref": "visit_03",
+      "date": "2024-03-22",
+      "type": "consult",
+      "provider": "Dr. Samuel Kim",
+      "chief_complaint": "Neurology consult for suspected MS",
+      "narrative": "New patient consultation for suspected Multiple Sclerosis, referred after diagnosis of optic neuritis. Patient reports mild improvement in left eye vision after IV steroids but still significantly impaired. Denies any previous episodes of neurological symptoms, though upon closer questioning, recalls transient numbness in her left arm 2 years ago that resolved spontaneously.\n\nNeurological exam shows residual left relative afferent pupillary defect. No other focal motor or sensory deficits. Deep tendon reflexes are 2+ symmetrical. Plantar responses flexor. Ordered urgent MRI of the brain and cervical/thoracic spine with and without contrast to evaluate for demyelinating lesions. Also ordered extensive labs, including inflammatory markers, Vitamin B12, and ANA, to rule out mimics. Started a 3-day course of high-dose IV methylprednisolone pulse therapy again, as vision had not fully recovered.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_sharma_2024_mar_2.pdf"
+      },
+      "medications_started": [
+        "Methylprednisolone"
+      ]
+    },
+    {
+      "ref": "visit_04",
+      "date": "2024-04-05",
+      "type": "follow-up",
+      "provider": "Dr. Samuel Kim",
+      "chief_complaint": "MRI review and further workup for MS",
+      "narrative": "Patient returns for review of MRI findings. Brain MRI reveals multiple T2 hyperintense lesions in periventricular, juxtacortical, and infratentorial regions, some of which demonstrate contrast enhancement, indicative of active demyelination. Spinal cord MRI shows a non-enhancing T2 lesion in the cervical spine. These findings are highly suggestive of Multiple Sclerosis.\n\nLabs (CBC, CMP, B12, ANA, ESR, CRP) were all within normal limits, ruling out other inflammatory or autoimmune conditions. Left eye vision has significantly improved after steroid course, now 20/30. Discussed plans for a lumbar puncture to assess cerebrospinal fluid for oligoclonal bands. Patient counseled on the high likelihood of MS diagnosis.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_sharma_2024_apr.pdf"
+      },
+      "procedures": [
+        {
+          "name": "MRI Brain with & without contrast",
+          "outcome": "Multiple T2 hyperintense demyelinating lesions, some enhancing"
+        },
+        {
+          "name": "MRI Cervical/Thoracic Spine with & without contrast",
+          "outcome": "One non-enhancing T2 lesion in cervical spine"
+        }
+      ],
+      "imaging_document": {
+        "type": "imaging_report",
+        "filename": "imaging_report_sharma_2024_apr.pdf"
+      },
+      "medications_discontinued": [
+        "Methylprednisolone"
+      ]
+    },
+    {
+      "ref": "visit_05",
+      "date": "2024-04-19",
+      "type": "follow-up",
+      "provider": "Dr. Samuel Kim",
+      "chief_complaint": "Lumbar puncture results, MS diagnosis and DMT discussion",
+      "narrative": "Patient returns for lumbar puncture results and discussion of definitive diagnosis. CSF analysis reveals 5 oligoclonal bands present in CSF but not in serum, confirming intrathecal IgG synthesis. Combined with clinical presentation (optic neuritis) and MRI findings (dissemination in space and time), a definitive diagnosis of Relapsing-Remitting Multiple Sclerosis (RRMS) is established.\n\nThorough discussion regarding disease-modifying therapies (DMTs) for RRMS. Patient has several questions regarding side effects and administration. Decided to start with Interferon beta-1a (Avonex) as a first-line injectable DMT. Patient to undergo training for self-injection and will follow up in 2 weeks to initiate treatment.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_sharma_2024_apr_2.pdf"
+      },
+      "procedures": [
+        {
+          "name": "Lumbar Puncture",
+          "outcome": "CSF positive for oligoclonal bands"
+        }
+      ],
+      "labs": [
+        {
+          "test": "CSF Oligoclonal Bands",
+          "value": "Positive (5 bands in CSF, none in serum)",
+          "unit": "qualitative",
+          "range": "Negative",
+          "flag": "high"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_sharma_2024_apr.pdf"
+      }
+    },
+    {
+      "ref": "visit_06",
+      "date": "2024-05-03",
+      "type": "follow-up",
+      "provider": "Dr. Samuel Kim",
+      "chief_complaint": "Initiation of Interferon beta-1a",
+      "narrative": "Patient returns for initiation of Interferon beta-1a. Self-injection training provided by nurse educator. Patient demonstrated competence with injection technique. Discussed common side effects including flu-like symptoms, injection site reactions, and potential liver enzyme elevation. \n\nPrescription for Interferon beta-1a (Avonex) 44mcg intramuscularly once weekly provided. Baseline labs (CBC, LFTs) ordered to monitor for adverse effects. Patient instructed to report any severe side effects or new neurological symptoms promptly. Follow-up in 3 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_sharma_2024_may.pdf"
+      },
+      "medications_started": [
+        "Interferon beta-1a"
+      ]
+    },
+    {
+      "ref": "visit_07",
+      "date": "2024-06-10",
+      "type": "routine",
+      "provider": "Dr. Neha Patel",
+      "chief_complaint": "Routine check-up, fatigue management",
+      "narrative": "Patient seen for routine check-up and discussion of ongoing fatigue, which she attributes partially to the interferon. Reports flu-like symptoms after injections have lessened but still present. Continues Vitamin D screening due to increased risk in MS patients. \n\nLabs reveal Vitamin D level of 22 ng/mL (deficient). Other routine labs within normal limits. Started Vitamin D3 5000 IU daily supplementation. Encouraged to maintain a healthy lifestyle and discuss fatigue management strategies with her neurologist. Follow up in 3 months or as needed.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_sharma_2024_jun.pdf"
+      },
+      "labs": [
+        {
+          "test": "Vitamin D, 25-hydroxy",
+          "value": "22",
+          "unit": "ng/mL",
+          "range": "30-100",
+          "flag": "low"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_sharma_2024_jun.pdf"
+      },
+      "medications_started": [
+        "Vitamin D3"
+      ]
+    },
+    {
+      "ref": "visit_08",
+      "date": "2024-07-08",
+      "type": "follow-up",
+      "provider": "Dr. Samuel Kim",
+      "chief_complaint": "3-month neurology follow-up on Interferon",
+      "narrative": "Patient returns for 3-month follow-up after initiating Interferon beta-1a. Reports generally tolerating the medication; flu-like symptoms are now milder and less frequent. No new neurological symptoms or relapses reported. Continues to experience mild fatigue but states it is manageable.\n\nNeurological exam stable. Labs (CBC, LFTs) show no significant abnormalities related to interferon. Patient's Vitamin D levels were noted as low at last PCP visit, and supplementation was started. Reinforced importance of adherence to DMT and lifestyle modifications. Next routine follow-up in 6 months, or sooner if new symptoms develop.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_sharma_2024_jul.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 7.1, Hgb 13.8, Plt 250",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "normal"
+        },
+        {
+          "test": "ALT",
+          "value": "25",
+          "unit": "U/L",
+          "range": "7-56",
+          "flag": "normal"
+        },
+        {
+          "test": "AST",
+          "value": "20",
+          "unit": "U/L",
+          "range": "10-40",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_sharma_2024_jul.pdf"
+      }
+    },
+    {
+      "ref": "visit_09",
+      "date": "2024-09-01",
+      "type": "emergency",
+      "provider": "Dr. Samuel Kim",
+      "chief_complaint": "New onset numbness and tingling in legs",
+      "narrative": "Patient calls urgently reporting new onset of progressive numbness and tingling sensations in both legs, extending from her feet to her knees, over the past 3 days. Also notes difficulty with balance. Denies fever, weakness, or bladder dysfunction. This is a clear relapse of MS symptoms.\n\nOn neurological exam, decreased sensation to light touch and pinprick in bilateral lower extremities in a stocking-glove distribution. Romberg sign positive, gait mildly ataxic. Urgent MRI of the brain and spine with contrast ordered to assess for new lesions. Initiated 3-day course of high-dose IV methylprednisolone pulse therapy for the acute relapse.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_sharma_2024_sep.pdf"
+      },
+      "medications_started": [
+        "Methylprednisolone"
+      ]
+    },
+    {
+      "ref": "visit_10",
+      "date": "2024-09-15",
+      "type": "follow-up",
+      "provider": "Dr. Samuel Kim",
+      "chief_complaint": "MRI results after relapse, DMT switch",
+      "narrative": "Patient returns after completing steroid course for relapse. Numbness and tingling have partially improved, but residual symptoms persist. MRI brain with contrast shows 3 new gadolinium-enhancing lesions, indicating active disease despite Interferon beta-1a. This represents a treatment failure.\n\nDiscussed switching to a more potent disease-modifying therapy. After reviewing options, patient opted for Fingolimod (Gilenya), an oral DMT, due to efficacy and convenience. Counseled on baseline requirements (ECG, eye exam, varicella zoster serology) and first-dose monitoring. Interferon beta-1a discontinued. Started Fingolimod after completing required screening.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_sharma_2024_sep_2.pdf"
+      },
+      "procedures": [
+        {
+          "name": "MRI Brain with contrast (follow-up)",
+          "outcome": "3 new gadolinium-enhancing lesions"
+        }
+      ],
+      "imaging_document": {
+        "type": "imaging_report",
+        "filename": "imaging_report_sharma_2024_sep.pdf"
+      },
+      "medications_discontinued": [
+        "Interferon beta-1a",
+        "Methylprednisolone"
+      ],
+      "medications_started": [
+        "Fingolimod"
+      ]
+    },
+    {
+      "ref": "visit_11",
+      "date": "2024-09-22",
+      "type": "follow-up",
+      "provider": "Dr. Samuel Kim",
+      "chief_complaint": "Fingolimod baseline workup and first-dose observation",
+      "narrative": "Patient underwent baseline workup for Fingolimod initiation: ECG showed normal sinus rhythm, VZV IgG serology was positive (immune to chickenpox). Baseline ophthalmology exam for macular edema screening was normal. First dose of Fingolimod 0.5mg administered under observation in the clinic.\n\nPatient tolerated the first dose well, with no bradycardia or other adverse events during the 6-hour monitoring period. Instructed on daily oral administration and potential side effects. Regular monitoring of CBC and LFTs will be performed. Scheduled next follow-up in 3 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_sharma_2024_sep_3.pdf"
+      },
+      "procedures": [
+        {
+          "name": "ECG",
+          "outcome": "Normal sinus rhythm"
+        },
+        {
+          "name": "First-dose Fingolimod observation",
+          "outcome": "Tolerated well, no acute adverse events"
+        }
+      ],
+      "referrals": [
+        {
+          "to": "Dr. Alex Lee",
+          "reason": "Baseline ophthalmologic exam for Fingolimod"
+        }
+      ]
+    },
+    {
+      "ref": "visit_12",
+      "date": "2024-10-10",
+      "type": "follow-up",
+      "provider": "Dr. Neha Patel",
+      "chief_complaint": "Low mood and anhedonia",
+      "narrative": "Patient presents reporting persistent low mood, loss of interest in activities she used to enjoy (anhedonia), and difficulty sleeping for the past 4-6 weeks. States she feels overwhelmed by her MS diagnosis and recent relapse. Denies suicidal ideation but expresses feelings of hopelessness. \n\nScreening questionnaire (PHQ-9) score is 18, indicative of moderate to severe depression. Discussed initiating antidepressant therapy and referral to psychiatry for comprehensive mental health assessment. Provided resources for support groups for chronic illness. Scheduled psychiatry consult.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_sharma_2024_oct.pdf"
+      },
+      "referrals": [
+        {
+          "to": "Dr. Elena Rodriguez",
+          "reason": "Evaluation and management of depressive symptoms (PHQ-9 score 18)"
+        }
+      ]
+    },
+    {
+      "ref": "visit_13",
+      "date": "2024-10-25",
+      "type": "consult",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Psychiatry consult for depression",
+      "narrative": "New patient psychiatry consultation for evaluation of depressive symptoms. Patient openly discusses feelings of sadness, anhedonia, fatigue, and difficulty concentrating following her MS diagnosis and recent relapse. Symptoms have significantly impacted her quality of life and ability to cope with her chronic condition. \n\nMental status exam consistent with moderate depressive episode. Diagnosis of Moderate Single Episode Depression (F32.1) made. Initiated Sertraline 50mg daily. Patient educated on medication expectations and potential side effects. Scheduled follow-up in 4 weeks to assess response and titrate dosage if necessary. Also discussed potential for psychotherapy.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_sharma_2024_oct.pdf"
+      },
+      "medications_started": [
+        "Sertraline"
+      ]
+    },
+    {
+      "ref": "visit_14",
+      "date": "2024-11-15",
+      "type": "follow-up",
+      "provider": "Dr. Samuel Kim",
+      "chief_complaint": "3-month neurology follow-up on Fingolimod, new neuropathic pain",
+      "narrative": "Patient returns for 3-month follow-up after switching to Fingolimod. Reports no new relapses or worsening of previous symptoms. Vision remains stable. However, new complaint of persistent burning and tingling sensations in her feet, consistent with neuropathic pain. \n\nNeurological exam shows improved sensation in lower extremities compared to relapse, but still some residual sensory deficits. Pain rated 4/10. Initiated Gabapentin 300mg twice daily for neuropathic pain. Discussed referral to physical therapy for gait and balance assessment, given her history of leg weakness and balance issues during the last relapse. Continue Fingolimod. Next follow-up in 3 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_sharma_2024_nov.pdf"
+      },
+      "medications_started": [
+        "Gabapentin"
+      ],
+      "referrals": [
+        {
+          "to": "Ms. Jessica Green",
+          "reason": "Gait and balance assessment, management of MS-related motor symptoms"
+        }
+      ]
+    },
+    {
+      "ref": "visit_15",
+      "date": "2024-12-01",
+      "type": "consult",
+      "provider": "Ms. Jessica Green",
+      "chief_complaint": "Physical therapy consult for gait and balance",
+      "narrative": "Patient seen for initial physical therapy evaluation. Reports mild residual numbness in feet and occasional balance issues, especially on uneven surfaces. Goal is to improve gait stability and reduce fall risk. \n\nAssessment reveals mild impairment in tandem gait and single-leg stance. Strength 4+/5 in bilateral lower extremities. No significant spasticity. Initiated a personalized exercise program focusing on core strengthening, balance exercises (e.g., tai chi, wobble board), and gait training with visual cues. Patient to perform exercises at home daily. Scheduled follow-up sessions weekly for 6 weeks.",
+      "document": {
+        "type": "consult_note",
+        "filename": "consult_note_sharma_2024_dec.pdf"
+      },
+      "procedures": [
+        {
+          "name": "Gait analysis",
+          "outcome": "Mildly unsteady, decreased proprioception"
+        },
+        {
+          "name": "Balance assessment",
+          "outcome": "Impaired on uneven surfaces, positive Romberg"
+        }
+      ]
+    },
+    {
+      "ref": "visit_16",
+      "date": "2024-12-15",
+      "type": "follow-up",
+      "provider": "Dr. Elena Rodriguez",
+      "chief_complaint": "Psychiatry follow-up \u2014 Sertraline response",
+      "narrative": "Patient returns for follow-up on Sertraline. Reports significant improvement in mood, energy levels, and overall interest in life. States she feels more able to cope with her chronic illness. Sleep has improved. Denies side effects from medication. PHQ-9 score is now 6, indicating mild depression. \n\nContinue Sertraline 50mg daily. Encouraged to continue physical therapy and self-care strategies. Discussed the option of increasing the dose if symptoms worsen, but for now, stable on current regimen. Next follow-up in 3 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_sharma_2024_dec.pdf"
+      }
+    },
+    {
+      "ref": "visit_17",
+      "date": "2025-01-20",
+      "type": "routine",
+      "provider": "Dr. Samuel Kim",
+      "chief_complaint": "Annual neurology check-up, MS disease stability",
+      "narrative": "Annual neurology check-up. Patient reports stable condition on Fingolimod and Gabapentin. No new relapses or worsening of existing symptoms. Mood is much improved with Sertraline. Continues with physical therapy exercises at home. \n\nNeurological exam is stable with no new deficits. Labs (CBC, LFTs) are within normal limits. Vitamin D levels are now within normal range at 35 ng/mL. Discussed upcoming annual brain MRI for disease surveillance. Reinforced medication adherence and healthy lifestyle. Next routine follow-up in 6 months.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_sharma_2025_jan.pdf"
+      },
+      "labs": [
+        {
+          "test": "CBC",
+          "value": "WBC 7.8, Hgb 14.0, Plt 260",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "normal"
+        },
+        {
+          "test": "ALT",
+          "value": "22",
+          "unit": "U/L",
+          "range": "7-56",
+          "flag": "normal"
+        },
+        {
+          "test": "AST",
+          "value": "18",
+          "unit": "U/L",
+          "range": "10-40",
+          "flag": "normal"
+        },
+        {
+          "test": "Vitamin D, 25-hydroxy",
+          "value": "35",
+          "unit": "ng/mL",
+          "range": "30-100",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_sharma_2025_jan.pdf"
+      }
+    }
+  ]
+}

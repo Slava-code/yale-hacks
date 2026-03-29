@@ -1,0 +1,130 @@
+{
+  "id": "patient_033",
+  "name": "Amara Diallo",
+  "age": 25,
+  "sex": "female",
+  "mrn": "MRN-45789",
+  "summary": "25-year-old female presenting with acute onset of nausea, vomiting, and diarrhea, diagnosed with acute gastroenteritis and managed with symptomatic care and hydration.",
+  "tier": "simple",
+  "conditions": [
+    {
+      "name": "Acute Gastroenteritis",
+      "icd_code": "K52.9",
+      "status": "resolved",
+      "diagnosed_visit": "visit_01",
+      "notes": "Presumed viral etiology, managed symptomatically."
+    }
+  ],
+  "medications": [
+    {
+      "name": "Ondansetron",
+      "dosage": "4mg",
+      "frequency": "as needed",
+      "start_visit": "visit_01",
+      "end_visit": "visit_02",
+      "status": "discontinued",
+      "treats": null,
+      "notes": "For nausea and vomiting relief."
+    }
+  ],
+  "providers": [
+    {
+      "name": "Dr. Emily White",
+      "role": "attending",
+      "department": "Internal Medicine"
+    }
+  ],
+  "visits": [
+    {
+      "ref": "visit_01",
+      "date": "2024-09-05",
+      "type": "initial",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Acute onset of severe nausea, vomiting, and diarrhea",
+      "narrative": "Patient presents to clinic reporting sudden onset of severe nausea, multiple episodes of non-bloody vomiting, and watery diarrhea starting approximately 12 hours ago. Denies fever, chills, or recent travel. Reports decreased oral intake due to nausea. Physical examination reveals dry mucous membranes and mild orthostatic changes, indicative of mild dehydration. Abdomen is soft, non-tender, with hyperactive bowel sounds. Diagnosed with acute gastroenteritis.\n\nAdvised on oral rehydration therapy. Prescribed ondansetron 4mg orally as needed for nausea. Labs ordered to assess hydration status and rule out electrolyte abnormalities. Follow-up scheduled in 3 days for symptom re-evaluation and lab review.",
+      "document": {
+        "type": "intake_form",
+        "filename": "intake_form_diallo_2024_sep.pdf"
+      },
+      "labs": [
+        {
+          "test": "Sodium",
+          "value": "132",
+          "unit": "mmol/L",
+          "range": "135-145",
+          "flag": "low"
+        },
+        {
+          "test": "Potassium",
+          "value": "3.4",
+          "unit": "mmol/L",
+          "range": "3.5-5.0",
+          "flag": "low"
+        },
+        {
+          "test": "Creatinine",
+          "value": "1.1",
+          "unit": "mg/dL",
+          "range": "0.6-1.0",
+          "flag": "high"
+        },
+        {
+          "test": "WBC",
+          "value": "9.5",
+          "unit": "x10^9/L",
+          "range": "4.5-11.0",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_diallo_2024_sep.pdf"
+      },
+      "medications_started": [
+        "Ondansetron"
+      ]
+    },
+    {
+      "ref": "visit_02",
+      "date": "2024-09-08",
+      "type": "follow-up",
+      "provider": "Dr. Emily White",
+      "chief_complaint": "Follow-up on gastroenteritis, lab review",
+      "narrative": "Patient returns for follow-up regarding acute gastroenteritis symptoms. Reports significant improvement: no vomiting or diarrhea in the last 24 hours, nausea has resolved. Tolerating oral fluids and a bland diet well. States she used ondansetron twice on the first day, but no longer needs it. Physical exam shows improved hydration, moist mucous membranes, and stable vital signs. Abdomen remains soft, non-tender, with normoactive bowel sounds.\n\nLab results reviewed: Sodium and Potassium have normalized, Creatinine also returned to baseline. Advised to gradually reintroduce normal diet, continue good hand hygiene. Ondansetron discontinued as symptoms have fully resolved. Patient educated on potential for recurrence and when to seek medical attention.",
+      "document": {
+        "type": "progress_note",
+        "filename": "progress_note_diallo_2024_sep.pdf"
+      },
+      "labs": [
+        {
+          "test": "Sodium",
+          "value": "138",
+          "unit": "mmol/L",
+          "range": "135-145",
+          "flag": "normal"
+        },
+        {
+          "test": "Potassium",
+          "value": "4.1",
+          "unit": "mmol/L",
+          "range": "3.5-5.0",
+          "flag": "normal"
+        },
+        {
+          "test": "Creatinine",
+          "value": "0.8",
+          "unit": "mg/dL",
+          "range": "0.6-1.0",
+          "flag": "normal"
+        }
+      ],
+      "labs_document": {
+        "type": "lab_report",
+        "filename": "lab_report_diallo_2024_sep_2.pdf"
+      },
+      "medications_discontinued": [
+        "Ondansetron"
+      ]
+    }
+  ]
+}
