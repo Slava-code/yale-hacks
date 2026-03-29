@@ -12,7 +12,6 @@ function PdfViewer({ pdfPath, initialPage, citation, onClose }) {
   const [numPages, setNumPages] = useState(null)
   const [pageNumber, setPageNumber] = useState(initialPage || 1)
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
   const [isStubMode, setIsStubMode] = useState(false)
   const [retryCount, setRetryCount] = useState(0)
   const [isExiting, setIsExiting] = useState(false)
@@ -41,13 +40,15 @@ function PdfViewer({ pdfPath, initialPage, citation, onClose }) {
     // Only show stub mode if the server returned a non-PDF response (stub server)
     if (msg.includes('Invalid PDF') || msg.includes('unexpected response')) {
       setIsStubMode(true)
-      setError(null)
+      setLoading(false)
     } else {
-      // Real error (network, worker, etc.) — show error, not stub placeholder
-      setIsStubMode(false)
-      setError('Failed to load PDF. Click to retry.')
+      // Real error — auto-retry once, keep showing loading skeleton
+      setRetryCount(c => {
+        if (c < 1) return c + 1  // triggers Document remount via key={retryCount}
+        setLoading(false)  // give up after 1 retry, stay on skeleton
+        return c
+      })
     }
-    setLoading(false)
   }, [])
 
   // Page navigation with transition animation
@@ -179,7 +180,7 @@ function PdfViewer({ pdfPath, initialPage, citation, onClose }) {
 
       {/* PDF Content */}
       <div className={`pdf-content ${pageTransition ? 'page-transitioning' : ''}`}>
-        {loading && !isStubMode && (
+        {(loading || (!numPages && !isStubMode)) && (
           <div className="pdf-loading">
             <div className="pdf-loading-skeleton">
               <div className="skeleton-header"></div>
@@ -189,13 +190,6 @@ function PdfViewer({ pdfPath, initialPage, citation, onClose }) {
               <div className="skeleton-line medium"></div>
               <div className="skeleton-line"></div>
             </div>
-          </div>
-        )}
-
-        {error && !isStubMode && (
-          <div className="pdf-error" onClick={() => { setError(null); setLoading(true); setRetryCount(c => c + 1) }} style={{ cursor: 'pointer' }}>
-            <span className="pdf-error-icon">⚠</span>
-            <span>{error}</span>
           </div>
         )}
 
