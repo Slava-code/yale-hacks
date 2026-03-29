@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, useCallback } from 'react'
 import ForceGraph3D from '3d-force-graph'
 import * as THREE from 'three'
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
+import * as d3 from 'd3-force-3d'
 import './GraphPanel.css'
 
 function GraphPanel({ traversalData, sseEvents, onOpenPdf }) {
@@ -65,8 +66,8 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf }) {
     // Color palette - Clinical Noir theme with Stripe-inspired refinement
     const monoColor = '#4A6B8A'  // Muted clinical blue (based on --node-patient)
     const monoColorHover = '#5A8AB5'  // Subtle lift on hover
-    const traversedColor = '#4A90D9'  // Node patient blue from design system
-    const pulseColor = '#6BA3E0'  // Lighter pulse blue
+    const traversedColor = '#14b8a6'  // Accent teal green (matches loading state)
+    const pulseColor = '#2dd4bf'  // Lighter teal for pulse
 
     // Create the 3D force graph with modern, clean aesthetic
     const graph = ForceGraph3D()(container)
@@ -88,20 +89,21 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf }) {
         const geometry = new THREE.SphereGeometry(node.size * 0.7, 24, 24)
 
         // Determine color based on state (traversal uses subtle blue tones)
+        // Traversed nodes are 20% brighter
         let nodeColor, nodeOpacity, emissiveIntensity
         if (isPulsing) {
           nodeColor = pulseColor
-          nodeOpacity = 0.68
-          emissiveIntensity = 0.45
+          nodeOpacity = 0.82
+          emissiveIntensity = 0.54
         } else if (isFading) {
           // Buffer state - intermediate between pulse and settled
           nodeColor = traversedColor
-          nodeOpacity = 0.6
-          emissiveIntensity = 0.3
+          nodeOpacity = 0.72
+          emissiveIntensity = 0.36
         } else if (isTraversed) {
           nodeColor = isHighlighted ? pulseColor : traversedColor
-          nodeOpacity = isHighlighted ? 0.6 : 0.53
-          emissiveIntensity = isHighlighted ? 0.34 : 0.19
+          nodeOpacity = isHighlighted ? 0.72 : 0.64
+          emissiveIntensity = isHighlighted ? 0.41 : 0.23
         } else if (isHighlighted) {
           nodeColor = monoColorHover
           nodeOpacity = 0.75
@@ -130,7 +132,7 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf }) {
           const glowOpacity = isPulsing ? 0.2 : (isFading ? 0.15 : 0.1)
           const glowGeometry = new THREE.SphereGeometry(node.size * glowSize, 16, 16)
           const glowMaterial = new THREE.MeshBasicMaterial({
-            color: new THREE.Color(isPulsing || isFading ? pulseColor : monoColorHover),
+            color: new THREE.Color(isPulsing || isFading ? traversedColor : monoColorHover),
             transparent: true,
             opacity: glowOpacity,
           })
@@ -149,7 +151,7 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf }) {
         const reverseKey = `${targetId}->${sourceId}`
 
         if (traversedEdgesRef.current.has(edgeKey) || traversedEdgesRef.current.has(reverseKey)) {
-          return 'rgba(74, 144, 217, 0.5)'  // Clinical blue for traversed edges
+          return 'rgba(20, 184, 166, 0.5)'  // Accent teal green for traversed edges
         }
         return 'rgba(74, 107, 138, 0.4)'  // Muted clinical blue
       })
@@ -203,11 +205,114 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf }) {
     directionalLight.position.set(100, 100, 100)
     scene.add(directionalLight)
 
+    // Configure forces for hierarchical galaxy-sphere layout
+    // High-connectivity nodes (suns) at center of mini-clusters
+    // Mini-clusters connected via shared nodes, all within a sphere
+    const nodeCount = graphData.nodes.length
+    const baseRadius = Math.max(300, Math.cbrt(nodeCount) * 60)
+
+    // Calculate node degrees (connectivity) for hierarchical positioning
+    const nodeDegree = {}
+    graphData.nodes.forEach(n => nodeDegree[n.id] = 0)
+    graphData.links.forEach(link => {
+      const sourceId = typeof link.source === 'object' ? link.source.id : link.source
+      const targetId = typeof link.target === 'object' ? link.target.id : link.target
+      nodeDegree[sourceId] = (nodeDegree[sourceId] || 0) + 1
+      nodeDegree[targetId] = (nodeDegree[targetId] || 0) + 1
+    })
+    const maxDegree = Math.max(...Object.values(nodeDegree), 1)
+
+    // Radial force - high-degree nodes (suns) closer to center, satellites at edges
+    // 15% more dense toward center
+    graph.d3Force('radial', d3.forceRadial(
+      node => {
+        const degree = nodeDegree[node.id] || 0
+        const normalizedDegree = degree / maxDegree
+        // High degree = closer to center, low degree = toward edge
+        // Reduced by 15% to pull everything closer to center
+        return baseRadius * 0.85 * (0.25 + 0.6 * (1 - normalizedDegree))
+      },
+      0, 0, 0
+    ).strength(0.45))
+
+    // Center force - keeps the galaxy centered
+    graph.d3Force('center', d3.forceCenter(0, 0, 0))
+
+    // Charge force - moderate repulsion, evenly spaces clusters
+    graph.d3Force('charge', d3.forceManyBody()
+      .strength(node => {
+        const degree = nodeDegree[node.id] || 0
+        // High-degree nodes repel more (they're suns, need space for satellites)
+        return -60 - (degree * 3)
+      })
+      .distanceMin(15)
+      .distanceMax(baseRadius * 2)
+    )
+
+    // Link force - creates spherical mini-clusters around suns
+    graph.d3Force('link')
+      .distance(link => {
+        const sourceId = typeof link.source === 'object' ? link.source.id : link.source
+        const targetId = typeof link.target === 'object' ? link.target.id : link.target
+        const sourceDegree = nodeDegree[sourceId] || 1
+        const targetDegree = nodeDegree[targetId] || 1
+        const maxLinkDegree = Math.max(sourceDegree, targetDegree)
+        // Consistent orbital distance based on sun's size - creates spherical shells
+        return 25 + (maxLinkDegree * 2)
+      })
+      .strength(link => {
+        const sourceId = typeof link.source === 'object' ? link.source.id : link.source
+        const targetId = typeof link.target === 'object' ? link.target.id : link.target
+        const sourceDegree = nodeDegree[sourceId] || 1
+        const targetDegree = nodeDegree[targetId] || 1
+        // Strong pull to keep satellites in tight spherical orbit
+        return 0.9
+      })
+
+    // Collision force - spherical spacing within clusters
+    graph.d3Force('collision', d3.forceCollide()
+      .radius(node => {
+        const degree = nodeDegree[node.id] || 0
+        // Suns get more space, satellites pack evenly around them
+        return node.size * (1.8 + degree * 0.15)
+      })
+      .strength(1)
+      .iterations(3)
+    )
+
+    // Add cluster cohesion - satellites attract each other slightly (forms spherical shell)
+    graph.d3Force('cluster', d3.forceManyBody()
+      .strength(node => {
+        const degree = nodeDegree[node.id] || 0
+        // Low-degree nodes (satellites) attract each other gently
+        // High-degree nodes (suns) don't attract - they repel via charge
+        return degree < 3 ? 5 : 0
+      })
+      .distanceMin(10)
+      .distanceMax(60)
+    )
+
+    // Simulation tuning for stability
+    graph.d3AlphaDecay(0.02)  // Slower decay for better settling
+    graph.d3VelocityDecay(0.3)  // Moderate damping
+    graph.warmupTicks(100)  // Pre-compute initial layout
+    graph.cooldownTicks(200)  // Allow time to settle
+
     // Set graph data
     graph.graphData(graphData)
 
     // Store reference
     graphRef.current = graph
+
+    // Set initial camera position to view the full galaxy-sphere
+    const cameraDistance = baseRadius * 3
+    setTimeout(() => {
+      graph.cameraPosition(
+        { x: cameraDistance * 0.7, y: cameraDistance * 0.5, z: cameraDistance * 0.7 },
+        { x: 0, y: 0, z: 0 },
+        0
+      )
+    }, 100)
 
     // Handle resize
     const handleResize = () => {
@@ -400,7 +505,7 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf }) {
           <span>Entities</span>
         </div>
         <div className="legend-item">
-          <span className="legend-dot" style={{ background: '#4A90D9' }}></span>
+          <span className="legend-dot" style={{ background: '#14b8a6' }}></span>
           <span>Accessed</span>
         </div>
         {traversedNodes.size > 0 && (
