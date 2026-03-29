@@ -13,21 +13,21 @@ import './App.css'
 // Model provider configurations
 const MODEL_PROVIDERS = {
   claude: {
-    name: 'Claude',
+    name: 'Claude Sonnet 4',
     provider: 'Anthropic',
     color: '#D97706',
     bgColor: 'rgba(217, 119, 6, 0.15)',
     icon: '◉',
   },
   gpt4: {
-    name: 'GPT-4',
+    name: 'GPT-4o',
     provider: 'OpenAI',
     color: '#10A37F',
     bgColor: 'rgba(16, 163, 127, 0.15)',
     icon: '◈',
   },
   gemini: {
-    name: 'Gemini',
+    name: 'Gemini 2.5 Flash',
     provider: 'Google',
     color: '#4285F4',
     bgColor: 'rgba(66, 133, 244, 0.15)',

@@ -491,7 +491,7 @@ function ChatPanel({ selectedModel, onSseEvent, onQueryStart, onOpenPdf, connect
       <div className="chat-messages">
         {messages.length === 0 ? (
           <div className="chat-empty">
-            <div className="chat-empty-icon"><img src={logoFilter} alt="" style={{ width: '48px', height: '48px' }} /></div>
+            <div className="chat-empty-icon" style={{ background: 'none', border: 'none' }}><img src={logoFilter} alt="" style={{ width: '144px', height: '144px' }} /></div>
             <div className="chat-empty-title">Clinical Assistant</div>
             <div className="chat-empty-subtitle">
               Query patient records securely. PHI is automatically de-identified before reaching the cloud.
