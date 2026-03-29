@@ -143,13 +143,9 @@
   animation: love-splash-arrow-in 0.5s 0.4s ease-out both;
 }
 
-/* Shrink phase — moves to top-left logo position */
-.love-splash-shrink .love-splash-heart {
-  animation: love-splash-to-logo 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-.love-splash-shrink {
-  animation: love-splash-bg-fade 1s ease-out forwards;
+/* Fade out phase — heart fades away, then appears in logo corner */
+.love-splash-fade-out {
+  animation: love-splash-fade-away 0.6s ease-out forwards;
 }
 
 @keyframes love-splash-fade-in {
@@ -168,19 +164,9 @@
   100% { transform: translate(0, 0) scale(1); opacity: 1; }
 }
 
-@keyframes love-splash-to-logo {
-  0% {
-    transform: scale(1) translate(0, 0);
-  }
-  100% {
-    /* Move to top-left corner where logo lives */
-    transform: scale(0.36) translate(calc(-50vw + 140px), calc(-50vh + 100px));
-  }
-}
-
-@keyframes love-splash-bg-fade {
-  0% { background: rgba(0, 0, 0, 0.3); }
-  100% { background: rgba(0, 0, 0, 0); }
+@keyframes love-splash-fade-away {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 .logo-text {

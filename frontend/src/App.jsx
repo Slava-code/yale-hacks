@@ -230,13 +230,13 @@ function App() {
             onLoveMode={() => {
               if (!loveModeActive && !loveSplash) {
                 setLoveSplash(true)
-                // After splash holds center, start shrinking to logo
-                setTimeout(() => setLoveSplash('shrinking'), 1200)
-                // After shrink animation, activate love mode
+                // Fade out the splash after holding center
+                setTimeout(() => setLoveSplash('fading'), 1200)
+                // Remove splash and activate love mode (heart appears in logo corner via flip)
                 setTimeout(() => {
                   setLoveSplash(false)
                   setLoveModeActive(true)
-                }, 2200)
+                }, 1800)
               }
             }}
           />
@@ -270,9 +270,9 @@ function App() {
         )}
       </main>
 
-      {/* Love splash — big heart center → shrinks to logo corner */}
+      {/* Love splash — big heart center, fades out, then heart appears in logo corner */}
       {loveSplash && (
-        <div className={`love-splash-overlay ${loveSplash === 'shrinking' ? 'love-splash-shrink' : ''}`}>
+        <div className={`love-splash-overlay ${loveSplash === 'fading' ? 'love-splash-fade-out' : ''}`}>
           <div className="love-splash-heart">
             <img src={logoHeartRed} className="love-splash-img" alt="" />
             <img src={logoArrow} className="love-splash-arrow" alt="" />
