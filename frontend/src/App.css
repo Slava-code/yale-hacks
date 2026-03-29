@@ -111,6 +111,78 @@
   }
 }
 
+/* ===== LOVE SPLASH ANIMATION ===== */
+.love-splash-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  animation: love-splash-fade-in 0.4s ease-out;
+}
+
+.love-splash-heart {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  animation: love-splash-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.love-splash-img,
+.love-splash-arrow {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.love-splash-arrow {
+  animation: love-splash-arrow-in 0.5s 0.4s ease-out both;
+}
+
+/* Shrink phase — moves to top-left logo position */
+.love-splash-shrink .love-splash-heart {
+  animation: love-splash-to-logo 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.love-splash-shrink {
+  animation: love-splash-bg-fade 1s ease-out forwards;
+}
+
+@keyframes love-splash-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes love-splash-pop {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes love-splash-arrow-in {
+  0% { transform: translate(-30px, -30px) scale(0.3); opacity: 0; }
+  100% { transform: translate(0, 0) scale(1); opacity: 1; }
+}
+
+@keyframes love-splash-to-logo {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    /* Move to top-left corner where logo lives */
+    transform: scale(0.36) translate(calc(-50vw + 140px), calc(-50vh + 100px));
+  }
+}
+
+@keyframes love-splash-bg-fade {
+  0% { background: rgba(0, 0, 0, 0.3); }
+  100% { background: rgba(0, 0, 0, 0); }
+}
+
 .logo-text {
   font-size: 1.125rem;
   font-weight: 600;

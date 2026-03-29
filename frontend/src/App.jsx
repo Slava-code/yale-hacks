@@ -58,6 +58,7 @@ function App() {
 
   // Love mode - Yhack theme easter egg
   const [loveModeActive, setLoveModeActive] = useState(false)
+  const [loveSplash, setLoveSplash] = useState(false)
 
   // Fetch available models on mount
   useEffect(() => {
@@ -226,7 +227,18 @@ function App() {
             onQueryStart={handleQueryStart}
             onOpenPdf={handleOpenPdf}
             connectionStatus={connectionStatus}
-            onLoveMode={() => setLoveModeActive(true)}
+            onLoveMode={() => {
+              if (!loveModeActive && !loveSplash) {
+                setLoveSplash(true)
+                // After splash holds center, start shrinking to logo
+                setTimeout(() => setLoveSplash('shrinking'), 1200)
+                // After shrink animation, activate love mode
+                setTimeout(() => {
+                  setLoveSplash(false)
+                  setLoveModeActive(true)
+                }, 2200)
+              }
+            }}
           />
         </div>
         <div className="panel-divider" />
@@ -257,6 +269,16 @@ function App() {
           </div>
         )}
       </main>
+
+      {/* Love splash — big heart center → shrinks to logo corner */}
+      {loveSplash && (
+        <div className={`love-splash-overlay ${loveSplash === 'shrinking' ? 'love-splash-shrink' : ''}`}>
+          <div className="love-splash-heart">
+            <img src={logoHeartRed} className="love-splash-img" alt="" />
+            <img src={logoArrow} className="love-splash-arrow" alt="" />
+          </div>
+        </div>
+      )}
 
       {/* Love mode hearts overlay - Yhack theme */}
       <HeartsOverlay isActive={loveModeActive} />
