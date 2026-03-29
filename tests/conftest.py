@@ -43,3 +43,10 @@ def all_profiles(patient_profiles_dir):
         with open(path) as f:
             profiles.append(json.load(f))
     return profiles
+
+
+@pytest.fixture
+def built_graph(demo_profiles):
+    """Build a graph from demo profiles using the graph builder."""
+    from scripts.build_graph import build_graph
+    return build_graph(demo_profiles)
