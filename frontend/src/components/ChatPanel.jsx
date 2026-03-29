@@ -289,7 +289,10 @@ function ChatPanel({ selectedModel, onSseEvent, onQueryStart, onOpenPdf, connect
           lowerContent.includes('diagnosis of love') ||
           lowerContent.includes('in love') ||
           lowerContent.includes('lovesick') ||
-          lowerContent.includes('love syndrome')
+          lowerContent.includes('love syndrome') ||
+          lowerContent.includes('amorosis') ||
+          lowerContent.includes('new relationship') ||
+          lowerContent.includes('romantic attachment')
         ) {
           onLoveMode?.()
         }
