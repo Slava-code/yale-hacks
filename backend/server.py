@@ -51,7 +51,7 @@ app.add_middleware(
 GRAPH_PATH = os.getenv("GRAPH_PATH", "data/stub/graph.json")
 PDF_DIR = os.getenv("PDF_DIR", "data/pdfs")
 OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
-GATEKEEPER_MODEL = os.getenv("GATEKEEPER_MODEL", "mistral-small:24b")
+GATEKEEPER_MODEL = os.getenv("GATEKEEPER_MODEL", "qwen2.5:32b")
 
 # Node visual config (matches docs/interfaces.md §4)
 NODE_CONFIG = {
