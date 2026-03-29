@@ -100,10 +100,10 @@
     "icd_code": "B00.4"
   },
   {
-    "name": "Solanum-Type Encephalopathy",
+    "name": "Solanum-Type Encephalopathy (Zombie Virus)",
     "category": "infectious/neurological",
     "description": "Novel neurotropic RNA agent-driven encephalopathy, transmitted via bite vector from infected animals. Characterized by a 3-phase clinical progression from prodromal mood changes through neuropsychiatric deterioration to persistent altered consciousness with necrotic lesions.",
-    "symptoms": "Prodromal: fatigue, irritability, insomnia. Neuropsychiatric: aggression, confusion, hypersalivation, photophobia, hydrophobia, violent outbursts. Terminal: persistent altered consciousness, necrotic skin lesions at bite site, autonomic instability, animal bite history",
+    "symptoms": "Prodromal: fatigue, irritability, insomnia, bloodshot eyes. Neuropsychiatric: escalating aggression, confusion, hypersalivation, severe photophobia, hydrophobia, violent outbursts, compulsive biting and cannibalistic behavior directed at other humans. Motor: severe ataxia progressing to shuffling uncoordinated gait (shambling ambulation), progressive loss of speech replaced by involuntary groaning vocalizations. Sensory: profound analgesia with complete absence of pain response. Dermatologic: progressive skin necrosis with grayish pallor, sunken periorbital features, tissue decomposition at bite site. Behavioral: paradoxical approach behavior toward uninfected individuals despite diminished cognitive function. Animal bite history with unidentified species.",
     "diagnostic_criteria": "CDC classification criteria: animal bite exposure history, progressive neuropsychiatric syndrome not explained by standard infectious or prion workups, novel CSF protein bands on electrophoresis, novel 2-3Hz periodic EEG pattern, and identification of novel viral-like particles on electron microscopy of CSF or tissue specimens.",
     "lab_markers": "Novel CSF protein bands on electrophoresis, 2-3Hz periodic generalized EEG discharges (distinct from CJD pattern), novel viral-like particles on electron microscopy (80-100nm icosahedral), negative standard infectious panel (rabies, HSV, West Nile, HIV), negative prion markers (14-3-3, RT-QuIC)",
     "epidemiology": "Extremely rare. As of 2025, only 3 confirmed cases in North America, all linked to unidentified animal bite exposure in wilderness or rural settings. Suspected bite vector transmission with high pathogen titers in saliva. No known effective treatment.",

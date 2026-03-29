@@ -179,6 +179,16 @@ def _process_patient(
                 "status": _safe(cond["status"]),
             },
         }
+        # Collect sources for condition
+        cond_sources = []
+        diag_visit_ref = cond.get("diagnosed_visit")
+        if diag_visit_ref:
+            diag_visit = next((v for v in profile["visits"] if v["ref"] == diag_visit_ref), None)
+            if diag_visit:
+                cond_sources.append({"pdf": diag_visit["document"]["filename"], "page": 1})
+        if cond_sources:
+            nodes[cond_id]["sources"] = cond_sources
+
         # Skip HAS_CONDITION edge for discoverable conditions — the cloud
         # model must reason its way to these diagnoses from raw evidence
         if not cond.get("discoverable", False):
@@ -208,6 +218,21 @@ def _process_patient(
                 "status": _safe(med["status"]),
             },
         }
+        # Collect sources for medication
+        med_sources = []
+        start_ref = med.get("start_visit")
+        if start_ref:
+            start_v = next((v for v in profile["visits"] if v["ref"] == start_ref), None)
+            if start_v:
+                med_sources.append({"pdf": start_v["document"]["filename"], "page": 1})
+        end_ref = med.get("end_visit")
+        if end_ref:
+            end_v = next((v for v in profile["visits"] if v["ref"] == end_ref), None)
+            if end_v:
+                med_sources.append({"pdf": end_v["document"]["filename"], "page": 1})
+        if med_sources:
+            nodes[med_id]["sources"] = med_sources
+
         edges.append({"source": patient_id, "target": med_id, "type": "PRESCRIBED"})
 
         # TREATED_WITH: condition → medication
@@ -218,6 +243,21 @@ def _process_patient(
                 "target": med_id,
                 "type": "TREATED_WITH",
             })
+
+    # Enrich condition sources with medication-related visits
+    for med in profile.get("medications", []):
+        treats = med.get("treats")
+        if treats and treats in condition_name_to_id:
+            cond_id_for_med = condition_name_to_id[treats]
+            start_ref = med.get("start_visit")
+            if start_ref:
+                start_v = next((v for v in profile["visits"] if v["ref"] == start_ref), None)
+                if start_v:
+                    source_entry = {"pdf": start_v["document"]["filename"], "page": 1}
+                    existing = nodes[cond_id_for_med].get("sources", [])
+                    if source_entry not in existing:
+                        existing.append(source_entry)
+                        nodes[cond_id_for_med]["sources"] = existing
 
     # --- Visit nodes, lab nodes, procedure nodes ---
     # Track all lab nodes for MONITORED_BY resolution

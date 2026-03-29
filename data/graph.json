@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-03-29T03:25:07Z",
+    "generated_at": "2026-03-29T05:11:55Z",
     "num_patients": 40,
     "num_nodes": 1075,
     "num_edges": 1652
@@ -109,7 +109,13 @@
           "value": "resolved",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_smith_2025_jun.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_002": {
       "id": "condition_002",
@@ -128,7 +134,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_smith_2025_aug.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_003": {
       "id": "condition_003",
@@ -147,7 +159,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_smith_2025_oct.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_001": {
       "id": "medication_001",
@@ -178,7 +196,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_smith_2025_jun.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_smith_2025_oct.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_002": {
       "id": "medication_002",
@@ -209,7 +237,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_smith_2025_aug.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_003": {
       "id": "medication_003",
@@ -240,7 +274,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_smith_2025_oct.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_004": {
       "id": "medication_004",
@@ -271,7 +311,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_smith_2025_oct.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_smith_2025_dec.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_001": {
       "id": "visit_001",
@@ -1742,7 +1792,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_garcia_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_005": {
       "id": "condition_005",
@@ -1761,7 +1817,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_garcia_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_006": {
       "id": "condition_006",
@@ -1780,7 +1842,17 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_garcia_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_garcia_2024_jun.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_005": {
       "id": "medication_005",
@@ -1811,7 +1883,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_garcia_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_006": {
       "id": "medication_006",
@@ -1842,7 +1920,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_garcia_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_007": {
       "id": "medication_007",
@@ -1873,7 +1957,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_garcia_2024_apr.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_008": {
       "id": "medication_008",
@@ -1904,7 +1994,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_garcia_2024_jun.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_016": {
       "id": "visit_016",
@@ -2855,7 +2951,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_chen_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_008": {
       "id": "condition_008",
@@ -2874,7 +2976,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_chen_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_009": {
       "id": "condition_009",
@@ -2893,7 +3001,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_chen_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_009": {
       "id": "medication_009",
@@ -2924,7 +3038,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_chen_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_010": {
       "id": "medication_010",
@@ -2955,7 +3075,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_chen_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_011": {
       "id": "medication_011",
@@ -2986,7 +3112,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_chen_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_012": {
       "id": "medication_012",
@@ -3017,7 +3149,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_chen_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_013": {
       "id": "medication_013",
@@ -3048,7 +3186,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_chen_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_014": {
       "id": "medication_014",
@@ -3079,7 +3223,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_chen_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_chen_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_023": {
       "id": "visit_023",
@@ -3907,7 +4061,17 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_johnson_2024_sep.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "intake_form_johnson_2024_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_015": {
       "id": "medication_015",
@@ -3938,7 +4102,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_johnson_2024_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_030": {
       "id": "visit_030",
@@ -4469,7 +4639,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_williams_2024_jul.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_016": {
       "id": "medication_016",
@@ -4500,7 +4676,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_williams_2024_jul.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_017": {
       "id": "medication_017",
@@ -4531,7 +4713,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_williams_2024_jul.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_033": {
       "id": "visit_033",
@@ -4905,7 +5093,7 @@
           "phi": true
         },
         "summary": {
-          "value": "A 28-year-old park ranger presenting with escalating neuropsychiatric symptoms over 9 months, initially misdiagnosed as stress-related depression, eventually identified as a novel Solanum-type encephalopathy by the CDC.",
+          "value": "A 28-year-old park ranger presenting with escalating neuropsychiatric symptoms over 9 months, initially misdiagnosed as stress-related depression, eventually identified as Solanum-type encephalopathy (Zombie Virus) by the CDC.",
           "phi": false
         }
       },
@@ -4929,7 +5117,13 @@
           "value": "resolved",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_reed_2025_may.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_013": {
       "id": "condition_013",
@@ -4948,7 +5142,17 @@
           "value": "resolved",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_reed_2025_jul.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "discharge_summary_reed_2025_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_014": {
       "id": "condition_014",
@@ -4967,7 +5171,21 @@
           "value": "resolved",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_reed_2025_aug.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "discharge_summary_reed_2025_sep.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "consult_note_reed_2025_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_015": {
       "id": "condition_015",
@@ -4986,15 +5204,21 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_reed_2025_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_016": {
       "id": "condition_016",
       "type": "condition",
-      "label": "Novel Pathogen \u2014 Solanum-Type Encephalopathy",
+      "label": "Novel Pathogen \u2014 Solanum-Type Encephalopathy (Zombie Virus)",
       "fields": {
         "name": {
-          "value": "Novel Pathogen \u2014 Solanum-Type Encephalopathy",
+          "value": "Novel Pathogen \u2014 Solanum-Type Encephalopathy (Zombie Virus)",
           "phi": false
         },
         "icd_code": {
@@ -5005,7 +5229,17 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_reed_2025_oct_2.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_reed_2025_nov.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_018": {
       "id": "medication_018",
@@ -5036,7 +5270,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_reed_2025_may.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "imaging_report_reed_2025_aug.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_019": {
       "id": "medication_019",
@@ -5067,7 +5311,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_reed_2025_jul.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "discharge_summary_reed_2025_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_020": {
       "id": "medication_020",
@@ -5098,7 +5352,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "discharge_summary_reed_2025_sep.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "consult_note_reed_2025_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_021": {
       "id": "medication_021",
@@ -5129,7 +5393,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "discharge_summary_reed_2025_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_022": {
       "id": "medication_022",
@@ -5160,7 +5430,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_reed_2025_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_023": {
       "id": "medication_023",
@@ -5191,7 +5467,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "discharge_summary_reed_2025_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_024": {
       "id": "medication_024",
@@ -5222,7 +5504,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_reed_2025_nov.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_036": {
       "id": "visit_036",
@@ -5965,7 +6253,7 @@
           "phi": true
         },
         "notes": {
-          "value": "Patient brought to ED after attacking nursing staff during a scheduled follow-up visit. He bit a nurse on the forearm, breaking the skin. Severe photophobia and hydrophobia noted. Temp 101.4\u00b0F. Patient is combative, vocalizing incoherently, with excessive salivation.\n\nRestraints applied per protocol. Physical exam notable for dilated pupils, tachycardia (HR 118), and the expanding necrotic wound on the right forearm. Started empiric acyclovir 10mg/kg IV and dexamethasone 4mg IV for presumed viral encephalitis. Haloperidol 5mg IM administered for acute agitation. Lorazepam discontinued in favor of haloperidol given the severity of episodes. Infectious disease consult requested urgently.",
+          "value": "Patient brought to ED after attacking nursing staff during a scheduled follow-up visit. Patient lunged at and bit a nurse on the forearm, appearing to attempt to consume tissue. Displayed no pain response when physically restrained. Severe photophobia noted \u2014 patient recoiled from overhead lighting. Hydrophobia also observed. Temp 101.4\u00b0F. Patient is combative, vocalizing incoherently, with excessive salivation.\n\nRestraints applied per protocol. Physical exam notable for dilated pupils, tachycardia (HR 118), and the expanding necrotic wound on the right forearm. Started empiric acyclovir 10mg/kg IV and dexamethasone 4mg IV for presumed viral encephalitis. Haloperidol 5mg IM administered for acute agitation. Lorazepam discontinued in favor of haloperidol given the severity of episodes. Infectious disease consult requested urgently.",
           "phi": false
         }
       },
@@ -6180,7 +6468,7 @@
           "phi": true
         },
         "notes": {
-          "value": "Continuous EEG monitoring reveals a novel periodic pattern with 2-3Hz generalized discharges that do not match any catalogued encephalopathy signature in the EEG atlas. The pattern is distinct from CJD, NMDA receptor encephalitis, and all recognized periodic patterns.\n\nPatient is increasingly non-verbal with intermittent violent episodes requiring physical restraint. GCS fluctuating between 9 and 12. Pupillary responses sluggish bilaterally. The clinical trajectory continues to worsen despite supportive care.",
+          "value": "Continuous EEG monitoring reveals a novel periodic pattern with 2-3Hz generalized discharges that do not match any catalogued encephalopathy signature in the EEG atlas. The pattern is distinct from CJD, NMDA receptor encephalitis, and all recognized periodic patterns.\n\nPatient is increasingly non-verbal with intermittent violent episodes requiring physical restraint. Shuffling, uncoordinated gait observed when patient ambulates. Speech has been replaced by involuntary groaning vocalizations. Patient is increasingly non-verbal. GCS fluctuating between 9 and 12. Pupillary responses sluggish bilaterally. The clinical trajectory continues to worsen despite supportive care.",
           "phi": false
         }
       },
@@ -6333,7 +6621,7 @@
           "phi": true
         },
         "notes": {
-          "value": "CDC internal advisory received with formal classification: Solanum-type encephalopathy. Three similar cases have been identified across North America, all with a history of animal bite exposure in rural or wilderness areas.\n\nTransmission is suspected via bite vector, with high pathogen titers found in saliva. There is no known effective treatment at this time. Experimental antiviral protocols are under development at the CDC. Patient's condition continues to deteriorate with GCS now 8-9.",
+          "value": "CDC internal advisory received with formal classification: Solanum-type encephalopathy (Zombie Virus). Three similar cases have been identified across North America, all with a history of animal bite exposure in rural or wilderness areas.\n\nTransmission is suspected via bite vector, with high pathogen titers found in saliva. There is no known effective treatment at this time. Experimental antiviral protocols are under development at the CDC. Patient's condition continues to deteriorate with GCS now 8-9.",
           "phi": false
         }
       },
@@ -6362,7 +6650,7 @@
           "phi": true
         },
         "notes": {
-          "value": "Formal CDC advisory document prepared by Dr. Diaz. Classification: Solanum-type encephalopathy. Epidemiology: 3 confirmed cases in North America, all linked to unidentified animal bite exposure in wilderness settings.\n\nClinical progression follows a 3-phase pattern: prodromal (fatigue, irritability, mood changes), neuropsychiatric (aggression, confusion, hypersalivation, photophobia), and terminal (persistent altered consciousness, necrotic lesions, autonomic instability). Laboratory hallmarks include novel CSF protein bands, 2-3Hz periodic EEG pattern, and viral-like particles on electron microscopy. BSL-3 containment protocols required for all specimen handling.",
+          "value": "Formal CDC advisory document prepared by Dr. Diaz. Classification: Solanum-type encephalopathy (Zombie Virus). Epidemiology: 3 confirmed cases in North America, all linked to unidentified animal bite exposure in wilderness settings.\n\nClinical progression follows a 3-phase pattern: prodromal (fatigue, irritability, mood changes), neuropsychiatric (aggression, confusion, hypersalivation, photophobia), and terminal (persistent altered consciousness, necrotic lesions, autonomic instability). Laboratory hallmarks include novel CSF protein bands, 2-3Hz periodic EEG pattern, and viral-like particles on electron microscopy. BSL-3 containment protocols required for all specimen handling.",
           "phi": false
         }
       },
@@ -6391,7 +6679,7 @@
           "phi": true
         },
         "notes": {
-          "value": "Patient remains in a persistent altered state with GCS 8. Continued periodic EEG discharges unchanged. Necrotic lesions on the right forearm are stable and not expanding. Autonomic instability with intermittent tachycardia and blood pressure lability.\n\nCBC shows worsening leukocytosis (WBC 14.8) and new thrombocytopenia (Plt 98). Hemoglobin has dropped to 11.2. CRP markedly elevated at 8.5 mg/dL. An experimental antiviral under the CDC compassionate use protocol has been initiated. Prognosis remains guarded.",
+          "value": "Patient remains in a persistent altered state with GCS 8. Continued periodic EEG discharges unchanged. Necrotic lesions on the right forearm are stable and not expanding. Autonomic instability with intermittent tachycardia and blood pressure lability. Patient displays grayish pallor with sunken periorbital features. Necrotic lesions at original bite site have expanded. Despite diminished cognition (GCS 8), patient exhibits paradoxical approach behavior toward staff members, requiring continuous restraint. Involuntary groaning vocalizations persist.\n\nCBC shows worsening leukocytosis (WBC 14.8) and new thrombocytopenia (Plt 98). Hemoglobin has dropped to 11.2. CRP markedly elevated at 8.5 mg/dL. An experimental antiviral under the CDC compassionate use protocol has been initiated. Prognosis remains guarded.",
           "phi": false
         }
       },
@@ -6569,7 +6857,17 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_vasquez_2024_jan.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_vasquez_2025_may.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_018": {
       "id": "condition_018",
@@ -6588,7 +6886,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_vasquez_2024_jan.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_019": {
       "id": "condition_019",
@@ -6607,7 +6911,17 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_vasquez_2024_jan.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "consult_note_vasquez_2024_feb.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_020": {
       "id": "condition_020",
@@ -6626,7 +6940,17 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_vasquez_2024_aug.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "consult_note_vasquez_2024_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_021": {
       "id": "condition_021",
@@ -6645,7 +6969,17 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_vasquez_2024_oct.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_vasquez_2024_nov.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_025": {
       "id": "medication_025",
@@ -6676,7 +7010,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_vasquez_2024_jan.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_026": {
       "id": "medication_026",
@@ -6707,7 +7047,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_vasquez_2024_jan.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_027": {
       "id": "medication_027",
@@ -6738,7 +7084,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_vasquez_2024_feb.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_028": {
       "id": "medication_028",
@@ -6769,7 +7121,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_vasquez_2024_jul.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_029": {
       "id": "medication_029",
@@ -6800,7 +7158,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_vasquez_2024_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_030": {
       "id": "medication_030",
@@ -6831,7 +7195,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_vasquez_2024_nov.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_031": {
       "id": "medication_031",
@@ -6862,7 +7232,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_vasquez_2025_may.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_052": {
       "id": "visit_052",
@@ -8944,7 +9320,25 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_okafor_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "discharge_summary_okafor_2024_aug.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_okafor_2024_jun.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_okafor_2024_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_023": {
       "id": "condition_023",
@@ -8963,7 +9357,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_okafor_2024_aug_2.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_024": {
       "id": "condition_024",
@@ -8982,7 +9382,17 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_okafor_2025_jan.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_okafor_2025_jan_2.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_032": {
       "id": "medication_032",
@@ -9013,7 +9423,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_okafor_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_033": {
       "id": "medication_033",
@@ -9044,7 +9460,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_okafor_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_okafor_2024_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_034": {
       "id": "medication_034",
@@ -9075,7 +9501,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "discharge_summary_okafor_2024_aug.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_035": {
       "id": "medication_035",
@@ -9106,7 +9538,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_okafor_2024_jun.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_036": {
       "id": "medication_036",
@@ -9137,7 +9575,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_okafor_2024_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_037": {
       "id": "medication_037",
@@ -9168,7 +9612,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_okafor_2025_jan_2.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_038": {
       "id": "medication_038",
@@ -9199,7 +9649,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_okafor_2025_jan_2.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_070": {
       "id": "visit_070",
@@ -10700,7 +11156,33 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_sharma_2024_apr_2.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "consult_note_sharma_2024_mar_2.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_sharma_2024_may.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_sharma_2024_sep.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_sharma_2024_sep_2.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_sharma_2024_nov.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_026": {
       "id": "condition_026",
@@ -10719,7 +11201,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_sharma_2024_oct.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_027": {
       "id": "condition_027",
@@ -10738,7 +11226,13 @@
           "value": "resolved",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_sharma_2024_jun.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_039": {
       "id": "medication_039",
@@ -10769,7 +11263,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_sharma_2024_mar_2.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_sharma_2024_apr.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_040": {
       "id": "medication_040",
@@ -10800,7 +11304,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_sharma_2024_may.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_sharma_2024_sep_2.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_041": {
       "id": "medication_041",
@@ -10831,7 +11345,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_sharma_2024_jun.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_042": {
       "id": "medication_042",
@@ -10862,7 +11382,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_sharma_2024_sep.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_sharma_2024_sep_2.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_043": {
       "id": "medication_043",
@@ -10893,7 +11423,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_sharma_2024_sep_2.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_044": {
       "id": "medication_044",
@@ -10924,7 +11460,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_sharma_2024_oct.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_045": {
       "id": "medication_045",
@@ -10955,7 +11497,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_sharma_2024_nov.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_088": {
       "id": "visit_088",
@@ -12149,7 +12697,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_thompson_2024_oct.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_029": {
       "id": "condition_029",
@@ -12168,7 +12722,17 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_thompson_2024_nov_2.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_thompson_2024_dec.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_030": {
       "id": "condition_030",
@@ -12187,7 +12751,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "imaging_report_thompson_2025_jan.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_046": {
       "id": "medication_046",
@@ -12218,7 +12788,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_thompson_2024_oct.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_047": {
       "id": "medication_047",
@@ -12249,7 +12825,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_thompson_2024_oct.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_048": {
       "id": "medication_048",
@@ -12280,7 +12862,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_thompson_2024_oct.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_thompson_2024_oct.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_049": {
       "id": "medication_049",
@@ -12311,7 +12903,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_thompson_2024_dec.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_thompson_2025_feb.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_050": {
       "id": "medication_050",
@@ -12342,7 +12944,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_thompson_2024_dec.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_thompson_2025_feb.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_051": {
       "id": "medication_051",
@@ -12373,7 +12985,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_thompson_2024_dec.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_052": {
       "id": "medication_052",
@@ -12404,7 +13022,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "imaging_report_thompson_2025_jan.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_105": {
       "id": "visit_105",
@@ -13578,7 +14202,21 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_alhassan_2024_jan.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_alhassan_2024_feb.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_alhassan_2024_may.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_032": {
       "id": "condition_032",
@@ -13597,7 +14235,17 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_alhassan_2024_feb.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_alhassan_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_033": {
       "id": "condition_033",
@@ -13616,7 +14264,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "imaging_report_alhassan_2024_oct.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_053": {
       "id": "medication_053",
@@ -13647,7 +14301,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_alhassan_2024_jan.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_alhassan_2024_may.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_054": {
       "id": "medication_054",
@@ -13678,7 +14342,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_alhassan_2024_feb.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_055": {
       "id": "medication_055",
@@ -13709,7 +14379,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_alhassan_2024_feb.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_alhassan_2024_apr.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_056": {
       "id": "medication_056",
@@ -13740,7 +14420,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_alhassan_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_057": {
       "id": "medication_057",
@@ -13771,7 +14457,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_alhassan_2024_may.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_058": {
       "id": "medication_058",
@@ -13802,7 +14494,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "imaging_report_alhassan_2024_oct.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_059": {
       "id": "medication_059",
@@ -13833,7 +14531,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "imaging_report_alhassan_2024_oct.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_123": {
       "id": "visit_123",
@@ -15185,7 +15889,21 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_jackson_2024_sep.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_jackson_2024_nov_2.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_jackson_2025_feb.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_035": {
       "id": "condition_035",
@@ -15204,7 +15922,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_jackson_2025_jan.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_036": {
       "id": "condition_036",
@@ -15223,7 +15947,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_jackson_2025_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_037": {
       "id": "condition_037",
@@ -15242,7 +15972,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_jackson_2024_nov_2.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_060": {
       "id": "medication_060",
@@ -15273,7 +16009,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_jackson_2024_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_061": {
       "id": "medication_061",
@@ -15304,7 +16046,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_jackson_2024_nov_2.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_062": {
       "id": "medication_062",
@@ -15335,7 +16083,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_jackson_2024_nov_2.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_063": {
       "id": "medication_063",
@@ -15366,7 +16120,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_jackson_2025_jan.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_064": {
       "id": "medication_064",
@@ -15397,7 +16157,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_jackson_2025_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_065": {
       "id": "medication_065",
@@ -15428,7 +16194,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_jackson_2025_feb.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_140": {
       "id": "visit_140",
@@ -16312,7 +17084,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_patel_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_039": {
       "id": "condition_039",
@@ -16331,7 +17109,17 @@
           "value": "resolved",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_patel_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_patel_2024_jun.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_040": {
       "id": "condition_040",
@@ -16350,7 +17138,13 @@
           "value": "resolved",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_patel_2024_may.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_041": {
       "id": "condition_041",
@@ -16369,7 +17163,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_patel_2024_aug_2.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_042": {
       "id": "condition_042",
@@ -16388,7 +17188,17 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_patel_2024_sep.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_patel_2024_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_066": {
       "id": "medication_066",
@@ -16419,7 +17229,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_patel_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_067": {
       "id": "medication_067",
@@ -16450,7 +17266,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_patel_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_patel_2024_may.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_068": {
       "id": "medication_068",
@@ -16481,7 +17307,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_patel_2024_jun.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_patel_2024_jun.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_069": {
       "id": "medication_069",
@@ -16512,7 +17348,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_patel_2024_aug_2.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_070": {
       "id": "medication_070",
@@ -16543,7 +17385,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_patel_2024_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_071": {
       "id": "medication_071",
@@ -16574,7 +17422,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_patel_2024_sep.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_patel_2024_nov.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_156": {
       "id": "visit_156",
@@ -17906,7 +18764,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_rivera_2024_oct.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_044": {
       "id": "condition_044",
@@ -17925,7 +18789,17 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "imaging_report_rivera_2024_nov.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_rivera_2024_nov.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_045": {
       "id": "condition_045",
@@ -17944,7 +18818,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_rivera_2024_oct.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_046": {
       "id": "condition_046",
@@ -17963,7 +18843,17 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_rivera_2024_dec_2.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_rivera_2025_jan.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_072": {
       "id": "medication_072",
@@ -17994,7 +18884,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_rivera_2024_oct.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_073": {
       "id": "medication_073",
@@ -18025,7 +18921,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_rivera_2024_oct.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_074": {
       "id": "medication_074",
@@ -18056,7 +18958,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_rivera_2024_nov.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_075": {
       "id": "medication_075",
@@ -18087,7 +18995,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_rivera_2024_dec_2.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_076": {
       "id": "medication_076",
@@ -18118,7 +19032,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_rivera_2025_jan.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_172": {
       "id": "visit_172",
@@ -19623,7 +20543,17 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_morrison_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_morrison_2024_apr.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_048": {
       "id": "condition_048",
@@ -19642,7 +20572,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_morrison_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_077": {
       "id": "medication_077",
@@ -19673,7 +20609,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_morrison_2024_apr.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_078": {
       "id": "medication_078",
@@ -19704,7 +20646,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_morrison_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_morrison_2024_may.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_189": {
       "id": "visit_189",
@@ -20195,7 +21147,21 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_hassan_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_hassan_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_hassan_2024_jun.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_050": {
       "id": "condition_050",
@@ -20214,7 +21180,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_hassan_2024_apr.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_079": {
       "id": "medication_079",
@@ -20245,7 +21217,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_hassan_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_hassan_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_080": {
       "id": "medication_080",
@@ -20276,7 +21258,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_hassan_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_081": {
       "id": "medication_081",
@@ -20307,7 +21295,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_hassan_2024_apr.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_082": {
       "id": "medication_082",
@@ -20338,7 +21332,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_hassan_2024_jun.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_hassan_2024_jun.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_196": {
       "id": "visit_196",
@@ -20956,7 +21960,17 @@
           "value": "resolved",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_wu_2024_sep_2.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_wu_2024_sep_3.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_052": {
       "id": "condition_052",
@@ -20975,7 +21989,13 @@
           "value": "resolved",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "discharge_summary_wu_2024_nov.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_083": {
       "id": "medication_083",
@@ -21006,7 +22026,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_wu_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_084": {
       "id": "medication_084",
@@ -21037,7 +22063,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_wu_2024_sep_3.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "discharge_summary_wu_2024_nov_2.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_085": {
       "id": "medication_085",
@@ -21068,7 +22104,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "discharge_summary_wu_2024_nov.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "discharge_summary_wu_2024_nov_2.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_202": {
       "id": "visit_202",
@@ -21784,7 +22830,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_oduya_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_054": {
       "id": "condition_054",
@@ -21803,7 +22855,17 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_oduya_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_oduya_2024_may_2.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_055": {
       "id": "condition_055",
@@ -21822,7 +22884,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_oduya_2024_may.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_086": {
       "id": "medication_086",
@@ -21853,7 +22921,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_oduya_2024_may_2.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_210": {
       "id": "visit_210",
@@ -22332,7 +23406,17 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_kelly_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_kelly_2024_jul.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_057": {
       "id": "condition_057",
@@ -22351,7 +23435,17 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_kelly_2024_may.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "intake_form_kelly_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_087": {
       "id": "medication_087",
@@ -22382,7 +23476,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_kelly_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_088": {
       "id": "medication_088",
@@ -22413,7 +23513,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_kelly_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_089": {
       "id": "medication_089",
@@ -22444,7 +23550,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_kelly_2024_may.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_kelly_2024_jul.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_090": {
       "id": "medication_090",
@@ -22475,7 +23591,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_kelly_2024_jul.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_216": {
       "id": "visit_216",
@@ -23093,7 +24215,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_tanaka_2024_nov.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_059": {
       "id": "condition_059",
@@ -23112,7 +24240,17 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_tanaka_2024_oct.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_tanaka_2024_dec.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_091": {
       "id": "medication_091",
@@ -23143,7 +24281,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_tanaka_2024_nov.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_092": {
       "id": "medication_092",
@@ -23174,7 +24318,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_tanaka_2024_dec.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_223": {
       "id": "visit_223",
@@ -23839,7 +24989,17 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_petrov_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "consult_note_petrov_2024_apr.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_061": {
       "id": "condition_061",
@@ -23858,7 +25018,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_petrov_2024_jul.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_093": {
       "id": "medication_093",
@@ -23889,7 +25055,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_petrov_2024_apr.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_230": {
       "id": "visit_230",
@@ -24264,7 +25436,17 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_washington_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "consult_note_washington_2024_jul.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_063": {
       "id": "condition_063",
@@ -24283,7 +25465,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_washington_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_064": {
       "id": "condition_064",
@@ -24302,7 +25490,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_washington_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_065": {
       "id": "condition_065",
@@ -24321,7 +25515,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_washington_2024_jul.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_094": {
       "id": "medication_094",
@@ -24352,7 +25552,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_washington_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_095": {
       "id": "medication_095",
@@ -24383,7 +25589,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_washington_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_096": {
       "id": "medication_096",
@@ -24414,7 +25626,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_washington_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_097": {
       "id": "medication_097",
@@ -24445,7 +25663,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_washington_2024_jul.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_236": {
       "id": "visit_236",
@@ -25151,7 +26375,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_nakamura_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_067": {
       "id": "condition_067",
@@ -25170,7 +26400,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_nakamura_2024_apr.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_098": {
       "id": "medication_098",
@@ -25201,7 +26437,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_nakamura_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_099": {
       "id": "medication_099",
@@ -25232,7 +26474,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_nakamura_2024_apr.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_244": {
       "id": "visit_244",
@@ -26024,7 +27272,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_brown_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_069": {
       "id": "condition_069",
@@ -26043,7 +27297,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_brown_2024_apr.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_100": {
       "id": "medication_100",
@@ -26074,7 +27334,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_brown_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_101": {
       "id": "medication_101",
@@ -26105,7 +27371,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_brown_2024_apr.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_102": {
       "id": "medication_102",
@@ -26136,7 +27408,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_brown_2024_apr.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_250": {
       "id": "visit_250",
@@ -26572,7 +27850,13 @@
           "value": "resolved",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_federova_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_071": {
       "id": "condition_071",
@@ -26591,7 +27875,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_federova_2024_jun.pdf",
+          "page": 1
+        }
+      ]
     },
     "condition_072": {
       "id": "condition_072",
@@ -26610,7 +27900,17 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_federova_2024_sep.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "consult_note_federova_2024_oct.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_103": {
       "id": "medication_103",
@@ -26641,7 +27941,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_federova_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_federova_2024_jul.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_104": {
       "id": "medication_104",
@@ -26672,7 +27982,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_federova_2024_jun.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_105": {
       "id": "medication_105",
@@ -26703,7 +28019,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_federova_2024_jun.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_106": {
       "id": "medication_106",
@@ -26734,7 +28056,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_federova_2024_jun.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_federova_2024_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_107": {
       "id": "medication_107",
@@ -26765,7 +28097,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "consult_note_federova_2024_oct.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_256": {
       "id": "visit_256",
@@ -27603,7 +28941,13 @@
           "value": "resolved",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_mitchell_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_108": {
       "id": "medication_108",
@@ -27634,7 +28978,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_mitchell_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_mitchell_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_109": {
       "id": "medication_109",
@@ -27665,7 +29019,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_mitchell_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_mitchell_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_263": {
       "id": "visit_263",
@@ -27771,7 +29135,13 @@
           "value": "resolved",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_lewis_2025_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_110": {
       "id": "medication_110",
@@ -27802,7 +29172,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_lewis_2025_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_lewis_2025_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_265": {
       "id": "visit_265",
@@ -27974,7 +29354,13 @@
           "value": "resolved",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_gomez_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_111": {
       "id": "medication_111",
@@ -28005,7 +29391,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_gomez_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_gomez_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_267": {
       "id": "visit_267",
@@ -28144,7 +29540,13 @@
           "value": "resolved",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_dubois_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_112": {
       "id": "medication_112",
@@ -28175,7 +29577,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_dubois_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_dubois_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_269": {
       "id": "visit_269",
@@ -28300,7 +29712,13 @@
           "value": "resolved",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_nkomo_2024_oct.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_113": {
       "id": "medication_113",
@@ -28331,7 +29749,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_nkomo_2024_oct.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "consult_note_nkomo_2024_oct.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_271": {
       "id": "visit_271",
@@ -28495,7 +29923,13 @@
           "value": "resolved",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_carter_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_114": {
       "id": "medication_114",
@@ -28526,7 +29960,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_carter_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_carter_2024_mar_2.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_273": {
       "id": "visit_273",
@@ -28670,7 +30114,13 @@
           "value": "resolved",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_volkov_2024_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_115": {
       "id": "medication_115",
@@ -28701,7 +30151,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_volkov_2024_sep.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_volkov_2024_nov.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_275": {
       "id": "visit_275",
@@ -28836,7 +30296,13 @@
           "value": "resolved",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_diallo_2024_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_116": {
       "id": "medication_116",
@@ -28867,7 +30333,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_diallo_2024_sep.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_diallo_2024_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_278": {
       "id": "visit_278",
@@ -29204,7 +30680,13 @@
           "value": "chronic",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_obrien_2024_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_117": {
       "id": "medication_117",
@@ -29235,7 +30717,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_obrien_2024_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_118": {
       "id": "medication_118",
@@ -29266,7 +30754,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_obrien_2024_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_280": {
       "id": "visit_280",
@@ -29438,7 +30932,17 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_chang_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "intake_form_chang_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_119": {
       "id": "medication_119",
@@ -29469,7 +30973,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_chang_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_chang_2024_apr.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_282": {
       "id": "visit_282",
@@ -29629,7 +31143,13 @@
           "value": "resolved",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_rousseau_2024_jul.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_120": {
       "id": "medication_120",
@@ -29660,7 +31180,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_rousseau_2024_jul.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_rousseau_2024_jul.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_285": {
       "id": "visit_285",
@@ -29766,7 +31296,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_adeyemi_2024_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_121": {
       "id": "medication_121",
@@ -29797,7 +31333,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_adeyemi_2024_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_287": {
       "id": "visit_287",
@@ -29903,7 +31445,17 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "progress_note_eriksson_2024_sep.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "intake_form_eriksson_2024_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_122": {
       "id": "medication_122",
@@ -29934,7 +31486,13 @@
           "value": "active",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_eriksson_2024_sep.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_289": {
       "id": "visit_289",
@@ -30106,7 +31664,13 @@
           "value": "resolved",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_watanabe_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_123": {
       "id": "medication_123",
@@ -30137,7 +31701,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_watanabe_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_watanabe_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_124": {
       "id": "medication_124",
@@ -30168,7 +31742,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_watanabe_2024_mar.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_watanabe_2024_mar.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_291": {
       "id": "visit_291",
@@ -30307,7 +31891,13 @@
           "value": "resolved",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_chen_2024_oct.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_125": {
       "id": "medication_125",
@@ -30338,7 +31928,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_chen_2024_oct.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_chen_2024_oct.pdf",
+          "page": 1
+        }
+      ]
     },
     "medication_126": {
       "id": "medication_126",
@@ -30369,7 +31969,17 @@
           "value": "discontinued",
           "phi": false
         }
-      }
+      },
+      "sources": [
+        {
+          "pdf": "intake_form_chen_2024_oct.pdf",
+          "page": 1
+        },
+        {
+          "pdf": "progress_note_chen_2024_nov.pdf",
+          "page": 1
+        }
+      ]
     },
     "visit_293": {
       "id": "visit_293",
@@ -30884,10 +32494,10 @@
     "disease_ref_011": {
       "id": "disease_ref_011",
       "type": "disease_reference",
-      "label": "Solanum-Type Encephalopathy",
+      "label": "Solanum-Type Encephalopathy (Zombie Virus)",
       "fields": {
         "name": {
-          "value": "Solanum-Type Encephalopathy",
+          "value": "Solanum-Type Encephalopathy (Zombie Virus)",
           "phi": false
         },
         "category": {
@@ -30899,7 +32509,7 @@
           "phi": false
         },
         "symptoms": {
-          "value": "Prodromal: fatigue, irritability, insomnia. Neuropsychiatric: aggression, confusion, hypersalivation, photophobia, hydrophobia, violent outbursts. Terminal: persistent altered consciousness, necrotic skin lesions at bite site, autonomic instability, animal bite history",
+          "value": "Prodromal: fatigue, irritability, insomnia, bloodshot eyes. Neuropsychiatric: escalating aggression, confusion, hypersalivation, severe photophobia, hydrophobia, violent outbursts, compulsive biting and cannibalistic behavior directed at other humans. Motor: severe ataxia progressing to shuffling uncoordinated gait (shambling ambulation), progressive loss of speech replaced by involuntary groaning vocalizations. Sensory: profound analgesia with complete absence of pain response. Dermatologic: progressive skin necrosis with grayish pallor, sunken periorbital features, tissue decomposition at bite site. Behavioral: paradoxical approach behavior toward uninfected individuals despite diminished cognitive function. Animal bite history with unidentified species.",
           "phi": false
         },
         "diagnostic_criteria": {

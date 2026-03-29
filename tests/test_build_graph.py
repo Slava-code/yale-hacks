@@ -407,3 +407,26 @@ def test_discoverable_conditions_still_have_treated_with(built_graph):
     # TREATED_WITH: condition (source) -> medication (target)
     sle_treated = [e for e in treated_with_edges if e["source"] in sle_ids]
     assert len(sle_treated) > 0, "SLE should have TREATED_WITH edges to medications"
+
+
+def test_condition_nodes_have_sources(built_graph):
+    """Condition nodes should have a sources array."""
+    conditions = [n for n in built_graph["nodes"].values() if n["type"] == "condition"]
+    # At least some conditions should have sources (those with diagnosed_visit)
+    with_sources = [c for c in conditions if c.get("sources")]
+    assert len(with_sources) > 0, "No condition nodes have sources"
+    for cond in with_sources:
+        for src in cond["sources"]:
+            assert "pdf" in src, f"Source missing 'pdf' key in condition {cond['id']}"
+            assert "page" in src, f"Source missing 'page' key in condition {cond['id']}"
+
+
+def test_medication_nodes_have_sources(built_graph):
+    """Medication nodes should have a sources array."""
+    medications = [n for n in built_graph["nodes"].values() if n["type"] == "medication"]
+    with_sources = [m for m in medications if m.get("sources")]
+    assert len(with_sources) > 0, "No medication nodes have sources"
+    for med in with_sources:
+        for src in med["sources"]:
+            assert "pdf" in src, f"Source missing 'pdf' key in medication {med['id']}"
+            assert "page" in src, f"Source missing 'page' key in medication {med['id']}"
