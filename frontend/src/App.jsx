@@ -3,6 +3,7 @@ import ChatPanel from './components/ChatPanel'
 import GraphPanel from './components/GraphPanel'
 import PdfViewer from './components/PdfViewer'
 import RedactedView from './components/RedactedView'
+import IngestionAnimation from './components/IngestionAnimation'
 import './App.css'
 
 // Model provider configurations
@@ -47,6 +48,10 @@ function App() {
   // Redacted view visibility
   const [showRedacted, setShowRedacted] = useState(false)
 
+  // Ingestion animation state
+  const [showAnimation, setShowAnimation] = useState(true)
+  const [graphStats, setGraphStats] = useState(null)
+
   // Fetch available models on mount
   useEffect(() => {
     async function fetchModels() {
@@ -67,6 +72,23 @@ function App() {
       }
     }
     fetchModels()
+  }, [])
+
+  // Fetch graph stats for ingestion animation
+  useEffect(() => {
+    async function fetchGraphStats() {
+      try {
+        const response = await fetch('/api/graph')
+        const data = await response.json()
+        setGraphStats({
+          nodes: data.nodes?.length ?? 0,
+          edges: data.edges?.length ?? 0,
+        })
+      } catch {
+        // Animation will use its defaults
+      }
+    }
+    fetchGraphStats()
   }, [])
 
   // Called by ChatPanel when SSE events arrive
@@ -105,6 +127,13 @@ function App() {
 
   return (
     <div className="app-container">
+      {showAnimation && (
+        <IngestionAnimation
+          onComplete={() => setShowAnimation(false)}
+          graphStats={graphStats}
+        />
+      )}
+
       {/* Header */}
       <header className="app-header">
         <div className="logo">

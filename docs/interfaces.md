@@ -376,6 +376,12 @@ def search_nodes(graph: Graph, query: str, node_type: str = None) -> list[Node]:
     Used when the gatekeeper needs to find relevant nodes for a free-form question.
     """
 
+def search_disease_references(graph: Graph, query: str) -> list[DiseaseReference]:
+    """Search disease reference nodes by symptom keywords.
+    Convenience wrapper around search_nodes() restricted to disease_reference type.
+    Used by the gatekeeper to find candidate diagnoses matching clinical evidence.
+    """
+
 def get_traversal_path(graph: Graph, node_ids: list[str]) -> TraversalPath:
     """Given a list of accessed node IDs, return the nodes and connecting edges.
     Used to emit graph_traversal events to the frontend.
@@ -525,7 +531,7 @@ data/             ← Person 3
   pdfs/             (generated PDFs)
   stub/             (stub data for frontend dev — see §7)
 scripts/          ← Person 3
-  generate_patients.py
+  generate_profiles.py
   generate_documents.py
   build_graph.py
 docs/             ← shared

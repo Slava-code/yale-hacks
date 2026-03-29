@@ -159,12 +159,13 @@ This is purely visual — the graph data is already loaded. The animation is a s
 ```
 frontend/
 ├── src/
-│   ├── App.jsx                 # Main layout (chat + graph panels)
-│   ├── ChatPanel.jsx           # Chat interface
-│   ├── GraphPanel.jsx          # 3D knowledge graph
-│   ├── PdfViewer.jsx           # PDF viewer overlay
-│   ├── RedactedView.jsx        # Secondary display
-│   ├── ModelSelector.jsx       # Dropdown for model switching
-│   └── CitationLink.jsx        # Clickable citation component
+│   ├── App.jsx                 # Main layout, header, model selector (inline)
+│   ├── components/
+│   │   ├── ChatPanel.jsx       # Chat interface + inline citation rendering
+│   │   ├── GraphPanel.jsx      # 3D knowledge graph
+│   │   ├── PdfViewer.jsx       # PDF viewer overlay
+│   │   ├── RedactedView.jsx    # Secondary display
+│   │   └── IngestionAnimation.jsx  # Startup ingestion animation (demo)
+│   └── index.css               # Global styles + CSS custom properties
 └── package.json
 ```

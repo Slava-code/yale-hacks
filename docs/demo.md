@@ -103,7 +103,7 @@ medgate/
 │   └── stub/
 │       └── graph.json              # Small stub graph (5 patients) for frontend dev
 ├── scripts/
-│   ├── generate_patients.py        # Generate patient profiles
+│   ├── generate_profiles.py        # Generate patient profiles
 │   ├── generate_documents.py       # Generate synthetic clinical docs
 │   ├── build_graph.py              # Extract entities and build graph.json
 │   └── test_demo_scenario.py       # Automated testing of demo case across models

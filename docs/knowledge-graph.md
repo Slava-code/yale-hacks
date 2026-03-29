@@ -35,7 +35,6 @@ PATIENT
 
 VISIT
   - id: string
-  - patient_id: string (FK)
   - date: string (real date — PHI; converted to relative at query time)
   - type: string (e.g., "emergency", "follow-up", "routine")
   - chief_complaint: string
@@ -49,7 +48,6 @@ CONDITION
   - name: string (e.g., "Type 2 Diabetes", "Hypertension")
   - icd_code: string (optional)
   - status: string ("active", "resolved", "chronic")
-  - diagnosed_date: string (relative)
 
 MEDICATION
   - id: string
@@ -186,7 +184,7 @@ data/
 └── patients/                   # Patient profile definitions (used for generation)
 
 scripts/
-├── generate_patients.py        # Generate patient profiles
+├── generate_profiles.py        # Generate patient profiles
 ├── generate_documents.py       # Generate synthetic clinical docs
 ├── build_graph.py              # Extract entities and build graph.json
 └── test_demo_scenario.py       # Automated testing of demo case across models
