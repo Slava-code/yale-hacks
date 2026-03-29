@@ -97,7 +97,8 @@ function App() {
 
   // Called by ChatPanel when SSE events arrive
   const handleSseEvent = (event) => {
-    setSseEvents((prev) => [...prev, event])
+    // Limit to last 200 events to prevent unbounded memory growth
+    setSseEvents((prev) => [...prev.slice(-199), event])
 
     // Handle specific event types
     if (event.type === 'graph_traversal') {
@@ -221,18 +222,19 @@ function App() {
         </div>
         <div className="panel-divider" />
         <div className={`panel-right ${showRedacted ? 'with-redacted' : ''}`}>
-          {pdfView ? (
+          {/* GraphPanel stays mounted but hidden when PDF is open - prevents expensive re-initialization */}
+          <GraphPanel
+            traversalData={traversalData}
+            sseEvents={sseEvents}
+            onOpenPdf={handleOpenPdf}
+            isVisible={!pdfView}
+          />
+          {pdfView && (
             <PdfViewer
               pdfPath={pdfView.pdf}
               initialPage={pdfView.page}
               citation={pdfView.citation}
               onClose={handleClosePdf}
-            />
-          ) : (
-            <GraphPanel
-              traversalData={traversalData}
-              sseEvents={sseEvents}
-              onOpenPdf={handleOpenPdf}
             />
           )}
         </div>

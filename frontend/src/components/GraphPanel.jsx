@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from 'react'
+import { useEffect, useRef, useState, useCallback, memo } from 'react'
 import ForceGraph3D from '3d-force-graph'
 import * as THREE from 'three'
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
@@ -22,29 +22,29 @@ const MATERIALS = {
     opacity: 0.75,
   }),
   traversed: new THREE.MeshBasicMaterial({
-    color: new THREE.Color('#17D4BF'),
+    color: new THREE.Color('#1FFFEA'),  // 20% brighter cyan
     transparent: true,
-    opacity: 0.64,
+    opacity: 0.78,  // Increased from 0.64
   }),
   traversedHovered: new THREE.MeshBasicMaterial({
-    color: new THREE.Color('#34F4DC'),
+    color: new THREE.Color('#5CFFFF'),  // Brighter hover state
     transparent: true,
-    opacity: 0.72,
+    opacity: 0.88,  // Increased from 0.72
   }),
   pulsing: new THREE.MeshBasicMaterial({
-    color: new THREE.Color('#34F4DC'),
+    color: new THREE.Color('#5CFFFF'),  // Bright white-cyan for active pulse
     transparent: true,
-    opacity: 0.82,
+    opacity: 0.95,  // Near full opacity for pop
   }),
   fading: new THREE.MeshBasicMaterial({
-    color: new THREE.Color('#17D4BF'),
+    color: new THREE.Color('#2BFFE8'),  // Bright cyan fading
     transparent: true,
-    opacity: 0.72,
+    opacity: 0.85,  // Increased from 0.72
   }),
   glow: new THREE.MeshBasicMaterial({
-    color: new THREE.Color('#17D4BF'),
+    color: new THREE.Color('#1FFFEA'),  // Brighter glow
     transparent: true,
-    opacity: 0.15,
+    opacity: 0.25,  // Increased from 0.15 for more pop
   }),
   glowHover: new THREE.MeshBasicMaterial({
     color: new THREE.Color('#5A8AB5'),
@@ -53,7 +53,7 @@ const MATERIALS = {
   }),
 }
 
-function GraphPanel({ traversalData, sseEvents, onOpenPdf }) {
+function GraphPanel({ traversalData, sseEvents, onOpenPdf, isVisible = true }) {
   const containerRef = useRef(null)
   const graphRef = useRef(null)
   const [graphData, setGraphData] = useState({ nodes: [], links: [] })
@@ -126,11 +126,199 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf }) {
     const width = container.clientWidth
     const height = container.clientHeight
 
-    // Color palette - Clinical Noir theme with Stripe-inspired refinement
-    const monoColor = '#4A6B8A'  // Muted clinical blue (based on --node-patient)
-    const monoColorHover = '#5A8AB5'  // Subtle lift on hover
-    const traversedColor = '#17D4BF'  // Accent teal green (15% brighter)
-    const pulseColor = '#34F4DC'  // Lighter teal for pulse (15% brighter)
+    // ========== HIERARCHICAL SOLAR SYSTEM LAYOUT ==========
+    // 1. Calculate node degrees (connectivity)
+    const nodeDegree = {}
+    graphData.nodes.forEach(n => nodeDegree[n.id] = 0)
+    graphData.links.forEach(link => {
+      const sourceId = typeof link.source === 'object' ? link.source.id : link.source
+      const targetId = typeof link.target === 'object' ? link.target.id : link.target
+      nodeDegree[sourceId] = (nodeDegree[sourceId] || 0) + 1
+      nodeDegree[targetId] = (nodeDegree[targetId] || 0) + 1
+    })
+    const maxDegree = Math.max(...Object.values(nodeDegree), 1)
+
+    // 2. Identify "suns" (high-connectivity nodes) - threshold: top 15% or deg >= 10
+    const sortedByDegree = [...graphData.nodes].sort((a, b) => nodeDegree[b.id] - nodeDegree[a.id])
+    const sunThreshold = Math.max(10, nodeDegree[sortedByDegree[Math.floor(sortedByDegree.length * 0.15)]?.id] || 5)
+    const suns = sortedByDegree.filter(n => nodeDegree[n.id] >= sunThreshold)
+    const centralSun = suns[0]  // Highest degree node = center of universe
+    const sunSet = new Set(suns.map(s => s.id))
+
+    // 3. Build adjacency for cluster assignment
+    const adjacency = {}
+    graphData.nodes.forEach(n => adjacency[n.id] = [])
+    graphData.links.forEach(link => {
+      const sourceId = typeof link.source === 'object' ? link.source.id : link.source
+      const targetId = typeof link.target === 'object' ? link.target.id : link.target
+      adjacency[sourceId].push(targetId)
+      adjacency[targetId].push(sourceId)
+    })
+
+    // 4. Assign each satellite to its nearest sun via BFS
+    const nodeToSun = {}
+    const sunSatellites = {}
+    suns.forEach(s => {
+      nodeToSun[s.id] = s.id  // Suns belong to themselves
+      sunSatellites[s.id] = []
+    })
+
+    // BFS from each sun to claim nearby unclaimed nodes
+    const claimed = new Set(suns.map(s => s.id))
+    const queue = suns.map(s => ({ nodeId: s.id, sunId: s.id, dist: 0 }))
+
+    while (queue.length > 0) {
+      const { nodeId, sunId, dist } = queue.shift()
+      for (const neighborId of adjacency[nodeId]) {
+        if (!claimed.has(neighborId)) {
+          claimed.add(neighborId)
+          nodeToSun[neighborId] = sunId
+          sunSatellites[sunId].push(neighborId)
+          queue.push({ nodeId: neighborId, sunId, dist: dist + 1 })
+        }
+      }
+    }
+
+    // Handle disconnected nodes - assign to nearest sun by degree similarity
+    graphData.nodes.forEach(n => {
+      if (!claimed.has(n.id)) {
+        // Assign to a random sun (these are isolated nodes like disease_reference)
+        const randomSun = suns[Math.floor(Math.random() * suns.length)]
+        nodeToSun[n.id] = randomSun.id
+        sunSatellites[randomSun.id].push(n.id)
+      }
+    })
+
+    // 5. Pre-compute initial positions for hierarchical layout
+    const nodeCount = graphData.nodes.length
+    const baseRadius = Math.max(510, Math.cbrt(nodeCount) * 85)  // 15% more compact overall
+
+    // Calculate cluster sizes for proportional spacing
+    const clusterSizes = {}
+    suns.forEach(s => {
+      clusterSizes[s.id] = 1 + sunSatellites[s.id].length
+    })
+    const maxClusterSize = Math.max(...Object.values(clusterSizes))
+
+    // Position central sun at origin
+    const sunPositions = {}
+    sunPositions[centralSun.id] = { x: 0, y: 0, z: 0 }
+
+    // Sort suns by cluster size (largest first) for weighted positioning
+    const otherSuns = suns.filter(s => s.id !== centralSun.id)
+    const sortedBySizeDesc = [...otherSuns].sort((a, b) => clusterSizes[b.id] - clusterSizes[a.id])
+
+    // Calculate total "weight" - each cluster's angular area is proportional to its size
+    const totalWeight = sortedBySizeDesc.reduce((sum, s) => sum + Math.sqrt(clusterSizes[s.id]), 0)
+
+    // Base shell radius
+    const sunShellRadius = baseRadius * 0.55
+
+    // Golden ratio for Fibonacci-like distribution
+    const goldenRatio = (1 + Math.sqrt(5)) / 2
+
+    // Position suns using weighted Fibonacci - larger clusters get more angular space
+    let cumulativeWeight = 0
+    sortedBySizeDesc.forEach((sun, i) => {
+      const clusterWeight = Math.sqrt(clusterSizes[sun.id])
+
+      // Position based on cumulative weight (center of this cluster's angular slice)
+      const weightPosition = (cumulativeWeight + clusterWeight / 2) / totalWeight
+      cumulativeWeight += clusterWeight
+
+      // Use golden angle but scale position by weight
+      const theta = 2 * Math.PI * i / goldenRatio
+      // Phi based on weighted position - larger clusters spread more evenly
+      const phi = Math.acos(1 - 2 * weightPosition)
+
+      // Larger clusters pushed slightly outward for more room
+      const sizeRatio = clusterSizes[sun.id] / maxClusterSize
+      const radiusAdjust = 0.9 + 0.2 * sizeRatio  // 0.9 to 1.1
+      const adjustedRadius = sunShellRadius * radiusAdjust
+
+      // Small jitter for organic feel
+      const thetaJitter = (Math.random() - 0.5) * 0.08
+      const phiJitter = (Math.random() - 0.5) * 0.05
+
+      sunPositions[sun.id] = {
+        x: adjustedRadius * Math.sin(phi + phiJitter) * Math.cos(theta + thetaJitter),
+        y: adjustedRadius * Math.cos(phi + phiJitter),
+        z: adjustedRadius * Math.sin(phi + phiJitter) * Math.sin(theta + thetaJitter)
+      }
+    })
+
+    // Position satellites with normalized density across clusters
+    const initialPositions = {}
+    const clusterOrbitRadius = {}
+
+    // Calculate target density: use median cluster size as reference
+    const clusterSizeValues = Object.values(sunSatellites).map(s => s.length).filter(n => n > 0)
+    const sortedSizes = [...clusterSizeValues].sort((a, b) => a - b)
+    const medianSize = sortedSizes[Math.floor(sortedSizes.length / 2)] || 10
+
+    // Target radius for median cluster - this sets the baseline density
+    const medianRadius = 55
+    // Density constant: for uniform density, r³/n should be constant
+    // So r = k * n^(1/3), where k = medianRadius / medianSize^(1/3)
+    const densityConstant = medianRadius / Math.cbrt(medianSize)
+
+    suns.forEach(sun => {
+      const sunPos = sunPositions[sun.id]
+      initialPositions[sun.id] = sunPos
+
+      const satellites = sunSatellites[sun.id]
+
+      // Pure cube-root scaling for uniform density across all clusters
+      // Minimum radius of 35 for single-satellite clusters
+      const orbitRadius = Math.max(35, densityConstant * Math.cbrt(Math.max(satellites.length, 1)))
+      clusterOrbitRadius[sun.id] = orbitRadius
+
+      satellites.forEach((satId, idx) => {
+        const goldenAngle = Math.PI * (3 - Math.sqrt(5))
+        const theta = goldenAngle * idx
+        const phi = Math.acos(1 - 2 * (idx + 0.5) / Math.max(satellites.length, 1))
+
+        // Multi-shell distribution for larger clusters to spread nodes evenly
+        // Small clusters: single shell, large clusters: up to 3 concentric shells
+        const shellCount = satellites.length > 30 ? 3 : (satellites.length > 10 ? 2 : 1)
+        const shellIndex = idx % shellCount
+        const shellFactor = 0.7 + (shellIndex / Math.max(shellCount - 1, 1)) * 0.6  // Range: 0.7 to 1.3
+        const adjustedRadius = orbitRadius * shellFactor
+
+        // Moderate jitter for organic feel
+        const jitter = 0.08
+        const jx = (Math.random() - 0.5) * jitter * adjustedRadius
+        const jy = (Math.random() - 0.5) * jitter * adjustedRadius
+        const jz = (Math.random() - 0.5) * jitter * adjustedRadius
+
+        initialPositions[satId] = {
+          x: sunPos.x + adjustedRadius * Math.sin(phi) * Math.cos(theta) + jx,
+          y: sunPos.y + adjustedRadius * Math.cos(phi) + jy,
+          z: sunPos.z + adjustedRadius * Math.sin(phi) * Math.sin(theta) + jz
+        }
+      })
+    })
+
+    // Pre-compute edge types for visual hierarchy
+    const edgeTypes = {}  // 'intra' = within cluster, 'inter' = between clusters
+    graphData.links.forEach(link => {
+      const sourceId = typeof link.source === 'object' ? link.source.id : link.source
+      const targetId = typeof link.target === 'object' ? link.target.id : link.target
+      const sourceSun = nodeToSun[sourceId]
+      const targetSun = nodeToSun[targetId]
+      const key = `${sourceId}->${targetId}`
+      edgeTypes[key] = (sourceSun === targetSun) ? 'intra' : 'inter'
+    })
+
+    // Apply initial positions to nodes
+    graphData.nodes.forEach(node => {
+      const pos = initialPositions[node.id]
+      if (pos) {
+        node.fx = pos.x
+        node.fy = pos.y
+        node.fz = pos.z
+      }
+    })
 
     // Create the 3D force graph with modern, clean aesthetic
     const graph = ForceGraph3D()(container)
@@ -175,7 +363,8 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf }) {
             cached.glow.visible = needsGlow
             if (needsGlow) {
               cached.glow.material = (isPulsing || isFading || isTraversed) ? MATERIALS.glow : MATERIALS.glowHover
-              const glowScale = isPulsing ? 1.2 : (isFading ? 1.12 : 1.05)
+              // Larger glow scales for more pop during traversal
+              const glowScale = isPulsing ? 1.5 : (isFading ? 1.35 : (isTraversed ? 1.25 : 1.1))
               cached.glow.scale.setScalar(glowScale)
             }
           }
@@ -190,7 +379,8 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf }) {
         // Create glow child (always present, toggle visibility)
         const glow = new THREE.Mesh(SHARED_GLOW_GEOMETRY, MATERIALS.glow)
         glow.visible = needsGlow
-        glow.scale.setScalar(needsGlow ? (isPulsing ? 1.2 : 1.05) : 1.05)
+        const initGlowScale = isPulsing ? 1.5 : (isFading ? 1.35 : (isTraversed ? 1.25 : 1.1))
+        glow.scale.setScalar(needsGlow ? initGlowScale : 1.1)
         sphere.add(glow)
 
         // Cache the mesh
@@ -199,17 +389,24 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf }) {
         return sphere
       })
       .nodeLabel((node) => node.label)
-      // Dynamic link coloring based on traversal
+      // Dynamic link coloring - both edge types visible for cohesive network
       .linkColor((link) => {
         const sourceId = typeof link.source === 'object' ? link.source.id : link.source
         const targetId = typeof link.target === 'object' ? link.target.id : link.target
         const edgeKey = `${sourceId}->${targetId}`
         const reverseKey = `${targetId}->${sourceId}`
 
+        // Traversed edges highlighted - 20% brighter
         if (traversedEdgesRef.current.has(edgeKey) || traversedEdgesRef.current.has(reverseKey)) {
-          return 'rgba(23, 212, 191, 0.5)'  // Accent teal green for traversed edges (15% brighter)
+          return 'rgba(31, 255, 234, 0.8)'
         }
-        return 'rgba(74, 107, 138, 0.4)'  // Muted clinical blue
+
+        // Both edge types visible - inter-cluster slightly different color
+        const isIntra = edgeTypes[edgeKey] === 'intra' || edgeTypes[reverseKey] === 'intra'
+        if (isIntra) {
+          return 'rgba(74, 107, 138, 0.45)'  // Blue-gray for intra-cluster
+        }
+        return 'rgba(90, 70, 110, 0.3)'  // Purple-tinted for inter-cluster connections
       })
       .linkWidth((link) => {
         const sourceId = typeof link.source === 'object' ? link.source.id : link.source
@@ -218,11 +415,13 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf }) {
         const reverseKey = `${targetId}->${sourceId}`
 
         if (traversedEdgesRef.current.has(edgeKey) || traversedEdgesRef.current.has(reverseKey)) {
-          return 0.8  // Thicker for traversed edges
+          return 1.5  // Thicker for more pop
         }
-        return 0.5
+
+        const isIntra = edgeTypes[edgeKey] === 'intra' || edgeTypes[reverseKey] === 'intra'
+        return isIntra ? 0.5 : 0.35  // Inter-cluster edges visible but thinner
       })
-      .linkOpacity(0.6)
+      .linkOpacity(0.7)
       // Hover effects
       .onNodeHover((node) => {
         setHoveredNode(node || null)
@@ -261,98 +460,211 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf }) {
     directionalLight.position.set(100, 100, 100)
     scene.add(directionalLight)
 
-    // Configure forces for hierarchical galaxy-sphere layout
-    // High-connectivity nodes (suns) at center of mini-clusters
-    // Mini-clusters connected via shared nodes, all within a sphere
-    const nodeCount = graphData.nodes.length
-    const baseRadius = Math.max(300, Math.cbrt(nodeCount) * 60)
+    // ========== FORCES FOR 50% DENSITY CLUSTERS ==========
+    // Visible cluster structure with network connectivity
 
-    // Calculate node degrees (connectivity) for hierarchical positioning
-    const nodeDegree = {}
-    graphData.nodes.forEach(n => nodeDegree[n.id] = 0)
-    graphData.links.forEach(link => {
-      const sourceId = typeof link.source === 'object' ? link.source.id : link.source
-      const targetId = typeof link.target === 'object' ? link.target.id : link.target
-      nodeDegree[sourceId] = (nodeDegree[sourceId] || 0) + 1
-      nodeDegree[targetId] = (nodeDegree[targetId] || 0) + 1
-    })
-    const maxDegree = Math.max(...Object.values(nodeDegree), 1)
+    // Center force
+    graph.d3Force('center', d3.forceCenter(0, 0, 0).strength(0.015))
 
-    // Radial force - high-degree nodes (suns) closer to center, satellites at edges
-    // 15% more dense toward center
-    graph.d3Force('radial', d3.forceRadial(
-      node => {
-        const degree = nodeDegree[node.id] || 0
-        const normalizedDegree = degree / maxDegree
-        // High degree = closer to center, low degree = toward edge
-        // Reduced by 15% to pull everything closer to center
-        return baseRadius * 0.85 * (0.25 + 0.6 * (1 - normalizedDegree))
-      },
-      0, 0, 0
-    ).strength(0.45))
-
-    // Center force - keeps the galaxy centered
-    graph.d3Force('center', d3.forceCenter(0, 0, 0))
-
-    // Charge force - moderate repulsion, evenly spaces clusters
+    // Charge force - repulsion proportional to cluster size
+    // Larger clusters push harder to claim more space
     graph.d3Force('charge', d3.forceManyBody()
       .strength(node => {
-        const degree = nodeDegree[node.id] || 0
-        // High-degree nodes repel more (they're suns, need space for satellites)
-        return -60 - (degree * 3)
+        const isSun = sunSet.has(node.id)
+        if (!isSun) return -10
+        // Central sun pushes others to shell
+        if (node.id === centralSun.id) return -280
+        // Repulsion scales with cluster size (sqrt for balance)
+        const sizeRatio = Math.sqrt(clusterSizes[node.id] / maxClusterSize)
+        return -120 - 150 * sizeRatio  // Range: -120 to -270
       })
-      .distanceMin(15)
-      .distanceMax(baseRadius * 2)
+      .distanceMin(20)
+      .distanceMax(baseRadius * 1.5)
     )
 
-    // Link force - creates spherical mini-clusters around suns
+    // Custom force: size-weighted angular repulsion between suns
+    // Larger clusters claim more angular space on the sphere
+    const sunAngularRepulsion = () => {
+      const sunNodes = graphData.nodes.filter(n => sunSet.has(n.id) && n.id !== centralSun.id)
+
+      // Pre-compute target angular "radius" for each sun based on cluster size
+      const sunAngularRadius = {}
+      const totalSqrtSize = sunNodes.reduce((sum, n) => sum + Math.sqrt(clusterSizes[n.id]), 0)
+      sunNodes.forEach(n => {
+        // Each sun's angular territory is proportional to sqrt of its cluster size
+        // Total solid angle of hemisphere is 2π, distribute proportionally
+        sunAngularRadius[n.id] = Math.PI * Math.sqrt(clusterSizes[n.id]) / totalSqrtSize
+      })
+
+      return (alpha) => {
+        const strength = alpha * 6
+
+        for (let i = 0; i < sunNodes.length; i++) {
+          const nodeA = sunNodes[i]
+          if (nodeA.x === undefined) continue
+
+          for (let j = i + 1; j < sunNodes.length; j++) {
+            const nodeB = sunNodes[j]
+            if (nodeB.x === undefined) continue
+
+            // Calculate angular distance (dot product of unit vectors)
+            const rA = Math.sqrt(nodeA.x * nodeA.x + nodeA.y * nodeA.y + nodeA.z * nodeA.z) || 1
+            const rB = Math.sqrt(nodeB.x * nodeB.x + nodeB.y * nodeB.y + nodeB.z * nodeB.z) || 1
+
+            const ux = nodeA.x / rA, uy = nodeA.y / rA, uz = nodeA.z / rA
+            const vx = nodeB.x / rB, vy = nodeB.y / rB, vz = nodeB.z / rB
+
+            const dot = ux * vx + uy * vy + uz * vz
+            const angle = Math.acos(Math.max(-1, Math.min(1, dot)))
+
+            // Target minimum angle = sum of both clusters' angular radii
+            const targetAngle = sunAngularRadius[nodeA.id] + sunAngularRadius[nodeB.id]
+
+            if (angle < targetAngle * 1.2) {  // Start pushing before overlap
+              // Push strength proportional to how much they're overlapping
+              const overlap = (targetAngle * 1.2 - angle) / targetAngle
+              const pushStrength = strength * overlap
+
+              // Push A away from B (tangent to sphere)
+              const perpAx = (vx - dot * ux)
+              const perpAy = (vy - dot * uy)
+              const perpAz = (vz - dot * uz)
+              const perpAMag = Math.sqrt(perpAx * perpAx + perpAy * perpAy + perpAz * perpAz) || 1
+
+              // Weight push by relative cluster sizes - smaller one moves more
+              const totalSize = clusterSizes[nodeA.id] + clusterSizes[nodeB.id]
+              const weightA = clusterSizes[nodeB.id] / totalSize  // A moves more if B is bigger
+              const weightB = clusterSizes[nodeA.id] / totalSize
+
+              nodeA.vx -= pushStrength * weightA * perpAx / perpAMag
+              nodeA.vy -= pushStrength * weightA * perpAy / perpAMag
+              nodeA.vz -= pushStrength * weightA * perpAz / perpAMag
+
+              // Push B away from A
+              const perpBx = (ux - dot * vx)
+              const perpBy = (uy - dot * vy)
+              const perpBz = (uz - dot * vz)
+              const perpBMag = Math.sqrt(perpBx * perpBx + perpBy * perpBy + perpBz * perpBz) || 1
+
+              nodeB.vx -= pushStrength * weightB * perpBx / perpBMag
+              nodeB.vy -= pushStrength * weightB * perpBy / perpBMag
+              nodeB.vz -= pushStrength * weightB * perpBz / perpBMag
+            }
+          }
+        }
+      }
+    }
+    graph.d3Force('sunSpacing', sunAngularRepulsion())
+
+    // Link force - normalized distances based on cluster orbit radii
     graph.d3Force('link')
       .distance(link => {
         const sourceId = typeof link.source === 'object' ? link.source.id : link.source
         const targetId = typeof link.target === 'object' ? link.target.id : link.target
-        const sourceDegree = nodeDegree[sourceId] || 1
-        const targetDegree = nodeDegree[targetId] || 1
-        const maxLinkDegree = Math.max(sourceDegree, targetDegree)
-        // Consistent orbital distance based on sun's size - creates spherical shells
-        return 25 + (maxLinkDegree * 2)
+        const edgeKey = `${sourceId}->${targetId}`
+        const isIntra = edgeTypes[edgeKey] === 'intra' || edgeTypes[`${targetId}->${sourceId}`] === 'intra'
+
+        const sourceIsSun = sunSet.has(sourceId)
+        const targetIsSun = sunSet.has(targetId)
+
+        if (!isIntra) {
+          // Inter-cluster: moderate distance
+          return 130
+        }
+
+        if (sourceIsSun || targetIsSun) {
+          // Sun-to-satellite: use normalized orbit radius for this cluster
+          const sunId = sourceIsSun ? sourceId : targetId
+          return clusterOrbitRadius[sunId] * 0.65  // 65% of orbit radius
+        }
+        // Satellite-to-satellite within cluster - scale with cluster orbit
+        const clusterSunId = nodeToSun[sourceId]
+        const radius = clusterOrbitRadius[clusterSunId] || 50
+        return radius * 0.4  // 40% of orbit radius for intra-cluster satellite links
       })
       .strength(link => {
         const sourceId = typeof link.source === 'object' ? link.source.id : link.source
         const targetId = typeof link.target === 'object' ? link.target.id : link.target
-        const sourceDegree = nodeDegree[sourceId] || 1
-        const targetDegree = nodeDegree[targetId] || 1
-        // Strong pull to keep satellites in tight spherical orbit
-        return 0.9
+        const edgeKey = `${sourceId}->${targetId}`
+        const isIntra = edgeTypes[edgeKey] === 'intra' || edgeTypes[`${targetId}->${sourceId}`] === 'intra'
+
+        // Stronger pull within clusters
+        return isIntra ? 0.7 : 0.15
       })
 
-    // Collision force - spherical spacing within clusters (reduced iterations)
+    // Collision force
     graph.d3Force('collision', d3.forceCollide()
       .radius(node => {
-        const degree = nodeDegree[node.id] || 0
-        // Suns get more space, satellites pack evenly around them
-        return node.size * (1.8 + degree * 0.15)
+        const isSun = sunSet.has(node.id)
+        return isSun ? 20 : 10
       })
-      .strength(0.8)
+      .strength(0.7)
       .iterations(1)
     )
 
-    // Add cluster cohesion - satellites attract each other slightly (forms spherical shell)
-    graph.d3Force('cluster', d3.forceManyBody()
-      .strength(node => {
-        const degree = nodeDegree[node.id] || 0
-        // Low-degree nodes (satellites) attract each other gently
-        // High-degree nodes (suns) don't attract - they repel via charge
-        return degree < 3 ? 5 : 0
-      })
-      .distanceMin(10)
-      .distanceMax(60)
-    )
+    // Radial force - larger clusters slightly further out for breathing room
+    graph.d3Force('sphereShape', d3.forceRadial(
+      node => {
+        const isSun = sunSet.has(node.id)
+        if (isSun) {
+          if (node.id === centralSun.id) return 0
+          // Larger clusters pushed slightly outward
+          const sizeRatio = clusterSizes[node.id] / maxClusterSize
+          return sunShellRadius * (0.9 + 0.2 * sizeRatio)
+        } else {
+          // Satellites: positioned relative to their sun
+          const sunId = nodeToSun[node.id]
+          const sunPos = sunPositions[sunId]
+          if (!sunPos || sunId === centralSun.id) {
+            return (clusterOrbitRadius[sunId] || 50) * 0.6
+          }
+          const sunSizeRatio = clusterSizes[sunId] / maxClusterSize
+          const sunRadius = sunShellRadius * (0.9 + 0.2 * sunSizeRatio)
+          return sunRadius + (clusterOrbitRadius[sunId] || 50) * 0.4
+        }
+      },
+      0, 0, 0
+    ).strength(node => {
+      return sunSet.has(node.id) ? 0.45 : 0.12
+    }))
 
-    // Simulation tuning - faster convergence for performance
-    graph.d3AlphaDecay(0.04)  // Faster decay
-    graph.d3VelocityDecay(0.4)  // More damping = less jitter
-    graph.warmupTicks(150)  // More pre-compute = less runtime sim
-    graph.cooldownTicks(100)  // Settle faster
+    // Disable unused forces
+    graph.d3Force('radial', null)
+    graph.d3Force('sunRadial', null)
+    graph.d3Force('spherical', null)
+    graph.d3Force('shells', null)
+    graph.d3Force('cluster', null)
+
+    // Simulation tuning
+    graph.d3AlphaDecay(0.03)
+    graph.d3VelocityDecay(0.4)
+    graph.warmupTicks(120)
+    graph.cooldownTicks(0)
+
+    // Release fixed positions for organic settling
+    setTimeout(() => {
+      graphData.nodes.forEach(node => {
+        delete node.fx
+        delete node.fy
+        delete node.fz
+      })
+      if (graphRef.current) {
+        graphRef.current.d3ReheatSimulation()
+        setTimeout(() => {
+          if (graphRef.current) {
+            // Reduce forces for stable state but keep spherical shape strong
+            graph.d3Force('charge').strength(node => {
+              const isSun = sunSet.has(node.id)
+              return isSun ? -120 : -8
+            })
+            // Keep sphereShape force to maintain overall spherical structure
+            graph.d3Force('sphereShape').strength(node => {
+              return sunSet.has(node.id) ? 0.35 : 0.12
+            })
+          }
+        }, 3000)
+      }
+    }, 800)
 
     // Set graph data
     graph.graphData(graphData)
@@ -360,15 +672,18 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf }) {
     // Store reference
     graphRef.current = graph
 
-    // Set initial camera position to view the full galaxy-sphere
-    const cameraDistance = baseRadius * 3
+    // Set initial camera position to view the full spherical structure
+    const cameraDistance = baseRadius * 2.4  // Slightly further for compacted structure
     setTimeout(() => {
       graph.cameraPosition(
-        { x: cameraDistance * 0.7, y: cameraDistance * 0.5, z: cameraDistance * 0.7 },
+        { x: cameraDistance * 0.5, y: cameraDistance * 0.6, z: cameraDistance * 0.65 },
         { x: 0, y: 0, z: 0 },
         0
       )
     }, 100)
+
+    // Log layout stats for debugging
+    console.log(`Solar system layout: ${suns.length} suns, central sun: ${centralSun.label} (deg=${nodeDegree[centralSun.id]})`)
 
     // Handle resize
     const handleResize = () => {
@@ -395,6 +710,22 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf }) {
     selectedNodeRef.current = selectedNode
     scheduleRefresh()
   }, [hoveredNode, selectedNode, scheduleRefresh])
+
+  // Handle visibility changes - resize and refresh when becoming visible
+  useEffect(() => {
+    if (isVisible && graphRef.current && containerRef.current) {
+      // Small delay to ensure container has correct dimensions after becoming visible
+      const timer = setTimeout(() => {
+        if (containerRef.current && graphRef.current) {
+          graphRef.current
+            .width(containerRef.current.clientWidth)
+            .height(containerRef.current.clientHeight)
+          graphRef.current.refresh()
+        }
+      }, 50)
+      return () => clearTimeout(timer)
+    }
+  }, [isVisible])
 
   // Handle traversal events - highlight accessed nodes/edges sequentially
   useEffect(() => {
@@ -533,8 +864,19 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf }) {
     return types[type] || type
   }
 
+  // Style for hiding while maintaining dimensions
+  const hiddenStyle = !isVisible ? {
+    visibility: 'hidden',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    pointerEvents: 'none',
+  } : {}
+
   return (
-    <div className="graph-panel">
+    <div className="graph-panel" style={hiddenStyle}>
       {/* Graph Header */}
       <div className="graph-header">
         <span className="graph-title">Knowledge Graph</span>
@@ -598,4 +940,4 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf }) {
   )
 }
 
-export default GraphPanel
+export default memo(GraphPanel)
