@@ -4,8 +4,9 @@
   "age": 72,
   "sex": "male",
   "mrn": "MRN-62417",
-  "summary": "72-year-old male with severe Chronic Obstructive Pulmonary Disease (COPD), on home oxygen, presenting for routine follow-ups following a history of recurrent pneumonia.",
+  "dob": "1952-03-12",
   "tier": "simple",
+  "summary": "72-year-old male with severe Chronic Obstructive Pulmonary Disease (COPD), on home oxygen, presenting for routine follow-ups following a history of recurrent pneumonia.",
   "conditions": [
     {
       "name": "Chronic Obstructive Pulmonary Disease",

@@ -10,6 +10,7 @@ from backend.graph import load_graph, get_patient
 ALL_NODE_TYPES = {
     "patient", "visit", "condition", "medication",
     "lab_result", "procedure", "provider", "family_history",
+    "disease_reference",
 }
 
 ALL_EDGE_TYPES = {
@@ -48,8 +49,8 @@ def test_meta_counts(built_graph):
     assert meta["num_patients"] == 2
     assert meta["num_nodes"] == len(built_graph["nodes"])
     assert meta["num_edges"] == len(built_graph["edges"])
-    assert meta["num_nodes"] == 116
-    assert meta["num_edges"] == 167
+    assert meta["num_nodes"] == 132
+    assert meta["num_edges"] == 165
     # generated_at is a valid ISO timestamp
     datetime.fromisoformat(meta["generated_at"].replace("Z", "+00:00"))
 
@@ -165,7 +166,7 @@ def test_family_history_nodes(built_graph):
 # ---------------------------------------------------------------------------
 
 def test_all_node_types_present(built_graph):
-    """All 8 node types exist."""
+    """All 9 node types exist."""
     present = {n["type"] for n in built_graph["nodes"].values()}
     missing = ALL_NODE_TYPES - present
     assert not missing, f"Missing node types: {missing}"
@@ -192,9 +193,9 @@ def test_had_visit_edges(built_graph):
 
 
 def test_has_condition_edges(built_graph):
-    """8 HAS_CONDITION edges (patient -> condition)."""
+    """6 HAS_CONDITION edges (patient -> condition, discoverable skipped)."""
     edges = _edges_of_type(built_graph, "HAS_CONDITION")
-    assert len(edges) == 8
+    assert len(edges) == 6
     for e in edges:
         assert built_graph["nodes"][e["source"]]["type"] == "patient"
         assert built_graph["nodes"][e["target"]]["type"] == "condition"
@@ -285,15 +286,16 @@ def test_edge_endpoints_valid(built_graph):
 
 
 def test_no_orphan_nodes(built_graph):
-    """Every non-patient node has at least one incoming edge."""
+    """Every non-patient, non-disease_reference node has at least one edge."""
     targeted = set()
     sourced = set()
     for e in built_graph["edges"]:
         targeted.add(e["target"])
         sourced.add(e["source"])
     connected = targeted | sourced
+    # Skip patient nodes (roots) and disease_reference nodes (intentionally standalone)
     for nid, node in built_graph["nodes"].items():
-        if node["type"] != "patient":
+        if node["type"] not in ("patient", "disease_reference"):
             assert nid in connected, f"Orphan node: {nid} ({node['type']})"
 
 
@@ -313,12 +315,12 @@ def test_loadable_by_graph_module(built_graph, tmp_path):
     assert marcus is not None
 
 
-def test_deterministic(demo_profiles):
+def test_deterministic(demo_profiles, disease_references):
     """Two calls with same input produce identical output."""
     from scripts.build_graph import build_graph
 
-    result1 = json.dumps(build_graph(demo_profiles), sort_keys=True)
-    result2 = json.dumps(build_graph(demo_profiles), sort_keys=True)
+    result1 = json.dumps(build_graph(demo_profiles, disease_references=disease_references), sort_keys=True)
+    result2 = json.dumps(build_graph(demo_profiles, disease_references=disease_references), sort_keys=True)
     assert result1 == result2
 
 
@@ -342,3 +344,66 @@ def test_phi_tagging_spot_check(built_graph):
     med = meds[0]
     assert med["fields"]["name"]["phi"] is False
     assert med["fields"]["prescribing_provider"]["phi"] is True
+
+
+# ---------------------------------------------------------------------------
+# Disease reference nodes
+# ---------------------------------------------------------------------------
+
+def test_disease_reference_nodes(built_graph):
+    """Disease reference nodes exist with correct fields."""
+    disease_refs = [n for n in built_graph["nodes"].values() if n["type"] == "disease_reference"]
+    assert len(disease_refs) > 0
+    for ref in disease_refs:
+        fields = ref["fields"]
+        assert "name" in fields
+        assert "category" in fields
+        assert "description" in fields
+        assert "symptoms" in fields
+        assert "diagnostic_criteria" in fields
+        assert "lab_markers" in fields
+        assert "epidemiology" in fields
+        assert "icd_code" in fields
+        # All fields should be safe (not PHI)
+        for f in fields.values():
+            assert f["phi"] is False
+
+
+def test_disease_reference_no_edges(built_graph):
+    """Disease reference nodes should have no edges."""
+    disease_ref_ids = {nid for nid, n in built_graph["nodes"].items() if n["type"] == "disease_reference"}
+    for edge in built_graph["edges"]:
+        assert edge["source"] not in disease_ref_ids, f"Disease ref {edge['source']} has outgoing edge"
+        assert edge["target"] not in disease_ref_ids, f"Disease ref {edge['target']} has incoming edge"
+
+
+# ---------------------------------------------------------------------------
+# Discoverable conditions
+# ---------------------------------------------------------------------------
+
+def test_discoverable_conditions_no_has_condition_edge(built_graph):
+    """Discoverable conditions have nodes but no HAS_CONDITION edge from patient."""
+    condition_nodes = {nid: n for nid, n in built_graph["nodes"].items() if n["type"] == "condition"}
+    sle_ids = [nid for nid, n in condition_nodes.items() if "Lupus" in n["fields"]["name"]["value"]]
+    solanum_ids = [nid for nid, n in condition_nodes.items() if "Solanum" in n["fields"]["name"]["value"]]
+
+    # These condition nodes should exist
+    assert len(sle_ids) > 0, "SLE condition node should exist"
+    assert len(solanum_ids) > 0, "Solanum condition node should exist"
+
+    # But no HAS_CONDITION edges should point to them
+    has_condition_targets = {e["target"] for e in built_graph["edges"] if e["type"] == "HAS_CONDITION"}
+    for sle_id in sle_ids:
+        assert sle_id not in has_condition_targets, "SLE should not have HAS_CONDITION edge"
+    for sol_id in solanum_ids:
+        assert sol_id not in has_condition_targets, "Solanum should not have HAS_CONDITION edge"
+
+
+def test_discoverable_conditions_still_have_treated_with(built_graph):
+    """Medications that treat discoverable conditions still have TREATED_WITH edges."""
+    treated_with_edges = [e for e in built_graph["edges"] if e["type"] == "TREATED_WITH"]
+    condition_nodes = {nid: n for nid, n in built_graph["nodes"].items() if n["type"] == "condition"}
+    sle_ids = {nid for nid, n in condition_nodes.items() if "Lupus" in n["fields"]["name"]["value"]}
+    # TREATED_WITH: condition (source) -> medication (target)
+    sle_treated = [e for e in treated_with_edges if e["source"] in sle_ids]
+    assert len(sle_treated) > 0, "SLE should have TREATED_WITH edges to medications"

@@ -82,9 +82,79 @@ _DOC_TYPE_INSTRUCTIONS = {
 }
 
 
+def _get_visit_index(visits, visit_ref):
+    """Return the index of a visit by its ref, or -1 if not found."""
+    for i, v in enumerate(visits):
+        if v["ref"] == visit_ref:
+            return i
+    return -1
+
+
+def _conditions_as_of(profile, visit_ref):
+    """Return conditions diagnosed at or before the given visit, excluding discoverable."""
+    visits = profile["visits"]
+    current_idx = _get_visit_index(visits, visit_ref)
+    if current_idx < 0:
+        return []
+    result = []
+    for cond in profile.get("conditions", []):
+        if cond.get("discoverable", False):
+            continue
+        diag_visit = cond.get("diagnosed_visit")
+        if diag_visit is None:
+            result.append(cond)
+        else:
+            diag_idx = _get_visit_index(visits, diag_visit)
+            if diag_idx >= 0 and diag_idx <= current_idx:
+                result.append(cond)
+    return result
+
+
+def _medications_as_of(profile, visit_ref):
+    """Return medications active at the given visit."""
+    visits = profile["visits"]
+    current_idx = _get_visit_index(visits, visit_ref)
+    if current_idx < 0:
+        return []
+    result = []
+    for med in profile.get("medications", []):
+        start_idx = _get_visit_index(visits, med.get("start_visit", ""))
+        if start_idx < 0 or start_idx > current_idx:
+            continue
+        end_visit = med.get("end_visit")
+        if end_visit:
+            end_idx = _get_visit_index(visits, end_visit)
+            if end_idx >= 0 and end_idx < current_idx:
+                continue
+        result.append(med)
+    return result
+
+
+def _future_diagnoses(profile, visit_ref):
+    """Return names of conditions diagnosed after the given visit."""
+    visits = profile["visits"]
+    current_idx = _get_visit_index(visits, visit_ref)
+    if current_idx < 0:
+        return []
+    result = []
+    for cond in profile.get("conditions", []):
+        diag_visit = cond.get("diagnosed_visit")
+        if diag_visit:
+            diag_idx = _get_visit_index(visits, diag_visit)
+            if diag_idx >= 0 and diag_idx > current_idx:
+                result.append(cond["name"])
+    return result
+
+
 def build_prompt(profile: dict, visit: dict, doc_type: str) -> str:
-    """Build a Gemini prompt for generating a clinical document."""
+    """Build a Gemini prompt for generating a clinical document.
+
+    Uses temporal scoping: only conditions/medications known at the time
+    of the visit are included. Future diagnoses are explicitly excluded
+    via a temporal guardrail.
+    """
     instructions = _DOC_TYPE_INSTRUCTIONS.get(doc_type, _DOC_TYPE_INSTRUCTIONS["progress_note"])
+    visit_ref = visit["ref"]
 
     parts = [
         "You are an expert clinical documentation specialist. Generate a realistic, "
@@ -92,13 +162,53 @@ def build_prompt(profile: dict, visit: dict, doc_type: str) -> str:
         f"DOCUMENT TYPE INSTRUCTIONS:\n{instructions}\n",
         f"PATIENT: {profile['name']}, {profile['age']}-year-old {profile['sex']}",
         f"MRN: {profile['mrn']}",
-        f"CLINICAL SUMMARY: {profile['summary']}\n",
+        f"DATE OF BIRTH: {profile.get('dob', 'Unknown')}\n",
+    ]
+
+    # Temporally-scoped conditions
+    known_conditions = _conditions_as_of(profile, visit_ref)
+    if known_conditions:
+        parts.append("KNOWN CONDITIONS AT TIME OF VISIT:")
+        for cond in known_conditions:
+            parts.append(f"  - {cond['name']} ({cond.get('icd_code', '')}) — {cond['status']}")
+        parts.append("")
+    else:
+        parts.append("KNOWN CONDITIONS AT TIME OF VISIT: None\n")
+
+    # Temporally-scoped medications
+    active_meds = _medications_as_of(profile, visit_ref)
+    if active_meds:
+        parts.append("CURRENT MEDICATIONS AT TIME OF VISIT:")
+        for med in active_meds:
+            parts.append(f"  - {med['name']} {med['dosage']} {med['frequency']}")
+        parts.append("")
+    else:
+        parts.append("CURRENT MEDICATIONS AT TIME OF VISIT: None\n")
+
+    # Family history (static, always included)
+    family_hx = profile.get("family_history", [])
+    if family_hx:
+        parts.append("FAMILY HISTORY:")
+        for fh in family_hx:
+            age_str = f", diagnosed age {fh['diagnosed_age']}" if fh.get("diagnosed_age") else ""
+            parts.append(f"  - {fh['relation'].title()}: {fh['condition']}{age_str}")
+        parts.append("")
+
+    # Temporal guardrail
+    future_dx = _future_diagnoses(profile, visit_ref)
+    if future_dx:
+        parts.append(f"TEMPORAL GUARDRAIL: This document is written on {visit['date']}. "
+                      f"Do NOT reference, mention, or hint at the following diagnoses that "
+                      f"have NOT yet been made: {', '.join(future_dx)}. The clinician does "
+                      f"not yet know about these conditions.\n")
+
+    parts.extend([
         f"VISIT DATE: {visit['date']}",
         f"VISIT TYPE: {visit['type']}",
         f"PROVIDER: {visit['provider']}",
         f"CHIEF COMPLAINT: {visit['chief_complaint']}\n",
         f"CLINICAL NARRATIVE:\n{visit['narrative']}\n",
-    ]
+    ])
 
     # Include labs if present
     labs = visit.get("labs", [])
@@ -152,9 +262,9 @@ _MAX_RETRIES = 3
 
 def call_gemini(prompt: str) -> str:
     """Call Gemini 2.5 Flash via REST API. Returns generated text."""
-    api_key = os.environ.get("GOOGLE_API_KEY")
+    api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
     if not api_key:
-        raise RuntimeError("GOOGLE_API_KEY not set in environment")
+        raise RuntimeError("GEMINI_API_KEY (or GOOGLE_API_KEY) not set in environment")
 
     payload = {
         "contents": [{"parts": [{"text": prompt}]}],

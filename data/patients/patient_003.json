@@ -4,8 +4,9 @@
   "age": 45,
   "sex": "male",
   "mrn": "MRN-55671",
-  "summary": "45-year-old male presented with acute chest pain, diagnosed with ST-Elevation Myocardial Infarction (STEMI), successfully treated with percutaneous coronary intervention (PCI) and stent placement, now stable on medical therapy and undergoing cardiac rehabilitation.",
+  "dob": "1978-11-10",
   "tier": "moderate",
+  "summary": "45-year-old male presented with acute chest pain, diagnosed with ST-Elevation Myocardial Infarction (STEMI), successfully treated with percutaneous coronary intervention (PCI) and stent placement, now stable on medical therapy and undergoing cardiac rehabilitation.",
   "storyline": "David Chen, a 45-year-old male with a history of hypertension, presented to the emergency department with sudden onset severe substernally chest pain radiating to his left arm. ECG confirmed an anterior ST-Elevation Myocardial Infarction (STEMI). He underwent emergency cardiac catheterization with successful percutaneous coronary intervention (PCI) and placement of a drug-eluting stent to his left anterior descending (LAD) artery. Post-procedure, he was started on dual antiplatelet therapy, a statin, and a beta-blocker. He then engaged in a 6-month cardiac rehabilitation program, showing good progress and adherence to lifestyle modifications.",
   "conditions": [
     {

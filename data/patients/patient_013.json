@@ -4,6 +4,7 @@
   "age": 33,
   "sex": "female",
   "mrn": "MRN-34582",
+  "dob": "1990-11-10",
   "tier": "complex",
   "summary": "33-year-old female initially presenting with anxiety, weight loss, and palpitations. Diagnosed with Graves' disease, developed agranulocytosis on methimazole, underwent radioactive iodine ablation, leading to subsequent hypothyroidism and worsening thyroid eye disease.",
   "storyline": "Anika Patel initially presented to her PCP with chronic anxiety, which was exacerbated by new symptoms of weight loss, tachycardia, and tremor. Initial workup confirmed hyperthyroidism due to Graves' disease. She was started on methimazole but quickly developed agranulocytosis, necessitating its discontinuation. Radioactive iodine (RAI) ablation was pursued, which successfully treated the hyperthyroidism but led to iatrogenic hypothyroidism, requiring lifelong levothyroxine. During this period, her pre-existing mild thyroid eye disease significantly worsened, manifesting as proptosis and diplopia, requiring ophthalmology co-management and a course of high-dose steroids. Her anxiety, a long-standing issue, was managed concurrently but required adjustment as her thyroid status fluctuated.",

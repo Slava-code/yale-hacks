@@ -4,8 +4,9 @@
   "age": 75,
   "sex": "male",
   "mrn": "MRN-58423",
-  "summary": "75-year-old male with progressive Parkinson's Disease over 3 years, complicated by orthostatic hypotension and major depressive disorder, managed with a combination of dopaminergic, hypotensive, and antidepressant medications.",
+  "dob": "1949-05-13",
   "tier": "complex",
+  "summary": "75-year-old male with progressive Parkinson's Disease over 3 years, complicated by orthostatic hypotension and major depressive disorder, managed with a combination of dopaminergic, hypotensive, and antidepressant medications.",
   "storyline": "Raymond Jackson, a 75-year-old male, initially presented to his PCP in late 2024 with subtle right-sided resting tremor and slowed movements. A neurological consult confirmed Parkinson's Disease (PD), leading to initiation of Carbidopa-Levetiracetam. Over the next year, despite careful medication titration, he experienced a 'wearing-off' phenomenon, requiring dosage adjustments and the addition of Rasagiline. Concurrently, he developed significant orthostatic hypotension, which led to several near-falls, prompting a cardiology consult and the initiation of Midodrine. Increasing apathy, low mood, and sleep disturbances then emerged, leading to a psychiatry referral. He was diagnosed with Major Depressive Disorder and started on Sertraline. His complex management now involves multiple specialists, ongoing medication adjustments to manage motor fluctuations and non-motor symptoms, and supportive therapies like physical therapy to maintain function and prevent falls, highlighting the multi-faceted challenges of advanced PD.",
   "conditions": [
     {

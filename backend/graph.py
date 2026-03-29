@@ -2,6 +2,7 @@
 Knowledge graph query module.
 
 Public API for the gatekeeper and backend to query the in-memory knowledge graph.
+Supports 9 node types including disease_reference (standalone institutional knowledge).
 Spec: docs/interfaces.md §3-4.
 
 Person 3 implements this module; Person 2 calls it.
@@ -42,6 +43,7 @@ Medication = Node
 Condition = Node
 Procedure = Node
 Provider = Node
+DiseaseReference = Node
 
 
 @dataclass
@@ -229,6 +231,16 @@ def search_nodes(graph: Graph, query: str, node_type: str | None = None) -> list
                 results.append(node)
                 break
     return results
+
+
+def search_disease_references(graph: Graph, query: str) -> list[DiseaseReference]:
+    """Search disease reference nodes by symptom keywords.
+
+    Convenience wrapper around search_nodes() restricted to the
+    disease_reference node type. Used by the gatekeeper to find
+    candidate diagnoses that match observed clinical evidence.
+    """
+    return search_nodes(graph, query, node_type="disease_reference")
 
 
 def get_traversal_path(graph: Graph, node_ids: list[str]) -> TraversalPath:

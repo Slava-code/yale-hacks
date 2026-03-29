@@ -4,8 +4,9 @@
   "age": 33,
   "sex": "female",
   "mrn": "MRN-37001",
-  "summary": "33-year-old female presenting with chronic right heel pain, diagnosed with Plantar Fasciitis, managed with conservative measures including stretching and activity modification.",
+  "dob": "1991-05-13",
   "tier": "simple",
+  "summary": "33-year-old female presenting with chronic right heel pain, diagnosed with Plantar Fasciitis, managed with conservative measures including stretching and activity modification.",
   "conditions": [
     {
       "name": "Plantar Fasciitis",

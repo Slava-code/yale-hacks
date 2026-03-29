@@ -4,6 +4,7 @@
   "age": 66,
   "sex": "male",
   "mrn": "MRN-10123",
+  "dob": "1957-11-10",
   "tier": "moderate",
   "summary": "66-year-old male with a history of Type 2 Diabetes Mellitus, hypertension, and hyperlipidemia, presenting with worsening glycemic control and new onset peripheral neuropathy, leading to insulin initiation and ongoing management.",
   "storyline": "Derek Washington, a long-standing patient with Type 2 Diabetes, hypertension, and hyperlipidemia, attends a routine physical where his glycemic control is noted to be suboptimal despite oral medications. Over several months, he develops new symptoms of tingling and numbness in his feet, prompting an endocrinology referral. After a comprehensive evaluation, insulin therapy is initiated to achieve better glucose control and manage his developing diabetic peripheral neuropathy. His care is coordinated between his PCP and endocrinologist, focusing on medication adherence, lifestyle modifications, and regular monitoring to prevent further complications.",

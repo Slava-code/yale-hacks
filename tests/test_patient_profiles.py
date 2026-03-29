@@ -30,7 +30,7 @@ VALID_DOC_TYPES = {
 }
 
 REQUIRED_TOP_LEVEL_FIELDS = {
-    "id", "name", "age", "sex", "mrn", "tier", "summary",
+    "id", "name", "age", "sex", "mrn", "dob", "tier", "summary",
     "conditions", "medications", "providers", "visits",
 }
 
@@ -38,6 +38,7 @@ REQUIRED_TOP_LEVEL_FIELDS = {
 ALL_NODE_TYPES = {
     "patient", "visit", "condition", "medication",
     "lab_result", "procedure", "provider", "family_history",
+    "disease_reference",
 }
 
 # All edge types that a demo profile's data should be able to produce
@@ -235,6 +236,9 @@ def test_profile_exercises_all_graph_functions(demo_profiles):
     """
     producible_node_types = set()
     producible_edge_types = set()
+
+    # disease_reference nodes come from data/disease_references.json, not profiles
+    producible_node_types.add("disease_reference")
 
     for profile in demo_profiles:
         producible_node_types.add("patient")
@@ -450,3 +454,22 @@ def test_patient_distribution(all_profiles):
     assert tiers.count("complex") >= 5, f"Need >= 5 complex, got {tiers.count('complex')}"
     assert tiers.count("moderate") >= 10, f"Need >= 10 moderate, got {tiers.count('moderate')}"
     assert tiers.count("simple") >= 15, f"Need >= 15 simple, got {tiers.count('simple')}"
+
+
+# ---------------------------------------------------------------------------
+# DOB and discoverable conditions
+# ---------------------------------------------------------------------------
+
+def test_profile_has_valid_dob(all_profiles):
+    """Every profile must have a valid ISO date dob."""
+    date_pattern = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+    for profile in all_profiles:
+        assert "dob" in profile, f"{profile['id']} missing dob"
+        assert date_pattern.match(profile["dob"]), f"{profile['id']} invalid dob: {profile['dob']}"
+
+
+def test_demo_patients_have_discoverable_conditions(demo_profiles):
+    """Demo patients should have at least one discoverable condition."""
+    for profile in demo_profiles:
+        discoverable = [c for c in profile["conditions"] if c.get("discoverable", False)]
+        assert len(discoverable) > 0, f"{profile['id']} has no discoverable conditions"

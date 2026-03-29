@@ -4,8 +4,9 @@
   "age": 29,
   "sex": "female",
   "mrn": "MRN-54321",
-  "summary": "29-year-old female with a history of chronic migraines with aura, managed with topiramate, and concurrent anxiety disorder receiving therapy.",
+  "dob": "1994-11-10",
   "tier": "moderate",
+  "summary": "29-year-old female with a history of chronic migraines with aura, managed with topiramate, and concurrent anxiety disorder receiving therapy.",
   "conditions": [
     {
       "name": "Migraine with Aura",

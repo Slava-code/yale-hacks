@@ -4,8 +4,9 @@
   "age": 53,
   "sex": "female",
   "mrn": "MRN-51289",
-  "summary": "53-year-old female diagnosed with hypothyroidism and hyperlipidemia, currently managed with levothyroxine and atorvastatin with good clinical control.",
+  "dob": "1970-11-10",
   "tier": "moderate",
+  "summary": "53-year-old female diagnosed with hypothyroidism and hyperlipidemia, currently managed with levothyroxine and atorvastatin with good clinical control.",
   "conditions": [
     {
       "name": "Hypothyroidism",

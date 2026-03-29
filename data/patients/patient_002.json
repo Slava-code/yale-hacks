@@ -4,8 +4,9 @@
   "age": 58,
   "sex": "female",
   "mrn": "MRN-41092",
-  "summary": "58-year-old female with long-standing Type 2 Diabetes Mellitus and Essential Hypertension, well-controlled on Metformin, Lisinopril, Aspirin, and Simvastatin through consistent follow-up with primary care and endocrinology.",
+  "dob": "1965-11-10",
   "tier": "moderate",
+  "summary": "58-year-old female with long-standing Type 2 Diabetes Mellitus and Essential Hypertension, well-controlled on Metformin, Lisinopril, Aspirin, and Simvastatin through consistent follow-up with primary care and endocrinology.",
   "storyline": "Maria Garcia, a 58-year-old female, establishes care with a new primary care physician (PCP) for her long-standing Type 2 Diabetes Mellitus (T2DM) and Essential Hypertension (HTN). Initial labs reveal elevated HbA1c and dyslipidemia. She is referred to an endocrinologist for optimized diabetes management. Over the next two years, through regular follow-ups with both her PCP and endocrinologist, her medications are carefully titrated, and additional cardiovascular protective therapies (Aspirin, Simvastatin) are introduced. Her HbA1c gradually improves and stabilizes within target ranges, and blood pressure is brought under good control, demonstrating effective chronic disease management.",
   "conditions": [
     {

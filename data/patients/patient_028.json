@@ -4,8 +4,9 @@
   "age": 45,
   "sex": "male",
   "mrn": "MRN-83144",
-  "summary": "45-year-old male presenting with acute low back pain after heavy lifting, managed conservatively with NSAIDs and physical therapy, resulting in complete resolution.",
+  "dob": "1978-11-10",
   "tier": "simple",
+  "summary": "45-year-old male presenting with acute low back pain after heavy lifting, managed conservatively with NSAIDs and physical therapy, resulting in complete resolution.",
   "conditions": [
     {
       "name": "Acute Low Back Pain",

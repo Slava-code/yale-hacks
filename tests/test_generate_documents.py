@@ -189,3 +189,97 @@ def test_patient_filter(tmp_path, demo_profiles):
 
     assert len(paths_001) == 24
     assert count_001 == 24
+
+
+# ---------------------------------------------------------------------------
+# Temporal scoping
+# ---------------------------------------------------------------------------
+
+def test_build_prompt_excludes_future_diagnoses(demo_profiles):
+    """Visit_01 prompt's KNOWN CONDITIONS should NOT contain future diagnoses."""
+    from scripts.generate_documents import build_prompt
+
+    profile = demo_profiles[0]  # patient_001
+    visit = profile["visits"][0]  # visit_01 (June 2025)
+    prompt = build_prompt(profile, visit, visit["document"]["type"])
+    # SLE is diagnosed at visit_09, so it should NOT be in the known conditions
+    # (It may appear in family history and temporal guardrail — that's fine)
+    conditions_section = ""
+    in_conditions = False
+    for line in prompt.split("\n"):
+        if "KNOWN CONDITIONS AT TIME OF VISIT" in line:
+            in_conditions = True
+            continue
+        if in_conditions:
+            if line.strip() == "" or (line.strip() and not line.startswith("  ")):
+                break
+            conditions_section += line + "\n"
+    assert "Systemic Lupus Erythematosus" not in conditions_section
+    assert "Vitamin D Deficiency" not in conditions_section  # Also future at visit_01
+    # The guardrail should list them as future
+    assert "TEMPORAL GUARDRAIL" in prompt
+    assert "Systemic Lupus Erythematosus" in prompt  # In guardrail or family history
+
+
+def test_build_prompt_includes_past_conditions(demo_profiles):
+    """Visit_06 should include Tension-type Headache in known conditions but NOT SLE."""
+    from scripts.generate_documents import build_prompt
+
+    profile = demo_profiles[0]  # patient_001
+    # visit_06 (2025-10-01) has Tension-type Headache diagnosed but SLE not yet
+    visit = next(v for v in profile["visits"] if v["ref"] == "visit_06")
+    prompt = build_prompt(profile, visit, visit["document"]["type"])
+    # Extract conditions section
+    conditions_section = ""
+    in_conditions = False
+    for line in prompt.split("\n"):
+        if "KNOWN CONDITIONS AT TIME OF VISIT" in line:
+            in_conditions = True
+            continue
+        if in_conditions:
+            if line.strip() == "" or (line.strip() and not line.startswith("  ")):
+                break
+            conditions_section += line + "\n"
+    assert "Tension" in conditions_section  # Tension-type Headache should be included
+    assert "Systemic Lupus Erythematosus" not in conditions_section  # SLE not yet
+
+
+def test_build_prompt_includes_temporal_guardrail(demo_profiles):
+    """Prompt should contain temporal guardrail text."""
+    from scripts.generate_documents import build_prompt
+
+    profile = demo_profiles[0]
+    visit = profile["visits"][0]
+    prompt = build_prompt(profile, visit, visit["document"]["type"])
+    assert "Do NOT reference" in prompt or "do NOT reference" in prompt or "TEMPORAL GUARDRAIL" in prompt
+
+
+def test_build_prompt_does_not_contain_full_summary(demo_profiles):
+    """Prompt should NOT contain the full patient summary."""
+    from scripts.generate_documents import build_prompt
+
+    profile = demo_profiles[0]
+    visit = profile["visits"][0]
+    prompt = build_prompt(profile, visit, visit["document"]["type"])
+    assert profile["summary"] not in prompt
+
+
+def test_build_prompt_includes_dob(demo_profiles):
+    """Prompt should include the patient's date of birth."""
+    from scripts.generate_documents import build_prompt
+
+    profile = demo_profiles[0]
+    visit = profile["visits"][0]
+    prompt = build_prompt(profile, visit, visit["document"]["type"])
+    assert profile["dob"] in prompt
+
+
+def test_build_prompt_includes_family_history(demo_profiles):
+    """Prompt should include family history."""
+    from scripts.generate_documents import build_prompt
+
+    profile = demo_profiles[0]
+    visit = profile["visits"][0]
+    prompt = build_prompt(profile, visit, visit["document"]["type"])
+    # patient_001 has mother with SLE in family history
+    assert "mother" in prompt.lower() or "Mother" in prompt

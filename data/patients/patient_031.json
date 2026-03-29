@@ -4,8 +4,9 @@
   "age": 35,
   "sex": "female",
   "mrn": "MRN-34567",
-  "summary": "35-year-old female presenting with acute onset of facial pain and nasal congestion, diagnosed with acute sinusitis, managed with symptomatic treatment.",
+  "dob": "1988-11-10",
   "tier": "simple",
+  "summary": "35-year-old female presenting with acute onset of facial pain and nasal congestion, diagnosed with acute sinusitis, managed with symptomatic treatment.",
   "conditions": [
     {
       "name": "Acute Sinusitis",

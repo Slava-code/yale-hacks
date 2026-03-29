@@ -4,8 +4,9 @@
   "age": 60,
   "sex": "female",
   "mrn": "MRN-71538",
-  "summary": "60-year-old female with a history of progressive polyarthritis, initially managed as osteoarthritis, later diagnosed with seropositive Rheumatoid Arthritis, now also diagnosed with osteoporosis following a fragility fracture.",
+  "dob": "1963-11-16",
   "tier": "moderate",
+  "summary": "60-year-old female with a history of progressive polyarthritis, initially managed as osteoarthritis, later diagnosed with seropositive Rheumatoid Arthritis, now also diagnosed with osteoporosis following a fragility fracture.",
   "storyline": "Olga Federova, a 60-year-old female, initially presented with gradual onset joint pain attributed to osteoarthritis. After progression to multiple joints and systemic symptoms, she was diagnosed with seropositive Rheumatoid Arthritis and started on Methotrexate. During her workup, a fragility fracture led to a diagnosis of Osteoporosis, for which she initiated bisphosphonate therapy. Her case highlights the challenges of differentiating inflammatory from degenerative arthritis and managing co-occurring conditions.",
   "conditions": [
     {

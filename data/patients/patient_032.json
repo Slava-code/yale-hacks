@@ -4,8 +4,9 @@
   "age": 42,
   "sex": "male",
   "mrn": "MRN-45987",
-  "summary": "42-year-old male presenting with right elbow pain consistent with lateral epicondylitis, managed initially with NSAIDs and subsequently resolved after physical therapy.",
+  "dob": "1982-05-13",
   "tier": "simple",
+  "summary": "42-year-old male presenting with right elbow pain consistent with lateral epicondylitis, managed initially with NSAIDs and subsequently resolved after physical therapy.",
   "conditions": [
     {
       "name": "Lateral Epicondylitis - Tennis Elbow",

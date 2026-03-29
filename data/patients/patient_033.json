@@ -4,8 +4,9 @@
   "age": 25,
   "sex": "female",
   "mrn": "MRN-45789",
-  "summary": "25-year-old female presenting with acute onset of nausea, vomiting, and diarrhea, diagnosed with acute gastroenteritis and managed with symptomatic care and hydration.",
+  "dob": "1999-05-08",
   "tier": "simple",
+  "summary": "25-year-old female presenting with acute onset of nausea, vomiting, and diarrhea, diagnosed with acute gastroenteritis and managed with symptomatic care and hydration.",
   "conditions": [
     {
       "name": "Acute Gastroenteritis",

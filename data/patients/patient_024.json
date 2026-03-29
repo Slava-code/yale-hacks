@@ -4,8 +4,9 @@
   "age": 37,
   "sex": "male",
   "mrn": "MRN-26028",
-  "summary": "37-year-old male presenting with seasonal allergies and intermittent wheezing, diagnosed with Allergic Rhinitis and later with Moderate Persistent Asthma, managed with inhaled corticosteroids and rescue inhaler.",
+  "dob": "1986-11-10",
   "tier": "moderate",
+  "summary": "37-year-old male presenting with seasonal allergies and intermittent wheezing, diagnosed with Allergic Rhinitis and later with Moderate Persistent Asthma, managed with inhaled corticosteroids and rescue inhaler.",
   "conditions": [
     {
       "name": "Allergic Rhinitis",

@@ -4,8 +4,9 @@
   "age": 58,
   "sex": "male",
   "mrn": "MRN-56789",
-  "summary": "58-year-old male presenting with progressive fatigue and weakness, diagnosed with Vitamin B12 Deficiency after lab confirmation, and initiated on oral supplementation.",
+  "dob": "1966-05-13",
   "tier": "simple",
+  "summary": "58-year-old male presenting with progressive fatigue and weakness, diagnosed with Vitamin B12 Deficiency after lab confirmation, and initiated on oral supplementation.",
   "conditions": [
     {
       "name": "Vitamin B12 Deficiency",

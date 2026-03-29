@@ -4,8 +4,9 @@
   "age": 34,
   "sex": "female",
   "mrn": "MRN-33188",
-  "summary": "34-year-old G1P0 female diagnosed with Gestational Diabetes in the second trimester, requiring insulin for glycemic control. Later developed Preeclampsia with severe features requiring delivery.",
+  "dob": "1989-11-15",
   "tier": "moderate",
+  "summary": "34-year-old G1P0 female diagnosed with Gestational Diabetes in the second trimester, requiring insulin for glycemic control. Later developed Preeclampsia with severe features requiring delivery.",
   "storyline": "Jessica Wu, a 34-year-old G1P0, begins her pregnancy with routine care. She is diagnosed with Gestational Diabetes at 28 weeks, initially managed with diet and exercise, but later requires insulin due to persistent hyperglycemia. In her third trimester, she develops new-onset hypertension and proteinuria, leading to a diagnosis of Preeclampsia. Her pregnancy is managed closely until delivery.",
   "conditions": [
     {

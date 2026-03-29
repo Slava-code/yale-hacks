@@ -4,8 +4,9 @@
   "age": 50,
   "sex": "male",
   "mrn": "MRN-29575",
-  "summary": "50-year-old male presenting with acute onset of right eye redness, discharge, and irritation, diagnosed with bacterial conjunctivitis and successfully treated with topical antibiotic eye drops.",
+  "dob": "1974-03-12",
   "tier": "simple",
+  "summary": "50-year-old male presenting with acute onset of right eye redness, discharge, and irritation, diagnosed with bacterial conjunctivitis and successfully treated with topical antibiotic eye drops.",
   "conditions": [
     {
       "name": "Acute Conjunctivitis",

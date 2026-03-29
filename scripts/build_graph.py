@@ -74,7 +74,7 @@ class _IdGen:
 # Core builder
 # ---------------------------------------------------------------------------
 
-def build_graph(profiles: list[dict]) -> dict:
+def build_graph(profiles: list[dict], disease_references: list[dict] | None = None) -> dict:
     """Pure function: list of patient profile dicts → graph dict."""
     ids = _IdGen()
     nodes: dict[str, dict] = {}
@@ -88,6 +88,26 @@ def build_graph(profiles: list[dict]) -> dict:
 
     for profile in sorted_profiles:
         _process_patient(profile, ids, nodes, edges, provider_name_to_id)
+
+    # --- Disease reference nodes (standalone, no edges) ---
+    if disease_references:
+        for ref in disease_references:
+            ref_id = ids.next("disease_ref")
+            nodes[ref_id] = {
+                "id": ref_id,
+                "type": "disease_reference",
+                "label": ref["name"],
+                "fields": {
+                    "name": _safe(ref["name"]),
+                    "category": _safe(ref.get("category", "")),
+                    "description": _safe(ref.get("description", "")),
+                    "symptoms": _safe(ref.get("symptoms", "")),
+                    "diagnostic_criteria": _safe(ref.get("diagnostic_criteria", "")),
+                    "lab_markers": _safe(ref.get("lab_markers", "")),
+                    "epidemiology": _safe(ref.get("epidemiology", "")),
+                    "icd_code": _safe(ref.get("icd_code", "")),
+                },
+            }
 
     meta = {
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
@@ -159,7 +179,10 @@ def _process_patient(
                 "status": _safe(cond["status"]),
             },
         }
-        edges.append({"source": patient_id, "target": cond_id, "type": "HAS_CONDITION"})
+        # Skip HAS_CONDITION edge for discoverable conditions — the cloud
+        # model must reason its way to these diagnoses from raw evidence
+        if not cond.get("discoverable", False):
+            edges.append({"source": patient_id, "target": cond_id, "type": "HAS_CONDITION"})
 
     # --- Medication nodes ---
     medication_name_to_id: dict[str, str] = {}
@@ -329,6 +352,12 @@ def main():
         default=Path(__file__).resolve().parent.parent / "data" / "graph.json",
         help="Output path for graph.json",
     )
+    parser.add_argument(
+        "--disease-refs",
+        type=Path,
+        default=Path(__file__).resolve().parent.parent / "data" / "disease_references.json",
+        help="Path to disease_references.json",
+    )
     args = parser.parse_args()
 
     # Load all patient profiles
@@ -341,7 +370,13 @@ def main():
         print(f"No patient profiles found in {args.patients_dir}")
         return
 
-    graph = build_graph(profiles)
+    # Load disease references
+    disease_refs = []
+    if args.disease_refs.exists():
+        with open(args.disease_refs) as f:
+            disease_refs = json.load(f)
+
+    graph = build_graph(profiles, disease_references=disease_refs)
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with open(args.output, "w") as f:

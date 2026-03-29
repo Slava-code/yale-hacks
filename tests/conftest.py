@@ -8,6 +8,7 @@ from backend.graph import load_graph
 ROOT = Path(__file__).resolve().parent.parent
 STUB_GRAPH_PATH = ROOT / "data" / "stub" / "graph.json"
 PATIENTS_DIR = ROOT / "data" / "patients"
+DISEASE_REFS_PATH = ROOT / "data" / "disease_references.json"
 
 DEMO_PROFILE_IDS = ["patient_001", "patient_006"]
 
@@ -46,7 +47,14 @@ def all_profiles(patient_profiles_dir):
 
 
 @pytest.fixture
-def built_graph(demo_profiles):
+def disease_references():
+    """Load disease references."""
+    with open(DISEASE_REFS_PATH) as f:
+        return json.load(f)
+
+
+@pytest.fixture
+def built_graph(demo_profiles, disease_references):
     """Build a graph from demo profiles using the graph builder."""
     from scripts.build_graph import build_graph
-    return build_graph(demo_profiles)
+    return build_graph(demo_profiles, disease_references=disease_references)

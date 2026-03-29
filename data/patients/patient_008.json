@@ -4,6 +4,7 @@
   "age": 52,
   "sex": "male",
   "mrn": "MRN-34981",
+  "dob": "1971-10-13",
   "tier": "complex",
   "summary": "52-year-old male with a history of progressive Heart Failure with Reduced Ejection Fraction (HFrEF), complicated by Chronic Kidney Disease Stage 3, and new onset Atrial Fibrillation requiring multiple medication adjustments and two hospitalizations for decompensation.",
   "storyline": "James Okafor's clinical journey began with subtle dyspnea, which progressed over several months, leading to a diagnosis of HFrEF with an initial ejection fraction (EF) of 40%. He was initiated on guideline-directed medical therapy (GDMT) including an ACE inhibitor and beta-blocker. Despite medication titrations, his symptoms persisted, and his EF gradually declined. A significant turning point was an acute decompensation requiring hospitalization, where his underlying renal impairment was clarified as CKD Stage 3, complicating diuretic management. Shortly after stabilizing from this event, he experienced new onset Atrial Fibrillation with rapid ventricular response, necessitating another emergency admission for rate control and initiation of anticoagulation. His EF ultimately stabilized at 25%. His ongoing care involves complex polypharmacy management, close monitoring of cardiac and renal function, and coordination between cardiology, nephrology, and primary care.",

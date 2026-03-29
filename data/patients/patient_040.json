@@ -4,8 +4,9 @@
   "age": 73,
   "sex": "male",
   "mrn": "MRN-22236",
-  "summary": "73-year-old male presenting with a painful vesicular rash in a dermatomal distribution, diagnosed with Herpes Zoster and treated with oral valacyclovir.",
+  "dob": "1951-06-17",
   "tier": "simple",
+  "summary": "73-year-old male presenting with a painful vesicular rash in a dermatomal distribution, diagnosed with Herpes Zoster and treated with oral valacyclovir.",
   "conditions": [
     {
       "name": "Herpes Zoster \u2014 Shingles",

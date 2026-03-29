@@ -4,8 +4,9 @@
   "age": 28,
   "sex": "female",
   "mrn": "MRN-93516",
-  "summary": "28-year-old female presenting with an acute pruritic erythematous rash on her arms and chest, diagnosed as contact dermatitis likely due to a new laundry detergent, successfully treated with topical corticosteroids.",
+  "dob": "1995-11-13",
   "tier": "simple",
+  "summary": "28-year-old female presenting with an acute pruritic erythematous rash on her arms and chest, diagnosed as contact dermatitis likely due to a new laundry detergent, successfully treated with topical corticosteroids.",
   "conditions": [
     {
       "name": "Contact Dermatitis",

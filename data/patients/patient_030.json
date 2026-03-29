@@ -4,8 +4,9 @@
   "age": 56,
   "sex": "male",
   "mrn": "MRN-84567",
-  "summary": "56-year-old male presenting with sudden onset positional vertigo, diagnosed with Benign Paroxysmal Positional Vertigo (BPPV) and successfully treated with the Epley maneuver.",
+  "dob": "1968-06-17",
   "tier": "simple",
+  "summary": "56-year-old male presenting with sudden onset positional vertigo, diagnosed with Benign Paroxysmal Positional Vertigo (BPPV) and successfully treated with the Epley maneuver.",
   "conditions": [
     {
       "name": "Benign Paroxysmal Positional Vertigo",

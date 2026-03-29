@@ -4,6 +4,7 @@
   "age": 67,
   "sex": "male",
   "mrn": "MRN-57890",
+  "dob": "1957-05-13",
   "tier": "simple",
   "summary": "67-year-old male presenting with a raised, waxy lesion on his back, diagnosed as seborrheic keratosis, managed with observation and reassurance.",
   "conditions": [

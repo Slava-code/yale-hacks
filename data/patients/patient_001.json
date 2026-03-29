@@ -4,9 +4,10 @@
   "age": 31,
   "sex": "male",
   "mrn": "MRN-78234",
+  "dob": "1994-02-15",
   "tier": "demo",
   "summary": "31-year-old male presenting with progressive fatigue, headaches, joint stiffness, and malar rash, ultimately diagnosed with Systemic Lupus Erythematosus after positive ANA, anti-dsDNA, and complement testing.",
-  "storyline": "Subtle autoimmune presentation over 8 months. Individually mild symptoms — recurring headaches, persistent fatigue, morning joint stiffness — are initially attributed to tension headaches and vitamin D deficiency. A detailed family history (mother with SLE, aunt with RA) prompts ANA testing, which returns strongly positive. Pancytopenia and a new malar rash trigger an urgent rheumatology referral. Confirmatory serologies (anti-dsDNA, anti-Smith, low complements) establish the SLE diagnosis. Treatment with hydroxychloroquine and a prednisone taper yields clinical improvement over the following months.",
+  "storyline": "Subtle autoimmune presentation over 8 months. Individually mild symptoms \u2014 recurring headaches, persistent fatigue, morning joint stiffness \u2014 are initially attributed to tension headaches and vitamin D deficiency. A detailed family history (mother with SLE, aunt with RA) prompts ANA testing, which returns strongly positive. Pancytopenia and a new malar rash trigger an urgent rheumatology referral. Confirmatory serologies (anti-dsDNA, anti-Smith, low complements) establish the SLE diagnosis. Treatment with hydroxychloroquine and a prednisone taper yields clinical improvement over the following months.",
   "conditions": [
     {
       "name": "Tension-type Headache",
@@ -27,6 +28,7 @@
       "icd_code": "M32.9",
       "status": "active",
       "diagnosed_visit": "visit_09",
+      "discoverable": true,
       "notes": "Diagnosed at rheumatology consult; meets 4+ ACR criteria"
     }
   ],
@@ -49,7 +51,9 @@
       "end_visit": null,
       "status": "active",
       "treats": "Vitamin D Deficiency",
-      "monitored_by_labs": ["Vitamin D"],
+      "monitored_by_labs": [
+        "Vitamin D"
+      ],
       "notes": null
     },
     {
@@ -60,7 +64,9 @@
       "end_visit": null,
       "status": "active",
       "treats": "Systemic Lupus Erythematosus",
-      "monitored_by_labs": ["CBC"],
+      "monitored_by_labs": [
+        "CBC"
+      ],
       "notes": "Maintenance therapy for SLE"
     },
     {
@@ -115,23 +121,43 @@
         "type": "intake_form",
         "filename": "intake_form_smith_2025_jun.pdf"
       },
-      "medications_started": ["Ibuprofen"]
+      "medications_started": [
+        "Ibuprofen"
+      ]
     },
     {
       "ref": "visit_02",
       "date": "2025-06-17",
       "type": "follow-up",
       "provider": "Dr. Sarah Chen",
-      "chief_complaint": "Lab review — headache follow-up",
+      "chief_complaint": "Lab review \u2014 headache follow-up",
       "narrative": "Patient returns for review of basic labs ordered at initial visit. CBC within normal limits, CMP normal, TSH 2.1 (normal). Headaches continue at similar frequency but are manageable with ibuprofen.\n\nNo red flag symptoms identified. Headaches attributed to tension-type given bilateral location, pressure quality, and normal labs. Advised stress management, adequate hydration, and regular sleep schedule. Continue ibuprofen PRN. Follow up as needed or if new symptoms develop.",
       "document": {
         "type": "progress_note",
         "filename": "progress_note_smith_2025_jun.pdf"
       },
       "labs": [
-        {"test": "CBC", "value": "WBC 6.2, Hgb 14.1, Plt 220", "unit": "composite", "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400", "flag": "normal"},
-        {"test": "CMP", "value": "within normal limits", "unit": "composite", "range": "standard", "flag": "normal"},
-        {"test": "TSH", "value": "2.1", "unit": "mIU/L", "range": "0.4-4.0", "flag": "normal"}
+        {
+          "test": "CBC",
+          "value": "WBC 6.2, Hgb 14.1, Plt 220",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "normal"
+        },
+        {
+          "test": "CMP",
+          "value": "within normal limits",
+          "unit": "composite",
+          "range": "standard",
+          "flag": "normal"
+        },
+        {
+          "test": "TSH",
+          "value": "2.1",
+          "unit": "mIU/L",
+          "range": "0.4-4.0",
+          "flag": "normal"
+        }
       ],
       "labs_document": {
         "type": "lab_report",
@@ -144,19 +170,27 @@
       "type": "follow-up",
       "provider": "Dr. Sarah Chen",
       "chief_complaint": "Persistent headaches, new fatigue",
-      "narrative": "Patient returns reporting headaches have persisted over the summer despite ibuprofen use. New complaint of significant fatigue and low energy over the past 3-4 weeks, requiring afternoon naps. No weight change, no fever, no sleep disturbance beyond the fatigue itself.\n\nExpanded labs reveal Vitamin D level of 18 ng/mL (deficient). Remainder of labs unremarkable. Started Vitamin D3 2000 IU daily supplementation. Fatigue may be multifactorial — Vitamin D deficiency likely contributing. Will reassess in 2-3 weeks.",
+      "narrative": "Patient returns reporting headaches have persisted over the summer despite ibuprofen use. New complaint of significant fatigue and low energy over the past 3-4 weeks, requiring afternoon naps. No weight change, no fever, no sleep disturbance beyond the fatigue itself.\n\nExpanded labs reveal Vitamin D level of 18 ng/mL (deficient). Remainder of labs unremarkable. Started Vitamin D3 2000 IU daily supplementation. Fatigue may be multifactorial \u2014 Vitamin D deficiency likely contributing. Will reassess in 2-3 weeks.",
       "document": {
         "type": "progress_note",
         "filename": "progress_note_smith_2025_aug.pdf"
       },
       "labs": [
-        {"test": "Vitamin D", "value": "18", "unit": "ng/mL", "range": "30-100", "flag": "low"}
+        {
+          "test": "Vitamin D",
+          "value": "18",
+          "unit": "ng/mL",
+          "range": "30-100",
+          "flag": "low"
+        }
       ],
       "labs_document": {
         "type": "lab_report",
         "filename": "lab_report_smith_2025_aug.pdf"
       },
-      "medications_started": ["Vitamin D3"]
+      "medications_started": [
+        "Vitamin D3"
+      ]
     },
     {
       "ref": "visit_04",
@@ -164,14 +198,26 @@
       "type": "follow-up",
       "provider": "Dr. Sarah Chen",
       "chief_complaint": "Fatigue persists, new morning joint stiffness",
-      "narrative": "Patient reports fatigue has not improved despite 2.5 weeks on Vitamin D supplementation. New symptom: morning stiffness in bilateral hands lasting approximately 45 minutes, improving with activity. No joint swelling or redness noted on exam. No rash, oral ulcers, or hair loss.\n\nGiven new inflammatory symptom, ordered ESR and CRP. ESR mildly elevated at 28 mm/hr (ref 0-20). CRP borderline at 0.8 mg/dL (ref <1.0). Mild systemic inflammation noted — monitoring closely. Advised to track joint symptoms and return if worsening.",
+      "narrative": "Patient reports fatigue has not improved despite 2.5 weeks on Vitamin D supplementation. New symptom: morning stiffness in bilateral hands lasting approximately 45 minutes, improving with activity. No joint swelling or redness noted on exam. No rash, oral ulcers, or hair loss.\n\nGiven new inflammatory symptom, ordered ESR and CRP. ESR mildly elevated at 28 mm/hr (ref 0-20). CRP borderline at 0.8 mg/dL (ref <1.0). Mild systemic inflammation noted \u2014 monitoring closely. Advised to track joint symptoms and return if worsening.",
       "document": {
         "type": "progress_note",
         "filename": "progress_note_smith_2025_aug_2.pdf"
       },
       "labs": [
-        {"test": "ESR", "value": "28", "unit": "mm/hr", "range": "0-20", "flag": "high"},
-        {"test": "CRP", "value": "0.8", "unit": "mg/dL", "range": "<1.0", "flag": "normal"}
+        {
+          "test": "ESR",
+          "value": "28",
+          "unit": "mm/hr",
+          "range": "0-20",
+          "flag": "high"
+        },
+        {
+          "test": "CRP",
+          "value": "0.8",
+          "unit": "mg/dL",
+          "range": "<1.0",
+          "flag": "normal"
+        }
       ],
       "labs_document": {
         "type": "lab_report",
@@ -195,26 +241,46 @@
       "date": "2025-10-01",
       "type": "follow-up",
       "provider": "Dr. Sarah Chen",
-      "chief_complaint": "Lab review — ANA results, new facial rash",
-      "narrative": "Patient called in for urgent lab review. ANA returned strongly positive at 1:320 titer (speckled pattern). ESR has risen to 45 mm/hr. CBC shows new pancytopenia: WBC 3.2, Hgb 11.8, Plt 135 — all below normal range.\n\nOn exam today, patient has developed a new erythematous rash across bilateral malar eminences sparing the nasolabial folds, consistent with a malar (butterfly) rash. No discoid lesions. Mild bilateral wrist synovitis palpable.\n\nIbuprofen discontinued due to concern for renal effects in setting of suspected autoimmune disease. Urgent rheumatology referral placed. Referral letter prepared. Patient counseled on suspected lupus diagnosis and the need for confirmatory testing by rheumatology.",
+      "chief_complaint": "Lab review \u2014 ANA results, new facial rash",
+      "narrative": "Patient called in for urgent lab review. ANA returned strongly positive at 1:320 titer (speckled pattern). ESR has risen to 45 mm/hr. CBC shows new pancytopenia: WBC 3.2, Hgb 11.8, Plt 135 \u2014 all below normal range.\n\nOn exam today, patient has developed a new erythematous rash across bilateral malar eminences sparing the nasolabial folds, consistent with a malar (butterfly) rash. No discoid lesions. Mild bilateral wrist synovitis palpable.\n\nIbuprofen discontinued due to concern for renal effects in setting of suspected autoimmune disease. Urgent rheumatology referral placed. Referral letter prepared. Patient counseled on suspected lupus diagnosis and the need for confirmatory testing by rheumatology.",
       "document": {
         "type": "progress_note",
         "filename": "progress_note_smith_2025_oct.pdf"
       },
       "labs": [
-        {"test": "ANA", "value": "1:320 titer, speckled pattern", "unit": "titer", "range": "<1:40", "flag": "high"},
-        {"test": "ESR", "value": "45", "unit": "mm/hr", "range": "0-20", "flag": "high"},
-        {"test": "CBC", "value": "WBC 3.2, Hgb 11.8, Plt 135", "unit": "composite", "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400", "flag": "low"}
+        {
+          "test": "ANA",
+          "value": "1:320 titer, speckled pattern",
+          "unit": "titer",
+          "range": "<1:40",
+          "flag": "high"
+        },
+        {
+          "test": "ESR",
+          "value": "45",
+          "unit": "mm/hr",
+          "range": "0-20",
+          "flag": "high"
+        },
+        {
+          "test": "CBC",
+          "value": "WBC 3.2, Hgb 11.8, Plt 135",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "low"
+        }
       ],
       "labs_document": {
         "type": "lab_report",
         "filename": "lab_report_smith_2025_oct.pdf"
       },
-      "medications_discontinued": ["Ibuprofen"],
+      "medications_discontinued": [
+        "Ibuprofen"
+      ],
       "referrals": [
         {
           "to": "Dr. Rachel Torres",
-          "reason": "Suspected autoimmune etiology — positive ANA 1:320, pancytopenia, malar rash, family history of SLE"
+          "reason": "Suspected autoimmune etiology \u2014 positive ANA 1:320, pancytopenia, malar rash, family history of SLE"
         }
       ]
     },
@@ -253,30 +319,57 @@
       "date": "2025-10-15",
       "type": "consult",
       "provider": "Dr. Rachel Torres",
-      "chief_complaint": "Rheumatology consult — suspected SLE",
+      "chief_complaint": "Rheumatology consult \u2014 suspected SLE",
       "narrative": "New patient rheumatology consultation for suspected Systemic Lupus Erythematosus. Reviewed PCP records documenting 4-month progression of headaches, fatigue, polyarthralgia, pancytopenia, positive ANA 1:320, and malar rash. Significant family history: mother with SLE, maternal aunt with RA.\n\nConfirmatory serologies obtained: Anti-dsDNA antibody 85 IU/mL (elevated, ref <30), C3 65 mg/dL (low, ref 90-180), C4 8 mg/dL (low, ref 10-40), Anti-Smith antibody positive. Patient meets 4+ ACR classification criteria for SLE: malar rash, arthritis, hematologic disorder (pancytopenia), and positive ANA with confirmatory anti-dsDNA and anti-Smith.\n\nDiagnosis: Systemic Lupus Erythematosus. Initiated hydroxychloroquine 200mg twice daily as maintenance therapy, and prednisone 20mg daily with planned taper over 8 weeks as bridging anti-inflammatory. Baseline ophthalmology referral recommended for hydroxychloroquine monitoring. Labs to be rechecked in 3 weeks.",
       "document": {
         "type": "consult_note",
         "filename": "consult_note_smith_2025_oct.pdf"
       },
       "labs": [
-        {"test": "Anti-dsDNA", "value": "85", "unit": "IU/mL", "range": "<30", "flag": "high"},
-        {"test": "C3", "value": "65", "unit": "mg/dL", "range": "90-180", "flag": "low"},
-        {"test": "C4", "value": "8", "unit": "mg/dL", "range": "10-40", "flag": "low"},
-        {"test": "Anti-Smith Ab", "value": "positive", "unit": "qualitative", "range": "negative", "flag": "high"}
+        {
+          "test": "Anti-dsDNA",
+          "value": "85",
+          "unit": "IU/mL",
+          "range": "<30",
+          "flag": "high"
+        },
+        {
+          "test": "C3",
+          "value": "65",
+          "unit": "mg/dL",
+          "range": "90-180",
+          "flag": "low"
+        },
+        {
+          "test": "C4",
+          "value": "8",
+          "unit": "mg/dL",
+          "range": "10-40",
+          "flag": "low"
+        },
+        {
+          "test": "Anti-Smith Ab",
+          "value": "positive",
+          "unit": "qualitative",
+          "range": "negative",
+          "flag": "high"
+        }
       ],
       "labs_document": {
         "type": "lab_report",
         "filename": "lab_report_smith_2025_oct_2.pdf"
       },
-      "medications_started": ["Hydroxychloroquine", "Prednisone"]
+      "medications_started": [
+        "Hydroxychloroquine",
+        "Prednisone"
+      ]
     },
     {
       "ref": "visit_10",
       "date": "2025-10-22",
       "type": "consult",
       "provider": "Dr. Mark Huang",
-      "chief_complaint": "Dermatology consult — malar rash evaluation",
+      "chief_complaint": "Dermatology consult \u2014 malar rash evaluation",
       "narrative": "Dermatology consultation for evaluation of malar rash in setting of newly diagnosed SLE. Examination reveals well-demarcated erythematous patches over bilateral malar eminences with sparing of nasolabial folds, consistent with acute cutaneous lupus erythematosus. No discoid lesions, no photosensitivity-related changes elsewhere.\n\nSkin biopsy performed from right malar region. Histopathology shows interface dermatitis with vacuolar changes at the dermoepidermal junction. Direct immunofluorescence (lupus band test) positive, showing granular deposition of IgG and C3 at the basement membrane zone.\n\nFindings confirm acute cutaneous lupus erythematosus. Recommend sun protection, topical corticosteroids for flare management, and continued systemic treatment per rheumatology. Follow-up as needed for skin symptoms.",
       "document": {
         "type": "consult_note",
@@ -284,7 +377,7 @@
       },
       "procedures": [
         {
-          "name": "Skin biopsy — malar rash",
+          "name": "Skin biopsy \u2014 malar rash",
           "outcome": "Lupus band test positive, consistent with acute cutaneous lupus erythematosus"
         }
       ]
@@ -294,16 +387,34 @@
       "date": "2025-11-05",
       "type": "follow-up",
       "provider": "Dr. Rachel Torres",
-      "chief_complaint": "Rheumatology follow-up — 3 weeks post-diagnosis",
-      "narrative": "Follow-up visit 3 weeks after SLE diagnosis and treatment initiation. Patient reports improvement in joint pain and morning stiffness — stiffness duration reduced from >1 hour to ~20 minutes. Fatigue moderately improved. Malar rash fading. No new symptoms. Tolerating hydroxychloroquine and prednisone without side effects.\n\nPrednisone taper in progress: currently at 15mg daily, plan to reduce by 5mg every 2 weeks. Repeat labs show anti-dsDNA trending down to 65 IU/mL. CBC stabilizing: WBC 3.8, Hgb 12.2, Plt 148. Urinalysis normal with no proteinuria — no evidence of lupus nephritis at this time.\n\nContinue current regimen. Recheck labs in 2-3 weeks. Follow up in 6 weeks to assess prednisone taper completion.",
+      "chief_complaint": "Rheumatology follow-up \u2014 3 weeks post-diagnosis",
+      "narrative": "Follow-up visit 3 weeks after SLE diagnosis and treatment initiation. Patient reports improvement in joint pain and morning stiffness \u2014 stiffness duration reduced from >1 hour to ~20 minutes. Fatigue moderately improved. Malar rash fading. No new symptoms. Tolerating hydroxychloroquine and prednisone without side effects.\n\nPrednisone taper in progress: currently at 15mg daily, plan to reduce by 5mg every 2 weeks. Repeat labs show anti-dsDNA trending down to 65 IU/mL. CBC stabilizing: WBC 3.8, Hgb 12.2, Plt 148. Urinalysis normal with no proteinuria \u2014 no evidence of lupus nephritis at this time.\n\nContinue current regimen. Recheck labs in 2-3 weeks. Follow up in 6 weeks to assess prednisone taper completion.",
       "document": {
         "type": "progress_note",
         "filename": "progress_note_smith_2025_nov.pdf"
       },
       "labs": [
-        {"test": "Anti-dsDNA", "value": "65", "unit": "IU/mL", "range": "<30", "flag": "high"},
-        {"test": "CBC", "value": "WBC 3.8, Hgb 12.2, Plt 148", "unit": "composite", "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400", "flag": "low"},
-        {"test": "Urinalysis", "value": "normal, no proteinuria", "unit": "qualitative", "range": "negative for protein", "flag": "normal"}
+        {
+          "test": "Anti-dsDNA",
+          "value": "65",
+          "unit": "IU/mL",
+          "range": "<30",
+          "flag": "high"
+        },
+        {
+          "test": "CBC",
+          "value": "WBC 3.8, Hgb 12.2, Plt 148",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "low"
+        },
+        {
+          "test": "Urinalysis",
+          "value": "normal, no proteinuria",
+          "unit": "qualitative",
+          "range": "negative for protein",
+          "flag": "normal"
+        }
       ],
       "labs_document": {
         "type": "lab_report",
@@ -315,14 +426,20 @@
       "date": "2025-11-20",
       "type": "follow-up",
       "provider": "Dr. Sarah Chen",
-      "chief_complaint": "PCP follow-up — care coordination",
-      "narrative": "PCP follow-up to coordinate care with rheumatology and dermatology. Patient reports overall improvement since starting SLE treatment. Fatigue significantly better. Headaches have resolved entirely — supports retrospective attribution to systemic inflammation rather than primary tension headache. Joint stiffness minimal.\n\nVitamin D rechecked at 32 ng/mL (improved from 18, now within normal range). Will continue supplementation at current dose. Coordinating with Dr. Torres regarding prednisone taper timeline and hydroxychloroquine monitoring schedule.",
+      "chief_complaint": "PCP follow-up \u2014 care coordination",
+      "narrative": "PCP follow-up to coordinate care with rheumatology and dermatology. Patient reports overall improvement since starting SLE treatment. Fatigue significantly better. Headaches have resolved entirely \u2014 supports retrospective attribution to systemic inflammation rather than primary tension headache. Joint stiffness minimal.\n\nVitamin D rechecked at 32 ng/mL (improved from 18, now within normal range). Will continue supplementation at current dose. Coordinating with Dr. Torres regarding prednisone taper timeline and hydroxychloroquine monitoring schedule.",
       "document": {
         "type": "progress_note",
         "filename": "progress_note_smith_2025_nov_2.pdf"
       },
       "labs": [
-        {"test": "Vitamin D", "value": "32", "unit": "ng/mL", "range": "30-100", "flag": "normal"}
+        {
+          "test": "Vitamin D",
+          "value": "32",
+          "unit": "ng/mL",
+          "range": "30-100",
+          "flag": "normal"
+        }
       ],
       "labs_document": {
         "type": "lab_report",
@@ -334,31 +451,57 @@
       "date": "2025-12-10",
       "type": "follow-up",
       "provider": "Dr. Rachel Torres",
-      "chief_complaint": "Rheumatology follow-up — prednisone taper complete",
-      "narrative": "Follow-up visit after completion of 8-week prednisone taper. Patient has been off prednisone for 5 days. No symptom rebound — joint pain remains well controlled, malar rash fully resolved, energy level good. Tolerating hydroxychloroquine well with no GI side effects.\n\nLabs show continued improvement: ESR 22 (near normal), C3 improving at 82 (still mildly low), C4 normalized at 12, CBC normalizing with WBC 4.2, Hgb 12.8, Plt 165. Prednisone officially discontinued. Plan: continue hydroxychloroquine maintenance. Quarterly follow-up with labs. Annual ophthalmology screening for hydroxychloroquine retinal toxicity.",
+      "chief_complaint": "Rheumatology follow-up \u2014 prednisone taper complete",
+      "narrative": "Follow-up visit after completion of 8-week prednisone taper. Patient has been off prednisone for 5 days. No symptom rebound \u2014 joint pain remains well controlled, malar rash fully resolved, energy level good. Tolerating hydroxychloroquine well with no GI side effects.\n\nLabs show continued improvement: ESR 22 (near normal), C3 improving at 82 (still mildly low), C4 normalized at 12, CBC normalizing with WBC 4.2, Hgb 12.8, Plt 165. Prednisone officially discontinued. Plan: continue hydroxychloroquine maintenance. Quarterly follow-up with labs. Annual ophthalmology screening for hydroxychloroquine retinal toxicity.",
       "document": {
         "type": "progress_note",
         "filename": "progress_note_smith_2025_dec.pdf"
       },
       "labs": [
-        {"test": "ESR", "value": "22", "unit": "mm/hr", "range": "0-20", "flag": "high"},
-        {"test": "C3", "value": "82", "unit": "mg/dL", "range": "90-180", "flag": "low"},
-        {"test": "C4", "value": "12", "unit": "mg/dL", "range": "10-40", "flag": "normal"},
-        {"test": "CBC", "value": "WBC 4.2, Hgb 12.8, Plt 165", "unit": "composite", "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400", "flag": "normal"}
+        {
+          "test": "ESR",
+          "value": "22",
+          "unit": "mm/hr",
+          "range": "0-20",
+          "flag": "high"
+        },
+        {
+          "test": "C3",
+          "value": "82",
+          "unit": "mg/dL",
+          "range": "90-180",
+          "flag": "low"
+        },
+        {
+          "test": "C4",
+          "value": "12",
+          "unit": "mg/dL",
+          "range": "10-40",
+          "flag": "normal"
+        },
+        {
+          "test": "CBC",
+          "value": "WBC 4.2, Hgb 12.8, Plt 165",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "normal"
+        }
       ],
       "labs_document": {
         "type": "lab_report",
         "filename": "lab_report_smith_2025_dec.pdf"
       },
-      "medications_discontinued": ["Prednisone"]
+      "medications_discontinued": [
+        "Prednisone"
+      ]
     },
     {
       "ref": "visit_14",
       "date": "2026-01-08",
       "type": "follow-up",
       "provider": "Dr. Sarah Chen",
-      "chief_complaint": "PCP 3-month check — SLE management",
-      "narrative": "Routine PCP follow-up, approximately 3 months since SLE diagnosis. Patient doing well overall. No flare symptoms — no joint pain, rash, fever, or oral ulcers. Energy level has returned to near-baseline. Headaches have not recurred.\n\nReview of systems notable for mild dry eyes, which may be medication-related or early sicca symptoms — will monitor. Blood pressure normal. Weight stable. Reinforced importance of sun protection, medication adherence, and prompt reporting of any new symptoms (especially foamy urine, chest pain, or worsening fatigue). Labs deferred to upcoming rheumatology visit next week.",
+      "chief_complaint": "PCP 3-month check \u2014 SLE management",
+      "narrative": "Routine PCP follow-up, approximately 3 months since SLE diagnosis. Patient doing well overall. No flare symptoms \u2014 no joint pain, rash, fever, or oral ulcers. Energy level has returned to near-baseline. Headaches have not recurred.\n\nReview of systems notable for mild dry eyes, which may be medication-related or early sicca symptoms \u2014 will monitor. Blood pressure normal. Weight stable. Reinforced importance of sun protection, medication adherence, and prompt reporting of any new symptoms (especially foamy urine, chest pain, or worsening fatigue). Labs deferred to upcoming rheumatology visit next week.",
       "document": {
         "type": "progress_note",
         "filename": "progress_note_smith_2026_jan.pdf"
@@ -370,17 +513,47 @@
       "type": "routine",
       "provider": "Dr. Rachel Torres",
       "chief_complaint": "Quarterly rheumatology follow-up",
-      "narrative": "First quarterly rheumatology follow-up since prednisone discontinuation. Patient clinically stable on hydroxychloroquine monotherapy. No flare symptoms. SLEDAI score 2 (serologic activity only). Physical exam unremarkable — no active synovitis, no rash, no lymphadenopathy.\n\nLabs: Anti-dsDNA trending down to 42 IU/mL (still mildly elevated but improving). C3 88 (approaching normal). C4 15 (normal). CBC fully normalized: WBC 5.1, Hgb 13.5, Plt 195. Urinalysis clear.\n\nPlan: continue hydroxychloroquine 200mg BID. Annual ophthalmology screening scheduled. Next rheumatology visit in 3 months. Patient to call if any flare symptoms develop between visits.",
+      "narrative": "First quarterly rheumatology follow-up since prednisone discontinuation. Patient clinically stable on hydroxychloroquine monotherapy. No flare symptoms. SLEDAI score 2 (serologic activity only). Physical exam unremarkable \u2014 no active synovitis, no rash, no lymphadenopathy.\n\nLabs: Anti-dsDNA trending down to 42 IU/mL (still mildly elevated but improving). C3 88 (approaching normal). C4 15 (normal). CBC fully normalized: WBC 5.1, Hgb 13.5, Plt 195. Urinalysis clear.\n\nPlan: continue hydroxychloroquine 200mg BID. Annual ophthalmology screening scheduled. Next rheumatology visit in 3 months. Patient to call if any flare symptoms develop between visits.",
       "document": {
         "type": "progress_note",
         "filename": "progress_note_smith_2026_jan_2.pdf"
       },
       "labs": [
-        {"test": "Anti-dsDNA", "value": "42", "unit": "IU/mL", "range": "<30", "flag": "high"},
-        {"test": "C3", "value": "88", "unit": "mg/dL", "range": "90-180", "flag": "low"},
-        {"test": "C4", "value": "15", "unit": "mg/dL", "range": "10-40", "flag": "normal"},
-        {"test": "CBC", "value": "WBC 5.1, Hgb 13.5, Plt 195", "unit": "composite", "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400", "flag": "normal"},
-        {"test": "Urinalysis", "value": "clear, no proteinuria", "unit": "qualitative", "range": "negative for protein", "flag": "normal"}
+        {
+          "test": "Anti-dsDNA",
+          "value": "42",
+          "unit": "IU/mL",
+          "range": "<30",
+          "flag": "high"
+        },
+        {
+          "test": "C3",
+          "value": "88",
+          "unit": "mg/dL",
+          "range": "90-180",
+          "flag": "low"
+        },
+        {
+          "test": "C4",
+          "value": "15",
+          "unit": "mg/dL",
+          "range": "10-40",
+          "flag": "normal"
+        },
+        {
+          "test": "CBC",
+          "value": "WBC 5.1, Hgb 13.5, Plt 195",
+          "unit": "composite",
+          "range": "WBC 4.5-11, Hgb 12-16, Plt 150-400",
+          "flag": "normal"
+        },
+        {
+          "test": "Urinalysis",
+          "value": "clear, no proteinuria",
+          "unit": "qualitative",
+          "range": "negative for protein",
+          "flag": "normal"
+        }
       ],
       "labs_document": {
         "type": "lab_report",

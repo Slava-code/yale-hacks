@@ -4,8 +4,9 @@
   "age": 26,
   "sex": "female",
   "mrn": "MRN-58123",
-  "summary": "26-year-old female presenting with acute sore throat and low-grade fever, diagnosed with acute pharyngitis after negative strep test.",
+  "dob": "1997-11-10",
   "tier": "simple",
+  "summary": "26-year-old female presenting with acute sore throat and low-grade fever, diagnosed with acute pharyngitis after negative strep test.",
   "conditions": [
     {
       "name": "Acute Pharyngitis",

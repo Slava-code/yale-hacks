@@ -4,6 +4,7 @@
   "age": 39,
   "sex": "female",
   "mrn": "MRN-77470",
+  "dob": "1984-11-10",
   "tier": "simple",
   "summary": "39-year-old female presenting with progressive right hand and wrist pain, numbness, and tingling, ultimately diagnosed with Carpal Tunnel Syndrome confirmed by nerve conduction study, and managed with splinting and anti-inflammatory medication.",
   "conditions": [

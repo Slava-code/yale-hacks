@@ -4,8 +4,9 @@
   "age": 62,
   "sex": "male",
   "mrn": "MRN-88765",
-  "summary": "62-year-old male with a history of recurrent gout flares and newly diagnosed chronic kidney disease stage 2, managed with allopurinol, lisinopril, and dietary modifications.",
+  "dob": "1961-11-10",
   "tier": "moderate",
+  "summary": "62-year-old male with a history of recurrent gout flares and newly diagnosed chronic kidney disease stage 2, managed with allopurinol, lisinopril, and dietary modifications.",
   "conditions": [
     {
       "name": "Gout",

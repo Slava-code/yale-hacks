@@ -4,8 +4,9 @@
   "age": 31,
   "sex": "female",
   "mrn": "MRN-05123",
-  "summary": "31-year-old female presenting with dysuria and frequency, diagnosed with an uncomplicated urinary tract infection, successfully treated with a short course of antibiotics.",
+  "dob": "1993-11-10",
   "tier": "simple",
+  "summary": "31-year-old female presenting with dysuria and frequency, diagnosed with an uncomplicated urinary tract infection, successfully treated with a short course of antibiotics.",
   "conditions": [
     {
       "name": "Urinary Tract Infection",

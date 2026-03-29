@@ -4,8 +4,9 @@
   "age": 27,
   "sex": "female",
   "mrn": "MRN-33890",
-  "summary": "27-year-old female presenting with chronic fatigue and pallor, diagnosed with Iron Deficiency Anemia after laboratory confirmation. Initiated on oral iron supplementation with symptomatic improvement.",
+  "dob": "1997-05-13",
   "tier": "simple",
+  "summary": "27-year-old female presenting with chronic fatigue and pallor, diagnosed with Iron Deficiency Anemia after laboratory confirmation. Initiated on oral iron supplementation with symptomatic improvement.",
   "conditions": [
     {
       "name": "Iron Deficiency Anemia",

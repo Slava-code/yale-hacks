@@ -4,8 +4,9 @@
   "age": 55,
   "sex": "female",
   "mrn": "MRN-43210",
-  "summary": "55-year-old female presenting with symptoms of generalized anxiety and major depressive disorder, managed with SSRI therapy and psychotherapy referrals.",
+  "dob": "1968-11-10",
   "tier": "moderate",
+  "summary": "55-year-old female presenting with symptoms of generalized anxiety and major depressive disorder, managed with SSRI therapy and psychotherapy referrals.",
   "storyline": "Linda Morrison, a 55-year-old executive assistant, initially sought care for increasing feelings of overwhelm, persistent worry, and low mood following a company-wide layoff. After an initial workup ruling out organic causes, she was diagnosed with Generalized Anxiety Disorder and Major Depressive Disorder. Treatment began with Sertraline, which was gradually titrated, alongside a referral for cognitive behavioral therapy. She experienced an initial period of side effects and dose adjustments but eventually found a stable regimen, leading to significant improvement in her mood and anxiety symptoms over the course of a year, though ongoing management is anticipated.",
   "conditions": [
     {

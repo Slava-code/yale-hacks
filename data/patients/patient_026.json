@@ -4,8 +4,9 @@
   "age": 22,
   "sex": "male",
   "mrn": "MRN-17382",
-  "summary": "22-year-old male presenting with acute cough and congestion, diagnosed with acute bronchitis, and managed symptomatically with full resolution.",
+  "dob": "2001-11-10",
   "tier": "simple",
+  "summary": "22-year-old male presenting with acute cough and congestion, diagnosed with acute bronchitis, and managed symptomatically with full resolution.",
   "conditions": [
     {
       "name": "Acute Bronchitis",

@@ -4,8 +4,9 @@
   "age": 40,
   "sex": "male",
   "mrn": "MRN-10009",
-  "summary": "40-year-old male presenting with chronic diarrhea, rectal bleeding, and abdominal pain, diagnosed with Ulcerative Colitis, complicated by Iron Deficiency Anemia, managed with mesalamine and iron supplementation.",
+  "dob": "1984-06-12",
   "tier": "moderate",
+  "summary": "40-year-old male presenting with chronic diarrhea, rectal bleeding, and abdominal pain, diagnosed with Ulcerative Colitis, complicated by Iron Deficiency Anemia, managed with mesalamine and iron supplementation.",
   "storyline": "Kenji Tanaka initially presents to his PCP with several months of worsening gastrointestinal symptoms. Initial workup reveals anemia and elevated inflammatory markers, prompting a referral to gastroenterology. A colonoscopy confirms a diagnosis of Ulcerative Colitis. Treatment with mesalamine is initiated, and iron supplementation is added to address the associated anemia. Over several months, his symptoms improve, and his anemia resolves, leading to a stable remission on maintenance therapy.",
   "conditions": [
     {

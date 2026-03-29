@@ -2,7 +2,7 @@
   "meta": {
     "generated_at": "2026-03-28T16:00:00Z",
     "num_patients": 5,
-    "num_nodes": 36,
+    "num_nodes": 39,
     "num_edges": 43,
     "stub": true
   },
@@ -426,6 +426,51 @@
       },
       "source_pdf": "intake_form_smith_2025_jun.pdf",
       "source_page": 2
+    },
+    "disease_ref_001": {
+      "id": "disease_ref_001",
+      "type": "disease_reference",
+      "label": "Systemic Lupus Erythematosus",
+      "fields": {
+        "name": { "value": "Systemic Lupus Erythematosus", "phi": false },
+        "category": { "value": "autoimmune", "phi": false },
+        "description": { "value": "Chronic autoimmune disease affecting multiple organ systems including skin, joints, kidneys, brain, and blood cells.", "phi": false },
+        "symptoms": { "value": "Malar rash, joint pain, fatigue, photosensitivity, oral ulcers, serositis, hair loss, Raynaud phenomenon, fever, weight loss", "phi": false },
+        "diagnostic_criteria": { "value": "ACR/EULAR 2019 classification criteria requiring ANA positivity plus weighted score of clinical and immunological domains.", "phi": false },
+        "lab_markers": { "value": "ANA, anti-dsDNA, anti-Smith antibody, low complement C3/C4, cytopenias, elevated ESR", "phi": false },
+        "epidemiology": { "value": "Prevalence 20-150 per 100,000 population. Female-to-male ratio approximately 9:1.", "phi": false },
+        "icd_code": { "value": "M32.9", "phi": false }
+      }
+    },
+    "disease_ref_002": {
+      "id": "disease_ref_002",
+      "type": "disease_reference",
+      "label": "Rabies",
+      "fields": {
+        "name": { "value": "Rabies", "phi": false },
+        "category": { "value": "infectious", "phi": false },
+        "description": { "value": "Fatal viral encephalitis caused by Lyssavirus, transmitted through the bite of an infected animal.", "phi": false },
+        "symptoms": { "value": "Aggression, hydrophobia, aerophobia, hypersalivation, confusion, hallucinations, autonomic instability, paresthesia at bite site", "phi": false },
+        "diagnostic_criteria": { "value": "Clinical suspicion based on animal bite history and progressive encephalitis. Confirmed by DFA test on skin biopsy or RT-PCR.", "phi": false },
+        "lab_markers": { "value": "Rabies virus RNA (RT-PCR in saliva/CSF), direct fluorescent antibody test, rabies-specific antibodies, CSF pleocytosis", "phi": false },
+        "epidemiology": { "value": "Approximately 59,000 deaths worldwide per year. Extremely rare in developed countries.", "phi": false },
+        "icd_code": { "value": "A82.9", "phi": false }
+      }
+    },
+    "disease_ref_003": {
+      "id": "disease_ref_003",
+      "type": "disease_reference",
+      "label": "Type 2 Diabetes Mellitus",
+      "fields": {
+        "name": { "value": "Type 2 Diabetes Mellitus", "phi": false },
+        "category": { "value": "endocrine", "phi": false },
+        "description": { "value": "Chronic metabolic disorder characterized by insulin resistance and progressive beta-cell dysfunction.", "phi": false },
+        "symptoms": { "value": "Polyuria, polydipsia, polyphagia, fatigue, blurred vision, slow wound healing, recurrent infections", "phi": false },
+        "diagnostic_criteria": { "value": "ADA criteria: fasting plasma glucose >=126 mg/dL, 2-hour OGTT >=200, HbA1c >=6.5%, or random glucose >=200 with symptoms.", "phi": false },
+        "lab_markers": { "value": "HbA1c, fasting glucose, 2-hour OGTT, C-peptide, fasting insulin, lipid panel", "phi": false },
+        "epidemiology": { "value": "Global prevalence approximately 6.1%. Strong association with obesity and sedentary lifestyle.", "phi": false },
+        "icd_code": { "value": "E11.9", "phi": false }
+      }
     }
   },
   "edges": [

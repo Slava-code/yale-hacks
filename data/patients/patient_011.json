@@ -4,6 +4,7 @@
   "age": 44,
   "sex": "female",
   "mrn": "MRN-08765",
+  "dob": "1979-09-12",
   "tier": "complex",
   "summary": "44-year-old female with longstanding Crohn's Disease with progressive stricturing behavior, requiring small bowel resection. Patient also suffers from iron deficiency anemia and osteoporosis secondary to chronic corticosteroid use.",
   "storyline": "Fatima, a 44-year-old with a 10-year history of Crohn's Disease, initially managed well on mesalamine, experiences a severe flare with escalating abdominal pain, diarrhea, and weight loss. Despite a trial of azathioprine and a short course of prednisone, her symptoms worsen, leading to recurrent partial obstructions. An MR enterography reveals a significant terminal ileal stricture. Infliximab is initiated, but persistent symptoms and concern for bowel obstruction necessitate a small bowel resection. Post-operatively, she recovers slowly, continuing infliximab for maintenance. Years of intermittent prednisone use for flares are later found to have caused osteoporosis, diagnosed via DEXA scan, leading to the initiation of bisphosphonate therapy and calcium/vitamin D supplementation. She requires ongoing multidisciplinary management for her complex gastrointestinal, hematological, and bone health issues.",
