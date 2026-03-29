@@ -15,7 +15,7 @@ function RedactedView({ sseEvents, isVisible }) {
   }, [sseEvents])
 
   const relevantEvents = sseEvents.filter(e =>
-    ['deidentified_query', 'cloud_thinking', 'gatekeeper_query', 'gatekeeper_response', 'web_search_query'].includes(e.type)
+    ['deidentified_query', 'cloud_thinking', 'gatekeeper_query', 'gatekeeper_response', 'web_search_query', 'cloud_response_chunk'].includes(e.type)
   )
 
   const renderWithTokens = (text) => {
@@ -49,6 +49,8 @@ function RedactedView({ sseEvents, isVisible }) {
         return { prefix: `[GATEKEEPER → CLOUD] turn=${turn || '?'}`, cls: 'log-gatekeeper' }
       case 'web_search_query':
         return { prefix: `[CLOUD → WEB] turn=${turn || '?'}`, cls: 'log-cloud' }
+      case 'cloud_response_chunk':
+        return { prefix: '[CLOUD → GATEKEEPER] final response', cls: 'log-cloud' }
       default:
         return { prefix: `[${type}]`, cls: 'log-default' }
     }
