@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback, memo } from 'react'
 import ReactMarkdown from 'react-markdown'
+import logoFilter from '../assets/logo-filter.svg'
 import './ChatPanel.css'
 
 // Hook for scroll-triggered fade-in animations
@@ -514,7 +515,7 @@ function ChatPanel({ selectedModel, onSseEvent, onQueryStart, onOpenPdf, connect
       <div className="chat-messages">
         {messages.length === 0 ? (
           <div className="chat-empty">
-            <div className="chat-empty-icon">+</div>
+            <div className="chat-empty-icon"><img src={logoFilter} alt="" style={{ width: '48px', height: '48px' }} /></div>
             <div className="chat-empty-title">Clinical Assistant</div>
             <div className="chat-empty-subtitle">
               Query patient records securely. PHI is automatically de-identified before reaching the cloud.
