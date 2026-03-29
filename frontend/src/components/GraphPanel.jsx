@@ -816,11 +816,15 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf, isVisible = true, que
       setTraversedNodes(new Set())
       setTraversedEdges(new Set())
       setPulsingNodes(new Set())
+      setFadingNodes(new Set())
       traversedNodesRef.current = new Set()
       traversedEdgesRef.current = new Set()
       pulsingNodesRef.current = new Set()
+      fadingNodesRef.current = new Set()
+      // Force Three.js re-render so glows disappear immediately
+      scheduleRefresh()
     }
-  }, [queryGeneration])
+  }, [queryGeneration, scheduleRefresh])
 
   // Close info card
   const closeInfoCard = useCallback(() => {

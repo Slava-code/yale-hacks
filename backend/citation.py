@@ -66,13 +66,21 @@ class CitationManager:
     def resolve_refs_in_text(self, text: str) -> str:
         """Replace [REF_N] tokens with display indices [N].
 
-        e.g. "[REF_1]" → "[1]", "[REF_2]" → "[2]"
+        Handles both individual refs like [REF_1] and grouped refs like
+        [REF_16, REF_26, REF_29] that Claude sometimes produces.
         """
-        def replacer(match):
-            n = match.group(1)
-            return f"[{n}]"
+        # First handle grouped refs: [REF_1, REF_2, REF_3] → [1], [2], [3]
+        def group_replacer(match):
+            inner = match.group(1)
+            refs = re.findall(r"REF_(\d+)", inner)
+            return ", ".join(f"[{n}]" for n in refs)
 
-        return re.sub(r"\[REF_(\d+)\]", replacer, text)
+        text = re.sub(r"\[REF_\d+(?:,\s*REF_\d+)+\]", group_replacer, text)
+
+        # Then handle individual refs: [REF_1] → [1]
+        text = re.sub(r"\[REF_(\d+)\]", lambda m: f"[{m.group(1)}]", text)
+
+        return text
 
     def get_refs_added(self) -> list[str]:
         """Return REF IDs added since the last call to this method.
