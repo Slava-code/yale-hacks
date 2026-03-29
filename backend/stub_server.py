@@ -26,7 +26,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-STUB_GRAPH_PATH = Path(__file__).parent.parent / "data" / "stub" / "graph.json"
+STUB_GRAPH_PATH = Path(__file__).parent.parent / "data" / "graph.json"
 
 # --- Node visual config (matches docs/interfaces.md §4) ---
 
