@@ -1,6 +1,64 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import './ChatPanel.css'
 
+// Hook for scroll-triggered fade-in animations
+function useScrollFadeIn() {
+  const elementRef = useRef(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const element = elementRef.current
+    if (!element) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.unobserve(element)
+        }
+      },
+      { threshold: 0.1, rootMargin: '50px' }
+    )
+
+    observer.observe(element)
+    return () => observer.disconnect()
+  }, [])
+
+  return [elementRef, isVisible]
+}
+
+// Animated counter component for stats
+function AnimatedCounter({ value, duration = 500 }) {
+  const [displayValue, setDisplayValue] = useState(0)
+  const startTimeRef = useRef(null)
+  const rafRef = useRef(null)
+
+  useEffect(() => {
+    const targetValue = parseInt(value, 10) || 0
+    startTimeRef.current = performance.now()
+
+    const animate = (currentTime) => {
+      const elapsed = currentTime - startTimeRef.current
+      const progress = Math.min(elapsed / duration, 1)
+
+      // Ease out cubic
+      const eased = 1 - Math.pow(1 - progress, 3)
+      setDisplayValue(Math.round(eased * targetValue))
+
+      if (progress < 1) {
+        rafRef.current = requestAnimationFrame(animate)
+      }
+    }
+
+    rafRef.current = requestAnimationFrame(animate)
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+    }
+  }, [value, duration])
+
+  return <span className="animated-counter">{displayValue}</span>
+}
+
 // TypeWriter component for character-by-character animation
 function TypeWriter({ content, speed = 20, onComplete, skipAnimation = false }) {
   const [displayedContent, setDisplayedContent] = useState(skipAnimation ? content : '')
@@ -39,6 +97,81 @@ function TypeWriter({ content, speed = 20, onComplete, skipAnimation = false }) 
       {displayedContent}
       {isTyping && <span className="typewriter-cursor">|</span>}
     </span>
+  )
+}
+
+// Individual message component with scroll-triggered animation
+function ChatMessage({ message, index, renderContent, onOpenPdf }) {
+  const [ref, isVisible] = useScrollFadeIn()
+
+  // Determine icon based on citation type
+  const getIcon = (citation) => {
+    const display = citation.display?.toLowerCase() || ''
+    if (display.includes('lab')) return '🔬'
+    if (display.includes('med') || display.includes('rx')) return '💊'
+    if (display.includes('visit') || display.includes('note')) return '📋'
+    if (display.includes('procedure')) return '⚕'
+    if (display.includes('imaging') || display.includes('radiology')) return '📷'
+    return '📄'
+  }
+
+  return (
+    <div
+      ref={ref}
+      className={`chat-message chat-message-${message.role} ${
+        message.isError ? 'chat-message-error' : ''
+      } ${isVisible ? 'message-visible' : 'message-hidden'}`}
+      style={{ '--message-index': index }}
+    >
+      <div className="message-header">
+        <span className="message-role">
+          {message.role === 'user' ? 'You' : message.model || 'Assistant'}
+        </span>
+        {message.gatekeeperTurns && (
+          <span className="message-turns">
+            <AnimatedCounter value={message.gatekeeperTurns} /> retrieval{message.gatekeeperTurns > 1 ? 's' : ''}
+          </span>
+        )}
+        <span className="message-time">
+          {new Date(message.timestamp).toLocaleTimeString([], {
+            hour: '2-digit',
+            minute: '2-digit',
+          })}
+        </span>
+      </div>
+      <div className="message-content">
+        {message.role === 'assistant' && !message.isComplete ? (
+          <div className="streaming-status">
+            <span className="streaming-dots">
+              <span className="dot"></span>
+              <span className="dot"></span>
+              <span className="dot"></span>
+            </span>
+            <span className="streaming-text">{message.streamingStatus}</span>
+          </div>
+        ) : (
+          renderContent(message)
+        )}
+      </div>
+      {message.citations && message.citations.length > 0 && (
+        <div className="message-citations">
+          <span className="citations-label">Sources:</span>
+          {message.citations.map((citation, citationIndex) => (
+            <button
+              key={citation.ref_id}
+              className="citation-chip"
+              title={`${citation.pdf}, page ${citation.page}`}
+              onClick={() => onOpenPdf?.(citation.pdf, citation.page, citation)}
+              style={{ '--citation-index': citationIndex }}
+            >
+              <span className="citation-icon">{getIcon(citation)}</span>
+              <span className="citation-ref">[{citation.index}]</span>
+              <span className="citation-text">{citation.display}</span>
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
   )
 }
 
@@ -389,69 +522,14 @@ function ChatPanel({ selectedModel, onSseEvent, onQueryStart, onOpenPdf, connect
           </div>
         ) : (
           <>
-            {messages.map((message) => (
-              <div
+            {messages.map((message, index) => (
+              <ChatMessage
                 key={message.id}
-                className={`chat-message chat-message-${message.role} ${
-                  message.isError ? 'chat-message-error' : ''
-                }`}
-              >
-                <div className="message-header">
-                  <span className="message-role">
-                    {message.role === 'user' ? 'You' : message.model || 'Assistant'}
-                  </span>
-                  {message.gatekeeperTurns && (
-                    <span className="message-turns">
-                      {message.gatekeeperTurns} retrieval{message.gatekeeperTurns > 1 ? 's' : ''}
-                    </span>
-                  )}
-                  <span className="message-time">
-                    {new Date(message.timestamp).toLocaleTimeString([], {
-                      hour: '2-digit',
-                      minute: '2-digit',
-                    })}
-                  </span>
-                </div>
-                <div className="message-content">
-                  {message.role === 'assistant' && !message.isComplete ? (
-                    <div className="streaming-status">
-                      <span className="streaming-text">{message.streamingStatus}</span>
-                      <span className="streaming-pulse"></span>
-                    </div>
-                  ) : (
-                    renderContent(message)
-                  )}
-                </div>
-                {message.citations && message.citations.length > 0 && (
-                  <div className="message-citations">
-                    <span className="citations-label">Sources:</span>
-                    {message.citations.map((citation) => {
-                      // Determine icon based on citation type
-                      const getIcon = () => {
-                        const display = citation.display?.toLowerCase() || ''
-                        if (display.includes('lab')) return '🔬'
-                        if (display.includes('med') || display.includes('rx')) return '💊'
-                        if (display.includes('visit') || display.includes('note')) return '📋'
-                        if (display.includes('procedure')) return '⚕'
-                        if (display.includes('imaging') || display.includes('radiology')) return '📷'
-                        return '📄'
-                      }
-                      return (
-                        <button
-                          key={citation.ref_id}
-                          className="citation-chip"
-                          title={`${citation.pdf}, page ${citation.page}`}
-                          onClick={() => onOpenPdf?.(citation.pdf, citation.page, citation)}
-                        >
-                          <span className="citation-icon">{getIcon()}</span>
-                          <span className="citation-ref">[{citation.index}]</span>
-                          <span className="citation-text">{citation.display}</span>
-                        </button>
-                      )
-                    })}
-                  </div>
-                )}
-              </div>
+                message={message}
+                index={index}
+                renderContent={renderContent}
+                onOpenPdf={onOpenPdf}
+              />
             ))}
             <div ref={messagesEndRef} />
           </>
