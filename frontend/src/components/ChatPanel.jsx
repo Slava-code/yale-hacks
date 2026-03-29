@@ -72,8 +72,8 @@ function ChatPanel({ selectedModel, onModelChange, onSseEvent, onQueryStart, onO
   const processEvent = (event, assistantMessageId) => {
     const { type, data } = event
 
-    // Emit to parent for graph panel
-    onSseEvent?.(data)
+    // Emit to parent for graph panel - include type for filtering
+    onSseEvent?.({ type, ...data })
 
     switch (type) {
       case 'deidentified_query':

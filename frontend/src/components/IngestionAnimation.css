@@ -1,0 +1,416 @@
+/* IngestionAnimation Styles - Clinical Noir */
+
+.ingestion-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-primary);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fade-in 0.5s ease-out;
+}
+
+.ingestion-container {
+  width: 100%;
+  max-width: 800px;
+  padding: var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+/* ===== TITLE ===== */
+.ingestion-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  transition: all 0.5s ease;
+}
+
+.ingestion-title.title-small {
+  flex-direction: row;
+  gap: var(--space-sm);
+}
+
+.ingestion-logo {
+  font-size: 4rem;
+  color: var(--node-patient);
+  filter: drop-shadow(0 0 30px rgba(74, 144, 217, 0.5));
+  transition: font-size 0.5s ease;
+}
+
+.title-small .ingestion-logo {
+  font-size: 1.5rem;
+}
+
+.ingestion-name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  transition: font-size 0.5s ease;
+}
+
+.title-small .ingestion-name {
+  font-size: 1.25rem;
+}
+
+.ingestion-subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+  animation: pulse-text 2s ease-in-out infinite;
+}
+
+@keyframes pulse-text {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* ===== CONTENT ===== */
+.ingestion-content {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-lg);
+  width: 100%;
+  animation: slide-up 0.5s ease-out;
+}
+
+/* ===== DOCUMENTS ===== */
+.ingestion-docs {
+  flex: 1;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.docs-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.docs-icon {
+  font-size: 1rem;
+}
+
+.docs-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.docs-count {
+  margin-left: auto;
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+.docs-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  min-height: 180px;
+}
+
+.doc-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+  animation: doc-enter 0.3s ease-out backwards;
+}
+
+@keyframes doc-enter {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.doc-icon {
+  font-size: 0.9rem;
+}
+
+.doc-name {
+  flex: 1;
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.doc-status {
+  font-size: 0.7rem;
+  color: var(--node-medication);
+}
+
+/* ===== FLOW ===== */
+.ingestion-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 0 var(--space-md);
+}
+
+.flow-arrow {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  animation: arrow-pulse 1s ease-in-out infinite;
+}
+
+@keyframes arrow-pulse {
+  0%, 100% { opacity: 0.3; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(5px); }
+}
+
+.flow-particles {
+  position: relative;
+  width: 40px;
+  height: 100px;
+}
+
+.flow-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--node-patient);
+  border-radius: 50%;
+  left: 50%;
+  animation: particle-fly 1s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes particle-fly {
+  0% {
+    opacity: 1;
+    top: 0;
+    transform: translateX(-50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    top: 100%;
+    transform: translateX(-50%) scale(0.5);
+  }
+}
+
+/* ===== GRAPH ===== */
+.ingestion-graph {
+  flex: 1;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.graph-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.graph-icon {
+  font-size: 1rem;
+  color: var(--node-patient);
+}
+
+.graph-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.graph-stats-anim {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--node-patient);
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-divider {
+  color: var(--text-muted);
+  font-size: 1.5rem;
+}
+
+.graph-preview {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mini-graph {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+}
+
+.mini-edge {
+  stroke: rgba(74, 144, 217, 0.3);
+  stroke-width: 1;
+  animation: edge-draw 0.5s ease-out backwards;
+}
+
+@keyframes edge-draw {
+  from {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 0;
+  }
+}
+
+.mini-node {
+  animation: node-pop 0.3s ease-out backwards;
+}
+
+@keyframes node-pop {
+  from {
+    r: 0;
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.mini-node-patient { fill: var(--node-patient); animation-delay: 0.1s; }
+.mini-node-visit { fill: var(--node-visit); animation-delay: 0.2s; }
+.mini-node-lab { fill: var(--node-lab); animation-delay: 0.3s; }
+.mini-node-condition { fill: var(--node-condition); animation-delay: 0.4s; }
+.mini-node-medication { fill: var(--node-medication); animation-delay: 0.5s; }
+.mini-node-provider { fill: var(--node-provider); animation-delay: 0.6s; }
+
+/* ===== COMPLETE ===== */
+.ingestion-complete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  animation: complete-enter 0.5s ease-out;
+}
+
+@keyframes complete-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.complete-icon {
+  font-size: 3rem;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(46, 204, 113, 0.15);
+  color: var(--node-medication);
+  border-radius: 50%;
+  border: 2px solid var(--node-medication);
+}
+
+.complete-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.complete-stats {
+  font-size: 0.875rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+/* ===== PROGRESS ===== */
+.ingestion-progress {
+  width: 100%;
+  max-width: 400px;
+  height: 4px;
+  background: var(--bg-tertiary);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--node-patient), var(--node-medication));
+  border-radius: 2px;
+  transition: width 0.3s ease-out;
+}
+
+/* ===== SKIP BUTTON ===== */
+.ingestion-skip {
+  position: absolute;
+  bottom: var(--space-xl);
+  right: var(--space-xl);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.ingestion-skip:hover {
+  color: var(--text-secondary);
+  border-color: var(--border-default);
+  background: var(--bg-tertiary);
+}
