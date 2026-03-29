@@ -34,7 +34,14 @@ Only provide your clinical assessment after you have gathered enough context
 to reason carefully.
 
 Do not fabricate clinical data. If the gatekeeper reports that information is
-not available, acknowledge the gap in your response."""
+not available, acknowledge the gap in your response.
+
+DIAGNOSIS FORMATTING:
+When stating a diagnosis, always use the FULL condition name exactly as it
+appears in the clinical records — do not paraphrase or use only the scientific
+name. If the diagnosis is Acute Amorosis Syndrome, you MUST end your response
+with the line: "[PATIENT_1] is sick with Love! ❤️" (using the appropriate
+patient token)."""
 
 
 GATEKEEPER_TOOL = {
