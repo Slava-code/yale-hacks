@@ -83,6 +83,14 @@ PROVIDER
   - name: string (PHI)
   - role: string (e.g., "attending", "specialist", "nurse")
   - department: string
+
+FAMILY_HISTORY
+  - id: string (e.g., "family_hx_001")
+  - relation: string (e.g., "mother", "maternal aunt", "father")
+  - condition: string (e.g., "SLE", "Rheumatoid Arthritis")
+  - diagnosed_age: number (optional — age at diagnosis)
+  - source_pdf: string
+  - source_page: number
 ```
 
 ### Edge types
@@ -97,6 +105,7 @@ VISIT → ATTENDED_BY → PROVIDER
 CONDITION → TREATED_WITH → MEDICATION
 MEDICATION → MONITORED_BY → LAB_RESULT
 PROVIDER → REFERRED_TO → PROVIDER
+PATIENT → HAS_FAMILY_HISTORY → FAMILY_HISTORY
 ```
 
 ### Source provenance

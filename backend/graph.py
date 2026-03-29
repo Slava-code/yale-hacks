@@ -187,7 +187,7 @@ def get_patient_providers(graph: Graph, patient_id: str) -> list[Provider]:
 
 def get_family_history(graph: Graph, patient_id: str) -> list[dict]:
     """Family medical history entries for a patient.
-    Returns: [{"relation": "mother", "condition": "SLE", "source_pdf": "...", "source_page": N}]
+    Returns: [{"relation": "mother", "condition": "SLE", "diagnosed_age": 35, "source_pdf": "...", "source_page": N}]
 
     Family history nodes are type "family_history" connected via HAS_FAMILY_HISTORY edges.
     If no such nodes exist, returns an empty list.
@@ -197,6 +197,7 @@ def get_family_history(graph: Graph, patient_id: str) -> list[dict]:
         results.append({
             "relation": node.field_value("relation"),
             "condition": node.field_value("condition"),
+            "diagnosed_age": node.field_value("diagnosed_age"),
             "source_pdf": node.source_pdf,
             "source_page": node.source_page,
         })
