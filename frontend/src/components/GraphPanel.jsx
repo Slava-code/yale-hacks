@@ -4,7 +4,7 @@ import * as THREE from 'three'
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
 import './GraphPanel.css'
 
-function GraphPanel({ traversalData, sseEvents }) {
+function GraphPanel({ traversalData, sseEvents, onOpenPdf }) {
   const containerRef = useRef(null)
   const graphRef = useRef(null)
   const [graphData, setGraphData] = useState({ nodes: [], links: [] })
@@ -428,8 +428,7 @@ function GraphPanel({ traversalData, sseEvents }) {
             <button
               className="info-card-pdf-btn"
               onClick={() => {
-                // Phase 5 will handle PDF viewer
-                console.log('Open PDF:', selectedNode.source_pdf, selectedNode.source_page)
+                onOpenPdf?.(selectedNode.source_pdf, selectedNode.source_page)
               }}
             >
               View Source PDF (p.{selectedNode.source_page})

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import './ChatPanel.css'
 
-function ChatPanel({ selectedModel, onModelChange, onSseEvent, onQueryStart }) {
+function ChatPanel({ selectedModel, onModelChange, onSseEvent, onQueryStart, onOpenPdf }) {
   const [messages, setMessages] = useState([])
   const [inputValue, setInputValue] = useState('')
   const [models, setModels] = useState([])
@@ -281,8 +281,7 @@ function ChatPanel({ selectedModel, onModelChange, onSseEvent, onQueryStart }) {
                   className="citation-link"
                   title={citation.display}
                   onClick={() => {
-                    // Phase 5 will handle PDF viewer
-                    console.log('Citation clicked:', citation)
+                    onOpenPdf?.(citation.pdf, citation.page, citation)
                   }}
                 >
                   [{citationIndex}]
@@ -380,7 +379,7 @@ function ChatPanel({ selectedModel, onModelChange, onSseEvent, onQueryStart }) {
                         key={citation.ref_id}
                         className="citation-chip"
                         title={`${citation.pdf}, page ${citation.page}`}
-                        onClick={() => console.log('Open PDF:', citation)}
+                        onClick={() => onOpenPdf?.(citation.pdf, citation.page, citation)}
                       >
                         [{citation.index}] {citation.display}
                       </button>
