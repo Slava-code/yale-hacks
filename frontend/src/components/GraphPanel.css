@@ -114,6 +114,14 @@
   font-style: italic;
 }
 
+.legend-count {
+  font-size: 0.6rem;
+  font-family: var(--font-mono);
+  color: rgba(74, 144, 217, 0.7);
+  padding-left: var(--space-sm);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 /* ===== INFO CARD ===== */
 .info-card {
   position: absolute;

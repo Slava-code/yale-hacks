@@ -12,9 +12,19 @@ function GraphPanel({ traversalData, sseEvents }) {
   const [hoveredNode, setHoveredNode] = useState(null)
   const [stats, setStats] = useState({ nodes: 0, edges: 0 })
 
-  // Refs to track current hover/selection for the render callback
+  // Traversal state - tracks nodes/edges accessed during queries
+  const [traversedNodes, setTraversedNodes] = useState(new Set())
+  const [traversedEdges, setTraversedEdges] = useState(new Set())
+  const [pulsingNodes, setPulsingNodes] = useState(new Set())
+  const [fadingNodes, setFadingNodes] = useState(new Set())  // Buffer before fully fading
+
+  // Refs to track current state for the render callback
   const hoveredNodeRef = useRef(null)
   const selectedNodeRef = useRef(null)
+  const traversedNodesRef = useRef(new Set())
+  const traversedEdgesRef = useRef(new Set())
+  const pulsingNodesRef = useRef(new Set())
+  const fadingNodesRef = useRef(new Set())
 
   // Fetch graph data on mount
   useEffect(() => {
@@ -52,9 +62,11 @@ function GraphPanel({ traversalData, sseEvents }) {
     const width = container.clientWidth
     const height = container.clientHeight
 
-    // Monochromatic color palette - soft muted blues/grays
-    const monoColor = '#6A7B92'  // Soft slate blue
-    const monoColorHover = '#8EA0B5'  // Subtle lift on hover
+    // Color palette - Clinical Noir theme with Stripe-inspired refinement
+    const monoColor = '#4A6B8A'  // Muted clinical blue (based on --node-patient)
+    const monoColorHover = '#5A8AB5'  // Subtle lift on hover
+    const traversedColor = '#4A90D9'  // Node patient blue from design system
+    const pulseColor = '#6BA3E0'  // Lighter pulse blue
 
     // Create the 3D force graph with modern, clean aesthetic
     const graph = ForceGraph3D()(container)
@@ -66,31 +78,60 @@ function GraphPanel({ traversalData, sseEvents }) {
       .nodeThreeObject((node) => {
         const isHovered = hoveredNodeRef.current?.id === node.id
         const isSelected = selectedNodeRef.current?.id === node.id
+        const isTraversed = traversedNodesRef.current.has(node.id)
+        const isPulsing = pulsingNodesRef.current.has(node.id)
+        const isFading = fadingNodesRef.current.has(node.id)
         const isHighlighted = isHovered || isSelected
 
         // Create sphere geometry
         const geometry = new THREE.SphereGeometry(node.size * 0.7, 24, 24)
 
-        // Use monochromatic color with clear hover distinction
-        const color = new THREE.Color(isHighlighted ? monoColorHover : monoColor)
+        // Determine color based on state (traversal uses subtle blue tones)
+        let nodeColor, nodeOpacity, emissiveIntensity
+        if (isPulsing) {
+          nodeColor = pulseColor
+          nodeOpacity = 0.68
+          emissiveIntensity = 0.45
+        } else if (isFading) {
+          // Buffer state - intermediate between pulse and settled
+          nodeColor = traversedColor
+          nodeOpacity = 0.6
+          emissiveIntensity = 0.3
+        } else if (isTraversed) {
+          nodeColor = isHighlighted ? pulseColor : traversedColor
+          nodeOpacity = isHighlighted ? 0.6 : 0.53
+          emissiveIntensity = isHighlighted ? 0.34 : 0.19
+        } else if (isHighlighted) {
+          nodeColor = monoColorHover
+          nodeOpacity = 0.75
+          emissiveIntensity = 0.35
+        } else {
+          nodeColor = monoColor
+          nodeOpacity = 0.55
+          emissiveIntensity = 0.1
+        }
+
+        const color = new THREE.Color(nodeColor)
         const material = new THREE.MeshPhongMaterial({
           color: color,
           transparent: true,
-          opacity: isHighlighted ? 0.75 : 0.55,
-          shininess: isHighlighted ? 80 : 40,
+          opacity: nodeOpacity,
+          shininess: isPulsing ? 120 : (isHighlighted || isTraversed ? 80 : 40),
           emissive: color,
-          emissiveIntensity: isHighlighted ? 0.35 : 0.1,
+          emissiveIntensity: emissiveIntensity,
         })
 
         const sphere = new THREE.Mesh(geometry, material)
 
-        // Add soft outer glow on hover
-        if (isHighlighted) {
-          const glowGeometry = new THREE.SphereGeometry(node.size * 1.05, 16, 16)
+        // Add outer glow for highlighted, pulsing, or fading nodes
+        if (isHighlighted || isPulsing || isFading) {
+          const glowSize = isPulsing ? 1.2 : (isFading ? 1.12 : 1.05)
+          const glowOpacity = isPulsing ? 0.2 : (isFading ? 0.15 : 0.1)
+          const glowGeometry = new THREE.SphereGeometry(node.size * glowSize, 16, 16)
           const glowMaterial = new THREE.MeshBasicMaterial({
-            color: new THREE.Color(monoColorHover),
+            color: new THREE.Color(isPulsing || isFading ? pulseColor : monoColorHover),
             transparent: true,
-            opacity: 0.1,
+            opacity: glowOpacity,
           })
           const glow = new THREE.Mesh(glowGeometry, glowMaterial)
           sphere.add(glow)
@@ -99,9 +140,29 @@ function GraphPanel({ traversalData, sseEvents }) {
         return sphere
       })
       .nodeLabel((node) => node.label)
-      // Thin, delicate links - monochromatic but visible
-      .linkColor(() => 'rgba(106, 123, 146, 0.5)')
-      .linkWidth(0.5)
+      // Dynamic link coloring based on traversal
+      .linkColor((link) => {
+        const sourceId = typeof link.source === 'object' ? link.source.id : link.source
+        const targetId = typeof link.target === 'object' ? link.target.id : link.target
+        const edgeKey = `${sourceId}->${targetId}`
+        const reverseKey = `${targetId}->${sourceId}`
+
+        if (traversedEdgesRef.current.has(edgeKey) || traversedEdgesRef.current.has(reverseKey)) {
+          return 'rgba(74, 144, 217, 0.5)'  // Clinical blue for traversed edges
+        }
+        return 'rgba(74, 107, 138, 0.4)'  // Muted clinical blue
+      })
+      .linkWidth((link) => {
+        const sourceId = typeof link.source === 'object' ? link.source.id : link.source
+        const targetId = typeof link.target === 'object' ? link.target.id : link.target
+        const edgeKey = `${sourceId}->${targetId}`
+        const reverseKey = `${targetId}->${sourceId}`
+
+        if (traversedEdgesRef.current.has(edgeKey) || traversedEdgesRef.current.has(reverseKey)) {
+          return 0.8  // Thicker for traversed edges
+        }
+        return 0.5
+      })
       .linkOpacity(0.6)
       // Hover effects
       .onNodeHover((node) => {
@@ -127,11 +188,11 @@ function GraphPanel({ traversalData, sseEvents }) {
         setSelectedNode(null)
       })
 
-    // Add subtle bloom effect - very soft
+    // Add subtle bloom effect - Stripe-inspired soft glow
     const bloomPass = new UnrealBloomPass()
-    bloomPass.strength = 0.4
-    bloomPass.radius = 0.6
-    bloomPass.threshold = 0.3
+    bloomPass.strength = 0.35
+    bloomPass.radius = 0.8
+    bloomPass.threshold = 0.25
     graph.postProcessingComposer().addPass(bloomPass)
 
     // Add ambient and directional lighting for depth
@@ -172,6 +233,105 @@ function GraphPanel({ traversalData, sseEvents }) {
       graphRef.current.refresh()
     }
   }, [hoveredNode, selectedNode])
+
+  // Handle traversal events - highlight accessed nodes/edges sequentially
+  useEffect(() => {
+    if (!traversalData || !traversalData.nodes) return
+
+    const nodeList = traversalData.nodes
+    const newEdges = new Set(
+      (traversalData.edges || []).map(e => `${e.source}->${e.target}`)
+    )
+
+    // Add edges immediately
+    setTraversedEdges(prev => {
+      const updated = new Set([...prev, ...newEdges])
+      traversedEdgesRef.current = updated
+      return updated
+    })
+
+    // Animate nodes one by one with smooth buffer fade (Stripe-inspired timing)
+    const timers = []
+    const delayPerNode = 100  // ms between each node highlight (snappy sequencing)
+
+    nodeList.forEach((nodeId, index) => {
+      // Start pulse for this node
+      const startTimer = setTimeout(() => {
+        setPulsingNodes(prev => {
+          const updated = new Set([...prev, nodeId])
+          pulsingNodesRef.current = updated
+          return updated
+        })
+
+        // Add to traversed set
+        setTraversedNodes(prev => {
+          const updated = new Set([...prev, nodeId])
+          traversedNodesRef.current = updated
+          return updated
+        })
+
+        if (graphRef.current) {
+          graphRef.current.refresh()
+        }
+      }, index * delayPerNode)
+
+      timers.push(startTimer)
+
+      // Transition from pulse to fading (extended buffer state)
+      const fadeTimer = setTimeout(() => {
+        setPulsingNodes(prev => {
+          const updated = new Set([...prev])
+          updated.delete(nodeId)
+          pulsingNodesRef.current = updated
+          return updated
+        })
+
+        setFadingNodes(prev => {
+          const updated = new Set([...prev, nodeId])
+          fadingNodesRef.current = updated
+          return updated
+        })
+
+        if (graphRef.current) {
+          graphRef.current.refresh()
+        }
+      }, index * delayPerNode + 800)  // Pulse lasts 800ms
+
+      timers.push(fadeTimer)
+
+      // End fading state (settle into traversed) - extended by 1.5s
+      const settleTimer = setTimeout(() => {
+        setFadingNodes(prev => {
+          const updated = new Set([...prev])
+          updated.delete(nodeId)
+          fadingNodesRef.current = updated
+          return updated
+        })
+
+        if (graphRef.current) {
+          graphRef.current.refresh()
+        }
+      }, index * delayPerNode + 3100)  // Fade lasts 2300ms (800 + 1500 extra)
+
+      timers.push(settleTimer)
+    })
+
+    return () => timers.forEach(t => clearTimeout(t))
+  }, [traversalData])
+
+  // Clear traversal state when a new query starts
+  useEffect(() => {
+    // Look for query start signal in sseEvents
+    const hasNewQuery = sseEvents.some(e => e.type === 'deidentified_query')
+    if (sseEvents.length === 1 && hasNewQuery) {
+      setTraversedNodes(new Set())
+      setTraversedEdges(new Set())
+      setPulsingNodes(new Set())
+      traversedNodesRef.current = new Set()
+      traversedEdgesRef.current = new Set()
+      pulsingNodesRef.current = new Set()
+    }
+  }, [sseEvents])
 
   // Close info card
   const closeInfoCard = useCallback(() => {
@@ -235,12 +395,18 @@ function GraphPanel({ traversalData, sseEvents }) {
       {/* Legend Overlay - Minimal */}
       <div className="graph-legend-overlay">
         <div className="legend-item">
-          <span className="legend-dot" style={{ background: '#6B7C95' }}></span>
-          <span>Clinical Entities</span>
+          <span className="legend-dot" style={{ background: '#4A6B8A' }}></span>
+          <span>Entities</span>
         </div>
-        <div className="legend-item legend-hint">
-          Click node for details
+        <div className="legend-item">
+          <span className="legend-dot" style={{ background: '#4A90D9' }}></span>
+          <span>Accessed</span>
         </div>
+        {traversedNodes.size > 0 && (
+          <div className="legend-item legend-count">
+            {traversedNodes.size} accessed
+          </div>
+        )}
       </div>
 
       {/* Node Info Card */}
