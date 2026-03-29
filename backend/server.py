@@ -167,18 +167,19 @@ async def _run_pipeline(
     turn = 0
     max_turns = 10  # safety limit
 
-    while turn < max_turns:
-        try:
-            response = await adapter.send_query(messages)
-        except Exception as e:
-            yield "error", {
-                "type": "error",
-                "content": f"Cloud model API error: {str(e)}",
-                "phase": "cloud_query",
-            }
-            return
+    # First call to cloud
+    try:
+        response = await adapter.send_query(messages)
+    except Exception as e:
+        yield "error", {
+            "type": "error",
+            "content": f"Cloud model API error: {str(e)}",
+            "phase": "cloud_query",
+        }
+        return
 
-        # Check if the model made a tool call
+    while turn < max_turns:
+        # Parse the response
         tool_call = None
         text_content = ""
 
@@ -220,8 +221,7 @@ async def _run_pipeline(
                 "refs_added": kg_result["refs_added"],
             }
 
-            # Feed result back to cloud model
-            # Add assistant message with tool call
+            # Feed result back to cloud model and get next response
             messages.append({
                 "role": "assistant",
                 "content": response.get("content", []),
@@ -231,9 +231,7 @@ async def _run_pipeline(
                 response = await adapter.send_tool_result(
                     messages, tool_call["tool_id"], kg_result["content"]
                 )
-                # Re-check the new response in next loop iteration
-                # by updating the response and continuing
-                # Actually we need to re-process, so update and continue loop
+                # Loop will process this new response on next iteration
                 continue
             except Exception as e:
                 yield "error", {
