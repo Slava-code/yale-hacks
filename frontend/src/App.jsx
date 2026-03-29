@@ -108,31 +108,24 @@ function App() {
       {/* Header */}
       <header className="app-header">
         <div className="logo">
-          <span className="logo-icon">⚕</span>
+          <span className="logo-icon">+</span>
           <span className="logo-text">MedGate</span>
         </div>
         <div className="header-subtitle">
-          HIPAA-Compliant Clinical AI
+          HIPAA-compliant clinical AI
         </div>
 
-        {/* Model Selector with Provider Badge */}
+        {/* Model Selector */}
         <div className="header-model-section">
-          <div
-            className="model-badge"
-            style={{
-              '--model-color': currentModelConfig.color,
-              '--model-bg': currentModelConfig.bgColor
-            }}
-          >
-            <span className="model-badge-icon">{currentModelConfig.icon}</span>
-            <span className="model-badge-provider">{currentModelConfig.provider}</span>
+          <div className="model-badge">
+            <span className="model-badge-icon">●</span>
+            <span className="model-badge-provider">{currentModelConfig.name}</span>
           </div>
           <select
             className="header-model-selector"
             value={selectedModel}
             onChange={(e) => setSelectedModel(e.target.value)}
             disabled={connectionStatus === 'streaming'}
-            style={{ '--model-color': currentModelConfig.color }}
           >
             {models.map((model) => (
               <option key={model.id} value={model.id} disabled={!model.available}>
@@ -142,24 +135,24 @@ function App() {
           </select>
         </div>
 
-        {/* Connection Status Indicator */}
+        {/* Connection Status */}
         <div className={`connection-status status-${connectionStatus}`}>
           <span className="status-dot"></span>
           <span className="status-text">
-            {connectionStatus === 'streaming' && 'Streaming'}
-            {connectionStatus === 'connected' && 'Connected'}
+            {connectionStatus === 'streaming' && 'Processing'}
+            {connectionStatus === 'connected' && 'Ready'}
             {connectionStatus === 'error' && 'Error'}
-            {connectionStatus === 'idle' && 'Connecting...'}
+            {connectionStatus === 'idle' && 'Connecting'}
           </span>
         </div>
 
         <button
           className={`redacted-toggle ${showRedacted ? 'active' : ''}`}
           onClick={() => setShowRedacted(!showRedacted)}
-          title="Toggle Redacted View"
+          title="View PHI Pipeline"
         >
-          <span className="redacted-toggle-icon">◈</span>
-          <span className="redacted-toggle-text">Redacted View</span>
+          <span className="redacted-toggle-icon">◇</span>
+          <span className="redacted-toggle-text">PHI Pipeline</span>
         </button>
       </header>
 

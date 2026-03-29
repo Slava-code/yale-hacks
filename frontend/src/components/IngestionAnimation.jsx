@@ -87,15 +87,15 @@ function IngestionAnimation({ onComplete, graphStats }) {
     setParticles((prev) => [...prev, ...newParticles])
   }
 
-  // Get document type icon
+  // Get document type icon - use subtle symbols
   const getDocIcon = (filename) => {
-    if (filename.includes('lab_report')) return '🔬'
-    if (filename.includes('intake_form')) return '📋'
-    if (filename.includes('progress_note')) return '📝'
-    if (filename.includes('discharge_summary')) return '📄'
-    if (filename.includes('imaging_report')) return '🩻'
-    if (filename.includes('referral_letter')) return '✉️'
-    return '📄'
+    if (filename.includes('lab_report')) return '◆'
+    if (filename.includes('intake_form')) return '■'
+    if (filename.includes('progress_note')) return '●'
+    if (filename.includes('discharge_summary')) return '○'
+    if (filename.includes('imaging_report')) return '◇'
+    if (filename.includes('referral_letter')) return '▷'
+    return '○'
   }
 
   return (
@@ -103,10 +103,10 @@ function IngestionAnimation({ onComplete, graphStats }) {
       <div className="ingestion-container">
         {/* Title */}
         <div className={`ingestion-title ${phase !== 'intro' ? 'title-small' : ''}`}>
-          <span className="ingestion-logo">⚕</span>
+          <span className="ingestion-logo">+</span>
           <span className="ingestion-name">MedGate</span>
           {phase === 'intro' && (
-            <span className="ingestion-subtitle">Initializing Clinical Knowledge Graph</span>
+            <span className="ingestion-subtitle">Initializing knowledge graph</span>
           )}
         </div>
 
@@ -116,8 +116,8 @@ function IngestionAnimation({ onComplete, graphStats }) {
             {/* Documents being processed */}
             <div className="ingestion-docs">
               <div className="docs-header">
-                <span className="docs-icon">📁</span>
-                <span className="docs-label">Processing Clinical Documents</span>
+                <span className="docs-icon">◫</span>
+                <span className="docs-label">Processing Documents</span>
                 <span className="docs-count">{processedDocs.length} / {SAMPLE_PDFS.length}</span>
               </div>
               <div className="docs-list">
@@ -194,9 +194,9 @@ function IngestionAnimation({ onComplete, graphStats }) {
         {phase === 'complete' && (
           <div className="ingestion-complete">
             <div className="complete-icon">✓</div>
-            <div className="complete-text">Knowledge Graph Ready</div>
+            <div className="complete-text">Ready</div>
             <div className="complete-stats">
-              {targetNodes} nodes · {targetEdges} edges · {SAMPLE_PDFS.length} documents
+              {targetNodes} nodes · {targetEdges} edges · {SAMPLE_PDFS.length} docs
             </div>
           </div>
         )}

@@ -104,15 +104,15 @@ function TypeWriter({ content, speed = 20, onComplete, skipAnimation = false }) 
 function ChatMessage({ message, index, renderContent, onOpenPdf }) {
   const [ref, isVisible] = useScrollFadeIn()
 
-  // Determine icon based on citation type
+  // Determine icon based on citation type - use subtle symbols instead of emojis
   const getIcon = (citation) => {
     const display = citation.display?.toLowerCase() || ''
-    if (display.includes('lab')) return '🔬'
-    if (display.includes('med') || display.includes('rx')) return '💊'
-    if (display.includes('visit') || display.includes('note')) return '📋'
-    if (display.includes('procedure')) return '⚕'
-    if (display.includes('imaging') || display.includes('radiology')) return '📷'
-    return '📄'
+    if (display.includes('lab')) return '◆'
+    if (display.includes('med') || display.includes('rx')) return '●'
+    if (display.includes('visit') || display.includes('note')) return '■'
+    if (display.includes('procedure')) return '▲'
+    if (display.includes('imaging') || display.includes('radiology')) return '◇'
+    return '○'
   }
 
   return (
@@ -142,11 +142,7 @@ function ChatMessage({ message, index, renderContent, onOpenPdf }) {
       <div className="message-content">
         {message.role === 'assistant' && !message.isComplete ? (
           <div className="streaming-status">
-            <span className="streaming-dots">
-              <span className="dot"></span>
-              <span className="dot"></span>
-              <span className="dot"></span>
-            </span>
+            <span className="streaming-indicator"></span>
             <span className="streaming-text">{message.streamingStatus}</span>
           </div>
         ) : (
@@ -487,35 +483,37 @@ function ChatPanel({ selectedModel, onSseEvent, onQueryStart, onOpenPdf, connect
       <div className="chat-messages">
         {messages.length === 0 ? (
           <div className="chat-empty">
-            <div className="chat-empty-icon">⚕</div>
-            <div className="chat-empty-title">MedGate Clinical Assistant</div>
+            <div className="chat-empty-icon">+</div>
+            <div className="chat-empty-title">Clinical Assistant</div>
             <div className="chat-empty-subtitle">
-              Ask about a patient using their name. PHI will be automatically
-              de-identified before reaching the cloud model.
+              Query patient records securely. PHI is automatically de-identified before reaching the cloud.
             </div>
             <div className="chat-empty-examples">
-              <span className="example-label">Try asking:</span>
+              <span className="example-label">Try asking</span>
               <div className="example-grid">
                 <button
                   className="example-btn"
                   onClick={() => setInputValue("Tell me about John Smith's recent lab results")}
                 >
-                  <span className="example-icon">🔬</span>
-                  <span className="example-text">"Tell me about John Smith's recent lab results"</span>
+                  <span className="example-icon">◆</span>
+                  <span className="example-text">John Smith's recent lab results</span>
+                  <span className="example-arrow">→</span>
                 </button>
                 <button
                   className="example-btn"
                   onClick={() => setInputValue("What medications is Sarah Johnson currently taking?")}
                 >
-                  <span className="example-icon">💊</span>
-                  <span className="example-text">"What medications is Sarah Johnson currently taking?"</span>
+                  <span className="example-icon">●</span>
+                  <span className="example-text">Sarah Johnson's current medications</span>
+                  <span className="example-arrow">→</span>
                 </button>
                 <button
                   className="example-btn"
                   onClick={() => setInputValue("Summarize Michael Chen's visit history")}
                 >
-                  <span className="example-icon">📋</span>
-                  <span className="example-text">"Summarize Michael Chen's visit history"</span>
+                  <span className="example-icon">■</span>
+                  <span className="example-text">Michael Chen's visit history</span>
+                  <span className="example-arrow">→</span>
                 </button>
               </div>
             </div>
@@ -551,8 +549,9 @@ function ChatPanel({ selectedModel, onSseEvent, onQueryStart, onOpenPdf, connect
           type="submit"
           className="chat-send-btn"
           disabled={!inputValue.trim() || isLoading}
+          aria-label="Send message"
         >
-          Send
+          <span className="send-icon">↑</span>
         </button>
       </form>
     </div>

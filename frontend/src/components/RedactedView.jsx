@@ -66,9 +66,9 @@ function RedactedView({ sseEvents, isVisible, onClose }) {
       {/* Header */}
       <div className="redacted-header">
         <div className="redacted-title-section">
-          <span className="redacted-icon">◈</span>
-          <span className="redacted-title">Redacted View</span>
-          <span className="redacted-subtitle">What the cloud sees</span>
+          <span className="redacted-icon">◇</span>
+          <span className="redacted-title">PHI Pipeline</span>
+          <span className="redacted-subtitle">Cloud view</span>
         </div>
         <button className="redacted-close-btn" onClick={onClose}>
           ×
@@ -79,9 +79,9 @@ function RedactedView({ sseEvents, isVisible, onClose }) {
       <div className="redacted-events">
         {relevantEvents.length === 0 ? (
           <div className="redacted-empty">
-            <div className="redacted-empty-icon">◈</div>
+            <div className="redacted-empty-icon">◇</div>
             <div className="redacted-empty-text">
-              Submit a query to see the de-identified conversation
+              Submit a query to see the de-identified data flow
             </div>
           </div>
         ) : (
