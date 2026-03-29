@@ -33,6 +33,13 @@ function IngestionAnimation({ onComplete, graphStats }) {
   useEffect(() => {
     const timers = []
 
+    // Reset state in case the effect re-runs (e.g. graphStats changed)
+    setProcessedDocs([])
+    setParticles([])
+    setNodeCount(0)
+    setEdgeCount(0)
+    setPhase('intro')
+
     // Phase 1: Intro (show title)
     timers.push(setTimeout(() => setPhase('processing'), 1500))
 

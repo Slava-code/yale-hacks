@@ -105,16 +105,25 @@ class GeminiAdapter(CloudAdapter):
                 for block in content:
                     if isinstance(block, dict):
                         if block.get("type") == "text":
-                            parts.append(block.get("text", ""))
+                            parts.append(genai.protos.Part(text=block.get("text", "")))
                         elif block.get("type") == "tool_use":
-                            # Represent as text summary for Gemini history
-                            parts.append(f"[Called tool: {block.get('name', 'unknown')} with query: {block.get('input', {}).get('query', '')}]")
+                            parts.append(genai.protos.Part(
+                                function_call=genai.protos.FunctionCall(
+                                    name=block.get("name", ""),
+                                    args=block.get("input", {}),
+                                )
+                            ))
                         elif block.get("type") == "tool_result":
-                            parts.append(block.get("content", ""))
+                            parts.append(genai.protos.Part(
+                                function_response=genai.protos.FunctionResponse(
+                                    name="query_gatekeeper",
+                                    response={"result": block.get("content", "")},
+                                )
+                            ))
                     else:
-                        parts.append(str(block))
+                        parts.append(genai.protos.Part(text=str(block)))
                 if parts:
-                    history.append({"role": role, "parts": parts})
+                    history.append(genai.protos.Content(role=role, parts=parts))
         return history
 
     def _response_to_dict(self, response) -> dict:

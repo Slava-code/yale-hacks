@@ -527,6 +527,8 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf }) {
       lab_result: 'Lab Result',
       procedure: 'Procedure',
       provider: 'Provider',
+      family_history: 'Family History',
+      disease_reference: 'Disease Reference',
     }
     return types[type] || type
   }
