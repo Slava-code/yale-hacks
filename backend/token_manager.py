@@ -38,8 +38,8 @@ class TokenMapping:
         tm.destroy()
     """
 
-    def __init__(self):
-        self._counters: dict[str, int] = {}
+    def __init__(self, initial_counters: dict[str, int] | None = None):
+        self._counters: dict[str, int] = dict(initial_counters) if initial_counters else {}
         self._value_to_token: dict[str, str] = {}  # real_value → "[TYPE_N]"
         self._token_to_value: dict[str, str] = {}  # "[TYPE_N]" → real_value
         self._token_to_type: dict[str, str] = {}   # "[TYPE_N]" → TYPE
@@ -143,6 +143,14 @@ class TokenMapping:
     def items(self) -> list[tuple[str, str]]:
         """Return all (token, real_value) pairs. Used by gatekeeper for patient resolution."""
         return list(self._token_to_value.items())
+
+    def get_counters(self) -> dict[str, int]:
+        """Return a copy of current type counters (e.g. {"PATIENT": 2, "DATE": 1}).
+
+        Used to seed the next TokenMapping in the same session so tokens
+        increment across requests (Person1, Person2, ...).
+        """
+        return dict(self._counters)
 
     def destroy(self):
         """Clear all mappings. Called after rehydration."""

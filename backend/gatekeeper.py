@@ -81,12 +81,20 @@ class Gatekeeper:
     # Public API
     # ------------------------------------------------------------------
 
-    async def deidentify_query(self, raw_query: str, kg: Graph) -> dict:
+    async def deidentify_query(
+        self, raw_query: str, kg: Graph, initial_counters: dict[str, int] | None = None
+    ) -> dict:
         """De-identify a raw clinician query.
 
         1. LLM identifies PHI spans
         2. Deterministic code generates tokens and performs replacement
         3. Resolves patient from graph to get their ID
+
+        Args:
+            raw_query: The raw clinician query text.
+            kg: The knowledge graph.
+            initial_counters: Optional counter state from a previous TokenMapping
+                in the same session, so tokens increment across requests.
 
         Returns:
             {
@@ -97,7 +105,7 @@ class Gatekeeper:
             }
         """
         phi_spans = await self._identify_phi(raw_query)
-        tm = TokenMapping()
+        tm = TokenMapping(initial_counters=initial_counters)
 
         # Register all PHI spans
         for span in phi_spans:

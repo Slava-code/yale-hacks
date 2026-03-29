@@ -140,7 +140,7 @@ function GraphPanel({ traversalData, sseEvents, onOpenPdf, isVisible = true }) {
 
     // 2. Identify "suns" (high-connectivity nodes) - threshold: top 15% or deg >= 10
     const sortedByDegree = [...graphData.nodes].sort((a, b) => nodeDegree[b.id] - nodeDegree[a.id])
-    const sunThreshold = Math.max(3, nodeDegree[sortedByDegree[Math.floor(sortedByDegree.length * 0.15)]?.id] || 3)
+    const sunThreshold = Math.max(10, nodeDegree[sortedByDegree[Math.floor(sortedByDegree.length * 0.15)]?.id] || 5)
     let suns = sortedByDegree.filter(n => nodeDegree[n.id] >= sunThreshold)
     // Guarantee at least one sun — pick the highest-degree node
     if (suns.length === 0 && sortedByDegree.length > 0) {
