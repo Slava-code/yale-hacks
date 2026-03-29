@@ -191,58 +191,73 @@ async def _run_pipeline(
         return
 
     while turn < max_turns:
-        # Parse the response
-        tool_call = None
+        # Parse the response — collect ALL tool calls (GPT-4 sends parallel calls)
+        tool_calls = []
         text_content = ""
 
         for block in response.get("content", []):
             parsed = adapter.parse_tool_call(block)
-            if parsed:
-                tool_call = parsed
-                break
+            if parsed and parsed["tool_name"] == "query_gatekeeper":
+                tool_calls.append(parsed)
             elif block.get("type") == "text":
                 text_content += block.get("text", "")
 
-        if tool_call and tool_call["tool_name"] == "query_gatekeeper":
-            turn += 1
-            query = tool_call["arguments"].get("query", "")
+        if tool_calls:
+            # Append assistant message ONCE before processing all tool calls
+            messages.append(
+                response.get("raw_message")
+                or {"role": "assistant", "content": response.get("content", [])}
+            )
 
-            yield "gatekeeper_query", {
-                "type": "gatekeeper_query",
-                "content": query,
-                "turn": turn,
-            }
+            # Process each tool call and collect results
+            tool_results = []
+            for tool_call in tool_calls:
+                turn += 1
+                query = tool_call["arguments"].get("query", "")
 
-            # Query the knowledge graph (pass patient_id we already resolved)
-            kg_result = await gatekeeper.query_knowledge_graph(query, tm, graph, cm, patient_id=patient_id)
+                yield "gatekeeper_query", {
+                    "type": "gatekeeper_query",
+                    "content": query,
+                    "turn": turn,
+                }
 
-            # Emit graph traversal
-            traversal = get_traversal_path(graph, kg_result["accessed_nodes"])
-            yield "graph_traversal", {
-                "type": "graph_traversal",
-                "nodes": [n.id for n in traversal.nodes],
-                "edges": traversal.edges,
-                "turn": turn,
-            }
+                # Query the knowledge graph
+                kg_result = await gatekeeper.query_knowledge_graph(query, tm, graph, cm, patient_id=patient_id)
 
-            yield "gatekeeper_response", {
-                "type": "gatekeeper_response",
-                "content": kg_result["content"],
-                "turn": turn,
-                "refs_added": kg_result["refs_added"],
-            }
+                # Emit graph traversal
+                traversal = get_traversal_path(graph, kg_result["accessed_nodes"])
+                yield "graph_traversal", {
+                    "type": "graph_traversal",
+                    "nodes": [n.id for n in traversal.nodes],
+                    "edges": traversal.edges,
+                    "turn": turn,
+                }
 
-            # Feed result back to cloud model and get next response
-            messages.append({
-                "role": "assistant",
-                "content": response.get("content", []),
-            })
+                yield "gatekeeper_response", {
+                    "type": "gatekeeper_response",
+                    "content": kg_result["content"],
+                    "turn": turn,
+                    "refs_added": kg_result["refs_added"],
+                }
 
+                tool_results.append((tool_call["tool_id"], kg_result["content"]))
+
+            # Send all tool results back to the cloud model
             try:
+                # For the first result, use send_tool_result (which appends to messages)
                 response = await adapter.send_tool_result(
-                    messages, tool_call["tool_id"], kg_result["content"]
+                    messages, tool_results[0][0], tool_results[0][1]
                 )
-                # Loop will process this new response on next iteration
+                # For additional parallel results (GPT-4), append them to messages too
+                for tool_id, result_content in tool_results[1:]:
+                    messages.append({
+                        "role": "tool",
+                        "tool_call_id": tool_id,
+                        "content": result_content,
+                    })
+                if len(tool_results) > 1:
+                    # Re-send with all tool results included
+                    response = await adapter.send_query(messages)
                 continue
             except Exception as e:
                 yield "error", {
