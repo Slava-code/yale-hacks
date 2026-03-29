@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useCallback, memo } from 'react'
 import './ChatPanel.css'
 
 // Hook for scroll-triggered fade-in animations
@@ -580,4 +580,4 @@ function ChatPanel({ selectedModel, onSseEvent, onQueryStart, onOpenPdf, connect
   )
 }
 
-export default ChatPanel
+export default memo(ChatPanel)

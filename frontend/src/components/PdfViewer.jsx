@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, useRef } from 'react'
+import { useState, useCallback, useEffect, useRef, memo } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
 import 'react-pdf/dist/Page/AnnotationLayer.css'
 import 'react-pdf/dist/Page/TextLayer.css'
@@ -107,8 +107,8 @@ function PdfViewer({ pdfPath, initialPage, citation, onClose }) {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [goToPrevPage, goToNextPage, handleClose, numPages])
 
-  // Build the PDF URL
-  const pdfUrl = `/api/pdf/${pdfPath}`
+  // Build the PDF URL (encode path components for special characters)
+  const pdfUrl = `/api/pdf/${encodeURIComponent(pdfPath)}`
 
   // Extract document type and icon from filename for placeholder
   const getDocInfo = (filename) => {
@@ -293,4 +293,4 @@ function PdfViewer({ pdfPath, initialPage, citation, onClose }) {
   )
 }
 
-export default PdfViewer
+export default memo(PdfViewer)
