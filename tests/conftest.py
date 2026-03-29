@@ -10,7 +10,7 @@ STUB_GRAPH_PATH = ROOT / "data" / "stub" / "graph.json"
 PATIENTS_DIR = ROOT / "data" / "patients"
 DISEASE_REFS_PATH = ROOT / "data" / "disease_references.json"
 
-DEMO_PROFILE_IDS = ["patient_001", "patient_006"]
+DEMO_PROFILE_IDS = ["patient_001", "patient_006", "patient_041"]
 
 
 @pytest.fixture
