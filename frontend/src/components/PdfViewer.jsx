@@ -4,8 +4,9 @@ import 'react-pdf/dist/Page/AnnotationLayer.css'
 import 'react-pdf/dist/Page/TextLayer.css'
 import './PdfViewer.css'
 
-// Set up PDF.js worker
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`
+// Set up PDF.js worker — use local copy to avoid CDN dependency
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url'
+pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker
 
 function PdfViewer({ pdfPath, initialPage, citation, onClose }) {
   const [numPages, setNumPages] = useState(null)
@@ -13,6 +14,7 @@ function PdfViewer({ pdfPath, initialPage, citation, onClose }) {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [isStubMode, setIsStubMode] = useState(false)
+  const [retryCount, setRetryCount] = useState(0)
   const [isExiting, setIsExiting] = useState(false)
   const [pageTransition, setPageTransition] = useState(false)
   const containerRef = useRef(null)
@@ -35,9 +37,16 @@ function PdfViewer({ pdfPath, initialPage, citation, onClose }) {
 
   const onDocumentLoadError = useCallback((err) => {
     console.error('PDF load error:', err)
-    // Check if this is a stub server response
-    setIsStubMode(true)
-    setError(null)
+    const msg = err?.message || String(err)
+    // Only show stub mode if the server returned a non-PDF response (stub server)
+    if (msg.includes('Invalid PDF') || msg.includes('unexpected response')) {
+      setIsStubMode(true)
+      setError(null)
+    } else {
+      // Real error (network, worker, etc.) — show error, not stub placeholder
+      setIsStubMode(false)
+      setError('Failed to load PDF. Click to retry.')
+    }
     setLoading(false)
   }, [])
 
@@ -184,7 +193,7 @@ function PdfViewer({ pdfPath, initialPage, citation, onClose }) {
         )}
 
         {error && !isStubMode && (
-          <div className="pdf-error">
+          <div className="pdf-error" onClick={() => { setError(null); setLoading(true); setRetryCount(c => c + 1) }} style={{ cursor: 'pointer' }}>
             <span className="pdf-error-icon">⚠</span>
             <span>{error}</span>
           </div>
@@ -220,6 +229,7 @@ function PdfViewer({ pdfPath, initialPage, citation, onClose }) {
           </div>
         ) : (
           <Document
+            key={retryCount}
             file={pdfUrl}
             onLoadSuccess={onDocumentLoadSuccess}
             onLoadError={onDocumentLoadError}
