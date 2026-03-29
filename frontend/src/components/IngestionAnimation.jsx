@@ -15,6 +15,8 @@ const SAMPLE_PDFS = [
   'lab_report_chen_2025_oct.pdf',
   'discharge_summary_garcia_2025_nov.pdf',
   'progress_note_wilson_2025_dec.pdf',
+  'lab_report_davis_2025_nov.pdf',
+  'imaging_report_chen_2025_dec.pdf',
 ]
 
 function IngestionAnimation({ onComplete, graphStats }) {
