@@ -75,7 +75,7 @@ class CitationManager:
             refs = re.findall(r"REF_(\d+)", inner)
             return ", ".join(f"[{n}]" for n in refs)
 
-        text = re.sub(r"\[REF_\d+(?:,\s*REF_\d+)+\]", group_replacer, text)
+        text = re.sub(r"\[(REF_\d+(?:,\s*REF_\d+)+)\]", group_replacer, text)
 
         # Then handle individual refs: [REF_1] → [1]
         text = re.sub(r"\[REF_(\d+)\]", lambda m: f"[{m.group(1)}]", text)
