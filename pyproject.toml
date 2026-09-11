@@ -1,14 +1,27 @@
 [project]
 name = "medgate"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
+# Keep in sync with backend/requirements.txt (same pins).
 dependencies = [
-    "reportlab",
-    "python-dotenv",
-    "requests",
+    "fastapi==0.115.0",
+    "uvicorn==0.30.0",
+    "anthropic==0.40.0",
+    "openai>=1.50.0",
+    "google-generativeai>=0.8.0",
+    "python-dotenv==1.0.1",
+    "python-dateutil>=2.9.0",
+    "httpx>=0.28.0",
+    "pytest>=8.0.0",
 ]
 
+# Keep in sync with requirements-dev.txt.
 [project.optional-dependencies]
-dev = ["pytest"]
+dev = [
+    "reportlab",
+    "pytest>=8.0.0",
+    "httpx>=0.28.0",
+    "requests",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

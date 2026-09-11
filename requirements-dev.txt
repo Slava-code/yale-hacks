@@ -1,0 +1,6 @@
+# Dev/test extras. Keep in sync with [project.optional-dependencies].dev.
+-r backend/requirements.txt
+reportlab
+pytest>=8.0.0
+httpx>=0.28.0
+requests

@@ -15,6 +15,9 @@ import pytest
 from pathlib import Path
 from unittest.mock import patch, MagicMock, AsyncMock
 
+# Repo root, so every test runs from any clone regardless of CWD.
+ROOT = Path(__file__).resolve().parents[1]
+
 # ---------------------------------------------------------------------------
 # C1: OpenAI adapter parse_tool_call must handle normalized tool_use blocks
 # ---------------------------------------------------------------------------
@@ -147,7 +150,7 @@ class TestC4_FamilyHistory:
         from backend.graph import load_graph
 
         gk = Gatekeeper(ollama_url="http://mock:11434", model="test")
-        kg = load_graph("data/graph.json")
+        kg = load_graph(str(ROOT / "data" / "graph.json"))
 
         # Find a patient that has family history
         from backend.graph import get_family_history
@@ -175,7 +178,7 @@ class TestC4_FamilyHistory:
         from backend.citation import CitationManager
 
         gk = Gatekeeper(ollama_url="http://mock:11434", model="test")
-        kg = load_graph("data/graph.json")
+        kg = load_graph(str(ROOT / "data" / "graph.json"))
 
         # Find a patient with family history
         for node_id, node in kg.nodes.items():
@@ -253,22 +256,24 @@ class TestC5_GeminiMessageConversion:
 # ---------------------------------------------------------------------------
 
 class TestC6_OllamaErrorHandling:
-    """Ollama connection/timeout errors must not crash the pipeline."""
+    """Ollama connection/timeout errors must be handled, not crash the pipeline.
+
+    PHI detection is the exception: it fails closed (PHIDetectionError), because
+    an empty span list would mean "no PHI found" and send the raw query out.
+    """
 
     def test_identify_phi_handles_connection_error(self):
-        """If Ollama is unreachable, _identify_phi should return empty (fallback),
-        not raise an unhandled exception."""
-        from backend.gatekeeper import Gatekeeper
+        """If Ollama is unreachable, _identify_phi must raise PHIDetectionError
+        rather than fall back to an empty span list."""
+        from backend.gatekeeper import Gatekeeper, PHIDetectionError
         import httpx
 
         gk = Gatekeeper(ollama_url="http://unreachable:99999", model="test")
 
         # Mock _chat to raise a connection error
         with patch.object(gk, '_chat', side_effect=httpx.ConnectError("Connection refused")):
-            result = gk._identify_phi("Tell me about John Smith")
-            if asyncio.iscoroutine(result):
-                result = asyncio.run(result)
-            assert isinstance(result, list)
+            with pytest.raises(PHIDetectionError):
+                asyncio.run(gk._identify_phi("Tell me about John Smith"))
 
     def test_parse_knowledge_query_handles_timeout(self):
         """If Ollama times out, _parse_knowledge_query should return fallback."""
@@ -319,21 +324,25 @@ class TestM1_NodeConfig:
 class TestM2_PathResolution:
     """Server paths should be absolute or resolve relative to project root."""
 
-    def test_graph_path_is_absolute_or_anchored(self):
+    def test_graph_path_is_absolute_and_anchored(self):
         """The default GRAPH_PATH should work regardless of CWD."""
         from backend import server
-        # Re-read the module-level default (not the env-var override)
-        import importlib
-        # Check the source code for Path(__file__) pattern
-        source = Path(server.__file__).read_text()
-        # Either the path is built from __file__ or it's absolute
-        uses_file_anchor = "__file__" in source and ("GRAPH_PATH" in source or "PROJECT_ROOT" in source)
-        # Or the current default resolves correctly
-        graph_path = Path(server.GRAPH_PATH)
-        path_works = graph_path.is_absolute() or (Path("/Users/slavaiud/Desktop/Dev/hackathons/yale-hacks") / graph_path).exists()
 
-        assert uses_file_anchor or path_works, \
-            "GRAPH_PATH should be anchored to project root via __file__, not rely on CWD"
+        graph_path = Path(server.GRAPH_PATH)
+        assert graph_path.is_absolute(), \
+            f"GRAPH_PATH should be absolute (anchored via __file__), got {server.GRAPH_PATH!r}"
+        assert graph_path.name == "graph.json", \
+            f"GRAPH_PATH should point at graph.json, got {graph_path.name!r}"
+        assert graph_path.parent.name == "data", \
+            f"GRAPH_PATH should live under data/, got parent {graph_path.parent.name!r}"
+
+    def test_pdf_dir_is_absolute(self):
+        """PDF_DIR should not depend on CWD either (data/pdfs is gitignored,
+        so only the shape of the path is checked, not its existence)."""
+        from backend import server
+
+        assert Path(server.PDF_DIR).is_absolute(), \
+            f"PDF_DIR should be absolute (anchored via __file__), got {server.PDF_DIR!r}"
 
 
 # ---------------------------------------------------------------------------
@@ -370,7 +379,7 @@ class TestM7_TopLevelImport:
 
     def test_get_traversal_path_in_top_level_imports(self):
         """server.py should import get_traversal_path at the top, not inside the loop."""
-        source = Path("/Users/slavaiud/Desktop/Dev/hackathons/yale-hacks/backend/server.py").read_text()
+        source = (ROOT / "backend" / "server.py").read_text()
         # Check top ~40 lines for the import
         top_lines = source.split("\n")[:40]
         top_section = "\n".join(top_lines)
@@ -387,13 +396,13 @@ class TestL5_PublicAPI:
 
     def test_no_private_token_mapping_access(self):
         """Gatekeeper should not access _token_to_value directly."""
-        source = Path("/Users/slavaiud/Desktop/Dev/hackathons/yale-hacks/backend/gatekeeper.py").read_text()
+        source = (ROOT / "backend" / "gatekeeper.py").read_text()
         assert "_token_to_value" not in source, \
             "Gatekeeper should use a public method to iterate token mappings, not _token_to_value"
 
     def test_no_private_graph_access(self):
         """Gatekeeper should not access _edges_from directly."""
-        source = Path("/Users/slavaiud/Desktop/Dev/hackathons/yale-hacks/backend/gatekeeper.py").read_text()
+        source = (ROOT / "backend" / "gatekeeper.py").read_text()
         assert "_edges_from" not in source, \
             "Gatekeeper should use graph.py public API, not _edges_from"
 
