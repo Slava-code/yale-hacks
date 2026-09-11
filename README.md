@@ -4,7 +4,7 @@
 
 PHI never leaves the hospital. A local gatekeeper LLM strips identifiers, the sanitized query goes to the cloud, and responses are re-hydrated with real data before reaching the clinician.
 
-Built at [YHacks 2026](https://www.yhack.org/) on the [ASUS Ascent GX10](https://www.asus.com/motherboards-components/graphics-cards/proart/asus-ascent-gx10/) (NVIDIA GB10 Blackwell).
+Built at [YHacks 2026](https://www.yhack.org/) on the [ASUS Ascent GX10](https://www.asus.com/motherboards-components/graphics-cards/proart/asus-ascent-gx10/) (NVIDIA GB10 Blackwell). Devpost submission: [devpost.com/software/madgate](https://devpost.com/software/madgate).
 
 ---
 
@@ -198,7 +198,7 @@ Token mappings are ephemeral — created per interaction and destroyed immediate
 
 ## Team
 
-Built at YHacks 2026 by Kevin Rusagara, Slava, and Sid.
+Built at YHacks 2026 by Kevin Rusagara, Slava Iudenko, and Siddharth (Sid) Singh. Submission page: https://devpost.com/software/madgate
 
 ## License
 
