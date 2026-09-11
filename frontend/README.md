@@ -1,16 +1,33 @@
-# React + Vite
+# MedGate frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The MedGate clinician UI: a React 19 + Vite single-page app with a chat panel on the left and a 3D knowledge graph (`3d-force-graph` / Three.js) or an in-browser PDF viewer (`react-pdf`) on the right. It talks to the FastAPI backend over `/api/*` and consumes the query SSE stream — see [`../docs/frontend.md`](../docs/frontend.md) and [`../docs/interfaces.md`](../docs/interfaces.md).
 
-Currently, two official plugins are available:
+## Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev     # Vite dev server on http://localhost:5173
+```
 
-## React Compiler
+The dev server proxies `/api/*` to `http://localhost:8000`, so run the backend (`uvicorn backend.server:app --port 8000`) alongside it. To develop against the GX10 instead, change the proxy `target` in `vite.config.js`. For UI work without a real backend, `backend/stub_server.py` serves the same endpoints with hardcoded SSE events.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Build
 
-## Expanding the ESLint configuration
+```bash
+npm run build   # -> dist/
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+FastAPI serves `dist/` as the production frontend. The hashed JS/CSS bundles are gitignored, so `dist/` must be built once on any fresh clone before the backend can serve the UI.
+
+## Components
+
+`src/App.jsx` owns the layout and shared state. Components live in `src/components/`, each with a matching `.css`:
+
+| Component | Role |
+|-----------|------|
+| `ChatPanel.jsx` | Chat UI, SSE event handling, markdown rendering, citation chips |
+| `GraphPanel.jsx` | 3D force-directed knowledge graph, traversal highlighting, node info cards |
+| `PdfViewer.jsx` | PDF overlay, opens a cited document at the cited page |
+| `RedactedView.jsx` | "What the cloud sees" — de-identified queries and gatekeeper exchanges |
+| `IngestionAnimation.jsx` | Startup animation of the document corpus being ingested |
+| `HeartsOverlay.jsx` | YHack theme easter egg, triggered when a response diagnoses love (the backend side is gated by `DEMO_EASTER_EGGS`) |

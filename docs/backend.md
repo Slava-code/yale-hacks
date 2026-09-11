@@ -328,8 +328,9 @@ GET /api/pdf/:filename?page=N
   Used by the frontend PDF viewer
 
 GET /api/models
-  Response: ["claude", "gpt4", "gemini"]
-  Returns available model options for the dropdown
+  Response: { models: [{ id: "claude", name: "Claude", available: true }, ...] }
+  Returns the model options for the dropdown; `available` reflects whether
+  that provider's API key is configured
 
 POST /api/switch-model
   Body: { model: "claude" | "gpt4" | "gemini" }

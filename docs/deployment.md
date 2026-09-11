@@ -13,7 +13,7 @@ Step-by-step instructions to deploy MedGate to the GX10 and run the demo. Assume
 - All branches merged into `main` and pushed to remote
 - GX10 reachable via Tailscale (confirm with `ping <gx10-tailscale-ip>`)
 - `.env` file with GX10 SSH credentials (`GX10_HOST`, `GX10_USER`, `GX10_PASSWORD`)
-- Cloud API keys ready: `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `GOOGLE_API_KEY`
+- Cloud API keys ready: `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `GEMINI_API_KEY`
 - Node.js installed on your MacBook (for building the frontend)
 
 ---
@@ -30,13 +30,17 @@ This produces `frontend/dist/` — static HTML/JS/CSS. This is the only step tha
 
 ---
 
-## Step 2: Push everything to remote
+## Step 2: Get the build onto the remote
+
+The hashed JS/CSS bundles in `frontend/dist/` are gitignored, so a plain `git add` skips them. Force-add the build so the GX10 can pull it:
 
 ```bash
-git add frontend/dist
+git add -f frontend/dist
 git commit -m "Add frontend production build"
 git push
 ```
+
+If you'd rather not commit the bundle, `scp` it to the device instead (see Step 3) — either way `frontend/dist/` must exist on the GX10 before the server starts.
 
 ---
 
@@ -55,6 +59,17 @@ If the GX10 repo has diverged or isn't set up yet, do a fresh clone instead:
 sshpass -p "$GX10_PASSWORD" ssh "$GX10_USER@$GX10_HOST" \
   "cd /home/asus && git clone <repo-url> yale-hacks"
 ```
+
+`data/pdfs/` is gitignored too, so a `git pull` or fresh clone brings no PDFs and citation clicks will 404. Copy the frontend build and the PDFs over directly:
+
+```bash
+sshpass -p "$GX10_PASSWORD" scp -r frontend/dist \
+  "$GX10_USER@$GX10_HOST:/home/asus/yale-hacks/frontend/"
+sshpass -p "$GX10_PASSWORD" scp -r data/pdfs \
+  "$GX10_USER@$GX10_HOST:/home/asus/yale-hacks/data/"
+```
+
+If you have no local PDFs either, regenerate them first — see the README section on regenerating the clinical PDFs (`scripts/generate_documents.py`).
 
 ---
 
@@ -92,15 +107,15 @@ Create `/home/asus/yale-hacks/.env` on the device:
 sshpass -p "$GX10_PASSWORD" ssh "$GX10_USER@$GX10_HOST" "cat > /home/asus/yale-hacks/.env << 'EOF'
 ANTHROPIC_API_KEY=sk-ant-...
 OPENAI_API_KEY=sk-...
-GOOGLE_API_KEY=AI...
-GRAPH_PATH=/home/asus/yale-hacks/data/graph.json
+GEMINI_API_KEY=AI...
 GATEKEEPER_MODEL=mistral-small:24b
 OLLAMA_URL=http://localhost:11434
-PDF_DIR=/home/asus/yale-hacks/data/pdfs
 EOF"
 ```
 
 **Important:** Replace the placeholder API keys with real values. Never commit this file.
+
+`GRAPH_PATH` and `PDF_DIR` are optional — they default to `data/graph.json` and `data/pdfs` under the repo root, resolved from the backend package location, so the server finds them no matter which directory it is started from. Set them only to point at data outside the repo.
 
 ---
 
@@ -197,7 +212,8 @@ You should see:
 | Gatekeeper responds but cloud model fails | API key missing or wrong | Check `.env` on GX10 |
 | Graph shows 0 nodes | `GRAPH_PATH` wrong or file missing | Verify `data/graph.json` exists on GX10 |
 | Very slow (>60s per turn) | Multiple models loaded in Ollama eating memory | Run `ollama ps` and unload extras |
-| PDF citations return 404 | `PDF_DIR` wrong or PDFs not copied | Verify `data/pdfs/` has files on GX10 |
+| PDF citations return 404 | PDFs not copied (`data/pdfs/` is gitignored) or `PDF_DIR` points elsewhere | Verify `data/pdfs/` has files on GX10; copy or regenerate them (Step 3) |
+| Frontend returns 404 / blank page | `frontend/dist/` missing (gitignored bundles) | Build locally and copy the directory over (Steps 1-3) |
 
 ---
 
@@ -207,8 +223,8 @@ You should see:
 # On your MacBook — rebuild frontend if changed
 cd frontend && npm run build
 
-# Commit and push
-git add -A && git commit -m "..." && git push
+# Commit and push (-f on dist — its bundles are gitignored)
+git add -A && git add -f frontend/dist && git commit -m "..." && git push
 
 # Pull on GX10
 source .env
@@ -228,12 +244,12 @@ sshpass -p "$GX10_PASSWORD" ssh "$GX10_USER@$GX10_HOST" \
 ## Pre-demo checklist
 
 - [ ] All branches merged into `main`
-- [ ] Frontend built and `frontend/dist/` committed
+- [ ] Frontend built and `frontend/dist/` present on GX10 (force-committed or scp'd)
 - [ ] `git pull` completed on GX10
 - [ ] `.env` on GX10 has all 3 API keys
 - [ ] Ollama running, gatekeeper model loaded (`ollama ps`)
-- [ ] `data/graph.json` exists on GX10 (1,075 nodes)
-- [ ] `data/pdfs/` has PDFs on GX10 (at least Smith + Reed)
+- [ ] `data/graph.json` exists on GX10 (1,126 nodes, 1,721 edges)
+- [ ] `data/pdfs/` has PDFs on GX10 — gitignored, so copy or regenerate them (at least Smith + Reed)
 - [ ] Server starts without errors
 - [ ] `http://<gx10-tailscale-ip>:8000` loads the frontend
 - [ ] `/api/graph` returns full graph

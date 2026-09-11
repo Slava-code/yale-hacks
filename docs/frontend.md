@@ -65,7 +65,7 @@ For the demo, a second monitor is most impactful — the audience sees the clini
       → Frontend shows in redacted view
    f. (repeat c-e for additional gatekeeper queries)
    g. { type: "final_response", content: "Based on John Smith's history..." ,
-        citations: [{ref_id: "REF_1", display: "...", pdf_path: "...", page: N}] }
+        citations: [{ref_id: "REF_1", display: "...", pdf: "...", page: N}] }
       → Frontend renders the re-hydrated response with clickable citations
 4. Frontend exits "thinking" state
 ```
@@ -82,10 +82,12 @@ The backend handles all token mapping. The frontend receives the final re-hydrat
 {
   "ref_id": "REF_1",
   "display": "Lab Report — Oct 2025, p.2",
-  "pdf_path": "/data/pdfs/lab_report_smith_2025_oct.pdf",
+  "pdf": "lab_report_smith_2025_oct.pdf",
   "page": 2
 }
 ```
+
+`pdf` is a bare filename, fetched via `GET /api/pdf/{filename}?page=N` (see [interfaces.md §2](./interfaces.md)).
 
 The frontend renders these as inline superscript links (e.g., `[1]`, `[2]`) or as styled citation markers. Clicking one opens the PDF viewer to the specific page.
 

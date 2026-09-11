@@ -190,7 +190,7 @@ Test this patient's documents against Claude, GPT-4, and Gemini 20+ times to con
 ```
 data/
 ├── graph.json                  # Pre-built knowledge graph
-├── pdfs/                       # Source PDF documents (~300 files)
+├── pdfs/                       # Source PDF documents (445 files, gitignored)
 └── patients/                   # Patient profile definitions (used for generation)
 
 scripts/

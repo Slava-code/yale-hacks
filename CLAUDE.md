@@ -78,13 +78,13 @@ After changing any document, check the related documents listed below for incons
 
 ## Frontend Build & Deploy
 
-The backend on the GX10 serves the frontend from `frontend/dist/`. The dist is committed to the repo. **Do not build on the GX10** — always build locally and commit:
+The backend on the GX10 serves the frontend from `frontend/dist/`. **The hashed JS/CSS bundles are gitignored** (`frontend/.gitignore` ignores `dist`; only `index.html`, the SVGs and `pdf.worker` are tracked), so a fresh clone cannot serve the UI until someone builds it:
 
 ```bash
 cd frontend && npm run build
 ```
 
-After building, commit the updated `frontend/dist/`, push, and pull on the GX10.
+The GX10 has no Node.js, so the working approach is to build locally and get `frontend/dist/` onto the device — either force-add the build (`git add -f frontend/dist`) and pull on the GX10, or `scp` the directory over. Alternatively install Node on the device and build there. Whichever you pick, `frontend/dist/` must exist on the GX10 before the server starts.
 
 ---
 

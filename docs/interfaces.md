@@ -148,6 +148,8 @@ Events are emitted in order during a single query lifecycle:
 3. gatekeeper_query          ─┐
 4. graph_traversal            │ repeated 1-N times
 5. gatekeeper_response       ─┘
+   web_search_query          ─┐ instead of 3-5 when the cloud model
+   web_search_result         ─┘ calls the web_search tool that turn
 6. cloud_response_chunk      (streamed, many)
 7. final_response            (once, terminates the stream)
 ```
@@ -246,6 +248,48 @@ Emitted after the gatekeeper composes its redacted response. Displayed in the re
 | `content` | string | Redacted response with `[REF_N]` tokens |
 | `turn` | number | Matches the `gatekeeper_query` turn |
 | `refs_added` | string[] | Which REF tokens were introduced in this response |
+
+---
+
+#### `web_search_query`
+Emitted when the cloud model calls the `web_search` tool. Shown as a status line in the chat.
+
+```json
+{
+  "type": "web_search_query",
+  "content": "systemic lupus erythematosus ANA titer diagnostic criteria",
+  "turn": 2
+}
+```
+
+| Field | Type | Notes |
+|-------|------|-------|
+| `content` | string | The search query (contains tokens, never real PHI) |
+| `turn` | number | Which tool round this is (shares numbering with `gatekeeper_query`) |
+
+---
+
+#### `web_search_result`
+Emitted after the search returns. Shown as a status line in the chat.
+
+```json
+{
+  "type": "web_search_result",
+  "content": "1. Systemic lupus erythematosus — ...",
+  "query": "systemic lupus erythematosus ANA titer diagnostic criteria",
+  "num_results": 3,
+  "turn": 2
+}
+```
+
+| Field | Type | Notes |
+|-------|------|-------|
+| `content` | string | Formatted search results, as handed back to the cloud model |
+| `query` | string | The query these results answer |
+| `num_results` | number | How many results were returned |
+| `turn` | number | Matches the `web_search_query` turn |
+
+Web searches are capped per query; once the cap is hit the tool returns a "limit reached" message to the cloud model and emits no further events.
 
 ---
 
@@ -517,7 +561,7 @@ For completeness — used by backend internally, visible in the redacted view:
 
 | Person | Works on | Where | Notes |
 |--------|----------|-------|-------|
-| Person 1 (frontend) | `frontend/` | Local laptop | `npm run dev` on `:3000`, proxies `/api/*` to GX10 |
+| Person 1 (frontend) | `frontend/` | Local laptop | `npm run dev` on `:5173`, proxies `/api/*` to the backend |
 | Person 2 (backend) | `backend/` | GX10 via SSH | FastAPI on `:8000` bound to `0.0.0.0` |
 | Person 3 (data) | `scripts/`, `data/` | Local laptop | Calls Claude/GPT-4 APIs to generate docs, SCPs `data/` to GX10 when ready |
 
@@ -541,11 +585,11 @@ docs/             ← shared
 
 | Service | Port | Host | Notes |
 |---------|------|------|-------|
-| Frontend dev server | `:3000` | Each dev's laptop | Vite/CRA dev server |
+| Frontend dev server | `:5173` | Each dev's laptop | Vite dev server (`frontend/vite.config.js`) |
 | Backend (FastAPI) | `:8000` | GX10 | Serves API + static frontend in production |
 | Ollama | `:11434` | GX10 | Already running as systemd service |
 
-Frontend proxies `/api/*` → `http://GX10_HOST:8000/api/*` in dev mode. On demo day, the backend serves the built frontend static files directly — no separate frontend server.
+In dev mode the Vite server proxies `/api/*` → `http://localhost:8000` (`frontend/vite.config.js`); point the target at the GX10 instead to develop against the device. On demo day, the backend serves the built frontend static files directly — no separate frontend server.
 
 ### 6.4 PDF naming convention
 

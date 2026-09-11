@@ -34,7 +34,7 @@ Covers: GX10 hardware context, model selection & inference setup, gatekeeper sys
 
 The knowledge graph is stored as **in-memory JSON** — loaded once at startup, queried by the gatekeeper with zero disk I/O. The schema defines 9 node types (Patient, Visit, Condition, Medication, Lab Result, Procedure, Provider, Family History, Disease Reference) and 10 edge types. Every node field is tagged `phi` or `safe` at construction time so the gatekeeper doesn't need real-time NER.
 
-Mock data (~300 synthetic clinical PDFs across 30–40 patients) is generated via Claude/GPT-4, converted to PDF, then extracted into the graph with source provenance (file path + page number per node). At least one complex "demo showcase patient" is designed for the live demo scenario.
+Mock data (445 synthetic clinical PDFs across 41 patients, 1,126 nodes and 1,721 edges) is generated via the Gemini API, converted to PDF, then extracted into the graph with source provenance (file path + page number per node). At least one complex "demo showcase patient" is designed for the live demo scenario.
 
 Covers: Storage format & rationale, node/edge schema, source provenance, PHI tagging, data generation pipeline, patient distribution, demo showcase patient design.
 
@@ -77,7 +77,10 @@ Step-by-step instructions to deploy MedGate to the GX10 for the demo. Covers: bu
 | `GX10_HOST`, `GX10_USER`, `GX10_PASSWORD` | SSH/connection to the GX10 hardware | `.env` |
 | `ANTHROPIC_API_KEY` | Claude API access | `.env` |
 | `OPENAI_API_KEY` | GPT-4 API access | `.env` |
-| `GOOGLE_API_KEY` | Gemini API access | `.env` |
+| `GEMINI_API_KEY` | Gemini API access (also used by the data-generation scripts) | `.env` |
+| `OLLAMA_URL`, `GATEKEEPER_MODEL` | Local gatekeeper endpoint and model | `.env` |
+| `GRAPH_PATH`, `PDF_DIR` | Optional overrides; default to `data/graph.json` and `data/pdfs` in the repo root, so the server can be started from any directory | `.env` |
+| `DEMO_EASTER_EGGS` | YHack theme-prize demo mode; off by default | `.env` |
 
 See `.env.example` for the template. Never commit `.env` — it is gitignored.
 

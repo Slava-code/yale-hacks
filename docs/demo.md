@@ -100,7 +100,7 @@ medgate/
 │   └── requirements.txt
 ├── data/
 │   ├── graph.json                  # Pre-built knowledge graph
-│   ├── pdfs/                       # Source PDF documents (~300 files)
+│   ├── pdfs/                       # Source PDF documents (445 files, gitignored)
 │   ├── patients/                   # Patient profile definitions (used for generation)
 │   └── stub/
 │       └── graph.json              # Small stub graph (5 patients) for frontend dev
