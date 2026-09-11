@@ -20,13 +20,17 @@ from pathlib import Path
 from typing import AsyncGenerator
 
 from dotenv import load_dotenv
+
+# Before the adapter imports: they resolve DEMO_EASTER_EGGS at import time.
+load_dotenv()
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from backend.gatekeeper import Gatekeeper
+from backend.gatekeeper import Gatekeeper, PHIDetectionError
 from backend.token_manager import TokenMapping
 from backend.citation import CitationManager
 from backend.graph import load_graph, Graph, get_traversal_path
@@ -35,8 +39,6 @@ from backend.adapters.claude_adapter import ClaudeAdapter
 from backend.adapters.openai_adapter import OpenAIAdapter
 from backend.adapters.gemini_adapter import GeminiAdapter
 from backend.web_search import web_search
-
-load_dotenv()
 
 app = FastAPI(title="MedGate Backend")
 
@@ -49,8 +51,23 @@ app.add_middleware(
 
 # --- Config ---
 
-GRAPH_PATH = os.getenv("GRAPH_PATH", "data/stub/graph.json")
-PDF_DIR = os.getenv("PDF_DIR", "data/pdfs")
+REPO_ROOT = Path(__file__).resolve().parent.parent
+
+
+def _anchored_path(env_var: str, default: Path) -> Path:
+    """Resolve a configured path, anchoring relative values to the repo root.
+
+    Keeps the server independent of the CWD it was started from.
+    """
+    configured = os.getenv(env_var, "").strip()
+    if not configured:
+        return default
+    path = Path(configured).expanduser()
+    return path if path.is_absolute() else (REPO_ROOT / path)
+
+
+GRAPH_PATH = _anchored_path("GRAPH_PATH", REPO_ROOT / "data" / "graph.json")
+PDF_DIR = _anchored_path("PDF_DIR", REPO_ROOT / "data" / "pdfs")
 OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
 GATEKEEPER_MODEL = os.getenv("GATEKEEPER_MODEL", "qwen2.5:32b")
 
@@ -76,7 +93,7 @@ _gatekeeper: Gatekeeper | None = None
 def _get_graph() -> Graph:
     global _graph
     if _graph is None:
-        _graph = load_graph(GRAPH_PATH)
+        _graph = load_graph(str(GRAPH_PATH))
     return _graph
 
 
@@ -165,8 +182,16 @@ async def _run_pipeline(
     gatekeeper = _get_gatekeeper()
     adapter = _get_adapter(model)
 
-    # Step 1: De-identify
-    deidentify_result = await gatekeeper.deidentify_query(message, graph)
+    # Step 1: De-identify — fail closed, never fall through to the cloud
+    try:
+        deidentify_result = await gatekeeper.deidentify_query(message, graph)
+    except PHIDetectionError as e:
+        yield "error", {
+            "type": "error",
+            "content": f"PHI de-identification failed; query was not sent to the cloud: {e}",
+            "phase": "deidentify",
+        }
+        return
     tm = deidentify_result["token_mapping"]
     patient_id = deidentify_result["patient_id"]
     cm = CitationManager()
@@ -286,10 +311,13 @@ async def _run_pipeline(
             try:
                 if len(tool_results) == 1:
                     tid, content, tname = tool_results[0]
-                    response = await adapter.send_tool_result(
-                        messages, tid, content
+                    response = await adapter.send_tool_result_named(
+                        messages, tid, content, tname
                     )
                 else:
+                    # TODO: these OpenAI-shaped {"role": "tool"} messages are only valid for
+                    # OpenAI — Anthropic needs tool_result blocks and Gemini FunctionResponse
+                    # parts, so parallel tool calls likely fail there. Needs live keys to verify.
                     for tid, content, tname in tool_results:
                         messages.append({
                             "role": "tool",
@@ -360,9 +388,11 @@ async def get_graph():
 
 @app.get("/api/pdf/{filename}")
 async def get_pdf(filename: str):
-    """Serve a source PDF file."""
-    pdf_path = Path(PDF_DIR) / filename
-    if not pdf_path.exists():
+    """Serve a source PDF file from PDF_DIR."""
+    pdf_dir = PDF_DIR.resolve()
+    pdf_path = (pdf_dir / filename).resolve()
+    # Stay inside PDF_DIR — a filename like "../../.env" must not escape it
+    if not pdf_path.is_relative_to(pdf_dir) or not pdf_path.is_file():
         raise HTTPException(status_code=404, detail=f"PDF not found: {filename}")
     return FileResponse(pdf_path, media_type="application/pdf")
 

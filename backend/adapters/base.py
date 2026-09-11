@@ -5,10 +5,11 @@ Spec: docs/backend.md §4.
 """
 
 from __future__ import annotations
+import os
 from abc import ABC, abstractmethod
 
 
-CLOUD_SYSTEM_PROMPT = """You are a clinical AI assistant. You help healthcare professionals with
+_BASE_CLOUD_SYSTEM_PROMPT = """You are a clinical AI assistant. You help healthcare professionals with
 diagnostic reasoning, record review, and clinical decision support.
 
 You are connected to a clinical knowledge base through the "query_gatekeeper"
@@ -42,9 +43,11 @@ Only provide your clinical assessment after you have gathered enough context
 to reason carefully.
 
 Do not fabricate clinical data. If the gatekeeper reports that information is
-not available, acknowledge the gap in your response.
+not available, acknowledge the gap in your response."""
 
-DIAGNOSIS FORMATTING:
+# YHacks theme-prize demo flourish. Off by default — appended to the system
+# prompt only when DEMO_EASTER_EGGS is set.
+DEMO_DIAGNOSIS_FORMATTING = """DIAGNOSIS FORMATTING:
 When stating a diagnosis, always use the FULL condition name exactly as it
 appears in the clinical records — do not paraphrase or use only the scientific
 name. If the diagnosis is Acute Amorosis Syndrome, you MUST end your response
@@ -52,6 +55,23 @@ with the line: "[PATIENT_1] is sick with Love! ❤️" (using the appropriate
 patient token). If the diagnosis is Solanum-type encephalopathy or Zombie Virus,
 you MUST end your response with the line: "[PATIENT_1] has the Zombie Virus! 💀"
 (using the appropriate patient token)."""
+
+
+def demo_easter_eggs_enabled() -> bool:
+    """True when the demo easter eggs are explicitly switched on."""
+    return os.getenv("DEMO_EASTER_EGGS", "").strip().lower() in ("1", "true", "yes")
+
+
+def build_cloud_system_prompt() -> str:
+    """Build the cloud system prompt, gating the demo-only diagnosis wording."""
+    if demo_easter_eggs_enabled():
+        return f"{_BASE_CLOUD_SYSTEM_PROMPT}\n\n{DEMO_DIAGNOSIS_FORMATTING}"
+    return _BASE_CLOUD_SYSTEM_PROMPT
+
+
+# Adapters import this by value, so it is resolved once at import time —
+# server.py loads .env before importing the adapters for that reason.
+CLOUD_SYSTEM_PROMPT = build_cloud_system_prompt()
 
 
 GATEKEEPER_TOOL = {
@@ -126,3 +146,13 @@ class CloudAdapter(ABC):
     @abstractmethod
     async def send_tool_result(self, messages: list[dict], tool_id: str, result: str) -> dict:
         """Send a tool result back to continue the conversation."""
+
+    async def send_tool_result_named(
+        self, messages: list[dict], tool_id: str, result: str, tool_name: str
+    ) -> dict:
+        """Send a tool result, naming the tool that produced it.
+
+        Providers that match tool results by id alone ignore the name; ones that
+        need it (Gemini) override this so results are not misattributed.
+        """
+        return await self.send_tool_result(messages, tool_id, result)

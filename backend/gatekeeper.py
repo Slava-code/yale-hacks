@@ -72,6 +72,15 @@ FIELD_PHI_TYPES = {
 }
 
 
+class PHIDetectionError(Exception):
+    """PHI detection failed, so nothing may be sent to the cloud.
+
+    De-identification fails closed: if the local model is unreachable or returns
+    something we cannot trust, callers must abort instead of forwarding a query
+    that may still contain PHI.
+    """
+
+
 class Gatekeeper:
     def __init__(self, ollama_url: str = "http://localhost:11434", model: str = "qwen2.5:32b"):
         self.ollama_url = ollama_url.rstrip("/")
@@ -95,6 +104,10 @@ class Gatekeeper:
                 "token_summary": dict,
                 "patient_id": str | None,
             }
+
+        Raises:
+            PHIDetectionError: PHI detection failed — the caller must not send
+                the query to the cloud.
         """
         phi_spans = await self._identify_phi(raw_query)
         tm = TokenMapping()
@@ -247,16 +260,41 @@ class Gatekeeper:
     # ------------------------------------------------------------------
 
     async def _identify_phi(self, raw_query: str) -> list[dict]:
-        """Call local LLM to identify PHI spans in a query."""
+        """Call local LLM to identify PHI spans in a query.
+
+        Fails closed: every failure raises PHIDetectionError. Returning an empty
+        list here would mean "no PHI found", which would send the raw query to
+        the cloud un-redacted.
+        """
         try:
             response = await self._chat(GATEKEEPER_SYSTEM_PROMPT, raw_query)
-            return json.loads(self._extract_json(response))
-        except (json.JSONDecodeError, TypeError):
-            # Fallback: return empty — no PHI detected
-            return []
         except Exception as e:
             logger.error("_identify_phi failed: %s: %s", type(e).__name__, e)
-            return []
+            raise PHIDetectionError(
+                f"local PHI detection model unavailable ({type(e).__name__}: {e})"
+            ) from e
+
+        try:
+            spans = json.loads(self._extract_json(response))
+        except (json.JSONDecodeError, TypeError) as e:
+            logger.error("_identify_phi got unparseable response: %s: %s", type(e).__name__, e)
+            raise PHIDetectionError(
+                "local PHI detection model returned unparseable JSON"
+            ) from e
+
+        if not isinstance(spans, list) or not all(
+            isinstance(span, dict)
+            and isinstance(span.get("text"), str)
+            and isinstance(span.get("type"), str)
+            for span in spans
+        ):
+            logger.error("_identify_phi got unexpected shape: %r", spans)
+            raise PHIDetectionError(
+                "local PHI detection model returned an unexpected shape "
+                "(expected a list of {\"text\", \"type\"} objects)"
+            )
+
+        return spans
 
     async def _parse_knowledge_query(self, question: str) -> dict:
         """Call local LLM to parse what info a knowledge query is asking for."""

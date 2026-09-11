@@ -64,6 +64,12 @@ class GeminiAdapter(CloudAdapter):
         response = await chat.send_message_async(last_msg, tool_config=tool_config)
         return self._response_to_dict(response)
 
+    async def send_tool_result_named(
+        self, messages: list[dict], tool_id: str, result: str, tool_name: str
+    ) -> dict:
+        """Gemini matches function responses by name, so pass the real tool name."""
+        return await self.send_tool_result(messages, tool_id, result, tool_name=tool_name)
+
     async def send_tool_result(self, messages: list[dict], tool_id: str, result: str, tool_name: str = "query_gatekeeper") -> dict:
         genai.configure(api_key=self.api_key)
         model = genai.GenerativeModel(

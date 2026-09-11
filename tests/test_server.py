@@ -1,11 +1,13 @@
 """Tests for the FastAPI server and SSE streaming."""
 
+import asyncio
 import json
 import pytest
 from fastapi.testclient import TestClient
-from unittest.mock import patch, AsyncMock
+from unittest.mock import patch, AsyncMock, MagicMock
 
-from backend.server import app, _load_graph_for_api
+from backend.gatekeeper import PHIDetectionError
+from backend.server import app, _load_graph_for_api, _run_pipeline
 
 
 class TestHealthAndStaticEndpoints:
@@ -50,6 +52,38 @@ class TestHealthAndStaticEndpoints:
         client = TestClient(app)
         r = client.get("/api/pdf/nonexistent.pdf")
         assert r.status_code == 404
+
+    def test_pdf_endpoint_rejects_traversal(self):
+        """A filename escaping PDF_DIR must 404, not serve the file."""
+        client = TestClient(app)
+        r = client.get("/api/pdf/..%2F..%2Fpyproject.toml")
+        assert r.status_code == 404
+
+
+class TestPipelineFailsClosed:
+    def test_phi_detection_failure_skips_cloud(self):
+        """If de-identification fails, an error event is emitted and the cloud
+        adapter is never called."""
+        adapter = MagicMock()
+        adapter.send_query = AsyncMock()
+        gatekeeper = MagicMock()
+        gatekeeper.deidentify_query = AsyncMock(
+            side_effect=PHIDetectionError("local PHI detection model unavailable")
+        )
+
+        async def collect():
+            return [event async for event in _run_pipeline("Tell me about John Smith", "claude")]
+
+        with patch("backend.server._get_gatekeeper", return_value=gatekeeper), \
+             patch("backend.server._get_adapter", return_value=adapter), \
+             patch("backend.server._get_graph", return_value=MagicMock()):
+            events = asyncio.run(collect())
+
+        assert len(events) == 1
+        event_type, data = events[0]
+        assert event_type == "error"
+        assert "not sent to the cloud" in data["content"]
+        adapter.send_query.assert_not_called()
 
 
 class TestQueryEndpointSSE:

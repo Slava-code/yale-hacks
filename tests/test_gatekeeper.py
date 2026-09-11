@@ -6,20 +6,24 @@ All other tests run locally with mocked Ollama responses.
 
 import asyncio
 import json
+import httpx
 import pytest
+from pathlib import Path
 from unittest.mock import AsyncMock, patch
 
-from backend.gatekeeper import Gatekeeper
+from backend.gatekeeper import Gatekeeper, PHIDetectionError
 from backend.graph import load_graph
 from backend.token_manager import TokenMapping
 from backend.citation import CitationManager
 
-STUB_GRAPH_PATH = "data/stub/graph.json"
+# Anchored to the repo root (mirrors tests/conftest.py) so this runs from any CWD.
+ROOT = Path(__file__).resolve().parents[1]
+STUB_GRAPH_PATH = ROOT / "data" / "stub" / "graph.json"
 
 
 @pytest.fixture
 def graph():
-    return load_graph(STUB_GRAPH_PATH)
+    return load_graph(str(STUB_GRAPH_PATH))
 
 
 @pytest.fixture
@@ -67,6 +71,45 @@ class TestDeidentifyQuery:
         assert "WBC 3.2" in result["sanitized_query"]
         assert "headaches" in result["sanitized_query"]
         assert "8 months" in result["sanitized_query"]
+
+
+class TestDeidentifyFailsClosed:
+    """If PHI detection cannot run, nothing may reach the cloud."""
+
+    def test_raises_when_ollama_unreachable(self, graph):
+        gk = Gatekeeper(ollama_url="http://mock:11434", model="test")
+
+        with patch.object(gk, '_chat', new_callable=AsyncMock,
+                          side_effect=httpx.ConnectError("Connection refused")):
+            with pytest.raises(PHIDetectionError):
+                asyncio.run(gk.deidentify_query("Tell me about John Smith", graph))
+
+    def test_raises_on_unparseable_response(self, graph):
+        gk = Gatekeeper(ollama_url="http://mock:11434", model="test")
+
+        with patch.object(gk, '_chat', new_callable=AsyncMock,
+                          return_value="I'm sorry, I can't help with that."):
+            with pytest.raises(PHIDetectionError):
+                asyncio.run(gk.deidentify_query("Tell me about John Smith", graph))
+
+    def test_raises_on_unexpected_json_shape(self, graph):
+        gk = Gatekeeper(ollama_url="http://mock:11434", model="test")
+
+        with patch.object(gk, '_chat', new_callable=AsyncMock,
+                          return_value='["John Smith", "Dr. Sarah Chen"]'):
+            with pytest.raises(PHIDetectionError):
+                asyncio.run(gk.deidentify_query("Tell me about John Smith", graph))
+
+    def test_valid_llm_response_still_works(self, graph):
+        """The happy path goes through _chat untouched."""
+        gk = Gatekeeper(ollama_url="http://mock:11434", model="test")
+
+        llm_json = json.dumps([{"text": "John Smith", "type": "PATIENT"}])
+        with patch.object(gk, '_chat', new_callable=AsyncMock, return_value=llm_json):
+            result = asyncio.run(gk.deidentify_query("Tell me about John Smith", graph))
+
+        assert "[PATIENT_1]" in result["sanitized_query"]
+        assert "John Smith" not in result["sanitized_query"]
 
 
 # --- query_knowledge_graph tests ---
