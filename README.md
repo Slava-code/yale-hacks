@@ -19,7 +19,7 @@ Built at [YHacks 2026](https://www.yhack.org/) on the [ASUS Ascent GX10](https:/
 ![Clicking a citation opens the source lab report PDF at the cited page](docs/screenshots/03-citation-opens-source-pdf.png)
 *Clicking a citation opens the source PDF in-browser at the exact page the fact came from.*
 
-Demo video: on the Devpost submission page (https://devpost.com/software/madgate).
+Demo video: [youtube.com/watch?v=pXoxLHloh3c](https://www.youtube.com/watch?v=pXoxLHloh3c)
 
 ---
 
@@ -247,7 +247,7 @@ PHI detection fails closed: if the local gatekeeper model is unreachable or retu
 
 ## Team
 
-Built at YHacks 2026 by Kevin Rusagara, Slava Iudenko, and Siddharth (Sid) Singh. Submission page: https://devpost.com/software/madgate
+Built at YHacks 2026 by Kevin Rusagara, Slava Iudenko, and Siddharth (Sid) Singh.
 
 ## License
 
